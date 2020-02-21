@@ -60,43 +60,6 @@ public:
     //}
 };
 
-class Storage {
-private:
-    int *data;
-    size_t size;
-
-public:
-    Storage() {
-        data = nullptr;
-        size = 0;
-    }
-
-    void AddElem(int val) {
-        if (data == nullptr) {
-            data = new int[1];
-            data[0] = val;
-            size = 1;
-        } else {
-            int *buf = new int[size + 1];
-            for (size_t i = 0; i < size; i++) {
-                buf[i] = data[i];
-            }
-            buf[size] = val;
-            size++;
-            data = buf;
-            delete [] buf;
-        }
-    };
-
-    int GetElemByNum(size_t num) {
-        return data[num];
-    };
-    size_t TotalSize() {
-        return size;
-    };
-
-};
-
 int main()
 {
     Point p1(1, 1);
