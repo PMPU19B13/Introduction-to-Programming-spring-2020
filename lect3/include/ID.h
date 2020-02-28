@@ -1,15 +1,12 @@
-#ifndef ID_H
-#define ID_H
+#pragma once
 #include "storage.h"
 
 class ID
 {
-    public:
-        ID();
+public:
+	ID();
 
-    private:
-        Storage<unsigned chars> m_array;
-    static size_t count;
+private:
+	Storage<unsigned char> m_array;
+	static size_t count;
 };
-
-#endif // ID_H
