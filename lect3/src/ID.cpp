@@ -20,7 +20,7 @@ bool ID::is_equal(ID id) {
 		return false;
 
 	for (size_t k = 0; k < m_array.TotalSize(); ++k)
-		if (m_array.GetElemByNum(k) != m_array.GetElemByNum(k))
+		if (m_array.GetElemByNum(k) != id.m_array.GetElemByNum(k))
 			return false;
 
 	return true;
