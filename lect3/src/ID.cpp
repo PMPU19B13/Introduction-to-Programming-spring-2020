@@ -1,8 +1,13 @@
-#include "ID.h"
+#pragma once
+#include "storage.h"
 
-size_t ID::count = 0;
-
-ID::ID()
+class ID
 {
-    ++count;
-}
+public:
+	ID();
+	bool is_equal(ID);
+
+private:
+	Storage<unsigned char> m_array;
+	static size_t count;
+};
