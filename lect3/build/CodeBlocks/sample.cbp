@@ -35,10 +35,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../../include/ID.h" />
 		<Unit filename="../../include/error.h" />
 		<Unit filename="../../include/geometry.h" />
 		<Unit filename="../../include/storage.h" />
 		<Unit filename="../../src/main.cpp" />
+		<Unit filename="../../src/ID.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
