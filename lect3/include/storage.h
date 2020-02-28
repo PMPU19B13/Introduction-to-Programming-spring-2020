@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace std;
 
 template<typename T>
@@ -12,6 +16,9 @@ public:
 	Storage() {
 		data = nullptr;
 		size = 0;
+#ifdef DEBUG
+		std::cout << "Storage constructor called" << std::endl;
+#endif
 	}
 
 	void AddElem(T val) {
@@ -40,7 +47,7 @@ public:
 	};
 
 };
-
+/*
 bool testStorage4() {
 	Storage<int> storage;
 	for (int k = 0; k < 4; k++) {
@@ -54,3 +61,4 @@ bool testStorage4() {
 	}
 	return true;
 }
+*/
