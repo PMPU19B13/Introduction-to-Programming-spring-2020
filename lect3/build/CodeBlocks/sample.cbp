@@ -14,8 +14,8 @@
 				<Compiler>
 					<Add option="-std=c++14" />
 					<Add option="-g" />
-					<Add directory="../../include" />
-					<Add directory="../../src" />
+					<Add directory="C:/Users/st076009/Documents/CBprojects/sample/include" />
+					<Add directory="C:/Users/st076009/Documents/CBprojects/sample/src" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -35,10 +35,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="../../include/error.h" />
-		<Unit filename="../../include/geometry.h" />
-		<Unit filename="../../include/storage.h" />
-		<Unit filename="../../src/main.cpp" />
+		<Unit filename="include/error.h" />
+		<Unit filename="include/geometry.h" />
+		<Unit filename="include/storage.h" />
+		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
