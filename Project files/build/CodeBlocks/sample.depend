@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1582912099 source:c:\users\Саша\documents\github\introduction-to-programming-spring-2020\project files\src\main.cpp
+	<iostream>
+	"storage.h"
+	"geometry.h"
+	"ID.h"
+
+1582912389 c:\users\Саша\documents\github\introduction-to-programming-spring-2020\project files\include\storage.h
+	<stddef.h>
+	<iostream>
+
+1582912099 c:\users\Саша\documents\github\introduction-to-programming-spring-2020\project files\include\geometry.h
+	"error.h"
+
+1582912099 c:\users\Саша\documents\github\introduction-to-programming-spring-2020\project files\include\error.h
+
+1582912099 c:\users\Саша\documents\github\introduction-to-programming-spring-2020\project files\include\id.h
+	"storage.h"
+
+1582912099 source:c:\users\Саша\documents\github\introduction-to-programming-spring-2020\project files\src\id.cpp
+	"ID.h"
+	<stdio.h>
+
