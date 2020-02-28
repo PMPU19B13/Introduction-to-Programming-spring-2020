@@ -1,13 +1,27 @@
-#pragma once
-#include "storage.h"
+#include "ID.h"
+#include <stdio.h>
 
-class ID
+size_t ID::count = 0;
+
+ID::ID()
 {
-public:
-	ID();
-	bool is_equal(ID);
+	++count;
+	char buf[1024];
+	snprintf(buf, sizeof(buf), "%d", count);
+	for (size_t k = 0; k < 1024; ++k)
+		if (buf[k] != 0)
+			m_array.AddElem(buf[k]);
+		else
+			break;
+}
 
-private:
-	Storage<unsigned char> m_array;
-	static size_t count;
-};
+bool ID::is_equal(ID id) {
+	if (m_array.TotalSize() != id.m_array.TotalSize())
+		return false;
+
+	for (size_t k = 0; k < m_array.TotalSize(); ++k)
+		if (m_array.GetElemByNum(k) != m_array.GetElemByNum(k))
+			return false;
+
+	return true;
+}
