@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\errors.h" />
+    <ClInclude Include="..\include\error.h" />
     <ClInclude Include="..\include\geometry.h" />
     <ClInclude Include="..\include\storage.h" />
   </ItemGroup>
