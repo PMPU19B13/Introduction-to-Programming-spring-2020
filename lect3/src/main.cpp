@@ -1,6 +1,10 @@
 #include <iostream>
+
+#define DEBUG
+
 #include "storage.h"
 #include "geometry.h"
+#include "ID.h"
 
 using namespace std;
 
@@ -17,6 +21,14 @@ int main()
 	intStorage.AddElem(3);
 	intStorage.AddElem(45);
 
+	Point point(1.0, 1.0);
+	ID idp;
+
+	Point point1(1.0, 1.0);
+	ID idp1;
+
+	cout << "idp.is_equal(idp1) = " << idp.is_equal(idp1) << endl;
+
 	Storage<Point> pointStorage;
 	pointStorage.AddElem(Point(2.3, 4.7));
 	pointStorage.AddElem(Point(1.3, 12.3));
@@ -29,6 +41,6 @@ int main()
 	Point p = s1.getStart();
 
 	cout << "total size: " << storage.TotalSize() << endl;
-	cout << (testStorage4() ? "CORRECT" : "FAILURE") << endl;
+	//cout << (testStorage4() ? "CORRECT" : "FAILURE") << endl;
 	return 0;
 }
