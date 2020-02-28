@@ -19,13 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\geometry.cpp" />
-    <ClCompile Include="..\..\src\main.cpp" />
+    <ClInclude Include="..\include\errors.h" />
+    <ClInclude Include="..\include\geometry.h" />
+    <ClInclude Include="..\include\storage.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\errors.h" />
-    <ClInclude Include="..\..\include\geometry.h" />
-    <ClInclude Include="..\..\include\storage.h" />
+    <ClCompile Include="..\src\geometry.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
