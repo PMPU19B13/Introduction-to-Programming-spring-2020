@@ -15,7 +15,7 @@
 					<Add option="-std=c++14" />
 					<Add option="-g" />
 					<Add directory="../../include" />
-					<Add directory="../..//src" />
+					<Add directory="../../src" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
