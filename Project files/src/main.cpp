@@ -6,7 +6,6 @@
 #include "geometry.h"
 #include "ID.h"
 
-using namespace std;
 
 int main()
 {
@@ -26,7 +25,7 @@ int main()
     Point p1(1.1, 1.2);
     ID idp1;
 
-    cout << "idp.is_equal(idp1) = " << idp.is_equal(idp1) << endl;
+    std::cout << "idp.is_equal(idp1) = " << idp.is_equal(idp1) << std::endl;
 
     /*
     Storage<Point> pointStorage;

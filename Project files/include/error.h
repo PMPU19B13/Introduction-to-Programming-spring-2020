@@ -3,8 +3,8 @@
 class Error
 {
 public:
-	Error()
-	{
+    Error()
+    {
 
-	}
+    }
 };
