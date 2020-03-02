@@ -26,6 +26,7 @@
     <ClInclude Include="..\include\storage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\controller.cpp" />
     <ClCompile Include="..\src\geometry.cpp" />
     <ClCompile Include="..\src\ID.cpp" />
     <ClCompile Include="..\src\main.cpp" />
