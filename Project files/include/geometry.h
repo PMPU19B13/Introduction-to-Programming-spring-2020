@@ -20,3 +20,13 @@ private:
 	Point* start;
 	Point* end;
 };
+
+class Circle
+{
+public:
+	Circle(Point* c, double r);
+	Point getStart();
+private:
+	Point* center;
+	double R;
+};
