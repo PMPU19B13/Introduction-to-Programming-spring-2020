@@ -8,3 +8,13 @@ public:
 
     }
 };
+
+class BadArg
+{
+public:
+    BadArg()
+    {
+
+    }
+};
+

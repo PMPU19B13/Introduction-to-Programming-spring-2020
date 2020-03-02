@@ -38,6 +38,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="../../include/Controller.h" />
+		<Unit filename="../../include/Drawer.h" />
 		<Unit filename="../../include/ID.h" />
 		<Unit filename="../../include/error.h" />
 		<Unit filename="../../include/geometry.h" />

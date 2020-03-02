@@ -24,6 +24,12 @@ class Controller
 
         void addRequirement(ReqType, ID, ID, double *param = nullptr);
         void delRequirement(ID);
+
+        void UpdateView() {
+            //Drawer drawer;
+            //for (points)
+            //    drawer.drawPrimitive(point)
+        }
     private:
         Storage<Point> m_points;
         Storage<Segment> m_segments;

@@ -9,6 +9,23 @@
 
 int main()
 {
+
+    try {
+        Controller c;
+        Storage<double> s;
+        s.AddElem(0);
+        //s.AddElem(1);
+        c.addPrimitive(P_Point, s);
+
+
+        c.UpdateView();
+    }
+    catch(Error) {
+
+    }
+    catch(BadArg) {
+        std::cout << "Whoops!" << std::endl;
+    }
     /*
     Storage<double> storage;
     storage.AddElem(4.5);
@@ -19,6 +36,7 @@ int main()
     cout << intStorage.TotalSize() << endl;
     */
 
+    /*
     Point p(1.0, 1.0);
     ID idp;
 
@@ -26,7 +44,7 @@ int main()
     ID idp1;
 
     std::cout << "idp.is_equal(idp1) = " << idp.is_equal(idp1) << std::endl;
-
+    */
     /*
     Storage<Point> pointStorage;
     pointStorage.AddElem(Point(2.3, 4.7));

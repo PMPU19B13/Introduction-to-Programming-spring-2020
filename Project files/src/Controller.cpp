@@ -7,5 +7,15 @@ Controller::Controller()
 
 void Controller::addPrimitive(PrimType pt, Storage<double> params)
 {
-    //ctor
+    switch (pt) {
+    case P_Point:
+
+        break;
+    case P_Segment:
+
+        break;
+    case P_Circle:
+
+        break;
+    }
 }
