@@ -27,6 +27,9 @@
     <ClInclude Include="..\include\ID.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\geometry.cpp">
