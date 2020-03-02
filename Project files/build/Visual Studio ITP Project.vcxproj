@@ -19,12 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\controller.h" />
     <ClInclude Include="..\include\error.h" />
     <ClInclude Include="..\include\geometry.h" />
     <ClInclude Include="..\include\ID.h" />
     <ClInclude Include="..\include\storage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\controller.cpp" />
     <ClCompile Include="..\src\geometry.cpp" />
     <ClCompile Include="..\src\ID.cpp" />
     <ClCompile Include="..\src\main.cpp" />
