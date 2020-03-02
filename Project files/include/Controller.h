@@ -10,7 +10,7 @@ enum PrimType
     P_Point, P_Segment, P_Circle
 };
 
-enum PrimType
+enum ReqType
 {
     R_Distance, R_Paral, R_Eq, R_PonC
 };
