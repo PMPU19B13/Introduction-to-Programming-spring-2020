@@ -7,7 +7,7 @@ ID::ID()
 {
     ++m_count;
     char buf[1024];
-    snprintf(buf, sizeof(buf), "%d", m_count);
+    snprintf(buf, sizeof(buf), "%zu", m_count);
     for (size_t k = 0; k < 1024; ++k)
         if (buf[k] != 0)
             m_array.add(buf[k]);
