@@ -1,10 +1,8 @@
 #include <iostream>
 
-#define DEBUG
-
 #include "storage.h"
 #include "geometry.h"
-#include "ID.h"
+#include "id.h"
 #include "controller.h"
 
 int main()
@@ -13,8 +11,8 @@ int main()
     {
         Controller c;
         Storage<double> s;
-        s.AddElem(0);
-        // s.AddElem(1);
+        s.add(0);
+        // s.add(1);
         c.addPrimitive(P_Point, s);
 
         c.updateView();
@@ -33,8 +31,8 @@ int main()
     cout << storage.TotalSize() << endl;
 
     Storage<int> intStorage;
-    intStorage.AddElem(3);
-    cout << intStorage.TotalSize() << endl;
+    intStorage.add(3);
+    cout << intStorage.size() << endl;
     */
 
     Point p(1.0, 1.0);
@@ -43,11 +41,11 @@ int main()
     Point p1(1.1, 1.2);
     ID idp1;
 
-    std::cout << "idp.is_equal(idp1) = " << idp.is_equal(idp1) << std::endl;
+    std::cout << "idp.is_equal(idp1) = " << idp.equals(idp1) << std::endl;
 
     /*
     Storage<Point> pointStorage;
-    pointStorage.AddElem(Point(2.3, 4.7));
+    pointStorage.add(Point(2.3, 4.7));
     */
 
     return 0;
