@@ -16,6 +16,7 @@ void Controller::addPrimitive(PrimType pt, Storage<double> params)
             break;
 
         case P_Circle:
+            break;
     }
 
 }
