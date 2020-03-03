@@ -26,9 +26,12 @@ private:
 class Circle
 {
 public:
-	Circle(Point* c, double r);
-	Point getStart();
+    Circle(Point *p, double r)
+    {
+
+    }
+
 private:
-	Point* center;
-	double R;
+    Point *center;
+    double R;
 };
