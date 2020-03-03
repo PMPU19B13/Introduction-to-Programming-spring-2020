@@ -3,7 +3,6 @@
 #include "geometry.h"
 #include "storage.h"
 #include "ID.h"
-#include "drawer.h"
 
 enum PrimType
 {
