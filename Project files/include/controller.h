@@ -2,9 +2,9 @@
 
 #include "geometry.h"
 #include "storage.h"
-#include "ID.h"
+#include "id.h"
 
-enum PrimType
+enum PrimitiveType
 {
     P_Point, // точка
     P_Segment, // отрезок
@@ -12,12 +12,12 @@ enum PrimType
     // ... ещё?
 };
 
-enum ReqType
+enum RequirementType
 {
     R_Distance, // расстояние между объектами
-    R_Paral, // параллельность отрезков
-    R_Eq, // равенство объектов
-    R_PonC // точка на окружности
+    R_Parallel, // параллельность отрезков
+    R_Equal, // равенство объектов
+    R_PointOnCircle // точка на окружности
     // ... ещё?
 };
 
@@ -26,22 +26,14 @@ class Controller
 public:
     Controller();
 
-    void addPrimitive(PrimType, Storage<double>);
-    void delPrimitive(ID);
+    void addPrimitive(PrimitiveType, Storage<double>);
+    void removePrimitive(ID);
 
-    void addRequirement(ReqType, ID, ID, double *param = nullptr);
-    void delRequirement(ID);
+    void addRequirement(RequirementType, ID, ID, double *param = nullptr);
+    void removeRequirement(ID);
 
-    void updateView()
-    {
-//        Drawer drawer;
-//        for (point in m_points)
-//            drawer.drawPrimitive(point);
-//        for (segment in m_segments)
-//            drawer.drawPrimitive(segment);
-//        for (circle in m_circles)
-//            drawer.drawPrimitive(circle);
-    }
+    // TODO: Implement
+    void updateView();
 
 private:
     Storage<Point> m_points;
