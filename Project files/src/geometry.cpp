@@ -1,17 +1,33 @@
 #include "geometry.h"
 
-Point::Point(double _x, double _y)
+Point::Point(double x, double y)
 {
-    x = _x;
-    y = _y;
+    m_x = x;
+    m_y = y;
 }
 
-Segment::Segment(Point *st, Point *ed)
+void Point::setX(double x) {
+    m_x = x;
+}
+
+void Point::setY(double y) {
+    m_y = y;
+}
+
+double Point::getX() {
+    return m_x;
+}
+
+double Point::getY() {
+    return m_y;
+}
+
+Segment::Segment(Point *start, Point *end)
 {
-    if ((st != nullptr) && (ed != nullptr))
+    if ((start != nullptr) && (end != nullptr))
     {
-        start = st;
-        end = ed;
+        m_start = start;
+        m_end = end;
     }
     else
     {
@@ -21,5 +37,10 @@ Segment::Segment(Point *st, Point *ed)
 
 Point Segment::getStart()
 {
-    return *start;
+    return *m_start;
+}
+
+Circle::Circle(Point *p, double r)
+{
+
 }
