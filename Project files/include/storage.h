@@ -19,3 +19,5 @@ private:
     size_t m_size;
 
 };
+
+#include "../src/storage.cpp"
