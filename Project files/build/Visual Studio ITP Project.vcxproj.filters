@@ -24,7 +24,7 @@
     <ClInclude Include="..\include\error.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\ID.h">
+    <ClInclude Include="..\include\id.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\controller.h">
@@ -41,10 +41,13 @@
     <ClCompile Include="..\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\ID.cpp">
+    <ClCompile Include="..\src\id.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\storage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
