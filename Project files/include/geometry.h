@@ -5,33 +5,36 @@
 class Point
 {
 public:
-    double x;
-    double y;
+    Point(double x = 0, double y = 0);
 
-    Point(double _x = 0, double _y = 0);
+    void setX(double x);
+    void setY(double y);
+    double getX();
+    double getY();
+
+private:
+    double m_x;
+    double m_y;
 };
 
 class Segment
 {
 public:
-    Segment(Point *st, Point *ed);
+    Segment(Point *start, Point *end);
 
     Point getStart();
 
 private:
-    Point *start;
-    Point *end;
+    Point *m_start;
+    Point *m_end;
 };
 
 class Circle
 {
 public:
-    Circle(Point *p, double r)
-    {
-
-    }
+    Circle(Point *p, double r);
 
 private:
-    Point *center;
-    double R;
+    Point *m_center;
+    double m_radius;
 };
