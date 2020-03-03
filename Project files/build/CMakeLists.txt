@@ -4,4 +4,4 @@ project(itp_project)
 set(CMAKE_CXX_STANDARD 20)
 
 include_directories(../include)
-add_executable(itp_project ../src/main.cpp ../src/geometry.cpp ../src/ID.cpp)
+add_executable(itp_project ../src/main.cpp ../src/geometry.cpp ../src/ID.cpp ../src/controller.cpp)
