@@ -32,7 +32,7 @@ private:
 class Circle
 {
 public:
-    Circle(Point *p, double r);
+    Circle(Point *center, double radius);
 
 private:
     Point *m_center;
