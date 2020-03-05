@@ -26,10 +26,7 @@ private:
 class Circle
 {
 public:
-    Circle(Point *p, double r)
-    {
-
-    }
+    Circle(Point* p, double r);
 
 private:
     Point *center;

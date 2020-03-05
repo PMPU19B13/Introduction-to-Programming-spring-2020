@@ -23,3 +23,16 @@ Point Segment::getStart()
 {
     return *start;
 }
+
+Circle::Circle(Point* p, double r)
+{
+    if (p != nullptr)
+    {
+        center = p;
+        R = r;
+    }
+    else
+    {
+        throw (Error());
+    }
+}
