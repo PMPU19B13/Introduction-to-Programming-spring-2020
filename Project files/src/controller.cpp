@@ -35,7 +35,7 @@ void Controller::addPrimitive(PrimType pt, Storage<double> params)
             break;
 
         case P_Circle:
-            if (params.TotalSize() == 2)
+            if (params.TotalSize() == 3)
             {
                 m_points.AddElem(Point(params.GetElemByNum(0), params.GetElemByNum(1)));
                 Point* cen = &m_points.GetElemByNum(m_points.TotalSize() - 1);
