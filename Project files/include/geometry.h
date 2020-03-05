@@ -14,6 +14,7 @@ public:
 class Segment
 {
 public:
+    Segment();
     Segment(Point *st, Point *ed);
 
     Point getStart();
@@ -26,6 +27,7 @@ private:
 class Circle
 {
 public:
+    Circle();
     Circle(Point* p, double r);
 
 private:

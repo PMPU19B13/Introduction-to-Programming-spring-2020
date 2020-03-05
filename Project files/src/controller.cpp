@@ -29,14 +29,13 @@ void Controller::addPrimitive(PrimType pt, Storage<double> params)
                 Point* en = &m_points.GetElemByNum(m_points.TotalSize() - 1);
 
                 m_segments.AddElem(Segment(st, en));
-                std::cout << "SEG";
             }
             else
                 throw(BadArg());
             break;
 
         case P_Circle:
-            if (params.TotalSize() == 4)
+            if (params.TotalSize() == 2)
             {
                 m_points.AddElem(Point(params.GetElemByNum(0), params.GetElemByNum(1)));
                 Point* cen = &m_points.GetElemByNum(m_points.TotalSize() - 1);

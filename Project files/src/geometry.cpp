@@ -19,10 +19,15 @@ Segment::Segment(Point *st, Point *ed)
     }
 }
 
+Segment::Segment() = default;
+
+
 Point Segment::getStart()
 {
     return *start;
 }
+
+Circle::Circle() = default;
 
 Circle::Circle(Point* p, double r)
 {
