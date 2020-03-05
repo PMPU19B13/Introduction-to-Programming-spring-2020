@@ -40,7 +40,7 @@ Point Segment::getStart()
     return *m_start;
 }
 
-Circle::Circle(Point *p, double r)
+Circle::Circle(Point *center, double radius)
 {
 
 }
