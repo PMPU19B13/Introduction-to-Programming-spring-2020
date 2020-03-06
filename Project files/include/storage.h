@@ -33,6 +33,17 @@ public:
         }
     }
 
+    Storage &operator=(const Storage<T> &orig)
+    {
+        size = orig.TotalSize();
+        if (data != nullptr)
+            delete[] data;
+        data = new T[size];
+        for (size_t k = 0; k < size; ++k)
+        {
+            data[k] = orig.GetElemByNum(k);
+        }
+    }
 
     ~Storage()
     {
@@ -65,6 +76,18 @@ public:
     T GetElemByNum(size_t num) const
     {
         return data[num];
+    };
+
+    T &operator[](size_t num) const
+    {
+        if (num < size)
+            return data[num];
+    };
+
+    void SetElemByNum(size_t num, T val)
+    {
+        if (num < size)
+            data[num] = val;
     };
 
     size_t TotalSize() const
