@@ -1,6 +1,7 @@
-#include "controller.h"
-#include <error.h>
 #include <iostream>
+
+#include "controller.h"
+#include "error.h"
 
 Controller::Controller()
 {
