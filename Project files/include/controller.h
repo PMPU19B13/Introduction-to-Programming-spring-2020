@@ -2,6 +2,7 @@
 
 #include "geometry.h"
 #include "storage.h"
+#include "storageli.h"
 #include "ID.h"
 
 enum PrimType
@@ -44,7 +45,7 @@ public:
     }
 
 private:
-    Storage<Point> m_points;
-    Storage<Segment> m_segments;
-    Storage<Circle> m_circles;
+    StorageLi<Point> m_points;
+    StorageLi<Segment> m_segments;
+    StorageLi<Circle> m_circles;
 };

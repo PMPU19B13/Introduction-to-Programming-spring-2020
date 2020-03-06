@@ -18,6 +18,7 @@ public:
     Segment(Point *st, Point *ed);
 
     Point getStart();
+    Point getEnd();
 
 private:
     Point *start;
@@ -29,6 +30,9 @@ class Circle
 public:
     Circle();
     Circle(Point* p, double r);
+
+    Point getCenter();
+    double getRadius();
 
 private:
     Point *center;

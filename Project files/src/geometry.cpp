@@ -27,6 +27,11 @@ Point Segment::getStart()
     return *start;
 }
 
+Point Segment::getEnd()
+{
+    return *end;
+}
+
 Circle::Circle() = default;
 
 Circle::Circle(Point* p, double r)
@@ -40,4 +45,14 @@ Circle::Circle(Point* p, double r)
     {
         throw (Error());
     }
+}
+
+Point Circle::getCenter()
+{
+    return *center;
+}
+
+double Circle::getRadius()
+{
+    return R;
 }
