@@ -23,6 +23,23 @@ public:
 #endif
     }
 
+    Storage(const Storage<T> &orig)
+    {
+        size = orig.size;
+        data = new T[size];
+        for (size_t k = 0; k < size; ++k)
+        {
+            data[k] = orig.data[k];
+        }
+    }
+
+
+    ~Storage()
+    {
+        if (data != nullptr)
+            delete[] data;
+    }
+
     void AddElem(T val)
     {
         if (data == nullptr)
@@ -50,7 +67,7 @@ public:
         return data[num];
     };
 
-    size_t TotalSize()
+    size_t TotalSize() const
     {
         return size;
     };
