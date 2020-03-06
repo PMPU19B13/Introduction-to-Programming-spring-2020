@@ -20,6 +20,7 @@ private:
 class Segment
 {
 public:
+    Segment();
     Segment(Point *start, Point *end);
 
     Point getStart();
@@ -32,6 +33,7 @@ private:
 class Circle
 {
 public:
+    Circle();
     Circle(Point *center, double radius);
 
 private:
