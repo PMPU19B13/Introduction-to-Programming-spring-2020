@@ -37,6 +37,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../../include/storageli.h" />
 		<Unit filename="../../include/Controller.h" />
 		<Unit filename="../../include/Drawer.h" />
 		<Unit filename="../../include/ID.h" />
