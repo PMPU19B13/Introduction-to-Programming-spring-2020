@@ -25,11 +25,11 @@ public:
 
     Storage(const Storage<T> &orig)
     {
-        size = orig.size;
+        size = orig.TotalSize();
         data = new T[size];
         for (size_t k = 0; k < size; ++k)
         {
-            data[k] = orig.data[k];
+            data[k] = orig.GetElemByNum(k);
         }
     }
 
@@ -62,7 +62,7 @@ public:
         }
     };
 
-    T GetElemByNum(size_t num)
+    T GetElemByNum(size_t num) const
     {
         return data[num];
     };
