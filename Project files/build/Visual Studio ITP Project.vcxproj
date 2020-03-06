@@ -25,6 +25,7 @@
     <ClInclude Include="..\include\ID.h" />
     <ClInclude Include="..\include\storage.h" />
     <ClInclude Include="..\include\drawer.h" />
+    <ClInclude Include="..\include\storageli.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\controller.cpp" />
