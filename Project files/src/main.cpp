@@ -12,11 +12,19 @@ int main()
         Controller c;
         Storage<double> s;
         s.add(0);
-        // s.add(1);
+        s.add(1);
         c.addPrimitive(P_Point, s);
 
-        c.updateView();
+        Storage<double> d;
+        d.add(0);
+        d.add(1);
+        d.add(4);
+        d.add(5);
 
+        c.addPrimitive(P_Segment, d);
+
+        c.updateView();
+        
     } catch (Error)
     {
 
@@ -41,7 +49,7 @@ int main()
     Point p1(1.1, 1.2);
     ID idp1;
 
-    std::cout << "idp.is_equal(idp1) = " << idp.equals(idp1) << std::endl;
+    std::cout << "idp.equals(idp1) = " << idp.equals(idp1) << std::endl;
 
     /*
     Storage<Point> pointStorage;
