@@ -33,17 +33,8 @@ public:
     void addRequirement(ReqType, ID, ID, double *param = nullptr);
     void delRequirement(ID);
 
-    void updateView()
-    {
-//        Drawer drawer;
-//        for (point in m_points)
-//            drawer.drawPrimitive(point);
-//        for (segment in m_segments)
-//            drawer.drawPrimitive(segment);
-//        for (circle in m_circles)
-//            drawer.drawPrimitive(circle);
-    }
-
+    void updateView();
+   
 private:
     StorageLi<Point> m_points;
     StorageLi<Segment> m_segments;

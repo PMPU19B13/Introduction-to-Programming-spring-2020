@@ -2,6 +2,7 @@
 
 #include "controller.h"
 #include "error.h"
+#include "drawer.h"
 
 Controller::Controller()
 {
@@ -48,5 +49,22 @@ void Controller::addPrimitive(PrimType pt, Storage<double> params)
             break;
     }
 
+}
+
+void Controller::updateView()
+{
+    Drawer drawer;
+    for (size_t i = 0; i < m_points.TotalSize(); ++i)
+    {
+        drawer.drawPrimitive(P_Point, m_points[i].getParams());
+    }
+    for (size_t i = 0; i < m_segments.TotalSize(); ++i)
+    {
+        drawer.drawPrimitive(P_Segment, m_segments[i].getParams());
+    }
+    for (size_t i = 0; i < m_circles.TotalSize(); ++i)
+    {
+        drawer.drawPrimitive(P_Circle, m_circles[i].getParams());
+    }
 }
 
