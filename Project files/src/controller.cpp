@@ -24,11 +24,11 @@ void Controller::addPrimitive(PrimType pt, Storage<double> params)
             if (params.TotalSize() == 4)
             {
                 m_points.AddElem(Point(params.GetElemByNum(0), params.GetElemByNum(1)));
-                Point* st = &m_points.GetElemByNum(m_points.TotalSize() - 1);
+                Point st = m_points.GetElemByNum(m_points.TotalSize() - 1);
                 m_points.AddElem(Point(params.GetElemByNum(2), params.GetElemByNum(3)));
-                Point* en = &m_points.GetElemByNum(m_points.TotalSize() - 1);
+                Point en = m_points.GetElemByNum(m_points.TotalSize() - 1);
 
-                m_segments.AddElem(Segment(st, en));
+                m_segments.AddElem(Segment(&st, &en));
             }
             else
                 throw(BadArg());
@@ -38,9 +38,9 @@ void Controller::addPrimitive(PrimType pt, Storage<double> params)
             if (params.TotalSize() == 3)
             {
                 m_points.AddElem(Point(params.GetElemByNum(0), params.GetElemByNum(1)));
-                Point* cen = &m_points.GetElemByNum(m_points.TotalSize() - 1);
+                Point cen = m_points.GetElemByNum(m_points.TotalSize() - 1);
 
-                m_circles.AddElem(Circle(cen, params.GetElemByNum(2)));
+                m_circles.AddElem(Circle(&cen, params.GetElemByNum(2)));
             }
             else
                 throw(BadArg());
