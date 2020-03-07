@@ -1,4 +1,5 @@
 #include "geometry.h"
+#include "storage.h"
 
 Point::Point(double x, double y)
 {

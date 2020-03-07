@@ -36,6 +36,9 @@
     <ClInclude Include="..\include\storage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\storageli.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\controller.cpp">
@@ -51,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\drawer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
