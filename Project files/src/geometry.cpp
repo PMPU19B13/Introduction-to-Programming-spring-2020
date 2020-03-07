@@ -26,37 +26,73 @@ double Point::getY()
     return m_y;
 }
 
-Segment::Segment() = default;
-
-Segment::Segment(Point *start, Point *end)
+Storage<double> Point::getParams() const
 {
-    if ((start != nullptr) && (end != nullptr))
-    {
-        m_start = start;
-        m_end = end;
-    }
-    else
-    {
-        throw Error();
-    }
+    Storage<double> params;
+    params.add(m_x);
+    params.add(m_y);
+    return params;
 }
 
-Point Segment::getStart()
+Segment::Segment()
+{
+    Point start = Point(0.0, 0.0);
+    Point end = Point(0.0, 0.0);
+
+    m_start = &start;
+    m_end = &end;
+}
+
+Segment::Segment(Point* start, Point* end)
+{
+    if (start == nullptr || end == nullptr)
+        throw BadArgument();
+
+    m_start = start;
+    m_end = end;
+}
+
+Point& Segment::getStart()
 {
     return *m_start;
 }
 
-Circle::Circle() = default;
-
-Circle::Circle(Point *center, double radius)
+Point& Segment::getEnd()
 {
-    if (center != nullptr)
-    {
-        m_center = center;
-        m_radius = radius;
-    }
-    else
-    {
-        throw Error();
-    }
+    return *m_end;
+}
+
+Storage<double> Segment::getParams() const
+{
+    Storage<double> params;
+    params.add(m_start->getX());
+    params.add(m_start->getY());
+    params.add(m_end->getX());
+    params.add(m_end->getY());
+    return params;
+}
+
+Circle::Circle()
+{
+    Point center = Point(0.0, 0.0);
+    m_center = &center;
+    m_radius = 1;
+}
+
+Circle::Circle(Point* center, double radius)
+{
+    if (center == nullptr)
+        throw BadArgument();
+
+    m_center = center;
+    m_radius = radius;
+}
+
+Storage<double> Circle::getParams() const
+{
+    Storage<double> params;
+    params.add(m_center->getX());
+    params.add(m_center->getY());
+    params.add(m_radius);
+    return params;
 }
