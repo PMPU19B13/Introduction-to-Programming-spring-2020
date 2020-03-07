@@ -20,18 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\controller.h" />
+    <ClInclude Include="..\include\drawer.h" />
     <ClInclude Include="..\include\error.h" />
     <ClInclude Include="..\include\geometry.h" />
-    <ClInclude Include="..\include\ID.h" />
+    <ClInclude Include="..\include\id.h" />
+    <ClInclude Include="..\include\list.h" />
     <ClInclude Include="..\include\storage.h" />
-    <ClInclude Include="..\include\drawer.h" />
-    <ClInclude Include="..\include\storageli.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\controller.cpp" />
     <ClCompile Include="..\src\drawer.cpp" />
     <ClCompile Include="..\src\geometry.cpp" />
-    <ClCompile Include="..\src\ID.cpp" />
+    <ClCompile Include="..\src\id.cpp" />
     <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

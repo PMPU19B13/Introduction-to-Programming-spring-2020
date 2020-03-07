@@ -6,39 +6,50 @@
 class Point
 {
 public:
-    double x;
-    double y;
+    Point(double x = 0, double y = 0);
 
-    Point(double _x = 0, double _y = 0);
-    Storage<double> getParams() const; //{ x, y }
+    void setX(double x);
+    void setY(double y);
+    double getX();
+    double getY();
+
+    Storage<double> getParams() const;
+
+private:
+    double m_x;
+    double m_y;
 };
 
 class Segment
 {
 public:
     Segment();
-    Segment(Point *st, Point *ed);
+    Segment(Point* start, Point* end);
 
-    Point getStart();
-    Point getEnd();
-    Storage<double> getParams() const; //{ st_x, st_y, en_x, en_y}
+    // TODO: Должны возвращать референсы -> сделать не константными
+    Point& getStart();
+    Point& getEnd();
+
+    Storage<double> getParams() const;
 
 private:
-    Point *start;
-    Point *end;
+    Point* m_start;
+    Point* m_end;
 };
 
 class Circle
 {
 public:
     Circle();
-    Circle(Point* p, double r);
+    Circle(Point* center, double radius);
 
-    Point getCenter();
-    double getRadius();
-    Storage<double> getParams() const; //{ cen_x, cen_y, rad }
+    // TODO: Должны возвращать референсы -> сделать не константными
+    Point& getCenter();
+    double getRadius() const;
+
+    Storage<double> getParams() const;
 
 private:
-    Point *center;
-    double R;
+    Point* m_center;
+    double m_radius;
 };

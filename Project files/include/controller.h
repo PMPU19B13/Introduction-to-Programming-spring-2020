@@ -2,24 +2,21 @@
 
 #include "geometry.h"
 #include "storage.h"
-#include "storageli.h"
-#include "ID.h"
+#include "id.h"
 
-enum PrimType
+enum PrimitiveType
 {
-    P_Point, // точка
-    P_Segment, // отрезок
-    P_Circle // окружность
-    // ... ещё?
+    P_Point, // Точка
+    P_Segment, // Отрезок
+    P_Circle // Окружность
 };
 
-enum ReqType
+enum RequirementType
 {
-    R_Distance, // расстояние между объектами
-    R_Paral, // параллельность отрезков
-    R_Eq, // равенство объектов
-    R_PonC // точка на окружности
-    // ... ещё?
+    R_Distance, // Расстояние между объектами
+    R_Parallel, // Параллельность отрезков
+    R_Equal, // Равенство объектов
+    R_PointOnCircle // Точка на окружности
 };
 
 class Controller
@@ -27,15 +24,16 @@ class Controller
 public:
     Controller();
 
-    void addPrimitive(PrimType, Storage<double>);
-    void delPrimitive(ID);
+    void addPrimitive(PrimitiveType, Storage<double>);
+    void removePrimitive(ID);
 
-    void addRequirement(ReqType, ID, ID, double *param = nullptr);
-    void delRequirement(ID);
+    void addRequirement(RequirementType, ID, ID, double* param = nullptr);
+    void removeRequirement(ID);
+
 
     void updateView();
-   
-private:
+
+  private:
     StorageLi<Point> m_points;
     StorageLi<Segment> m_segments;
     StorageLi<Circle> m_circles;

@@ -1,87 +1,99 @@
 #include "geometry.h"
 #include "storage.h"
 
-Point::Point(double _x, double _y)
+Point::Point(double x, double y)
 {
-    x = _x;
-    y = _y;
+    m_x = x;
+    m_y = y;
+}
+
+void Point::setX(double x)
+{
+    m_x = x;
+}
+
+void Point::setY(double y)
+{
+    m_y = y;
+}
+
+double Point::getX()
+{
+    return m_x;
+}
+
+double Point::getY()
+{
+    return m_y;
 }
 
 Storage<double> Point::getParams() const
 {
     Storage<double> params;
-    params.AddElem(x);
-    params.AddElem(y);
+    params.add(m_x);
+    params.add(m_y);
     return params;
 }
 
-Segment::Segment(Point *st, Point *ed)
+Segment::Segment()
 {
-    if ((st != nullptr) && (ed != nullptr))
-    {
-        start = st;
-        end = ed;
-    }
-    else
-    {
-        throw (Error());
-    }
+    Point start = Point(0.0, 0.0);
+    Point end = Point(0.0, 0.0);
+
+    m_start = &start;
+    m_end = &end;
 }
 
-Segment::Segment() = default;
-
-
-Point Segment::getStart()
+Segment::Segment(Point* start, Point* end)
 {
-    return *start;
+    if (start == nullptr || end == nullptr)
+        throw BadArgument();
+
+    m_start = start;
+    m_end = end;
 }
 
-Point Segment::getEnd()
+Point& Segment::getStart()
 {
-    return *end;
+    return *m_start;
+}
+
+Point& Segment::getEnd()
+{
+    return *m_end;
 }
 
 Storage<double> Segment::getParams() const
 {
     Storage<double> params;
-    params.AddElem(start->x);
-    params.AddElem(start->y);
-    params.AddElem(end->x);
-    params.AddElem(end->y);
+    params.add(m_start->getX());
+    params.add(m_start->getY());
+    params.add(m_end->getX());
+    params.add(m_end->getY());
     return params;
-
 }
 
-Circle::Circle() = default;
-
-Circle::Circle(Point* p, double r)
+Circle::Circle()
 {
-    if (p != nullptr)
-    {
-        center = p;
-        R = r;
-    }
-    else
-    {
-        throw (Error());
-    }
+    Point center = Point(0.0, 0.0);
+    m_center = &center;
+    m_radius = 1;
 }
 
-Point Circle::getCenter()
+Circle::Circle(Point* center, double radius)
 {
-    return *center;
-}
+    if (center == nullptr)
+        throw BadArgument();
 
-double Circle::getRadius()
-{
-    return R;
+    m_center = center;
+    m_radius = radius;
 }
 
 Storage<double> Circle::getParams() const
 {
     Storage<double> params;
-    params.AddElem(center->x);
-    params.AddElem(center->y);
-    params.AddElem(R);
+    params.add(m_center->getX());
+    params.add(m_center->getY());
+    params.add(m_radius);
     return params;
 }

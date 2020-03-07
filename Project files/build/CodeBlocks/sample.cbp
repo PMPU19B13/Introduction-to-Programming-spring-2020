@@ -37,17 +37,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="../../include/storageli.h" />
-		<Unit filename="../../include/Controller.h" />
-		<Unit filename="../../include/Drawer.h" />
-		<Unit filename="../../include/ID.h" />
+		<Unit filename="../../include/controller.h" />
+		<Unit filename="../../include/drawer.h" />
+		<Unit filename="../../include/id.h" />
 		<Unit filename="../../include/error.h" />
 		<Unit filename="../../include/geometry.h" />
 		<Unit filename="../../include/storage.h" />
-		<Unit filename="../../src/Controller.cpp" />
-		<Unit filename="../../src/ID.cpp" />
+		<Unit filename="../../include/list.h" />
+		<Unit filename="../../src/controller.cpp" />
+		<Unit filename="../../src/id.cpp" />
 		<Unit filename="../../src/geometry.cpp" />
 		<Unit filename="../../src/main.cpp" />
+		<Unit filename="../../src/drawer.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
