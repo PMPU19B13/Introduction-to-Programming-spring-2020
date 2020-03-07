@@ -28,8 +28,8 @@
     <ClInclude Include="..\include\storageli.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\include\drawer.cpp" />
     <ClCompile Include="..\src\controller.cpp" />
+    <ClCompile Include="..\src\drawer.cpp" />
     <ClCompile Include="..\src\geometry.cpp" />
     <ClCompile Include="..\src\ID.cpp" />
     <ClCompile Include="..\src\main.cpp" />

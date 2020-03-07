@@ -50,7 +50,7 @@
     <ClCompile Include="..\src\controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\drawer.cpp">
+    <ClCompile Include="..\src\drawer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
