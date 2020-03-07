@@ -9,12 +9,11 @@ public:
     }
 };
 
-class BadArg
+class BadArgument
 {
 public:
-    BadArg()
+    BadArgument()
     {
 
     }
 };
-

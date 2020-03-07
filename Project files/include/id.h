@@ -7,7 +7,7 @@ class ID
 public:
     ID();
 
-    bool equals(ID);
+    bool equals(const ID&) const;
 
 private:
     Storage<unsigned char> m_array;

@@ -5,6 +5,5 @@
 class Drawer
 {
 public:
-    // TODO: Реализовать вывод информации о примитиве в консоль
-    void drawPrimitive(PrimitiveType, Storage<double>);
+    void drawPrimitive(PrimitiveType type, Storage<double> params);
 };
