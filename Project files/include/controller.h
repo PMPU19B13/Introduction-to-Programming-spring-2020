@@ -2,6 +2,7 @@
 
 #include "geometry.h"
 #include "storage.h"
+#include "list.h"
 #include "id.h"
 
 enum PrimitiveType
@@ -33,8 +34,8 @@ public:
 
     void updateView();
 
-  private:
-    StorageLi<Point> m_points;
-    StorageLi<Segment> m_segments;
-    StorageLi<Circle> m_circles;
+private:
+    List<Point> m_points;
+    List<Segment> m_segments;
+    List<Circle> m_circles;
 };
