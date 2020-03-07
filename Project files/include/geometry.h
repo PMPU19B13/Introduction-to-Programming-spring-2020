@@ -26,7 +26,6 @@ public:
     Segment();
     Segment(Point* start, Point* end);
 
-    // TODO: Должны возвращать референсы -> сделать не константными
     Point& getStart();
     Point& getEnd();
 
@@ -43,7 +42,6 @@ public:
     Circle();
     Circle(Point* center, double radius);
 
-    // TODO: Должны возвращать референсы -> сделать не константными
     Point& getCenter();
     double getRadius() const;
 
