@@ -10,7 +10,7 @@ Controller::Controller()
 
 }
 
-void Controller::addPrimitive(PrimitiveType type, Storage<double> params)
+ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
 {
     switch (type)
     {
@@ -19,7 +19,8 @@ void Controller::addPrimitive(PrimitiveType type, Storage<double> params)
         if (params.size() == 2)
             // Добавляем точку
             m_points.add(Point(params[0], params[1]));
-        else
+            return ID();
+            else
             throw BadArgument();
         break;
 
@@ -35,6 +36,7 @@ void Controller::addPrimitive(PrimitiveType type, Storage<double> params)
 
             // И сам отрезок
             m_segments.add(Segment(start, end));
+            return ID();
         }
         else
             throw BadArgument();
@@ -50,6 +52,7 @@ void Controller::addPrimitive(PrimitiveType type, Storage<double> params)
 
             // И саму окружность
             m_circles.add(Circle(center, params[2]));
+            return ID();
         }
         else
             throw BadArgument();
