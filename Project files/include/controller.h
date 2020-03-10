@@ -25,7 +25,7 @@ class Controller
 public:
     Controller();
 
-    void addPrimitive(PrimitiveType, Storage<double>);
+    ID addPrimitive(PrimitiveType, Storage<double>);
     void removePrimitive(ID);
 
     void addRequirement(RequirementType, ID, ID, double* param = nullptr);
