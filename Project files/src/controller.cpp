@@ -17,9 +17,11 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
     case P_Point:
         // Проверяем параметры
         if (params.size() == 2)
-            // Добавляем точку
+        {
+        // Добавляем точку
             m_points.add(Point(params[0], params[1]));
             return ID();
+        }
             else
             throw BadArgument();
         break;
