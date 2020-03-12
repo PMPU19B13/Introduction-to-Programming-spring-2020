@@ -17,14 +17,14 @@ void Point::setY(double y)
     m_y = y;
 }
 
-double Point::getX()
+double Point::getX() const
 {
     return m_x;
 }
 
-double Point::getY()
+double Point::getY() const
 {
-    return m_y;
+	return m_y;
 }
 
 Storage<double> Point::getParams() const
@@ -53,12 +53,12 @@ Segment::Segment(Point* start, Point* end)
     m_end = end;
 }
 
-Point& Segment::getStart()
+const Point Segment::getStart() const
 {
     return *m_start;
 }
 
-Point& Segment::getEnd()
+const Point Segment::getEnd() const
 {
     return *m_end;
 }
@@ -96,4 +96,29 @@ Storage<double> Circle::getParams() const
     params.add(m_center->getY());
     params.add(m_radius);
     return params;
+}
+
+const Point Circle::getCenter() const{
+	return *m_center;
+}
+
+double Circle::getRadius() const {
+	return m_radius;
+}
+
+std::ostream& operator<< (std::ostream& out,const Point &point) {
+	out << "Point - (" << point.getX() << ", " << point.getY() << ")";
+	return out;
+}
+
+std::ostream& operator<<(std::ostream& out,const Segment &segment) {
+	out << "Segment - start: (" << segment.getStart().getX() << ", " << segment.getStart().getY() << "), end: ("
+		<< segment.getEnd().getX() << ", " << segment.getEnd().getY() << ")";
+	return out;
+}
+
+std::ostream& operator<<(std::ostream& out,const Circle& circle) {
+	out << "Circle - center: (" << circle.getCenter().getX() << ", " << circle.getCenter().getY()
+		<< "), radius: " << circle.getRadius() << std::endl;
+	return out;
 }
