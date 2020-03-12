@@ -30,7 +30,7 @@ public:
     Segment(Point* start, Point* end);
 
     Point getStart() const;
-	Point getEnd() const;
+    Point getEnd() const;
 
     Storage<double> getParams() const;
 
