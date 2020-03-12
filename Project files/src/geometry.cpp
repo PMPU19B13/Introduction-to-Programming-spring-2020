@@ -119,6 +119,6 @@ std::ostream& operator<<(std::ostream& out, const Segment& segment) {
 
 std::ostream& operator<<(std::ostream& out, const Circle& circle) {
 	out << "Circle - center: (" << circle.getCenter().getX() << ", " << circle.getCenter().getY()
-		<< "), radius: " << circle.getRadius() << std::endl;
+		<< "), radius: " << circle.getRadius();
 	return out;
 }
