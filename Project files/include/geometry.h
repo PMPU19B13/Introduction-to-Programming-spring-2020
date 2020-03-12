@@ -10,9 +10,7 @@ public:
 
     void setX(double x);
     void setY(double y);
-  //double getX();
     double getX() const;
-   //double getY();
     double getY() const;
 
     Storage<double> getParams() const;
@@ -22,7 +20,7 @@ private:
     double m_y;
 };
 
-std::ostream& operator<< (std::ostream& out,const Point& point);
+std::ostream& operator<<(std::ostream& out, const Point& point);
 
 class Segment
 {
@@ -30,8 +28,8 @@ public:
     Segment();
     Segment(Point* start, Point* end);
 
-    const Point getStart() const;
-	const Point getEnd() const;
+    Point getStart() const;
+	Point getEnd() const;
 
     Storage<double> getParams() const;
 
@@ -48,7 +46,7 @@ public:
     Circle();
     Circle(Point* center, double radius);
 
-    const Point getCenter() const;
+    Point getCenter() const;
     double getRadius() const;
 
     Storage<double> getParams() const;
