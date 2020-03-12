@@ -22,6 +22,9 @@ public:
     void insert(size_t index, T value);
     void remove(size_t index);
 
+    T get(size_t index) const;
+    void set(size_t index, T value);
+
     size_t size() const;
 
 private:
@@ -106,7 +109,6 @@ T& List<T>::operator[](size_t index)
         ptr = ptr->next;
 
     return ptr->data;
-
 }
 
 template<typename T>
@@ -182,6 +184,25 @@ void List<T>::remove(size_t index)
 
     // Обновляем размер
     --m_size;
+}
+
+template<typename T>
+T List<T>::get(size_t index) const
+{
+    if (index >= m_size)
+        throw BadArgument();
+
+    Node* ptr = m_first;
+    for (int i = 0; i < index; i++)
+        ptr = ptr->next;
+
+    return ptr->data;
+}
+
+template<typename T>
+void List<T>::set(size_t index, T value)
+{
+    operator[](index) = value;
 }
 
 template<typename T>

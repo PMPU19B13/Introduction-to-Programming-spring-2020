@@ -18,8 +18,11 @@ public:
 
     void add(T value);
 
+    void insert(size_t index, T value);
+    void remove(size_t index);
+
     T get(size_t index) const;
-    T set(size_t index, T value);
+    void set(size_t index, T value);
 
     size_t size() const;
 
@@ -94,6 +97,51 @@ void Storage<T>::add(T value)
 };
 
 template<typename T>
+void Storage<T>::insert(size_t index, T value)
+{
+    if (index <= m_size)
+    {
+        T* temp = new T[m_size + 1];
+        for (size_t i = 0; i < index; ++i)
+        {
+            temp[i] = m_data[i];
+        }
+        temp[index] = value;
+        for (size_t i = index; i < m_size + 1; ++i)
+        {
+            temp[i + 1] = m_data[i];
+        }
+        delete[] m_data;
+        m_data = temp;
+        ++m_size;
+    }
+    else
+        throw BadArgument();
+};
+
+template<typename T>
+void Storage<T>::remove(size_t index)
+{
+    if (index < m_size)
+    {
+        T* temp = new T[m_size - 1];
+        for (size_t i = 0; i < index; i++)
+        {
+            temp[i] = m_data[i];
+        }
+        for (size_t i = index; i < m_size - 1; i++)
+        {
+            temp[i] = m_data[i+1];
+        }
+        delete[] m_data;
+        m_data = temp;
+        --m_size;
+    }
+    else
+        throw BadArgument();
+};
+
+template<typename T>
 T Storage<T>::get(size_t index) const
 {
     if (index >= m_size)
@@ -103,7 +151,7 @@ T Storage<T>::get(size_t index) const
 };
 
 template<typename T>
-T Storage<T>::set(size_t index, T value)
+void Storage<T>::set(size_t index, T value)
 {
     if (index < m_size)
         m_data[index] = value;
