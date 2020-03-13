@@ -12,11 +12,9 @@ private:
     {
         T data;
         Node* next;
-        Node* prev;
     };
 
     Node* m_first; // Указатель на первый узел
-    Node* m_last;
     size_t m_size; // Размер списка
     Node* m_marker;
 
@@ -52,9 +50,7 @@ public:
 
         void removeCurrent()
         {
-            m_marker->prev->next = m_marker->next;
-            m_marker->next->prev = m_marker->prev;
-            delete m_marker;
+            // TODO: Implement
         }
 
         friend class List;
@@ -86,7 +82,6 @@ template<typename T>
 List<T>::List()
 {
     m_first = nullptr;
-    m_last = nullptr;
     m_size = 0;
     m_marker = nullptr;
 }
@@ -133,8 +128,6 @@ void List<T>::add(T value)
         m_first = new Node;
         m_first->data = value;
         m_first->next = nullptr;
-        m_first->prev = nullptr;
-        m_last = m_first;
         m_size = 1;
     }
     else
@@ -146,8 +139,6 @@ void List<T>::add(T value)
         while (runner->next != nullptr)
             runner = runner->next;
         runner->next = newNode;
-        runner->next->prev = runner;
-        m_last = newNode;
         ++m_size;
     }
 }
@@ -221,7 +212,6 @@ void List<T>::insert(size_t index, T value)
     Node* newNode = new Node;
     newNode->next = runner->next;
     runner->next = newNode;
-    runner->next->prev = runner;
     newNode->data = value;
 
     // Обновляем размер
@@ -235,18 +225,16 @@ void List<T>::remove(size_t index)
     if (index < 0 || index >= m_size)
         throw BadArgument();
 
-    // TODO: Пофиксить для дважды связного списка
+
     // Доходим до элемента [index - 1]
     Node* runner = m_first;
-    for (int i = 0; i < index; i++)
+    for (int i = 0; i < index - 1; i++)
         runner = runner->next;
 
     // Удаляем элемент и обновляем указатели
-    runner->next->prev = runner->prev;
-    runner->prev->next = runner->next;
-
-    delete runner;
-
+    Node* tmp = runner->next->next;
+    delete runner->next;
+    runner->next = tmp;
 
     // Обновляем размер
     --m_size;
