@@ -16,6 +16,7 @@ public:
     Storage& operator=(const Storage<T>& other);
 
     T& operator[](size_t index);
+    const T& operator[](size_t index) const;
 
     void add(T value);
 
@@ -76,6 +77,15 @@ Storage<T>& Storage<T>::operator=(const Storage<T>& other)
 
 template<typename T>
 T& Storage<T>::operator[](size_t index)
+{
+    if (index < 0 || index >= m_size)
+        throw BadArgument();
+
+    return m_data[index];
+}
+
+template<typename T>
+const T& Storage<T>::operator[](size_t index) const
 {
     if (index < 0 || index >= m_size)
         throw BadArgument();
