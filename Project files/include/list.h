@@ -228,17 +228,24 @@ bool List<T>::canMoveNext() const
 template<typename T>
 void List<T>::moveNext()
 {
-    m_marker = m_marker->next;
+    if (m_marker != nullptr)
+        m_marker = m_marker->next;
 }
 
 template<typename T>
 T& List<T>::getCurrentValue()
 {
+    if (m_marker == nullptr)
+        throw Error();
+
     return m_marker->data;
 }
 
 template<typename T>
 void List<T>::removeCurrent()
 {
-    // TODO: Implement
+    if (m_marker != nullptr)
+    {
+        // TODO; Implement
+    }
 }
