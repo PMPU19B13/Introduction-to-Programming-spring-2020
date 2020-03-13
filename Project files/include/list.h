@@ -12,9 +12,11 @@ private:
     {
         T data;
         Node* next;
+        Node* prev;
     };
 
     Node* m_first; // Указатель на первый узел
+    Node* m_last;
     size_t m_size; // Размер списка
     Node* m_marker;
 
@@ -48,6 +50,13 @@ public:
             return m_marker->data;
         }
 
+        void removeCurrent()
+        {
+            m_marker->prev->next = m_marker->next;
+            m_marker->next->prev = m_marker->prev;
+            delete m_marker;
+        }
+
         friend class List;
 
     private:
@@ -77,6 +86,7 @@ template<typename T>
 List<T>::List()
 {
     m_first = nullptr;
+    m_last = nullptr;
     m_size = 0;
     m_marker = nullptr;
 }
@@ -123,6 +133,8 @@ void List<T>::add(T value)
         m_first = new Node;
         m_first->data = value;
         m_first->next = nullptr;
+        m_first->prev = nullptr;
+        m_last = m_first;
         m_size = 1;
     }
     else
@@ -134,6 +146,8 @@ void List<T>::add(T value)
         while (runner->next != nullptr)
             runner = runner->next;
         runner->next = newNode;
+        runner->next->prev = runner;
+        m_last = newNode;
         ++m_size;
     }
 }
@@ -207,6 +221,7 @@ void List<T>::insert(size_t index, T value)
     Node* newNode = new Node;
     newNode->next = runner->next;
     runner->next = newNode;
+    runner->next->prev = runner;
     newNode->data = value;
 
     // Обновляем размер
@@ -220,16 +235,18 @@ void List<T>::remove(size_t index)
     if (index < 0 || index >= m_size)
         throw BadArgument();
 
-
+    // TODO: Пофиксить для дважды связного списка
     // Доходим до элемента [index - 1]
     Node* runner = m_first;
-    for (int i = 0; i < index - 1; i++)
+    for (int i = 0; i < index; i++)
         runner = runner->next;
 
     // Удаляем элемент и обновляем указатели
-    Node* tmp = runner->next->next;
-    delete runner->next;
-    runner->next = tmp;
+    runner->next->prev = runner->prev;
+    runner->prev->next = runner->next;
+
+    delete runner;
+
 
     // Обновляем размер
     --m_size;
@@ -246,40 +263,3 @@ size_t List<T>::size() const
 {
     return m_size;
 }
-
-//template<typename T>
-//void List<T>::rewind()
-//{
-//    m_marker = m_first;
-//}
-
-//template<typename T>
-//bool List<T>::canMoveNext() const
-//{
-//    return m_marker->next != nullptr;
-//}
-
-//template<typename T>
-//void List<T>::moveNext()
-//{
-//    if (m_marker != nullptr)
-//        m_marker = m_marker->next;
-//}
-
-//template<typename T>
-//T& List<T>::getCurrentValue()
-//{
-//    if (m_marker == nullptr)
-//        throw Error();
-//
-//    return m_marker->data;
-//}
-
-//template<typename T>
-//void List<T>::removeCurrent()
-//{
-//    if (m_marker != nullptr)
-//    {
-//        // TODO; Implement
-//    }
-//}

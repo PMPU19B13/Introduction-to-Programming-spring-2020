@@ -15,10 +15,14 @@ enum PrimitiveType
 
 enum RequirementType
 {
+    R_SetConstant,
+    R_Horizontal,
+    R_Vertical,
+    R_Angle,
     R_Distance, // Расстояние между объектами
     R_Parallel, // Параллельность отрезков
     R_Equal, // Равенство объектов
-    R_PointOnCircle // Точка на окружности
+    R_IsOn
 };
 
 class Controller
@@ -35,6 +39,12 @@ public:
     void updateView();
 
 private:
+    struct Requirement {
+        Storage<ID> objects;
+        RequirementType type;
+    };
+    List<pair<ID, Requirement>> m_requirements;
+
     List<pair<ID, Point>> m_points;
     List<pair<ID, Segment>> m_segments;
     List<pair<ID, Circle>> m_circles;
