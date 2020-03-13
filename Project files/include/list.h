@@ -29,18 +29,18 @@ public:
     class Marker
     {
     public:
-        bool canMoveNext() const
+        bool hasNext() const
         {
             return m_marker->next != nullptr;
         }
 
-        void moveNext()
+        void next()
         {
             if (m_marker != nullptr)
                 m_marker = m_marker->next;
         }
 
-        T& getCurrentValue()
+        T& getValue()
         {
             if (m_marker == nullptr)
                 throw Error();
@@ -48,7 +48,7 @@ public:
             return m_marker->data;
         }
 
-        void removeCurrent()
+        void remove()
         {
             // TODO: Implement
         }
@@ -74,8 +74,6 @@ public:
 
     size_t size() const;
 
-
-//    void removeCurrent();
 };
 
 template<typename T>

@@ -23,17 +23,7 @@ public:
     void insert(size_t index, T value);
     void remove(size_t index);
 
-//    T get(size_t index) const;
-    void set(size_t index, T value);
-
     size_t size() const;
-
-    // TODO: Implement
-    void rewind();
-    T& getCurrentValue();
-    void moveNext();
-    bool canMoveNext() const;
-    bool removeCurrent() const;
 
 private:
     T* m_data;
@@ -159,18 +149,6 @@ void Storage<T>::remove(size_t index)
     delete[] m_data;
     m_data = newData;
     --m_size;
-}
-
-//template<typename T>
-//T Storage<T>::get(size_t index) const
-//{
-//    return operator[](index);
-//}
-
-template<typename T>
-void Storage<T>::set(size_t index, T value)
-{
-    operator[](index) = value;
 }
 
 template<typename T>
