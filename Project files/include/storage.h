@@ -23,9 +23,6 @@ public:
     void insert(size_t index, T value);
     void remove(size_t index);
 
-    T get(size_t index) const;
-    void set(size_t index, T value);
-
     size_t size() const;
 
 private:
@@ -47,7 +44,7 @@ Storage<T>::Storage(const Storage<T>& original)
     m_size = original.size();
     m_data = new T[m_size];
     for (size_t i = 0; i < m_size; ++i)
-        m_data[i] = original.get(i);
+        m_data[i] = original[i];
 }
 
 template<typename T>
@@ -69,7 +66,7 @@ Storage<T>& Storage<T>::operator=(const Storage<T>& other)
         m_data = new T[m_size];
 
         for (size_t i = 0; i < m_size; ++i)
-            m_data[i] = other.get(i);
+            m_data[i] = other[i];
     }
 
     return *this;
@@ -152,18 +149,6 @@ void Storage<T>::remove(size_t index)
     delete[] m_data;
     m_data = newData;
     --m_size;
-}
-
-template<typename T>
-T Storage<T>::get(size_t index) const
-{
-    return operator[](index);
-}
-
-template<typename T>
-void Storage<T>::set(size_t index, T value)
-{
-    operator[](index) = value;
 }
 
 template<typename T>

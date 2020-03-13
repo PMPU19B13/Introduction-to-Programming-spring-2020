@@ -36,7 +36,7 @@
     <ClInclude Include="..\include\storage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\storageli.h">
+    <ClInclude Include="..\include\pair.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

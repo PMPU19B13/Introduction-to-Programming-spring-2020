@@ -4,20 +4,25 @@
 #include "storage.h"
 #include "list.h"
 #include "id.h"
+#include "pair.h"
 
 enum PrimitiveType
 {
-    P_Point, // Точка
-    P_Segment, // Отрезок
-    P_Circle // Окружность
+    P_Point,
+    P_Segment,
+    P_Circle
 };
 
 enum RequirementType
 {
-    R_Distance, // Расстояние между объектами
-    R_Parallel, // Параллельность отрезков
-    R_Equal, // Равенство объектов
-    R_PointOnCircle // Точка на окружности
+    R_SetConstant,
+    R_Horizontal,
+    R_Vertical,
+    R_Angle,
+    R_Distance,
+    R_Parallel,
+    R_Equal,
+    R_IsOn
 };
 
 class Controller
@@ -28,14 +33,20 @@ public:
     ID addPrimitive(PrimitiveType, Storage<double>);
     void removePrimitive(ID);
 
-    void addRequirement(RequirementType, ID, ID, double* param = nullptr);
+    ID addRequirement(RequirementType, ID, ID, double* param = nullptr);
     void removeRequirement(ID);
-
 
     void updateView();
 
 private:
-    List<Point> m_points;
-    List<Segment> m_segments;
-    List<Circle> m_circles;
+    struct Requirement {
+        Storage<ID> objects;
+        RequirementType type;
+    };
+
+    List<Pair<ID, Requirement>> m_requirements;
+
+    List<Pair<ID, Point>> m_points;
+    List<Pair<ID, Segment>> m_segments;
+    List<Pair<ID, Circle>> m_circles;
 };

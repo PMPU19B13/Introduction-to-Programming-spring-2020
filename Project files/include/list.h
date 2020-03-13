@@ -7,17 +7,63 @@
 template<typename T>
 class List
 {
+private:
+    struct Node
+    {
+        T data;
+        Node* next;
+    };
+
+    Node* m_first; // Указатель на первый узел
+    size_t m_size; // Размер списка
+
 public:
     List();
-    List(const List& other);
 
+    List(const List& other);
     ~List();
 
     List<T>& operator=(const List<T>& other);
 
+    class Marker
+    {
+    public:
+        bool hasNext() const
+        {
+            return m_marker->next != nullptr;
+        }
+
+        void next()
+        {
+            if (m_marker != nullptr)
+                m_marker = m_marker->next;
+        }
+
+        T& getValue()
+        {
+            if (m_marker == nullptr)
+                throw Error();
+
+            return m_marker->data;
+        }
+
+        void remove()
+        {
+            // TODO: Implement
+        }
+
+        friend class List;
+
+    private:
+        List<T>::Node* m_marker;
+    };
+
+    Marker createMarker();
+
     void add(T value);
 
     T& operator[](size_t index);
+    const T& operator[](size_t index) const;
 
     void insert(size_t index, T value);
     void remove(size_t index);
@@ -27,16 +73,6 @@ public:
 
     size_t size() const;
 
-private:
-    // Узлы связного списка
-    struct Node
-    {
-        T data;
-        Node* next;
-    };
-
-    Node* m_first; // Указатель на первый узел
-    size_t m_size; // Размер списка
 };
 
 template<typename T>
@@ -57,6 +93,14 @@ List<T>::List(const List& other)
     // Сейчас при копировании мы проходим список n^2/2 раз. Уменьшить до n
     for (size_t i = 0; i < other.size(); i++)
         add(other[i]);
+}
+
+template<typename T>
+typename List<T>::Marker List<T>::createMarker()
+{
+    List<T>::Marker m;
+    m.m_marker = m_first;
+    return m;
 }
 
 template<typename T>
@@ -97,6 +141,19 @@ void List<T>::add(T value)
 
 template<typename T>
 T& List<T>::operator[](size_t index)
+{
+    if (index < 0 || index >= m_size)
+        throw BadArgument();
+
+    Node* runner = m_first;
+    for (int i = 0; i < index; i++)
+        runner = runner->next;
+
+    return runner->data;
+}
+
+template<typename T>
+const T& List<T>::operator[](size_t index) const
 {
     if (index < 0 || index >= m_size)
         throw BadArgument();
