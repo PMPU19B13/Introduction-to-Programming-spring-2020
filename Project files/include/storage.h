@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstddef>
+
 #include "error.h"
 
 template<typename T>
@@ -12,7 +13,7 @@ public:
 
     ~Storage();
 
-    Storage& operator=(const Storage<T>& original);
+    Storage& operator=(const Storage<T>& other);
 
     T& operator[](size_t index);
 
@@ -56,20 +57,27 @@ Storage<T>::~Storage()
 }
 
 template<typename T>
-Storage<T>& Storage<T>::operator=(const Storage<T>& original)
+Storage<T>& Storage<T>::operator=(const Storage<T>& other)
 {
-    m_size = original.size();
-    if (m_data != nullptr)
-        delete[] m_data;
-    m_data = new T[m_size];
-    for (size_t i = 0; i < m_size; ++i)
-        m_data[i] = original.get(i);
+    if (this != &other)
+    {
+        m_size = other.size();
+        if (m_data != nullptr)
+            delete[] m_data;
+
+        m_data = new T[m_size];
+
+        for (size_t i = 0; i < m_size; ++i)
+            m_data[i] = other.get(i);
+    }
+
+    return *this;
 }
 
 template<typename T>
 T& Storage<T>::operator[](size_t index)
 {
-    if (index >= m_size)
+    if (index < 0 || index >= m_size)
         throw BadArgument();
 
     return m_data[index];
@@ -94,71 +102,62 @@ void Storage<T>::add(T value)
         m_data = buffer;
         ++m_size;
     }
-};
+}
 
 template<typename T>
 void Storage<T>::insert(size_t index, T value)
 {
-    if (index <= m_size)
-    {
-        T* temp = new T[m_size + 1];
-        for (size_t i = 0; i < index; ++i)
-        {
-            temp[i] = m_data[i];
-        }
-        temp[index] = value;
-        for (size_t i = index; i < m_size + 1; ++i)
-        {
-            temp[i + 1] = m_data[i];
-        }
-        delete[] m_data;
-        m_data = temp;
-        ++m_size;
-    }
-    else
+    if (index < 0 || index > m_size)
         throw BadArgument();
-};
+
+    T* newData = new T[m_size + 1];
+
+    for (size_t i = 0; i < index; ++i)
+        newData[i] = m_data[i];
+
+    newData[index] = value;
+
+    for (size_t i = index; i < m_size; ++i)
+        newData[i + 1] = m_data[i];
+
+    delete[] m_data;
+    m_data = newData;
+    ++m_size;
+}
 
 template<typename T>
 void Storage<T>::remove(size_t index)
 {
-    if (index < m_size)
-    {
-        T* temp = new T[m_size - 1];
-        for (size_t i = 0; i < index; i++)
-        {
-            temp[i] = m_data[i];
-        }
-        for (size_t i = index; i < m_size - 1; i++)
-        {
-            temp[i] = m_data[i+1];
-        }
-        delete[] m_data;
-        m_data = temp;
-        --m_size;
-    }
-    else
+    if (index < 0 || index >= m_size)
         throw BadArgument();
-};
+
+    T* newData = new T[m_size - 1];
+
+    for (size_t i = 0; i < index; i++)
+        newData[i] = m_data[i];
+
+    for (size_t i = index; i < m_size - 1; i++)
+        newData[i] = m_data[i + 1];
+
+    delete[] m_data;
+    m_data = newData;
+    --m_size;
+}
 
 template<typename T>
 T Storage<T>::get(size_t index) const
 {
-    if (index >= m_size)
-        throw BadArgument();
-
-    return m_data[index];
-};
+    return operator[](index);
+}
 
 template<typename T>
 void Storage<T>::set(size_t index, T value)
 {
-    if (index < m_size)
-        m_data[index] = value;
+    operator[](index) = value;
 }
 
 template<typename T>
 size_t Storage<T>::size() const
 {
     return m_size;
-};
+}

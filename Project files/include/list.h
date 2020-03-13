@@ -56,10 +56,7 @@ List<T>::List(const List& other)
     // TODO: Оптимизировать до O(n)
     // Сейчас при копировании мы проходим список n^2/2 раз. Уменьшить до n
     for (size_t i = 0; i < other.size(); i++)
-    {
         add(other[i]);
-    }
-
 }
 
 template<typename T>
@@ -101,14 +98,14 @@ void List<T>::add(T value)
 template<typename T>
 T& List<T>::operator[](size_t index)
 {
-    if (index >= m_size)
+    if (index < 0 || index >= m_size)
         throw BadArgument();
 
-    Node* ptr = m_first;
+    Node* runner = m_first;
     for (int i = 0; i < index; i++)
-        ptr = ptr->next;
+        runner = runner->next;
 
-    return ptr->data;
+    return runner->data;
 }
 
 template<typename T>
@@ -132,9 +129,7 @@ List<T>& List<T>::operator=(const List<T>& other)
         // TODO: Оптимизировать до O(n)
         // Сейчас при копировании мы проходим список n^2/2 раз. Уменьшить до n
         for (size_t i = 0; i < other.size(); i++)
-        {
             add(other[i]);
-        }
     }
 
     return *this;
@@ -144,7 +139,7 @@ template<typename T>
 void List<T>::insert(size_t index, T value)
 {
     // Проверяем аргументы
-    if (index >= m_size)
+    if (index < 0 || index >= m_size)
         throw BadArgument();
 
     // Доходим до элемента [index - 1]
@@ -166,16 +161,14 @@ template<typename T>
 void List<T>::remove(size_t index)
 {
     // Проверяем аргументы
-    if (index >= m_size)
+    if (index < 0 || index >= m_size)
         throw BadArgument();
 
 
     // Доходим до элемента [index - 1]
     Node* runner = m_first;
     for (int i = 0; i < index - 1; i++)
-    {
         runner = runner->next;
-    }
 
     // Удаляем элемент и обновляем указатели
     Node* tmp = runner->next->next;
@@ -189,14 +182,7 @@ void List<T>::remove(size_t index)
 template<typename T>
 T List<T>::get(size_t index) const
 {
-    if (index >= m_size)
-        throw BadArgument();
-
-    Node* ptr = m_first;
-    for (int i = 0; i < index; i++)
-        ptr = ptr->next;
-
-    return ptr->data;
+    return operator[](index);
 }
 
 template<typename T>
@@ -209,4 +195,4 @@ template<typename T>
 size_t List<T>::size() const
 {
     return m_size;
-};
+}
