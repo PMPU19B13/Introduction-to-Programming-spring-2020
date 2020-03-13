@@ -8,13 +8,16 @@ template<typename T>
 class List
 {
 private:
+    // Узлы связного списка
     struct Node
     {
         T data;
         Node* next;
+        Node* previous;
     };
 
     Node* m_first; // Указатель на первый узел
+    Node* m_last; // Указатель на последний узел
     size_t m_size; // Размер списка
 
 public:
@@ -79,6 +82,7 @@ template<typename T>
 List<T>::List()
 {
     m_first = nullptr;
+    m_last = nullptr;
     m_size = 0;
 }
 
@@ -89,8 +93,6 @@ List<T>::List(const List& other)
     m_size = other.size();
 
     // Добавляем элементы из другого списка
-    // TODO: Оптимизировать до O(n)
-    // Сейчас при копировании мы проходим список n^2/2 раз. Уменьшить до n
     for (size_t i = 0; i < other.size(); i++)
         add(other[i]);
 }
@@ -122,8 +124,10 @@ void List<T>::add(T value)
     if (m_first == nullptr)
     {
         m_first = new Node;
+        m_last = m_first;
         m_first->data = value;
         m_first->next = nullptr;
+        m_first->previous = nullptr;
         m_size = 1;
     }
     else
@@ -131,10 +135,9 @@ void List<T>::add(T value)
         Node* newNode = new Node;
         newNode->data = value;
         newNode->next = nullptr;
-        Node* runner = m_first;
-        while (runner->next != nullptr)
-            runner = runner->next;
-        runner->next = newNode;
+        m_last->next = newNode;
+        newNode->previous = m_last;
+        m_last = newNode;
         ++m_size;
     }
 }
@@ -183,8 +186,6 @@ List<T>& List<T>::operator=(const List<T>& other)
         }
 
         // Добавляем элементы из другого списка
-        // TODO: Оптимизировать до O(n)
-        // Сейчас при копировании мы проходим список n^2/2 раз. Уменьшить до n
         for (size_t i = 0; i < other.size(); i++)
             add(other[i]);
     }
@@ -207,6 +208,8 @@ void List<T>::insert(size_t index, T value)
     // Вставляем новый элемент
     Node* newNode = new Node;
     newNode->next = runner->next;
+    newNode->previous = runner;
+    runner->next->previous = newNode;
     runner->next = newNode;
     newNode->data = value;
 
@@ -221,7 +224,6 @@ void List<T>::remove(size_t index)
     if (index < 0 || index >= m_size)
         throw BadArgument();
 
-
     // Доходим до элемента [index - 1]
     Node* runner = m_first;
     for (int i = 0; i < index - 1; i++)
@@ -231,6 +233,7 @@ void List<T>::remove(size_t index)
     Node* tmp = runner->next->next;
     delete runner->next;
     runner->next = tmp;
+    runner->next->previous = runner;
 
     // Обновляем размер
     --m_size;
