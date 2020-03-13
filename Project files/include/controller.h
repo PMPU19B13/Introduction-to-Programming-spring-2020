@@ -29,7 +29,7 @@ public:
     ID addPrimitive(PrimitiveType, Storage<double>);
     void removePrimitive(ID);
 
-    void addRequirement(RequirementType, ID, ID, double* param = nullptr);
+    ID addRequirement(RequirementType, ID, ID, double* param = nullptr);
     void removeRequirement(ID);
 
     void updateView();
