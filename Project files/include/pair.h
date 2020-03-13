@@ -1,19 +1,17 @@
 #pragma once
 
-// TODO: Поменять на <K, V>
-template<typename K, typename T>
-// TODO: pair -> Pair
-class pair
+template<typename K, typename V>
+class Pair
 {
 public:
-    pair()
+    Pair()
     {
     }
 
-    pair(const K& _k, const T& _t) : k(_k), t(_t)
+    Pair(const K& _key, const V& _value) : key(_key), value(_value)
     {
     }
 
-    K k;
-    T t;
+    K key;
+    V value;
 };

@@ -8,9 +8,9 @@
 
 enum PrimitiveType
 {
-    P_Point, // Точка
-    P_Segment, // Отрезок
-    P_Circle // Окружность
+    P_Point,
+    P_Segment,
+    P_Circle
 };
 
 enum RequirementType
@@ -19,9 +19,9 @@ enum RequirementType
     R_Horizontal,
     R_Vertical,
     R_Angle,
-    R_Distance, // Расстояние между объектами
-    R_Parallel, // Параллельность отрезков
-    R_Equal, // Равенство объектов
+    R_Distance,
+    R_Parallel,
+    R_Equal,
     R_IsOn
 };
 
@@ -43,9 +43,10 @@ private:
         Storage<ID> objects;
         RequirementType type;
     };
-    List<pair<ID, Requirement>> m_requirements;
 
-    List<pair<ID, Point>> m_points;
-    List<pair<ID, Segment>> m_segments;
-    List<pair<ID, Circle>> m_circles;
+    List<Pair<ID, Requirement>> m_requirements;
+
+    List<Pair<ID, Point>> m_points;
+    List<Pair<ID, Segment>> m_segments;
+    List<Pair<ID, Circle>> m_circles;
 };

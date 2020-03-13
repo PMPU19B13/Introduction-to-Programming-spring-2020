@@ -20,7 +20,7 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
         {
             // Добавляем точку
             ID id;
-            m_points.add(pair<ID, Point>(id, Point(params[0], params[1])));
+            m_points.add(Pair<ID, Point>(id, Point(params[0], params[1])));
             return id;
         }
         else
@@ -33,16 +33,16 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
         {
             ID id1;
             // Добавляем точки, определяющие отрезок
-            m_points.add(pair<ID, Point>(id1, Point(params[0], params[1])));
-            Point* start = &(m_points[m_points.size() - 1].t);
+            m_points.add(Pair<ID, Point>(id1, Point(params[0], params[1])));
+            Point* start = &(m_points[m_points.size() - 1].value);
 
             ID id2;
-            m_points.add(pair<ID, Point>(id2, Point(params[2], params[3])));
-            Point* end = &(m_points[m_points.size() - 1].t);
+            m_points.add(Pair<ID, Point>(id2, Point(params[2], params[3])));
+            Point* end = &(m_points[m_points.size() - 1].value);
 
             // И сам отрезок
             ID id3;
-            m_segments.add(pair<ID, Segment>(id3, Segment(start, end)));
+            m_segments.add(Pair<ID, Segment>(id3, Segment(start, end)));
             return ID();
         }
         else
@@ -55,12 +55,12 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
         {
             // Добавляем центр окружности
             ID id1;
-            m_points.add(pair<ID, Point>(id1, Point(params[0], params[1])));
-            Point* center = &(m_points[m_points.size() - 1].t);
+            m_points.add(Pair<ID, Point>(id1, Point(params[0], params[1])));
+            Point* center = &(m_points[m_points.size() - 1].value);
 
             // И саму окружность
             ID id2;
-            m_circles.add(pair<ID, Circle>(id2, Circle(center, params[2])));
+            m_circles.add(Pair<ID, Circle>(id2, Circle(center, params[2])));
             return ID();
         }
         else
@@ -82,47 +82,28 @@ void Controller::updateView()
 
     // Проходим по всем типам примитивов и рисуем их
     for (size_t i = 0; i < m_points.size(); ++i)
-        drawer.drawPrimitive(P_Point, m_points[i].t.getParams());
+        drawer.drawPrimitive(P_Point, m_points[i].value.getParams());
 
     for (size_t i = 0; i < m_segments.size(); ++i)
-        drawer.drawPrimitive(P_Segment, m_segments[i].t.getParams());
+        drawer.drawPrimitive(P_Segment, m_segments[i].value.getParams());
 
     for (size_t i = 0; i < m_circles.size(); ++i)
-        drawer.drawPrimitive(P_Circle, m_circles[i].t.getParams());
+        drawer.drawPrimitive(P_Circle, m_circles[i].value.getParams());
 }
 
 void Controller::removePrimitive(ID id)
 {
-    List<pair<ID, Point>>::Marker marker = m_points.createMarker();
+    List<Pair<ID, Point>>::Marker marker = m_points.createMarker();
 
-    while (marker.canMoveNext())
+    while (marker.hasNext())
     {
-        if (marker.getCurrentValue().k.equals(id))
+        if (marker.getValue().key.equals(id))
         {
             // remove point from m_points
             return;
         }
-        marker.moveNext();
+        marker.next();
     }
 
-    List<pair<ID, Point>>::Marker marker1 = m_points.createMarker();
-    marker.moveNext();
-
-//    for (m_points.rewind(); m_points.canMoveNext(); m_points.moveNext())
-//    {
-//        if (m_points.getCurrentValue().k.equals(id))
-//        {
-//            // remove point from m_points
-//            return;
-//        }
-//    }
-
-    for (size_t i = 0; i < m_points.size(); ++i)
-    {
-        if (m_points[i].k.equals(id))
-        {
-            // remove point from m_points
-            return;
-        }
-    }
+    // Закончить реализацию
 }
