@@ -93,24 +93,29 @@ void Controller::updateView()
 
 void Controller::removePrimitive(ID id)
 {
-    m_points.rewind();
-    while (m_points.canMoveNext())
+    List<pair<ID, Point>>::Marker marker = m_points.createMarker();
+
+    while (marker.canMoveNext())
     {
-        if (m_points.getCurrentValue().k.equals(id))
+        if (marker.getCurrentValue().k.equals(id))
         {
             // remove point from m_points
             return;
         }
-        m_points.moveNext();
+        marker.moveNext();
     }
 
-    for (m_points.rewind(); m_points.canMoveNext(); m_points.moveNext()) {
-        if (m_points.getCurrentValue().k.equals(id))
-        {
-            // remove point from m_points
-            return;
-        }
-    }
+    List<pair<ID, Point>>::Marker marker1 = m_points.createMarker();
+    marker.moveNext();
+
+//    for (m_points.rewind(); m_points.canMoveNext(); m_points.moveNext())
+//    {
+//        if (m_points.getCurrentValue().k.equals(id))
+//        {
+//            // remove point from m_points
+//            return;
+//        }
+//    }
 
     for (size_t i = 0; i < m_points.size(); ++i)
     {

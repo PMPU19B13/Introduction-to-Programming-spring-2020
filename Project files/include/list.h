@@ -7,13 +7,54 @@
 template<typename T>
 class List
 {
+private:
+    struct Node
+    {
+        T data;
+        Node* next;
+    };
+
+    Node* m_first; // Указатель на первый узел
+    size_t m_size; // Размер списка
+    Node* m_marker;
+
 public:
     List();
-    List(const List& other);
 
+    List(const List& other);
     ~List();
 
     List<T>& operator=(const List<T>& other);
+
+    class Marker
+    {
+    public:
+        bool canMoveNext() const
+        {
+            return m_marker->next != nullptr;
+        }
+
+        void moveNext()
+        {
+            if (m_marker != nullptr)
+                m_marker = m_marker->next;
+        }
+
+        T& getCurrentValue()
+        {
+            if (m_marker == nullptr)
+                throw Error();
+
+            return m_marker->data;
+        }
+
+        friend class List;
+
+    private:
+        List<T>::Node* m_marker;
+    };
+
+    Marker createMarker();
 
     void add(T value);
 
@@ -28,23 +69,8 @@ public:
 
     size_t size() const;
 
-    void rewind();
-    T& getCurrentValue();
-    void moveNext();
-    bool canMoveNext() const;
-    void removeCurrent();
 
-private:
-    // Узлы связного списка
-    struct Node
-    {
-        T data;
-        Node* next;
-    };
-
-    Node* m_first; // Указатель на первый узел
-    size_t m_size; // Размер списка
-    Node* m_marker;
+//    void removeCurrent();
 };
 
 template<typename T>
@@ -66,6 +92,14 @@ List<T>::List(const List& other)
     // Сейчас при копировании мы проходим список n^2/2 раз. Уменьшить до n
     for (size_t i = 0; i < other.size(); i++)
         add(other[i]);
+}
+
+template<typename T>
+typename List<T>::Marker List<T>::createMarker()
+{
+    List<T>::Marker m;
+    m.m_marker = m_first;
+    return m;
 }
 
 template<typename T>
@@ -213,39 +247,39 @@ size_t List<T>::size() const
     return m_size;
 }
 
-template<typename T>
-void List<T>::rewind()
-{
-    m_marker = m_first;
-}
+//template<typename T>
+//void List<T>::rewind()
+//{
+//    m_marker = m_first;
+//}
 
-template<typename T>
-bool List<T>::canMoveNext() const
-{
-    return m_marker->next != nullptr;
-}
+//template<typename T>
+//bool List<T>::canMoveNext() const
+//{
+//    return m_marker->next != nullptr;
+//}
 
-template<typename T>
-void List<T>::moveNext()
-{
-    if (m_marker != nullptr)
-        m_marker = m_marker->next;
-}
+//template<typename T>
+//void List<T>::moveNext()
+//{
+//    if (m_marker != nullptr)
+//        m_marker = m_marker->next;
+//}
 
-template<typename T>
-T& List<T>::getCurrentValue()
-{
-    if (m_marker == nullptr)
-        throw Error();
+//template<typename T>
+//T& List<T>::getCurrentValue()
+//{
+//    if (m_marker == nullptr)
+//        throw Error();
+//
+//    return m_marker->data;
+//}
 
-    return m_marker->data;
-}
-
-template<typename T>
-void List<T>::removeCurrent()
-{
-    if (m_marker != nullptr)
-    {
-        // TODO; Implement
-    }
-}
+//template<typename T>
+//void List<T>::removeCurrent()
+//{
+//    if (m_marker != nullptr)
+//    {
+//        // TODO; Implement
+//    }
+//}
