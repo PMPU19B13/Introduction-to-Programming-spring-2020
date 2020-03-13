@@ -4,6 +4,7 @@
 #include "storage.h"
 #include "list.h"
 #include "id.h"
+#include "pair.h"
 
 enum PrimitiveType
 {
@@ -31,11 +32,10 @@ public:
     void addRequirement(RequirementType, ID, ID, double* param = nullptr);
     void removeRequirement(ID);
 
-
     void updateView();
 
 private:
-    List<Point> m_points;
-    List<Segment> m_segments;
-    List<Circle> m_circles;
+    List<pair<ID, Point>> m_points;
+    List<pair<ID, Segment>> m_segments;
+    List<pair<ID, Circle>> m_circles;
 };

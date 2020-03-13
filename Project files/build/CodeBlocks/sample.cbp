@@ -44,6 +44,7 @@
 		<Unit filename="../../include/geometry.h" />
 		<Unit filename="../../include/storage.h" />
 		<Unit filename="../../include/list.h" />
+		<Unit filename="../../include/pair.h" />
 		<Unit filename="../../src/controller.cpp" />
 		<Unit filename="../../src/id.cpp" />
 		<Unit filename="../../src/geometry.cpp" />

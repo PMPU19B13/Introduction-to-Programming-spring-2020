@@ -21,7 +21,7 @@ bool ID::equals(const ID& other) const
         return false;
 
     for (size_t k = 0; k < m_array.size(); ++k)
-        if (m_array.get(k) != other.m_array.get(k))
+        if (m_array[k] != other.m_array[k])
             return false;
 
     return true;
