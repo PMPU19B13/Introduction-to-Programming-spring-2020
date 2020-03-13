@@ -32,6 +32,7 @@ public:
     T& getCurrentValue();
     void moveNext();
     bool canMoveNext() const;
+    void removeCurrent();
 
 private:
     // Узлы связного списка
@@ -201,12 +202,6 @@ void List<T>::remove(size_t index)
 }
 
 template<typename T>
-T List<T>::get(size_t index) const
-{
-    return operator[](index);
-}
-
-template<typename T>
 void List<T>::set(size_t index, T value)
 {
     operator[](index) = value;
@@ -216,4 +211,34 @@ template<typename T>
 size_t List<T>::size() const
 {
     return m_size;
+}
+
+template<typename T>
+void List<T>::rewind()
+{
+    m_marker = m_first;
+}
+
+template<typename T>
+bool List<T>::canMoveNext() const
+{
+    return m_marker->next != nullptr;
+}
+
+template<typename T>
+void List<T>::moveNext()
+{
+    m_marker = m_marker->next;
+}
+
+template<typename T>
+T& List<T>::getCurrentValue()
+{
+    return m_marker->data;
+}
+
+template<typename T>
+void List<T>::removeCurrent()
+{
+    // TODO: Implement
 }

@@ -28,10 +28,12 @@ public:
 
     size_t size() const;
 
+    // TODO: Implement
     void rewind();
     T& getCurrentValue();
     void moveNext();
     bool canMoveNext() const;
+    bool removeCurrent() const;
 
 private:
     T* m_data;

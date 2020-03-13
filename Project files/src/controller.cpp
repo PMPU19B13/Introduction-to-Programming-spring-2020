@@ -93,23 +93,31 @@ void Controller::updateView()
 
 void Controller::removePrimitive(ID id)
 {
-//    m_points.rewind();
-//    while (m_points.canMoveNext())
-//    {
-//        if (m_points.getCurrentValue().k.equals(id))
-//        {
-//            // remove
-//            return;
-//        }
-//        m_points.moveNext();
-//    }
-//
-//    for (size_t i = 0; i < m_points.size(); ++i)
-//    {
-//        if (m_points[i].k.equals(id))
-//        {
-//            // remove point from m_points
-//            return;
-//        }
-//    }
+    m_points.rewind();
+    while (m_points.canMoveNext())
+    {
+        if (m_points.getCurrentValue().k.equals(id))
+        {
+            // remove point from m_points
+            return;
+        }
+        m_points.moveNext();
+    }
+
+    for (m_points.rewind(); m_points.canMoveNext(); m_points.moveNext()) {
+        if (m_points.getCurrentValue().k.equals(id))
+        {
+            // remove point from m_points
+            return;
+        }
+    }
+
+    for (size_t i = 0; i < m_points.size(); ++i)
+    {
+        if (m_points[i].k.equals(id))
+        {
+            // remove point from m_points
+            return;
+        }
+    }
 }

@@ -7,6 +7,10 @@ ID::ID()
 {
     ++m_count;
     char buf[1024];
+
+    for (size_t k = 0; k < sizeof(buf); ++k)
+        buf[k] = 0;
+
     snprintf(buf, sizeof(buf), "%zu", m_count);
     for (size_t i = 0; i < 1024; ++i)
         if (buf[i] != 0)
