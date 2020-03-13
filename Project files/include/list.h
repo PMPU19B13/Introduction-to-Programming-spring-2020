@@ -68,9 +68,6 @@ public:
     void insert(size_t index, T value);
     void remove(size_t index);
 
-    T get(size_t index) const;
-    void set(size_t index, T value);
-
     size_t size() const;
 
 };
@@ -234,12 +231,6 @@ void List<T>::remove(size_t index)
 
     // Обновляем размер
     --m_size;
-}
-
-template<typename T>
-void List<T>::set(size_t index, T value)
-{
-    operator[](index) = value;
 }
 
 template<typename T>
