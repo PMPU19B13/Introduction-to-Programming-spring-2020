@@ -93,8 +93,11 @@ List<T>::List(const List& other)
     m_size = other.size();
 
     // Добавляем элементы из другого списка
-    for (size_t i = 0; i < other.size(); i++)
-        add(other[i]);
+    Node* runner = other.m_first;
+    while (runner != nullptr) {
+        add(runner->data);
+        runner = runner->next;
+    }
 }
 
 template<typename T>
@@ -186,8 +189,11 @@ List<T>& List<T>::operator=(const List<T>& other)
         }
 
         // Добавляем элементы из другого списка
-        for (size_t i = 0; i < other.size(); i++)
-            add(other[i]);
+        Node* runner = other.m_first;
+        while (runner != nullptr) {
+            add(runner->data);
+            runner = runner->next;
+        }
     }
 
     return *this;
