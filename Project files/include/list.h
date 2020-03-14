@@ -94,7 +94,8 @@ List<T>::List(const List& other)
 
     // Добавляем элементы из другого списка
     Node* runner = other.m_first;
-    while (runner != nullptr) {
+    while (runner != nullptr)
+    {
         add(runner->data);
         runner = runner->next;
     }
@@ -190,7 +191,8 @@ List<T>& List<T>::operator=(const List<T>& other)
 
         // Добавляем элементы из другого списка
         Node* runner = other.m_first;
-        while (runner != nullptr) {
+        while (runner != nullptr)
+        {
             add(runner->data);
             runner = runner->next;
         }
