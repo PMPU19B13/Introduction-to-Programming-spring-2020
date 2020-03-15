@@ -52,12 +52,19 @@ public:
 
         void remove()
         {
-            // TODO: Implement
+			m_marker->previous->next = m_marker->next; //удаление ссылки от предыдущего
+			m_marker->next->previous = m_marker->previous; //удаление ссылки от следующего
+			valid = false; //чтобы не обращаться к удаленному
         }
+
+		bool isValid() {
+			return valid;
+		}
 
         friend class List;
 
     private:
+		bool valid;
         List<T>::Node* m_marker;
     };
 
@@ -106,6 +113,7 @@ typename List<T>::Marker List<T>::createMarker()
 {
     List<T>::Marker m;
     m.m_marker = m_first;
+	m.valid = true;
     return m;
 }
 
