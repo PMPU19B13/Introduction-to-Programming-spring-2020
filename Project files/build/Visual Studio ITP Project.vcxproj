@@ -25,6 +25,7 @@
     <ClInclude Include="..\include\geometry.h" />
     <ClInclude Include="..\include\id.h" />
     <ClInclude Include="..\include\list.h" />
+    <ClInclude Include="..\include\reader.h" />
     <ClInclude Include="..\include\storage.h" />
     <ClInclude Include="..\include\pair.h" />
   </ItemGroup>
@@ -34,6 +35,7 @@
     <ClCompile Include="..\src\geometry.cpp" />
     <ClCompile Include="..\src\id.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\reader.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
