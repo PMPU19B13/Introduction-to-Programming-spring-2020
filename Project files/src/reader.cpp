@@ -4,7 +4,7 @@
 
 //тут много кода, но зато без string
 
-int length(char* word)
+int length(char* word) 
 {
 	int len = 0;
 	while (word[len] != '\0')
@@ -93,7 +93,7 @@ char* Line::getFirstWord()
 	return word;
 }
 
-Storage<double> Line::getNumbers()
+Storage<double> Line::getNumbers()  //достает все числа из строки
 {
 	int begin = -1, end = -1, t = 0;
 	double num;
@@ -136,7 +136,7 @@ Storage<double> Line::getNumbers()
 	return numbers;
 }
 
-double Line::createNumber(int beg, int en)
+double Line::createNumber(int beg, int en) //кусок строки, содержащий число, преобразует в double
 {
 	size_t len = en - beg + 1;
 	char* strnum = new char[len + 1];
