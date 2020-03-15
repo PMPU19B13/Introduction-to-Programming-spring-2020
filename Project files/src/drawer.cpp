@@ -34,3 +34,42 @@ void Drawer::drawPrimitive(PrimitiveType type, Storage<double> params)
         throw BadArgument();
     }
 }
+
+void Drawer::drawPrimitive(std::fstream& file, PrimitiveType type, Storage<double> params)
+{
+	if (!file.is_open())
+	{
+		std::cout << "File isn't open" << std::endl;
+		return;
+	}
+
+	switch (type)
+	{
+	case P_Point:
+		if (params.size() != 2)
+			throw BadArgument();
+
+		file << "Point - (" << params[0] << ", " << params[1] << ")" << std::endl;
+		break;
+
+	case P_Segment:
+		if (params.size() != 4)
+			throw BadArgument();
+
+		file << "Segment - start: (" << params[0] << ", " << params[1] << "), end: ("
+			<< params[2] << ", " << params[3] << ")" << std::endl;
+		break;
+
+	case P_Circle:
+		if (params.size() != 3)
+			throw BadArgument();
+
+		file << "Circle - center: (" << params[0] << ", " << params[1]
+			<< "), radius: " << params[2] << std::endl;
+		break;
+
+	default:
+		std::cerr << "No implementation found!" << std::endl;
+		throw BadArgument();
+	}
+}
