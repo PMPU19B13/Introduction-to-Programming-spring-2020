@@ -33,7 +33,7 @@ public:
     public:
         bool hasNext() const
         {
-            return m_marker->next != nullptr;
+            return m_marker != nullptr && m_marker->next != nullptr;
         }
 
         void next()
