@@ -25,11 +25,68 @@ public:
 
     size_t size() const;
 
+	class Marker
+	{
+	public:
+
+		bool hasNext() const
+		{
+			return m_marker < m_storage->m_data + m_storage->m_size - 1;
+		}
+
+		void next()
+		{
+			if (hasNext())
+				m_marker = m_marker+1;
+		}
+
+		T& getValue()
+		{
+			if (m_marker >= m_storage->m_data + m_storage->m_size - 1)
+				throw Error();
+
+			return *m_marker;
+		}
+
+		void remove()
+		{
+			m_data = temp;
+			m_storage->remove(m_marker - m_storage->m_data);
+			valid = false;
+		}
+		
+		bool isValid()
+		{
+			return valid;
+		}
+
+		friend class Storage;
+
+	private:
+		bool valid;
+		T* m_marker;
+		Storage<T>* m_storage;
+	};
+
+
+	Marker createMarker();
+
+
 private:
     T* m_data;
     size_t m_size;
 
 };
+
+
+template<typename T>
+typename Storage<T>::Marker Storage<T>::createMarker()
+{
+	Storage<T>::Marker m;
+	m.m_marker = m_data;
+	m.m_storage = this;
+	return m;
+}
 
 template<typename T>
 Storage<T>::Storage()
