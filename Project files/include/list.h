@@ -52,19 +52,20 @@ public:
 
         void remove()
         {
-	    m_marker->previous->next = m_marker->next; //удаление ссылки от предыдущего
-	    m_marker->next->previous = m_marker->previous; //удаление ссылки от следующего
-	    valid = false; //чтобы не обращаться к удаленному
+            m_marker->previous->next = m_marker->next;
+            m_marker->next->previous = m_marker->previous;
+            valid = false;
         }
 
-	bool isValid() {
-	    return valid;
-	}
+        bool isValid()
+        {
+            return valid;
+        }
 
         friend class List;
 
     private:
-	bool valid;
+        bool valid;
         List<T>::Node* m_marker;
     };
 
