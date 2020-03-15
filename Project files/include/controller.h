@@ -31,12 +31,16 @@ public:
     Controller();
 
     ID addPrimitive(PrimitiveType, Storage<double>);
+	void readPrimitive();
+	void readPrimitive(std::fstream& file);
     void removePrimitive(ID);
 
     ID addRequirement(RequirementType, ID, ID, double* param = nullptr);
     void removeRequirement(ID);
 
     void updateView();
+	void updateView(std::fstream& file);
+	void updateMemory(std::fstream& file);
 
 private:
     struct Requirement {
