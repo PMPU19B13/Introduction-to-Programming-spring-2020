@@ -36,6 +36,9 @@ public:
     ID addRequirement(RequirementType, ID, ID, double* param = nullptr);
     void removeRequirement(ID);
 
+    void readPrimitive(const std::string& fileName);
+    void writePrimitive(const std::string& fileName);
+
     void updateView();
 
 private:
