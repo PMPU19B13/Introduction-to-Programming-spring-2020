@@ -31,7 +31,7 @@ public:
     Controller();
 
     ID addPrimitive(PrimitiveType, Storage<double>);
-    void removePrimitive(ID);
+    void removePrimitive(const ID&);
 
     ID addRequirement(RequirementType, ID, ID, double* param = nullptr);
     void removeRequirement(ID);
