@@ -31,7 +31,8 @@ public:
 
 		bool hasNext() const
 		{
-			return m_marker < m_storage->m_data + m_storage->m_size - 1;//арифметика через указатели
+			// Арифметика через указатели
+			return m_marker < m_storage->m_data + m_storage->m_size - 1;
 		}
 
 		void next()
@@ -42,7 +43,8 @@ public:
 
 		T& getValue()
 		{
-			if (m_marker >= m_storage->m_data + m_storage->m_size)//арифметика через указатели
+			// Арифметика через указатели
+			if (m_marker >= m_storage->m_data + m_storage->m_size)
 				throw Error();
 
 			return *m_marker;
@@ -50,7 +52,8 @@ public:
 
 		void remove()
 		{
-			m_storage->remove(m_marker - m_storage->m_data);//арифметика через указатели
+			// Арифметика через указатели
+			m_storage->remove(m_marker - m_storage->m_data);
 			valid = false;
 		}
 		
