@@ -46,7 +46,7 @@ private:
     {
         Storage<ID> objects;
         RequirementType type;
-        double *param;
+        double* param;
 
         double eval(/*...*/)
         {
