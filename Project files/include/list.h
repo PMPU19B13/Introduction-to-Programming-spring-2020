@@ -59,7 +59,7 @@ public:
 
         bool isValid()
         {
-            return valid;
+            return m_marker != nullptr && valid;
         }
 
         friend class List;
