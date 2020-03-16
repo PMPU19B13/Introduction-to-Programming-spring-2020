@@ -33,7 +33,7 @@ public:
     ID addPrimitive(PrimitiveType, Storage<double>);
     void removePrimitive(const ID&);
 
-    ID addRequirement(RequirementType, ID, ID, double* param = nullptr);
+    ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
     void removeRequirement(ID);
 
     void readPrimitive(const std::string& fileName);
@@ -42,10 +42,27 @@ public:
     void updateView();
 
 private:
-    struct Requirement {
+    struct Requirement
+    {
         Storage<ID> objects;
         RequirementType type;
+        double *param;
+
+        double eval(/*...*/)
+        {
+            switch (type)
+            {
+            case R_Vertical:
+                // Взять x1 и x2 для отрезка и вернуть квадрат разницу двух значений
+                break;
+            }
+        }
     };
+
+    bool tryAddRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
+
+    void backupState();
+    void restoreState();
 
     List<Pair<ID, Requirement>> m_requirements;
 
