@@ -54,37 +54,37 @@ private:
     unsigned den;
 };
 
-template<typename Fun, typename arg>
-arg findZero(Fun fun, arg lo, arg hi, arg eps)
+template<typename Fun, typename Arg>
+Arg findZero(Fun function, Arg low, Arg high, Arg eps)
 {
-    arg vallo = fun(lo);
-    arg valhi = fun(hi);
-    if (valhi * vallo < 0)
+    Arg lowValue = function(low);
+    Arg highValue = function(high);
+    if (highValue * lowValue < 0)
     {
-        arg mid = (hi + lo) / 2;
-        arg valmid = fun(mid);
-        while (abs(valmid) > eps)
+        Arg mid = (high + low) / 2;
+        Arg midValue = function(mid);
+        while (std::abs(midValue) > eps)
         {
-            if (vallo * valmid > 0)
+            if (lowValue * midValue > 0)
             {
-                vallo = valmid;
-                lo = mid;
+                lowValue = midValue;
+                low = mid;
             }
             else
             {
-                valhi = valmid;
-                hi = mid;
+                highValue = midValue;
+                high = mid;
             }
-            mid = (hi + lo) / 2;
-            valmid = fun(mid);
+            mid = (high + low) / 2;
+            midValue = function(mid);
         }
         return mid;
     }
     throw Error();
 }
 
-template<typename t>
-t f1(t x)
+template<typename T>
+T func1(T x)
 {
     return (x - 3) * x * (x - 2);
 }
@@ -108,8 +108,8 @@ int main()
 {
     try
     {
-        std::cout << findZero(f1<double>, -1.0, 1.0, 0.00001) << std::endl;
-        std::cout << findZero(f1<double>, 1.0, 2.5, 0.0000001) << std::endl;
+        std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
+        std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
 
 //        Controller controller;
 //
