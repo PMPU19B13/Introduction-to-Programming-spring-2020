@@ -50,7 +50,6 @@ public:
 
 		void remove()
 		{
-			m_data = temp;
 			m_storage->remove(m_marker - m_storage->m_data);
 			valid = false;
 		}
