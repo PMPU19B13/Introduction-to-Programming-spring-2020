@@ -94,7 +94,7 @@ void Controller::updateView()
         drawer.drawPrimitive(P_Segment, markerSegment.getValue().value.getParams());
         markerSegment.next();
     }
-        
+
     List<Pair<ID, Circle>>::Marker markerCircle = m_circles.createMarker();
     while (markerCircle.isValid())
     {
@@ -103,18 +103,39 @@ void Controller::updateView()
     }
 }
 
-void Controller::removePrimitive(ID id)
+void Controller::removePrimitive(const ID& id)
 {
-    List<Pair<ID, Point>>::Marker marker = m_points.createMarker();
-
-    while (marker.hasNext())
+    List<Pair<ID, Point>>::Marker pointMarker = m_points.createMarker();
+    while (pointMarker.isValid())
     {
-        if (marker.getValue().key.equals(id))
+        if (pointMarker.getValue().key.equals(id))
         {
-            // remove point from m_points
+            pointMarker.remove();
             return;
         }
-        marker.next();
+        pointMarker.next();
+    }
+
+    List<Pair<ID, Segment>>::Marker segmentMarker = m_segments.createMarker();
+    while (segmentMarker.isValid())
+    {
+        if (segmentMarker.getValue().key.equals(id))
+        {
+            segmentMarker.remove();
+            return;
+        }
+        segmentMarker.next();
+    }
+
+    List<Pair<ID, Circle>>::Marker circleMarker = m_circles.createMarker();
+    while (circleMarker.isValid())
+    {
+        if (circleMarker.getValue().key.equals(id))
+        {
+            circleMarker.remove();
+            return;
+        }
+        circleMarker.next();
     }
 
     // Закончить реализацию
