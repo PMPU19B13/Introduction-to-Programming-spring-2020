@@ -82,23 +82,23 @@ void Controller::updateView()
 
     // Проходим по всем типам примитивов и рисуем их
     List<Pair<ID, Point>>::Marker markerPoint = m_points.createMarker();
-    while (markerPoint.hasNext())
+    while (markerPoint.isValid())
     {
         drawer.drawPrimitive(P_Point, markerPoint.getValue().value.getParams());
         markerPoint.next();
     }
 
     List<Pair<ID, Segment>>::Marker markerSegment = m_segments.createMarker();
-    while (markerSegment.hasNext())
+    while (markerSegment.isValid())
     {
-        drawer.drawPrimitive(P_Point, markerSegment.getValue().value.getParams());
+        drawer.drawPrimitive(P_Segment, markerSegment.getValue().value.getParams());
         markerSegment.next();
     }
         
     List<Pair<ID, Circle>>::Marker markerCircle = m_circles.createMarker();
-    while (markerCircle.hasNext())
+    while (markerCircle.isValid())
     {
-        drawer.drawPrimitive(P_Point, markerCircle.getValue().value.getParams());
+        drawer.drawPrimitive(P_Circle, markerCircle.getValue().value.getParams());
         markerCircle.next();
     }
 }
