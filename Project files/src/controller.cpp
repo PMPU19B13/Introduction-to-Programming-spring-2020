@@ -138,8 +138,6 @@ void Controller::removePrimitive(const ID& id)
         }
         circleMarker.next();
     }
-
-    // Закончить реализацию
 }
 
 void Controller::readPrimitive(const std::string& fileName)
