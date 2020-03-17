@@ -262,8 +262,8 @@ void Controller::writePrimitive(const std::string& fileName)
     file.close();
 }
 
-ID Controller::addRequirement(RequirementType, const Storage<ID>&, double* param)
-{
+//ID Controller::addRequirement(RequirementType, const Storage<ID>&, double* param)
+//{
 //    backupState();
 //    if (tryAddRequirement())
 //    {
@@ -273,4 +273,4 @@ ID Controller::addRequirement(RequirementType, const Storage<ID>&, double* param
 //    {
 //        restoreState();
 //    }
-}
+//}
