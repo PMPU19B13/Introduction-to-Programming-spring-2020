@@ -109,7 +109,7 @@ void Controller::removePrimitive(const ID& id)
     List<Pair<ID, Point>>::Marker pointMarker = m_points.createMarker();
     while (pointMarker.isValid())
     {
-        if (pointMarker.getValue().key.equals(id))
+        if (pointMarker.getValue().key == id)
         {
             pointMarker.remove();
             return;
@@ -120,7 +120,7 @@ void Controller::removePrimitive(const ID& id)
     List<Pair<ID, Segment>>::Marker segmentMarker = m_segments.createMarker();
     while (segmentMarker.isValid())
     {
-        if (segmentMarker.getValue().key.equals(id))
+        if (segmentMarker.getValue().key == id)
         {
             segmentMarker.remove();
             return;
@@ -131,7 +131,7 @@ void Controller::removePrimitive(const ID& id)
     List<Pair<ID, Circle>>::Marker circleMarker = m_circles.createMarker();
     while (circleMarker.isValid())
     {
-        if (circleMarker.getValue().key.equals(id))
+        if (circleMarker.getValue().key == id)
         {
             circleMarker.remove();
             return;
@@ -258,6 +258,20 @@ void Controller::writePrimitive(const std::string& fileName)
     }
 
     file.close();
+}
+
+void Controller::removeRequirement(const ID& id) 
+{
+    List<Pair<ID, Requirement>>::Marker requirementMarker = m_requirements.createMarker();
+    while (requirementMarker.isValid()) 
+    {
+        if (requirementMarker.getValue().key == id)
+        {
+            requirementMarker.remove();
+            return;
+        }
+        requirementMarker.next();
+    }
 }
 
 //ID Controller::addRequirement(RequirementType, const Storage<ID>&, double* param)
