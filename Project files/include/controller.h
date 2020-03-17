@@ -34,7 +34,7 @@ public:
     void removePrimitive(const ID&);
 
     ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
-    void removeRequirement(ID);
+    void removeRequirement(const ID&);
 
     void readPrimitive(const std::string& fileName);
     void writePrimitive(const std::string& fileName);
