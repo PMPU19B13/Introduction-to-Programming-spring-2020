@@ -19,13 +19,13 @@ ID::ID()
             break;
 }
 
-bool ID::equals(const ID& other) const
+bool operator==(const ID& id1, const ID& id2)
 {
-    if (m_array.size() != other.m_array.size())
+    if (id1.m_array.size() != id2.m_array.size())
         return false;
 
-    for (size_t k = 0; k < m_array.size(); ++k)
-        if (m_array[k] != other.m_array[k])
+    for (size_t k = 0; k < id1.m_array.size(); ++k)
+        if (id1.m_array[k] != id2.m_array[k])
             return false;
 
     return true;
