@@ -1,5 +1,7 @@
 #pragma once
 
+#include "pair.h"
+
 template<typename K, typename V>
 class MMap
 {
@@ -8,18 +10,16 @@ public:
 
 	~MMap();
 
-	void add(const K& k, const V& v);
+	void add(const K& key, const V& value);
 
-	bool hasKey(const K& k) const;
+	bool hasKey(const K& key) const;
 
-	const V& getAssoc(const K& k);
+	const V& getAssoc(const K& key);
 
 private:
 	struct Node
 	{
-		// TODO: Заменить на Pair<K, V>
-		K key;
-		V data;
+		Pair<K, V> data;
 		Node* left; // Указатель на корень левого поддерева
 		Node* right; // Указатель на корень правого поддерева
 	};
@@ -41,14 +41,14 @@ MMap<K, V>::~MMap()
 }
 
 template<typename K, typename V>
-void MMap<K, V>::add(const K& k, const V& v)
+void MMap<K, V>::add(const K& key, const V& value)
 {
 	if (m_root == nullptr)
 	{
 		m_root = new Node;
 
-		m_root->key = k;
-		m_root->data = v;
+		m_root->data->key = key;
+		m_root->data->value = value;
 		m_root->left = nullptr;
 		m_root->right = nullptr;
 		return;
@@ -58,7 +58,7 @@ void MMap<K, V>::add(const K& k, const V& v)
 
 	while (true)
 	{
-		if (runner->key < k) // Двигаемся по правой ветке
+		if (runner->data->key < key) // Двигаемся по правой ветке
 		{
 			if (runner->right != nullptr)
 			{
@@ -70,8 +70,8 @@ void MMap<K, V>::add(const K& k, const V& v)
 				runner->right = new Node;
 				runner = runner->right;
 
-				runner->key = k;
-				runner->data = v;
+				runner->data->key = key;
+				runner->data->value = value;
 				runner->left = nullptr;
 				runner->right = nullptr;
 				return;
@@ -89,8 +89,8 @@ void MMap<K, V>::add(const K& k, const V& v)
 				runner->left = new Node;
 				runner = runner->left;
 
-				runner->key = k;
-				runner->data = v;
+				runner->data->key = key;
+				runner->data->value = value;
 				runner->left = nullptr;
 				runner->right = nullptr;
 				return;
@@ -100,7 +100,7 @@ void MMap<K, V>::add(const K& k, const V& v)
 }
 
 template<typename K, typename V>
-bool MMap<K, V>::hasKey(const K& k) const // Проверка наличия пары с указанным ключом
+bool MMap<K, V>::hasKey(const K& key) const // Проверка наличия пары с указанным ключом
 {
 	
 	Node* runner = m_root;
@@ -109,10 +109,10 @@ bool MMap<K, V>::hasKey(const K& k) const // Проверка наличия п�
 
 	while (true)
 	{
-		if (runner->key == k)
+		if (runner->data->key == key)
 			return true;
 
-		if (runner->key < k) // Двигаемся по правой ветке
+		if (runner->data->key < key) // Двигаемся по правой ветке
 		{
 			if (runner->right == nullptr)
 				return false;
@@ -130,7 +130,7 @@ bool MMap<K, V>::hasKey(const K& k) const // Проверка наличия п�
 }
 
 template<typename K, typename V>
-const V& MMap<K, V>::getAssoc(const K& k)
+const V& MMap<K, V>::getAssoc(const K& key)
 {
 	Node* runner = m_root;
 	if (runner == nullptr)
@@ -138,10 +138,10 @@ const V& MMap<K, V>::getAssoc(const K& k)
 
 	while (true)
 	{
-		if (runner->key == k)
+		if (runner->data->key == key)
 			return runner->data;
 
-		if (runner->key < k) // Двигаемся по правой ветке
+		if (runner->data->key < key) // Двигаемся по правой ветке
 		{
 			if (runner->right == nullptr)
 				throw BadArgument(); // Не нашли такого ключа
