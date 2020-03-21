@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "storage.h"
+#include "mmap.h"
 #include "controller.h"
 #include "error.h"
 
@@ -110,6 +111,9 @@ int main()
     {
         std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
         std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
+
+        MMap<int, double> mmap;
+//        mmap.add();
 
 //        Controller controller;
 //

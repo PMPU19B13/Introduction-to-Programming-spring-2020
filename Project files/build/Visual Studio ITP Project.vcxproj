@@ -25,6 +25,7 @@
     <ClInclude Include="..\include\geometry.h" />
     <ClInclude Include="..\include\id.h" />
     <ClInclude Include="..\include\list.h" />
+    <ClInclude Include="..\include\mmap.h" />
     <ClInclude Include="..\include\storage.h" />
     <ClInclude Include="..\include\pair.h" />
   </ItemGroup>
