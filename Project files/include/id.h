@@ -7,7 +7,7 @@ class ID
 public:
     ID();
 
-    bool operator==(const ID& id);
+    bool operator==(const ID& id) const;
 
 private:
     Storage<unsigned char> m_array;
