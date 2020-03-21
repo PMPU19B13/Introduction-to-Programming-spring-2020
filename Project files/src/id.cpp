@@ -19,7 +19,7 @@ ID::ID()
             break;
 }
 
-bool ID::operator==(const ID& id)
+bool ID::operator==(const ID& id) const
 {
     if (m_array.size() != id.m_array.size())
         return false;
