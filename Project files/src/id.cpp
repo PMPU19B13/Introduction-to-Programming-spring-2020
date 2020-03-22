@@ -30,3 +30,18 @@ bool ID::operator==(const ID& id) const
 
     return true;
 }
+
+bool ID::operator<(const ID& id) const
+{
+
+	if (m_array.size() > id.m_array.size())
+		return false;
+	if (m_array.size() < id.m_array.size())
+		return true;
+	if (m_array.size() == id.m_array.size()) {
+		for (size_t k = 0; k < m_array.size(); ++k)
+			if (m_array[k] < id.m_array[k]) return true;
+			else if (m_array[k] > id.m_array[k]) return false;	
+	}
+	return false;
+}
