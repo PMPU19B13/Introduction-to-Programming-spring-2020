@@ -47,8 +47,8 @@ void MMap<K, V>::add(const K& key, const V& value)
 	{
 		m_root = new Node;
 
-		m_root->data->key = key;
-		m_root->data->value = value;
+		m_root->data.key = key;
+		m_root->data.value = value;
 		m_root->left = nullptr;
 		m_root->right = nullptr;
 		return;
@@ -58,7 +58,7 @@ void MMap<K, V>::add(const K& key, const V& value)
 
 	while (true)
 	{
-		if (runner->data->key < key) // Двигаемся по правой ветке
+		if (runner->data.key < key) // Двигаемся по правой ветке
 		{
 			if (runner->right != nullptr)
 			{
@@ -70,8 +70,8 @@ void MMap<K, V>::add(const K& key, const V& value)
 				runner->right = new Node;
 				runner = runner->right;
 
-				runner->data->key = key;
-				runner->data->value = value;
+				runner->data.key = key;
+				runner->data.value = value;
 				runner->left = nullptr;
 				runner->right = nullptr;
 				return;
@@ -89,8 +89,8 @@ void MMap<K, V>::add(const K& key, const V& value)
 				runner->left = new Node;
 				runner = runner->left;
 
-				runner->data->key = key;
-				runner->data->value = value;
+				runner->data.key = key;
+				runner->data.value = value;
 				runner->left = nullptr;
 				runner->right = nullptr;
 				return;
@@ -109,10 +109,10 @@ bool MMap<K, V>::hasKey(const K& key) const // Проверка наличия �
 
 	while (true)
 	{
-		if (runner->data->key == key)
+		if (runner->data.key == key)
 			return true;
 
-		if (runner->data->key < key) // Двигаемся по правой ветке
+		if (runner->data.key < key) // Двигаемся по правой ветке
 		{
 			if (runner->right == nullptr)
 				return false;
@@ -138,10 +138,10 @@ const V& MMap<K, V>::getAssoc(const K& key)
 
 	while (true)
 	{
-		if (runner->data->key == key)
+		if (runner->data.key == key)
 			return runner->data;
 
-		if (runner->data->key < key) // Двигаемся по правой ветке
+		if (runner->data.key < key) // Двигаемся по правой ветке
 		{
 			if (runner->right == nullptr)
 				throw BadArgument(); // Не нашли такого ключа
@@ -157,6 +157,7 @@ const V& MMap<K, V>::getAssoc(const K& key)
 		}
 	}
 }
+
 
 template<typename K, typename V>
 void MMap<K, V>::clear(Node* runner)
