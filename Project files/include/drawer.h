@@ -5,5 +5,5 @@
 class Drawer
 {
 public:
-    void drawPrimitive(PrimitiveType type, Storage<double> params);
+	void drawPrimitive(PrimitiveType type, const Storage<double>& params);
 };

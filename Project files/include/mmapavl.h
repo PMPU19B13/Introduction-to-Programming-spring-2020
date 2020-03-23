@@ -20,13 +20,20 @@ private:
 	struct Node
 	{
 		Pair<K, V> data;
-		Node* left; // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕСЂРµРЅСЊ Р»РµРІРѕРіРѕ РїРѕРґРґРµСЂРµРІР°
-		Node* right; // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕСЂРµРЅСЊ РїСЂР°РІРѕРіРѕ РїРѕРґРґРµСЂРµРІР°
+		Node* left; // Указатель на корень левого поддерева
+		Node* right; // Указатель на корень правого поддерева
 	};
 
-	Node* m_root; // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕСЂРЅРµРІРѕР№ СѓР·РµР»
+	Node* m_root; // Указатель на корневой узел
 
 	void clear(Node* runner);
+
+	size_t height(Node* runner)
+	{
+		if (runner == nullptr)
+			return 0;
+		return std::max(height(runner->left), height(runner->right));
+	}
 };
 
 template<typename K, typename V>
@@ -58,7 +65,7 @@ void MMapAVL<K, V>::add(const K& key, const V& value)
 
 	while (true)
 	{
-		if (runner->data.key < key) // Р”РІРёРіР°РµРјСЃСЏ РїРѕ РїСЂР°РІРѕР№ РІРµС‚РєРµ
+		if (runner->data.key < key) // Двигаемся по правой ветке
 		{
 			if (runner->right != nullptr)
 			{
@@ -77,7 +84,7 @@ void MMapAVL<K, V>::add(const K& key, const V& value)
 				return;
 			}
 		}
-		else // Р”РІРёРіР°РµРјСЃСЏ РїРѕ Р»РµРІРѕР№ РІРµС‚РєРµ
+		else // Двигаемся по левой ветке
 		{
 			if (runner->left != nullptr)
 			{
@@ -100,9 +107,9 @@ void MMapAVL<K, V>::add(const K& key, const V& value)
 }
 
 template<typename K, typename V>
-bool MMapAVL<K, V>::hasKey(const K& key) const // РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ РїР°СЂС‹ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РєР»СЋС‡РѕРј
+bool MMapAVL<K, V>::hasKey(const K& key) const // Проверка наличия пары с указанным ключом
 {
-	
+
 	Node* runner = m_root;
 	if (runner == nullptr)
 		return false;
@@ -112,14 +119,14 @@ bool MMapAVL<K, V>::hasKey(const K& key) const // РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёС
 		if (runner->data.key == key)
 			return true;
 
-		if (runner->data.key < key) // Р”РІРёРіР°РµРјСЃСЏ РїРѕ РїСЂР°РІРѕР№ РІРµС‚РєРµ
+		if (runner->data.key < key) // Двигаемся по правой ветке
 		{
 			if (runner->right == nullptr)
 				return false;
 
 			runner = runner->right;
 		}
-		else // Р”РІРёРіР°РµРјСЃСЏ РїРѕ Р»РµРІРѕР№ РІРµС‚РєРµ
+		else // Двигаемся по левой ветке
 		{
 			if (runner->left == nullptr)
 				return false;
@@ -141,17 +148,17 @@ const V& MMapAVL<K, V>::getAssoc(const K& key)
 		if (runner->data.key == key)
 			return runner->data;
 
-		if (runner->data.key < key) // Р”РІРёРіР°РµРјСЃСЏ РїРѕ РїСЂР°РІРѕР№ РІРµС‚РєРµ
+		if (runner->data.key < key) // Двигаемся по правой ветке
 		{
 			if (runner->right == nullptr)
-				throw BadArgument(); // РќРµ РЅР°С€Р»Рё С‚Р°РєРѕРіРѕ РєР»СЋС‡Р°
+				throw BadArgument(); // Не нашли такого ключа
 
 			runner = runner->right;
 		}
-		else // Р”РІРёРіР°РµРјСЃСЏ РїРѕ Р»РµРІРѕР№ РІРµС‚РєРµ
+		else // Двигаемся по левой ветке
 		{
 			if (runner->left == nullptr)
-				throw BadArgument(); // РќРµ РЅР°С€Р»Рё С‚Р°РєРѕРіРѕ РєР»СЋС‡Р°
+				throw BadArgument(); // Не нашли такого ключа
 
 			runner = runner->left;
 		}
