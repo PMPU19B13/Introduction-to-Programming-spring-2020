@@ -45,3 +45,13 @@ bool ID::operator<(const ID& id) const
 	}
 	return false;
 }
+
+void ID::initCount(size_t newCount)
+{
+    m_count = newCount;
+}
+
+size_t ID::getLastCount()
+{
+    return m_count;
+}
