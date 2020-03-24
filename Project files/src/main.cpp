@@ -112,36 +112,12 @@ int main()
         std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
         std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
 
-        MMapAVL<int, double> mmap;
-
-        // 1 10 12 7 4 15 -1 0 6 30 25 9 11 -10 3
-
-        //                1
-        //      -1                   10
-        //  -10      0           7          12
-        //                    4     9    11     15  
-        //                   3 6                  30
-        //                                       25     
-       
-
-
-        //                          10
-        //              4                        15
-        //        0           7              12      30
-        //    -1     1      6   9         11       25         
-        //  -10        3
-
-        
+        MMap<int, double> mmap;
+     
         mmap.add(2, 2.2);
         mmap.add(3, 2.2);
         mmap.add(1, 2.2);
         mmap.add(4, 2.2);
-        
-
-        //         2
-        //    1          3
-        //                   4
-
 
 //        mmap.add();
 
