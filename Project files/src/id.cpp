@@ -53,5 +53,5 @@ void ID::initCount(size_t newCount)
 
 size_t ID::getLastCount()
 {
-    return ID::m_count;
+    return m_count;
 }
