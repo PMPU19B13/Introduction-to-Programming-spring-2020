@@ -5,6 +5,7 @@
 #include "controller.h"
 #include "error.h"
 #include "drawer.h"
+#include "mmap.h"
 
 Controller::Controller()
 {
@@ -73,6 +74,74 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
         std::cerr << "No implementation found!" << std::endl;
         throw BadArgument();
     }
+
+}
+
+ID Controller::addPrimitiveMMap(PrimitiveType type, Storage<double> params)
+{
+	switch (type)
+	{
+	case P_Point:
+		// Проверяем параметры
+		if (params.size() == 2)
+		{
+			// Добавляем точку
+			ID id;
+			m_pointsMMap.add(id, Point(params[0], params[1]));
+			return id;
+		}
+		else
+			throw BadArgument();
+		break;
+
+	case P_Segment:
+		// Проверяем параметры
+		if (params.size() == 4)
+		{
+			ID id1;
+			Point p1 = Point(params[0], params[1]);
+			Point p2 = Point(params[2], params[3]);
+			// Добавляем точки, определяющие отрезок
+			m_pointsMMap.add(id1, p1);
+			Point* start = &(p1);
+
+			ID id2;
+			m_pointsMMap.add(id2, p2);
+			Point* end = &(p2);
+
+			// И сам отрезок
+			ID id3;
+			m_segmentsMMap.add(id3, Segment(start, end));
+			return ID();
+		}
+		else
+			throw BadArgument();
+		break;
+
+	case P_Circle:
+		// Проверяем параметры
+		if (params.size() == 3)
+		{
+			// Добавляем центр окружности
+			ID id1;
+			Point p = Point(params[0], params[1]);
+			m_pointsMMap.add(id1, p);
+			Point* center = &(p);
+
+			// И саму окружность
+			ID id2;
+			m_circlesMMap.add(id2, Circle(center, params[2]));
+			return ID();
+		}
+		else
+			throw BadArgument();
+		break;
+
+	default:
+		// Выводим ошибку в случае отсутствия реализации для типа
+		std::cerr << "No implementation found!" << std::endl;
+		throw BadArgument();
+	}
 
 }
 
