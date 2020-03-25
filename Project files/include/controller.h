@@ -1,5 +1,4 @@
 #pragma once
-
 #include "geometry.h"
 #include "storage.h"
 #include "list.h"
@@ -25,22 +24,23 @@ enum RequirementType
     R_IsOn
 };
 
+
 class Controller
 {
 public:
     Controller();
 
-    ID addPrimitive(PrimitiveType, Storage<double>);
+    ID addPrimitive(PrimitiveType type, Storage<double> params);
     void removePrimitive(const ID&);
 
     ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
     void removeRequirement(const ID&);
 
-    void readPrimitive(const std::string& fileName);
-    void writePrimitive(const std::string& fileName);
-
     void updateView();
 
+    friend class FileIO;
+
+    List<Pair<ID, Point>> m_points;
 private:
     struct Requirement
     {
@@ -66,7 +66,6 @@ private:
 
     List<Pair<ID, Requirement>> m_requirements;
 
-    List<Pair<ID, Point>> m_points;
     List<Pair<ID, Segment>> m_segments;
     List<Pair<ID, Circle>> m_circles;
 };
