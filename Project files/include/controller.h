@@ -5,6 +5,7 @@
 #include "list.h"
 #include "id.h"
 #include "pair.h"
+#include "mmap.h"
 
 enum PrimitiveType
 {
@@ -72,6 +73,6 @@ private:
     List<Pair<ID, Circle>> m_circles;
     
     MMap<ID, Point> m_pointsMMap;
-	MMap<ID, Segment> m_segmentsMMap;
-	MMap<ID, Circle> m_circlesMMap;
+    MMap<ID, Segment> m_segmentsMMap;
+    MMap<ID, Circle> m_circlesMMap;
 };
