@@ -31,6 +31,7 @@ public:
     Controller();
 
     ID addPrimitive(PrimitiveType, Storage<double>);
+    ID addPrimitiveMMap(PrimitiveType, Storage<double>);
     void removePrimitive(const ID&);
 
     ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
@@ -69,4 +70,8 @@ private:
     List<Pair<ID, Point>> m_points;
     List<Pair<ID, Segment>> m_segments;
     List<Pair<ID, Circle>> m_circles;
+    
+    MMap<ID, Point> m_pointsMMap;
+	MMap<ID, Segment> m_segmentsMMap;
+	MMap<ID, Circle> m_circlesMMap;
 };
