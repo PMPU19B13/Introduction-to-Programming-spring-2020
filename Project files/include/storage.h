@@ -9,6 +9,7 @@ class Storage
 {
 public:
     Storage();
+
     Storage(const Storage<T>& original);
 
     ~Storage();
@@ -16,62 +17,64 @@ public:
     Storage& operator=(const Storage<T>& other);
 
     T& operator[](size_t index);
+
     const T& operator[](size_t index) const;
 
     void add(T value);
 
     void insert(size_t index, T value);
+
     void remove(size_t index);
 
     size_t size() const;
 
-	class Marker
-	{
-	public:
+    class Marker
+    {
+    public:
 
-		bool hasNext() const
-		{
-			// Арифметика через указатели
-			return m_marker < m_storage->m_data + m_storage->m_size - 1;
-		}
+        bool hasNext() const
+        {
+            // Арифметика через указатели
+            return m_marker < m_storage->m_data + m_storage->m_size - 1;
+        }
 
-		void next()
-		{
-			if (hasNext())
-				m_marker++;
-		}
+        void next()
+        {
+            if (hasNext())
+                m_marker++;
+        }
 
-		T& getValue()
-		{
-			// Арифметика через указатели
-			if (m_marker >= m_storage->m_data + m_storage->m_size)
-				throw Error();
+        T& getValue()
+        {
+            // Арифметика через указатели
+            if (m_marker >= m_storage->m_data + m_storage->m_size)
+                throw Error();
 
-			return *m_marker;
-		}
+            return *m_marker;
+        }
 
-		void remove()
-		{
-			// Арифметика через указатели
-			m_storage->remove(m_marker - m_storage->m_data);
-			valid = false;
-		}
-		
-		bool isValid()
-		{
-			return valid;
-		}
+        void remove()
+        {
+            // Арифметика через указатели
+            m_storage->remove(m_marker - m_storage->m_data);
+            valid = false;
+        }
 
-		friend class Storage;
+        bool isValid()
+        {
+            return valid;
+        }
 
-	private:
-		bool valid;
-		T* m_marker;
-		Storage<T>* m_storage;
-	};
+        friend class Storage;
+
+    private:
+        bool valid;
+        T* m_marker;
+        Storage<T>* m_storage;
+    };
 
 
-	Marker createMarker();
+    Marker createMarker();
 
 
 private:
@@ -84,10 +87,10 @@ private:
 template<typename T>
 typename Storage<T>::Marker Storage<T>::createMarker()
 {
-	Storage<T>::Marker m;
-	m.m_marker = m_data;
-	m.m_storage = this;
-	return m;
+    Storage<T>::Marker m;
+    m.m_marker = m_data;
+    m.m_storage = this;
+    return m;
 }
 
 template<typename T>

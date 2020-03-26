@@ -10,8 +10,11 @@ public:
     Point(double x = 0, double y = 0);
 
     void setX(double x);
+
     void setY(double y);
+
     double getX() const;
+
     double getY() const;
 
     Storage<double> getParams() const;
@@ -27,9 +30,11 @@ class Segment
 {
 public:
     Segment();
+
     Segment(Point* start, Point* end);
 
     Point getStart() const;
+
     Point getEnd() const;
 
     Storage<double> getParams() const;
@@ -45,9 +50,11 @@ class Circle
 {
 public:
     Circle();
+
     Circle(Point* center, double radius);
 
     Point getCenter() const;
+
     double getRadius() const;
 
     Storage<double> getParams() const;
