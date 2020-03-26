@@ -10,6 +10,10 @@ public:
     bool operator==(const ID& id) const;
 
     bool operator<(const ID& id) const;
+    
+    static void initCount(size_t newCount);
+
+    static size_t getLastCount();
 
     static void initCount(size_t newCount);
 
