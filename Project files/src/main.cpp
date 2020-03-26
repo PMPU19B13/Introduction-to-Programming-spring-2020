@@ -121,6 +121,12 @@ int main()
         std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
         std::cout << derivative(6.0) << std::endl;
         MMap<int, double> mmap;
+     
+        mmap.add(2, 2.2);
+        mmap.add(3, 2.2);
+        mmap.add(1, 2.2);
+        mmap.add(4, 2.2);
+
 //        mmap.add();
 
 //        Controller controller;

@@ -31,12 +31,15 @@ public:
     Controller();
 
     ID addPrimitive(PrimitiveType, Storage<double>);
+
     void removePrimitive(const ID&);
 
     ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
+
     void removeRequirement(const ID&);
 
     void readPrimitive(const std::string& fileName);
+
     void writePrimitive(const std::string& fileName);
 
     void updateView();
@@ -62,6 +65,7 @@ private:
     bool tryAddRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
 
     void backupState();
+
     void restoreState();
 
     List<Pair<ID, Requirement>> m_requirements;
