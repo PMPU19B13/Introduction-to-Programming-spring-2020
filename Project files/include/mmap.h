@@ -72,7 +72,6 @@ private:
                 tree->left = rotateLeft(tree->left);
             return rotateRight(tree);
         }
-        std::cout << "height: " << m_root->height << std::endl;
         return tree;
     }
 
