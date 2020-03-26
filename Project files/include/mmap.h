@@ -1,10 +1,7 @@
 #pragma once
-#include<queue>
 #include "pair.h"
 #include "error.h"
 #include <stdlib.h>
-
-struct Node {};
 
 template<typename K, typename V>
 class MMap
