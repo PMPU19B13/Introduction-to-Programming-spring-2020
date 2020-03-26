@@ -1,5 +1,6 @@
 #pragma once
 
+#include<queue>
 #include "pair.h"
 #include "error.h"
 
@@ -17,6 +18,9 @@ public:
 
 	const V& getAssoc(const K& key);
 
+	void traversepub(void (*action)(int));
+
+	
 private:
 	struct Node
 	{
@@ -28,6 +32,8 @@ private:
 	Node* m_root; // Указатель на корневой узел
 
 	void clear(Node* runner);
+
+	void traverse(Node* runner, void (*action)(int));
 };
 
 template<typename K, typename V>
@@ -40,6 +46,31 @@ MMap<K, V>::~MMap()
 {
 	clear(m_root);
 }
+
+template<typename K, typename V>
+void MMap<K,V>::traversepub(void (*action)(int)) {
+	traverse(m_root, action);
+}
+
+
+template <typename K, typename V>
+void MMap<K,V>::traverse(Node* runner,void (* action)(int)) {
+	if (runner == nullptr) return;
+	std::queue<Node*> q;
+	q.push(runner);
+
+	while (q.empty() == false) {
+
+		Node* node = q.front();
+		//action
+		q.pop();
+
+		if (node->left != nullptr) q.push(node->left);
+		if (node->right != nullptr) q.push(node->right);
+
+	}
+}
+
 
 template<typename K, typename V>
 void MMap<K, V>::add(const K& key, const V& value)
@@ -103,7 +134,7 @@ void MMap<K, V>::add(const K& key, const V& value)
 template<typename K, typename V>
 bool MMap<K, V>::hasKey(const K& key) const // Проверка наличия пары с указанным ключом
 {
-	
+
 	Node* runner = m_root;
 	if (runner == nullptr)
 		return false;
