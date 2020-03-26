@@ -1,5 +1,9 @@
 #pragma once
 
+#include <cstddef>
+#include <cmath>
+
+#include "error.h"
 #include "pair.h"
 
 template<typename K, typename V>
@@ -20,11 +24,11 @@ private:
     struct Node
     {
         Pair<K, V> data;
-        Node* left; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-        Node* right; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        Node* left;
+        Node* right;
     };
 
-    Node* m_root; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    Node* m_root;
 
     void clear(Node* runner);
 
@@ -65,7 +69,7 @@ void MMapAVL<K, V>::add(const K& key, const V& value)
 
     while (true)
     {
-        if (runner->data.key < key) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (runner->data.key < key)
         {
             if (runner->right != nullptr)
             {
@@ -84,7 +88,7 @@ void MMapAVL<K, V>::add(const K& key, const V& value)
                 return;
             }
         }
-        else // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+        else
         {
             if (runner->left != nullptr)
             {
@@ -107,7 +111,7 @@ void MMapAVL<K, V>::add(const K& key, const V& value)
 }
 
 template<typename K, typename V>
-bool MMapAVL<K, V>::hasKey(const K& key) const // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+bool MMapAVL<K, V>::hasKey(const K& key) const
 {
 
     Node* runner = m_root;
@@ -119,14 +123,14 @@ bool MMapAVL<K, V>::hasKey(const K& key) const // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿
         if (runner->data.key == key)
             return true;
 
-        if (runner->data.key < key) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (runner->data.key < key)
         {
             if (runner->right == nullptr)
                 return false;
 
             runner = runner->right;
         }
-        else // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+        else
         {
             if (runner->left == nullptr)
                 return false;
@@ -148,17 +152,17 @@ const V& MMapAVL<K, V>::getAssoc(const K& key)
         if (runner->data.key == key)
             return runner->data;
 
-        if (runner->data.key < key) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (runner->data.key < key)
         {
             if (runner->right == nullptr)
-                throw BadArgument(); // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+                throw BadArgument();
 
             runner = runner->right;
         }
-        else // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+        else
         {
             if (runner->left == nullptr)
-                throw BadArgument(); // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+                throw BadArgument();
 
             runner = runner->left;
         }
