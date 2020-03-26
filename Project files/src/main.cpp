@@ -64,7 +64,8 @@ Arg findZero(Fun function, Arg low, Arg high, Arg eps)
     {
         Arg mid = (high + low) / 2;
         Arg midValue = function(mid);
-        while (std::abs(midValue) > eps)
+        //while (std::abs(midValue) > eps)
+        while ((midValue > eps) || (midValue < (-1)*eps))
         {
             if (lowValue * midValue > 0)
             {
@@ -109,11 +110,19 @@ int main()
 {
     try
     {
-        std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
-        std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
+        //std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
+        //std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
 
         MMap<int, double> mmap;
-//        mmap.add();
+        mmap.add(8, 1.5);
+        mmap.add(7, 2.5);
+        mmap.add(6, 3.5);
+        mmap.add(5, 4.5);
+        mmap.add(4, 5.5);
+        mmap.add(3, 6.5);
+        mmap.add(2, 7.5);
+        mmap.add(1, 8.5);
+
 
 //        Controller controller;
 //
