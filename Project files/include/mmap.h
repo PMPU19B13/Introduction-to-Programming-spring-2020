@@ -18,9 +18,8 @@ public:
 
 	const V& getAssoc(const K& key);
 
-	void traverse(void (*action)(int));
+	void traverse(void (* action)(int));
 
-	
 private:
 	struct Node
 	{
@@ -33,7 +32,7 @@ private:
 
 	void clear(Node* runner);
 
-	void traversePrivate(Node* runner, void (*action)(int));
+	void traversePrivate(Node* runner, void (* action)(int));
 };
 
 template<typename K, typename V>
@@ -48,7 +47,7 @@ MMap<K, V>::~MMap()
 }
 
 template<typename K, typename V>
-void MMap<K, V>::traverse(void (*action)(int)) 
+void MMap<K, V>::traverse(void (* action)(int)) 
 {
 	traversePrivate(m_root, action);
 }
@@ -63,14 +62,12 @@ void MMap<K, V>::traversePrivate(Node* runner, void (* action)(int))
 
 	while (q.empty() == false) 
 	{
-
 		Node* node = q.front();
 		// Perform action here
 		q.pop();
 
 		if (node->left != nullptr) q.push(node->left);
 		if (node->right != nullptr) q.push(node->right);
-
 	}
 }
 
