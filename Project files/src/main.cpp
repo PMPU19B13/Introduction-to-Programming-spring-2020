@@ -204,9 +204,9 @@ int main()
 		std::cout << pos.error() << std::endl;
 
 		/*
-        IReq* ptrreq = (IReq*)&hr;
+        	IRequirement* ptrreq = (IRequirement*)&hr;
 		std::cout << ptrreq->error() << std::endl;
-		ptrreq = (IReq*)&pos;
+		ptrreq = (IRequirement*)&pos;
 		std::cout << ptrreq->error() << std::endl;
 		*/
 
