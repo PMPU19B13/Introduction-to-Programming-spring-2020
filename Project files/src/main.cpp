@@ -2,8 +2,44 @@
 
 #include "storage.h"
 #include "mmap.h"
+#include "req.h"
 #include "controller.h"
 #include "error.h"
+
+class WithName {
+public:
+	virtual const char* getName()const = 0;
+};
+
+class Person: public WithName{
+public:
+	Person(const char* na, int h) : name(na), height(h) {}
+	virtual const char* getName()const { return name; }
+	int getHeight()const { return height; }
+
+private:
+	const char* name;
+	int height;
+};
+
+class Student:public Person{
+public:
+	Student():Person("John", 160) {};
+	int getGroup()const;
+private:
+	char* name;
+	int height;
+	int group_number;
+};
+
+class Street: public WithName {
+public:
+	Street(){}
+	virtual const char* getName()const { return Sname; }
+private:
+	char* Sname;
+	int numHouse;
+};
 
 class Rational
 {
@@ -113,10 +149,45 @@ void printContents(Storage<double> s)
     }
 }
 
+void sayHello(WithName* p) {
+	std::cout << "Hello " << p->getName() << std::endl;
+}
+
+void getErr(IReq* req) {
+	std::cout << "Error now " << req->error() << std::endl;
+}
+
 int main()
 {
     try
     {
+        Person p("Mary", 163);
+		Student s;
+		Street st;
+		sayHello(&p);
+		sayHello(&s);
+		sayHello(&st);
+
+		std::cout << "Student's name " << s.getName()<< std::endl;
+		std::cout << "Student's height " << s.getHeight() << std::endl;
+
+		Point p1, p2(1,1), p3(1,0), p4(2,1);
+		Segment se(&p3, &p4);
+		HorizReq hr(&se);
+		PointOnSegReq pos(&p1, &se);
+
+		std::cout << hr.error() << std::endl;
+		std::cout << pos.error() << std::endl;
+
+		/*IReq* ptrreq = (IReq*)&hr;
+		std::cout << ptrreq->error() << std::endl;
+		ptrreq = (IReq*)&pos;
+		std::cout << ptrreq->error() << std::endl;
+		*/
+
+		getErr((IReq*) &hr);
+		getErr((IReq*) &pos);
+        
         std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
         std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
         std::cout << derivative(6.0) << std::endl;
