@@ -1,6 +1,7 @@
 #pragma once
 
 #include "pair.h"
+#include "error.h"
 
 template<typename K, typename V>
 class MMap
