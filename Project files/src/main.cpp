@@ -98,13 +98,6 @@ Arg derivative(Fun function, Arg x)
     return (function(x + dx) - function(x)) / dx;
 }
 
-//template<typename F>//функция для вычисления производной в точке
-//F derivative(F x){
-//    double dx = 1e-10;
-//    return (func1(x + dx) - func1(x)) / dx;
-//    throw Error();
-//}
-
 std::ostream& operator<<(std::ostream& ost, const Rational& r)
 {
     ost << r.getNum() << "/" << r.getDen();
