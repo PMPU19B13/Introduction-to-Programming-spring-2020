@@ -94,7 +94,7 @@ T func1(T x)
 template <typename Fun, typename Arg>
 Arg derivative(Fun function, Arg x)
 {
-    double dx = 1e-3;
+    double dx = 1e-5;
     return (function(x + dx) - function(x)) / dx;
 }
 
