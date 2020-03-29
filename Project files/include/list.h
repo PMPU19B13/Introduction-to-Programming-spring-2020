@@ -24,6 +24,7 @@ public:
     List();
 
     List(const List& other);
+
     ~List();
 
     List<T>& operator=(const List<T>& other);
@@ -74,12 +75,15 @@ public:
     void add(T value);
 
     T& operator[](size_t index);
+
     const T& operator[](size_t index) const;
 
     void insert(size_t index, T value);
+
     void remove(size_t index);
 
     T get(size_t index) const;
+
     void set(size_t index, T value);
 
     size_t size() const;

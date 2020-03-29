@@ -90,6 +90,14 @@ T func1(T x)
     return (x - 3) * x * (x - 2);
 }
 
+// Функция для вычисления производной в точке
+template <typename Fun, typename Arg>
+Arg derivative(Fun function, Arg x)
+{
+    Arg dx = 1e-5;
+    return (function(x + dx) - function(x)) / dx;
+}
+
 std::ostream& operator<<(std::ostream& ost, const Rational& r)
 {
     ost << r.getNum() << "/" << r.getDen();
@@ -111,7 +119,7 @@ int main()
     {
         std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
         std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
-
+        std::cout << derivative(func1<double>, 8.0) << std::endl;
         MMap<int, double> mmap;
 //        mmap.add();
 

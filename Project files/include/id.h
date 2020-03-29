@@ -8,6 +8,7 @@ public:
     ID();
 
     bool operator==(const ID& id) const;
+
     bool operator<(const ID& id) const;
     
     static void initCount(size_t newCount);
