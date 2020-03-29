@@ -94,7 +94,7 @@ T func1(T x)
 template <typename Fun, typename Arg>
 Arg derivative(Fun function, Arg x)
 {
-    double dx = 1e-5;
+    Arg dx = 1e-5;
     return (function(x + dx) - function(x)) / dx;
 }
 
@@ -119,7 +119,7 @@ int main()
     {
         std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
         std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
-        std::cout << derivative(func1<double>, 8) << std::endl;
+        std::cout << derivative(func1<double>, 8.0) << std::endl;
         MMap<int, double> mmap;
 //        mmap.add();
 
