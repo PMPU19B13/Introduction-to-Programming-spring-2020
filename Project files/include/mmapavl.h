@@ -18,11 +18,11 @@ private:
 	struct Node
 	{
 		Pair<K, V> data;
-		int height; // Высота поддерева
+		int height; // Р’С‹СЃРѕС‚Р° РїРѕРґРґРµСЂРµРІР°
 		Node* left, * right, * parent = nullptr;
 	};
 
-	Node* m_root; // Указатель на корневой узел
+	Node* m_root; // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕСЂРЅРµРІРѕР№ СѓР·РµР»
 	void clear(Node* runner);
 
     int height(Node* tree)
@@ -123,7 +123,7 @@ MMap<K, V>::~MMap()
 
 
 template<typename K, typename V>
-bool MMap<K, V>::hasKey(const K& key) const // Проверка наличия пары с указанным ключом
+bool MMap<K, V>::hasKey(const K& key) const // РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ РїР°СЂС‹ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РєР»СЋС‡РѕРј
 {
 
 	Node* runner = m_root;
@@ -135,14 +135,14 @@ bool MMap<K, V>::hasKey(const K& key) const // Проверка наличия пары с указанным
 		if (runner->data.key == key)
 			return true;
 
-		if (runner->data.key < key) // Двигаемся по правой ветке
+		if (runner->data.key < key) // Р”РІРёРіР°РµРјСЃСЏ РїРѕ РїСЂР°РІРѕР№ РІРµС‚РєРµ
 		{
 			if (runner->right == nullptr)
 				return false;
 
 			runner = runner->right;
 		}
-		else // Двигаемся по левой ветке
+		else // Р”РІРёРіР°РµРјСЃСЏ РїРѕ Р»РµРІРѕР№ РІРµС‚РєРµ
 		{
 			if (runner->left == nullptr)
 				return false;
@@ -164,17 +164,17 @@ const V& MMap<K, V>::getAssoc(const K& key)
 		if (runner->data.key == key)
 			return runner->data;
 
-		if (runner->data.key < key) // Двигаемся по правой ветке
+		if (runner->data.key < key) // Р”РІРёРіР°РµРјСЃСЏ РїРѕ РїСЂР°РІРѕР№ РІРµС‚РєРµ
 		{
 			if (runner->right == nullptr)
-				throw BadArgument(); // Не нашли такого ключа
+				throw BadArgument(); // РќРµ РЅР°С€Р»Рё С‚Р°РєРѕРіРѕ РєР»СЋС‡Р°
 
 			runner = runner->right;
 		}
-		else // Двигаемся по левой ветке
+		else // Р”РІРёРіР°РµРјСЃСЏ РїРѕ Р»РµРІРѕР№ РІРµС‚РєРµ
 		{
 			if (runner->left == nullptr)
-				throw BadArgument(); // Не нашли такого ключа
+				throw BadArgument(); // РќРµ РЅР°С€Р»Рё С‚Р°РєРѕРіРѕ РєР»СЋС‡Р°
 
 			runner = runner->left;
 		}
