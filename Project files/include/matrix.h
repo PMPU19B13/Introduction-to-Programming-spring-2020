@@ -1,22 +1,90 @@
 #pragma once
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
-using namespace std;
-
-
+//методы преобразования массив <-> вектор
+///////////////////////////////////////////////////////////////////////////////////////////////////
 //вектор -> массив
-//int* a = vtoi(vector<int> b) - псевдопример
+//int* a = vtoa(vector<int> b) - псевдопример
 template<typename T>
-T* vtoa(vector<T> a) {
+T* vtoa(std::vector<T> a);
+template<typename T>
+T** vtoa(std::vector<std::vector<T>> a);
+
+//массив -> вектор
+template<typename T, size_t N>
+std::vector<T> atov(T(&a)[N]);
+template<typename T, size_t N, size_t M>
+std::vector<std::vector<T>> atov(T(&a)[N][M]);
+///////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+Класс Матрица:
+Мaтрицу можно инициализировать: массивом, вектором, нулями (размером width x height).
+Над матрицами можно выполнять операции: + - * как с другими матрицами так и с числами.
+А также transpose(), det(), algAd(i,j)(по сути вычеркнутая строка и столбец i j), inverse().
++ плюшка: вывод с <<
+****************************************Example****************************************************
+int a[2][2] = {{1,2},{2,3}};
+vector<vector<int>> b{{ 1,2,5 },{ 4,6,0 }};
+int c[3][2] = {{1,2},{1,2},{1,2}};
+Matrix<int> A(a);
+Matrix<int> B(b);
+Matrix<int> C(c);
+cout << (B*C+A*2).det();
+*/
+template<class T>
+class Matrix {
+public:
+	T** matrix;
+	size_t width, height;//размеры матрицы
+
+	template<size_t N, size_t M>
+	Matrix(T(&m)[N][M]);// инициализация массивом
+	
+	Matrix(std::vector<std::vector<T>> m);// инициализация вектором
+	
+	Matrix(size_t w, size_t h);//инициализация нулями по размеру w x h
+	
+	Matrix(const Matrix& b);//копирка
+
+	Matrix& operator= (const Matrix& b);
+
+	Matrix operator +(const Matrix& b);
+	Matrix operator +(float a);
+
+	Matrix operator -(const Matrix& b);
+	Matrix operator -(float a);
+
+	Matrix operator *(const Matrix& b);
+	Matrix operator *(float a);
+
+	Matrix algAd(size_t y, size_t x);//алгоритмическое дополнение по y x
+
+	T det();//определитель
+
+	Matrix transpose();//транспонирование
+
+	Matrix inverse();//обратная матрица
+
+	~Matrix();
+};
+
+template<class T>
+std::ostream& operator<< (std::ostream& out, const Matrix<T>& m);//вывод
+
+///////////////////////////////////WARNING!METHODS_ARE_HERE!////////////////////////////////////////
+template<typename T>
+T* vtoa(std::vector<T> a)
+{
 	T* b = new T[a.size()];
 	for (size_t i = 0; i < a.size(); i++)
 		b[i] = a[i];
 	return b;
 }
 template<typename T>
-T** vtoa(vector<vector<T>> a) {
+T** vtoa(std::vector<std::vector<T>> a)
+{
 	T** b = new T * [a.size()];
 	for (size_t i = 0; i < a.size(); i++)
 		b[i] = vtoa(a[i]);
@@ -25,217 +93,245 @@ T** vtoa(vector<vector<T>> a) {
 
 //массив -> вектор
 template<typename T, size_t N>
-vector<T> atov(T(&a)[N]) {//массив, его размер
-	vector<T>b;
+std::vector<T> atov(T(&a)[N])
+{
+	std::vector<T>b;
 	for (size_t i = 0; i < N; i++)
 		b.push_back(a[i]);
 	return b;
 }
 template<typename T, size_t N, size_t M>
-vector<vector<T>> atov(T(&a)[N][M]) {
-	vector<vector<T>> b;
+std::vector<std::vector<T>> atov(T(&a)[N][M])
+{
+	std::vector<std::vector<T>> b;
 	for (size_t i = 0; i < N; i++)
 		b.push_back(atov(a[i]));
 	return b;
 }
-
 template<class T>
-class Matrix {
-public:
-	T** mx;
-	size_t w, h;
-	
-	//массивом
-	template<size_t N, size_t M>
-	Matrix(T(&m)[N][M]) {
-		mx = new T * [N];
-		for (int i = 0; i < N; i++)
-			mx[i] = m[i];
-		h = sizeof(m) / sizeof(m[0]);
-		w = sizeof(m[0]) / sizeof(T);
-	};
-	//вектором
-	Matrix(vector<vector<T>> m) {
-		mx = vtoa(m);
-		h = m.size();
-		w = m[0].size();
-	};
-	//нулями по размеру w x h
-	Matrix(size_t w, size_t h) {
-		mx = new T*[h];
-		for (int i = 0; i < h; i++) {
-			mx[i] = new T[w];
-			for (int j = 0; j < h; j++)
-				mx[i][j] = 0;
-		}
-		this->h = h;
-		this->w = w;
-	};
-	
-	Matrix& operator= (const Matrix& b) {
-		if (this == &b) {
-			return *this;
-		}
-		for (int i = 0; i < h; i++)
-			delete[] mx[i];
-		delete[]mx;
+template<size_t N, size_t M>
+Matrix<T>::Matrix(T(&m)[N][M])
+{
+	matrix = new T * [N];
+	for (int i = 0; i < N; i++) {
+		matrix[i] = new T[M];
+		for (int j = 0; j < M; j++)
+			matrix[i][j] = m[i][j];
+	}
 
-		mx = new T * [h];
-		for (int i = 0; i < h; i++) {
-			mx[i] = new T[w];
-			for (int j = 0; j < h; j++)
-				mx[i][j] = b.mx[i][j];
-		}
-		w = b.w;
-		h = b.h;
+	height = sizeof(m) / sizeof(m[0]);
+	width = sizeof(m[0]) / sizeof(T);
+};
+template<class T>
+Matrix<T>::Matrix(std::vector<std::vector<T>> m)
+{
+	matrix = vtoa(m);
+	height = m.size();
+	width = m[0].size();
+};
+template<class T>
+Matrix<T>::Matrix(size_t w, size_t h)
+{
+	matrix = new T * [h];
+	for (int i = 0; i < h; i++) {
+		matrix[i] = new T[w];
+		for (int j = 0; j < w; j++)
+			matrix[i][j] = 0;
+	}
+	this->height = h;
+	this->width = w;
+};
+template<class T>
+Matrix<T>::Matrix(const Matrix& b)
+{
+	matrix = new T * [b.height];
+	for (int i = 0; i < b.height; i++) {
+		matrix[i] = new T[b.width];
+		for (int j = 0; j < b.width; j++)
+			matrix[i][j] = b.matrix[i][j];
+	}
+	width = b.width;
+	height = b.height;
+}
+template<class T>
+Matrix<T>& Matrix<T>:: operator= (const Matrix& b)
+{
+	if (this == &b) {
 		return *this;
 	}
+	for (int i = 0; i < height; i++)
+		delete[] matrix[i];
+	delete[]matrix;
 
-	Matrix operator +(const Matrix& b) {
-		Matrix r(w, h);
-		for (int i = 0; i < h; i++)
-			for (int j = 0; j < w; j++)
-				r.mx[i][j] = mx[i][j] + b.mx[i][j];
-		return r;
+	matrix = new T * [b.height];
+	for (int i = 0; i < b.height; i++) {
+		matrix[i] = new T[b.width];
+		for (int j = 0; j < b.width; j++)
+			matrix[i][j] = b.matrix[i][j];
 	}
-	Matrix operator +(float a) {
-		Matrix r(w, h);
-		for (int i = 0; i < h; i++)
-			for (int j = 0; j < w; j++)
-				mx[i][j] += a;
-		return *this;
-	}
+	width = b.width;
+	height = b.height;
+	return *this;
+}
+template<class T>
+Matrix<T> Matrix<T>:: operator +(const Matrix& b){
+	//ПРОВЕРКА НА ОДИНАКОВЫЕ РАЗМЕРЫ
+	if (width != b.width || height != b.height)
+		throw BadArgument();
+	Matrix r(width, height);
+	for (int i = 0; i < height; i++)
+		for (int j = 0; j < width; j++)
+			r.matrix[i][j] = matrix[i][j] + b.matrix[i][j];
+	return r;
+}
+template<class T>
+Matrix<T> Matrix<T>:: operator +(float a)
+{
+	Matrix r(width, height);
+	for (int i = 0; i < height; i++)
+		for (int j = 0; j < width; j++)
+			matrix[i][j] += a;
+	return r;
+}
+template<class T>
+Matrix<T> Matrix<T>:: operator -(const Matrix& b)
+{
+	if (width != b.width || height != b.height)
+		throw BadArgument();
+	Matrix r(width, height);
+	for (int i = 0; i < height; i++)
+		for (int j = 0; j < width; j++)
+			r.matrix[i][j] = matrix[i][j] - b.matrix[i][j];
+	return r;
+}
+template<class T>
+Matrix<T> Matrix<T>:: operator -(float a)
+{
+	Matrix r(width, height);
+	for (int i = 0; i < height; i++)
+		for (int j = 0; j < width; j++)
+			matrix[i][j] -= a;
+	return *this;
+}
+template<class T>
+Matrix<T> Matrix<T>:: operator *(const Matrix& b)
+{
+	//ПРОВЕРКА НА ВОЗМОЖНОСТЬ УМНОЖЕНИЯ
+	if (width != b.height)
+		throw BadArgument();
 
-	Matrix operator -(const Matrix& b){
-		Matrix r(w, h);
-		for (int i = 0; i < h; i++)
-			for (int j = 0; j < w; j++)
-				r.mx[i][j] = mx[i][j] - b.mx[i][j];
-		return r;
-	}
-	Matrix operator -(float a) {
-		Matrix r(w, h);
-		for (int i = 0; i < h; i++)
-			for (int j = 0; j < w; j++)
-				mx[i][j]-=a;
-		return *this;
-	}
+	Matrix r(b.width, height);
+	for (size_t i = 0; i < height; i++)
+		for (size_t j = 0; j < b.width; j++)
+			for (size_t k = 0; k < b.height; k++)
+				r.matrix[i][j] += matrix[i][k] * b.matrix[k][j];
 
-	
-	Matrix operator *(const Matrix &b) {
-	
-		if (w != b.h)
-			throw BadArgument();
-
-		vector<vector<T>> r;
-		for (size_t i = 0; i < w; i++) {
-			vector<T> line;
-			for (size_t j = 0; j < b.w; j++) {
-				T num = 0;
-				for (size_t k = 0; k < b.h; k++)
-					num += mx[i][k] * b.mx[k][j];
-				line.push_back(num);
-			}
-			r.push_back(line);
+	return r;
+}
+template<class T>
+Matrix<T>Matrix<T>:: operator *(float a)
+{
+	Matrix r(width, height);
+	for (int i = 0; i < height; i++)
+		for (int j = 0; j < width; j++)
+			r.matrix[i][j] = matrix[i][j] * a;
+	return r;
+}
+template<class T>
+Matrix<T> Matrix<T>::algAd(size_t y, size_t x)
+{
+	Matrix r(width - 1, height - 1);
+	bool I = false;
+	bool J = false;
+	for (int i = 0; i < height; i++) {
+		J = false;
+		if (i == y) {
+			I = true;
+			continue;
 		}
-		return r;
-	}
-	Matrix operator *(float a) {
-		Matrix r(w, h);
-		for (int i = 0; i < h; i++)
-			for (int j = 0; j < w; j++)
-				mx[i][j] *= a;
-		return *this;
-	}
-
-	//алгоритмическое дополнение по y x
-	Matrix algAd(size_t y, size_t x) {
-		Matrix r(w-1, h-1);
-		bool I = false;
-		bool J = false;
-		for (int i = 0; i < h; i++) {
-			J = false;
-			if (i == y) {
-				I = true;
+		for (int j = 0; j < width; j++) {
+			if (j == x) {
+				J = true;
 				continue;
 			}
-			for (int j = 0; j < w; j++) {
-				if (j == x) {
-					J = true;
-					continue;
-				}
-				r.mx[((I) ? -1 : 0) + i][((J) ? -1 : 0) + j] = mx[i][j];
-			}
+			r.matrix[((I) ? -1 : 0) + i][((J) ? -1 : 0) + j] = matrix[i][j];
 		}
+	}
+	return r;
+}
+template<class T>
+T Matrix<T>:: det()
+{
+	if (width != height) {
+		throw BadArgument();
+		return NULL;
+	}
+	if (width == 1)
+		return matrix[0][0];
+	if (width == 2)
+		return matrix[0][0] * matrix[1][1] - matrix[1][0] * matrix[0][1];
+	else {
+		T r = 0;
+		for (size_t i = 0; i < width; i++)
+			r += pow(-1, i) * algAd(0, i).det() * matrix[0][i];
 		return r;
 	}
-
-	T det (){
-		if (w != h) {
-			throw BadArgument();
-			return NULL;
+}
+template<class T>
+Matrix<T> Matrix<T>::transpose()
+{
+	for (int i = 0; i < height; i++)
+		for (int j = i; j < width; j++)
+			std::swap(matrix[i][j], matrix[j][i]);
+	return *this;
+}
+template<class T>
+Matrix<T> Matrix<T>::inverse()
+{
+	Matrix r(width, height);
+	for (int i = 0; i < height; i++)
+		for (int j = 0; j < width; j++)
+			r.matrix[i][j] = pow(-1, i + j) * algAd(i, j).det();
+	r.transpose();
+	return r * (1.0 / det());
+}
+template<class T>
+std::ostream& operator<< (std::ostream& out, const Matrix<T>& m)
+{
+	for (size_t i = 0; i < m.height; i++) {
+		for (size_t j = 0; j < m.width; j++) {
+			out << m.matrix[i][j] << ' ';
 		}
-		if (w == 1)
-			return mx[0][0];
-		if (w == 2)
-			return mx[0][0] * mx[1][1] - mx[1][0] * mx[0][1];
-		else {
-			T r=0;
-			for (size_t i = 0; i < w; i++)
-				r += pow(-1, i) * algAd(0, i).det() * mx[0][i];
-			return r;
-		}
+		out << std::endl;
 	}
-
-	Matrix transpose() {
-		for (int i = 0; i < h; i++)
-			for (int j = i; j < w; j++)
-				swap(mx[i][j], mx[j][i]);
-		return *this;
-	}
-
-	Matrix inverse() {
-		Matrix r(w, h);
-		for (int i = 0; i < h; i++)
-			for (int j = 0; j < w; j++)
-				r.mx[i][j] = algAd(i, j).det();
-		r.transpose();
-		return r * (1.0 / det());
-	}
-	
-	//вывод
-	friend std::ostream& operator<< (std::ostream& out, const Matrix& m){
-		for (size_t i = 0; i < m.h; i++) {
-			for (size_t j = 0; j < m.w; j++) {
-				out << m.mx[i][j] << ' ';
-			}
-			out << endl;
-		}
-		return out;
-	}
-
-	~Matrix () {
-		for (int i = 0; i < h; i++)
-			delete[] mx[i];
-		delete[]mx;
-	}
-};
-
-
+	return out;
+}
+template<class T>
+Matrix<T>::~Matrix()
+{
+	for (int i = 0; i < height; i++)
+		delete[] matrix[i];
+	delete[]matrix;
+}
+//методы вывода 
+/////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
-void show(vector<vector<T>> a) {
+void show(std::vector<std::vector<T>> a) 
+{
 	for (size_t i = 0; i < a.size(); i++) {
 		for (size_t j = 0; j < a.size(); j++) {
-			cout << a[i][j] << ' ';
+			std::cout << a[i][j] << ' ';
 		}
-		cout << endl;
+		std::cout << std::endl;
 	}
 }
 
 template<typename T>
-void show(vector<T> a) {
+void show(std::vector<T> a) 
+{
 	for (size_t i = 0; i < a.size(); i++) {
-		cout << a[i] << ' ';
+		std::cout << a[i] << ' ';
 	}
-	cout << endl;
+	std::cout << std::endl;
 }
+/////////////////////////////////////////////////////////////////////////////////////////
