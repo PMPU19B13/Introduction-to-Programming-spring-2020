@@ -9,27 +9,27 @@
 class WithName
 {
 public:
-	virtual const char* getName() const = 0;
+    virtual const char* getName() const = 0;
 };
 
 class Person : public WithName
 {
 public:
-	Person(const char* name, int height) : m_name(name), m_height(height)
+    Person(const char* name, int height) : m_name(name), m_height(height)
     {
     }
-	virtual const char* getName() const
+    virtual const char* getName() const
     {
         return m_name;
     }
-	int getHeight() const
+        int getHeight() const
     {
         return m_height;
     }
 
 private:
-	const char* m_name;
-	int m_height;
+    const char* m_name;
+    int m_height;
 };
 
 class Student : public Person
@@ -44,23 +44,23 @@ public:
     }
 
 private:
-	int m_group_number;
+    int m_group_number;
 };
 
 class Street : public WithName
 {
 public:
-	Street(char* Sname = "Botanicheskaya") :m_Sname(Sname)
+    Street(char* Sname = "Botanicheskaya") :m_Sname(Sname)
     {
     }
-	virtual const char* getName() const
+    virtual const char* getName() const
     {
         return m_Sname;
     }
 
 private:
-	char* m_Sname;
-	int m_numHouse;
+    char* m_Sname;
+    int m_numHouse;
 };
 
 class Rational
@@ -173,12 +173,12 @@ void printContents(Storage<double> s)
 
 void sayHello(WithName* p)
 {
-	std::cout << "Hello " << p->getName() << std::endl;
+    std::cout << "Hello " << p->getName() << std::endl;
 }
 
 void getErr(IRequirement* req)
 {
-	std::cout << "Error now " << req->error() << std::endl;
+    std::cout << "Error now " << req->error() << std::endl;
 }
 
 int main()
@@ -186,32 +186,32 @@ int main()
     try
     {
         Person p("Mary", 163);
-		Student s;
-		Street st;
-		sayHello(&p);
-		sayHello(&s);
-		sayHello(&st);
+        Student s;
+        Street st;
+        sayHello(&p);
+        sayHello(&s);
+        sayHello(&st);
 
-		std::cout << "Student's name is " << s.getName()<< std::endl;
-		std::cout << "Student's height is " << s.getHeight() << std::endl;
+        std::cout << "Student's name is " << s.getName()<< std::endl;
+        std::cout << "Student's height is " << s.getHeight() << std::endl;
 
-		Point p1, p2(1,1), p3(1,0), p4(2,1);
-		Segment se(&p3, &p4);
-		HorizontalRequirement hr(&se);
-		PointOnSegmentRequirement pos(&p1, &se);
+        Point p1, p2(1,1), p3(1,0), p4(2,1);
+        Segment se(&p3, &p4);
+        HorizontalRequirement hr(&se);
+        PointOnSegmentRequirement pos(&p1, &se);
 
-		std::cout << hr.error() << std::endl;
-		std::cout << pos.error() << std::endl;
+        std::cout << hr.error() << std::endl;
+        std::cout << pos.error() << std::endl;
 
-		/*
-        	IRequirement* ptrreq = (IRequirement*)&hr;
-		std::cout << ptrreq->error() << std::endl;
-		ptrreq = (IRequirement*)&pos;
-		std::cout << ptrreq->error() << std::endl;
-		*/
+        /*
+        IRequirement* ptrreq = (IRequirement*)&hr;
+        std::cout << ptrreq->error() << std::endl;
+        ptrreq = (IRequirement*)&pos;
+        std::cout << ptrreq->error() << std::endl;
+        */
 
-		getErr((IRequirement*) &hr);
-		getErr((IRequirement*) &pos);
+        getErr((IRequirement*) &hr);
+        getErr((IRequirement*) &pos);
         
         std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
         std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
