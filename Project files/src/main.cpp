@@ -115,21 +115,21 @@ void printContents(Storage<double> s)
 template<typename Fun, typename Arg>
 Arg findZeroNewtMeth(Fun function, Arg low, Arg high, Arg eps)
 {   
-	double x = (low + high) / 2; 
-	double  min = 1000000;
-	for (int i = low; i < high; i++)
-		if (min > derivative(function,x))
-		{
-			min = derivative(function,x);
-		}
-	double  x0 = -1000, x1;
+        double x = (low + high) / 2; 
+        double  min = 1000000;
+        for (int i = low; i < high; i++)
+                if (min > derivative(function,i))
+                {
+                      min = derivative(function,i);
+                }
+        double  x0 = -1000, x1;
 	x1 = x - function(x) / derivative(function,x);
-	while (abs(function(x1) / min) > eps)
-	{
-		x0 = x1;
-			x1 = x0 - function(x0) / derivative(function,x0);
-	}
-	return(x1);
+        while (abs(function(x1) / min) > eps)
+        {
+                  x0 = x1;
+                        x1 = x0 - function(x0) / derivative(function,x0);
+        }
+        return(x1);
 }
 int main()
 {
