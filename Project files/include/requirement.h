@@ -5,41 +5,41 @@
 class IRequirement
 {
 public:
-	virtual double error() const = 0;
+    virtual double error() const = 0;
 };
 
 class HorizontalRequirement
 {
 public:
-	HorizontalRequirement(Segment* segment);
+    HorizontalRequirement(Segment* segment);
 
-	virtual double error() const;
+    virtual double error() const;
 
 private:
-	Segment* m_segment;
+    Segment* m_segment;
 };
 
 class VerticalRequirement
 {
 public:
-	VerticalRequirement(Segment* segment);
+    VerticalRequirement(Segment* segment);
 
-	virtual double error() const;
+    virtual double error() const;
 
 private:
-	Segment* m_segment;
+    Segment* m_segment;
 };
 
 class PointOnSegmentRequirement
 {
 public:
-	PointOnSegmentRequirement(Point* point, Segment* segment);
+    PointOnSegmentRequirement(Point* point, Segment* segment);
 
-	virtual double error() const;
+    virtual double error() const;
 
 private:
-	Segment* m_segment;
-	Point* m_point;
+    Segment* m_segment;
+    Point* m_point;
 };
 
 
@@ -49,7 +49,7 @@ HorizontalRequirement::HorizontalRequirement(Segment* segment) : m_segment(segme
 
 double HorizontalRequirement::error() const
 {
-	return std::abs(m_segment->getEnd().getY() - m_segment->getStart().getY());
+    return std::abs(m_segment->getEnd().getY() - m_segment->getStart().getY());
 }
 
 VerticalRequirement::VerticalRequirement(Segment* segment) : m_segment(segment)
@@ -58,7 +58,7 @@ VerticalRequirement::VerticalRequirement(Segment* segment) : m_segment(segment)
 
 double VerticalRequirement::error() const
 {
-	return std::abs(m_segment->getEnd().getX() - m_segment->getStart().getX());
+    return std::abs(m_segment->getEnd().getX() - m_segment->getStart().getX());
 }
 
 PointOnSegmentRequirement::PointOnSegmentRequirement(Point* point, Segment* segment) : m_point(point), m_segment(segment)
@@ -67,5 +67,5 @@ PointOnSegmentRequirement::PointOnSegmentRequirement(Point* point, Segment* segm
 
 double PointOnSegmentRequirement::error() const
 {
-	return std::abs(m_point->getX() - m_segment->getEnd().getX()) / (m_point->getX() - m_segment->getStart().getX());
+    return std::abs(m_point->getX() - m_segment->getEnd().getX()) / (m_point->getX() - m_segment->getStart().getX());
 }
