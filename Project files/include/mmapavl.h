@@ -5,11 +5,11 @@
 #include <stdlib.h>
 
 template<typename K, typename V>
-class MMap
+class MMapAVL
 {
 public:
-	MMap();
-	~MMap();
+	MMapAVL();
+	~MMapAVL();
 	void add(const K& key, const V& value);
 	bool hasKey(const K& key) const;
 	const V& getAssoc(const K& key);
@@ -105,25 +105,25 @@ private:
 };
 
 template<typename K, typename V>
-void MMap<K, V>::add(const K& key, const V& value)
+void MMapAVL<K, V>::add(const K& key, const V& value)
 {
     m_root = add(nullptr, m_root, key, value);
 }
 
 template<typename K, typename V>
-MMap<K, V>::MMap() : m_root(nullptr)
+MMapAVL<K, V>::MMapAVL() : m_root(nullptr)
 {
 }
 
 template<typename K, typename V>
-MMap<K, V>::~MMap()
+MMapAVL<K, V>::~MMapAVL()
 {
 	clear(m_root);
 }
 
 
 template<typename K, typename V>
-bool MMap<K, V>::hasKey(const K& key) const // Проверка наличия пары с указанным ключом
+bool MMapAVL<K, V>::hasKey(const K& key) const // Проверка наличия пары с указанным ключом
 {
 
 	Node* runner = m_root;
@@ -153,7 +153,7 @@ bool MMap<K, V>::hasKey(const K& key) const // Проверка наличия �
 }
 
 template<typename K, typename V>
-const V& MMap<K, V>::getAssoc(const K& key)
+const V& MMapAVL<K, V>::getAssoc(const K& key)
 {
 	Node* runner = m_root;
 	if (runner == nullptr)
@@ -182,7 +182,7 @@ const V& MMap<K, V>::getAssoc(const K& key)
 }
 
 template<typename K, typename V>
-void MMap<K, V>::clear(Node* runner)
+void MMapAVL<K, V>::clear(Node* runner)
 {
 	if (runner != nullptr)
 	{
