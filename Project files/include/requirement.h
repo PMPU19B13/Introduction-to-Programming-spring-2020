@@ -8,7 +8,7 @@ public:
     virtual double error() const = 0;
 };
 
-class HorizontalRequirement
+class HorizontalRequirement : public IRequirement
 {
 public:
     HorizontalRequirement(Segment* segment);
@@ -19,7 +19,7 @@ private:
     Segment* m_segment;
 };
 
-class VerticalRequirement
+class VerticalRequirement : public IRequirement
 {
 public:
     VerticalRequirement(Segment* segment);
@@ -30,7 +30,7 @@ private:
     Segment* m_segment;
 };
 
-class PointOnSegmentRequirement
+class PointOnSegmentRequirement : public IRequirement
 {
 public:
     PointOnSegmentRequirement(Point* point, Segment* segment);
