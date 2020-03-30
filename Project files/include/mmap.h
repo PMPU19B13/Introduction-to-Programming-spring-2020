@@ -17,47 +17,47 @@ public:
 
     const V& getAssoc(const K& key);
 /*class Marker
-	{
-	public:
-		bool hasNext() const
-		{
-			return m_marker != nullptr && m_marker->next != nullptr;
-		}
+    {
+    public:
+        bool hasNext() const
+        {
+            return m_marker != nullptr && m_marker->next != nullptr;
+        }
 
-		void next()
-		{
-			if (m_marker != nullptr)
-				m_marker = m_marker->next;
-		}
+        void next()
+        {
+            if (m_marker != nullptr)
+                m_marker = m_marker->next;
+        }
 
-		T& getValue()
-		{
-			if (m_marker == nullptr)
-				throw Error();
+        T& getValue()
+        {
+            if (m_marker == nullptr)
+                throw Error();
 
-			return m_marker->data;
-		}
+            return m_marker->data;
+        }
 
-		void remove()
-		{
-			m_marker->previous->next = m_marker->next;
-			m_marker->next->previous = m_marker->previous;
-			valid = false;
-		}
+        void remove()
+        {
+            m_marker->previous->next = m_marker->next;
+            m_marker->next->previous = m_marker->previous;
+            valid = false;
+        }
 
-		bool isValid()
-		{
-			return m_marker != nullptr && valid;
-		}
+        bool isValid()
+        {
+            return m_marker != nullptr && valid;
+        }
 
-		friend class MMap;
+        friend class MMap;
 
-	private:
-		bool valid;
-		MMap<K, V>::Node* m_marker;
-	};
+    private:
+        bool valid;
+        MMap<K, V>::Node* m_marker;
+    };
 
-	Marker createMarker();*/
+    Marker createMarker();*/
     
 private:
     struct Node
