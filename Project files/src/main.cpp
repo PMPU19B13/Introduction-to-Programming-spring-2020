@@ -113,7 +113,7 @@ void printContents(Storage<double> s)
     }
 }
 template<typename Fun, typename Arg>
-Arg findZeroNewtMeth(Fun function, Arg low, Arg high, Arg eps)
+Arg NewtMeth(Fun function, Arg low, Arg high, Arg eps)
 {   
         double x = (low + high) / 2; 
         double  min = 1000000;
