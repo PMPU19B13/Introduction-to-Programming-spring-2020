@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "error.h"
 
 //методы преобразования массив <-> вектор
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,10 +36,10 @@ cout << (B*C+A*2).det();
 */
 template<class T>
 class Matrix {
-public:
+private:
 	T** matrix;
 	size_t width, height;//размеры матрицы
-
+public:
 	template<size_t N, size_t M>
 	Matrix(T(&m)[N][M]);// инициализация массивом
 	
@@ -51,18 +52,21 @@ public:
 	Matrix& operator= (const Matrix& b);
 
 	Matrix operator +(const Matrix& b);
-	Matrix operator +(float a);
+	Matrix operator +(double a);
 
 	Matrix operator -(const Matrix& b);
-	Matrix operator -(float a);
+	Matrix operator -(double a);
 
 	Matrix operator *(const Matrix& b);
-	Matrix operator *(float a);
+	Matrix operator *(double a);
 
 	Matrix algAd(size_t y, size_t x);//алгоритмическое дополнение по y x
 
 	T det();//определитель
-
+        
+        template<typename S>
+        friend std::ostream& operator<< (std::ostream& out, const Matrix<S>& m);
+	
 	Matrix transpose();//транспонирование
 
 	Matrix inverse();//обратная матрица
@@ -185,7 +189,7 @@ Matrix<T> Matrix<T>:: operator +(const Matrix& b){
 	return r;
 }
 template<class T>
-Matrix<T> Matrix<T>:: operator +(float a)
+Matrix<T> Matrix<T>:: operator +(double a)
 {
 	Matrix r(width, height);
 	for (int i = 0; i < height; i++)
@@ -205,7 +209,7 @@ Matrix<T> Matrix<T>:: operator -(const Matrix& b)
 	return r;
 }
 template<class T>
-Matrix<T> Matrix<T>:: operator -(float a)
+Matrix<T> Matrix<T>:: operator -(double a)
 {
 	Matrix r(width, height);
 	for (int i = 0; i < height; i++)
@@ -229,7 +233,7 @@ Matrix<T> Matrix<T>:: operator *(const Matrix& b)
 	return r;
 }
 template<class T>
-Matrix<T>Matrix<T>:: operator *(float a)
+Matrix<T>Matrix<T>:: operator *(double a)
 {
 	Matrix r(width, height);
 	for (int i = 0; i < height; i++)
@@ -295,16 +299,16 @@ Matrix<T> Matrix<T>::inverse()
 	r.transpose();
 	return r * (1.0 / det());
 }
-template<class T>
+template<typename T>
 std::ostream& operator<< (std::ostream& out, const Matrix<T>& m)
 {
-	for (size_t i = 0; i < m.height; i++) {
-		for (size_t j = 0; j < m.width; j++) {
-			out << m.matrix[i][j] << ' ';
-		}
-		out << std::endl;
-	}
-	return out;
+    for (size_t i = 0; i < m.height; i++) {
+        for (size_t j = 0; j < m.width; j++) {
+            out << m.matrix[i][j] << ' ';
+        }
+        out << std::endl;
+    }
+    return out;
 }
 template<class T>
 Matrix<T>::~Matrix()
