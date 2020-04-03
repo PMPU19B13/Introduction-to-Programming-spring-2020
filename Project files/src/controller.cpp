@@ -11,7 +11,7 @@ Controller::Controller()
 
 }
 
-ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
+ID Controller::addPrimitive(PrimitiveType type, const Storage<double>& params)
 {
     switch (type)
     {

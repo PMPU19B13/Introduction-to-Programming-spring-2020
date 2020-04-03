@@ -16,10 +16,52 @@ public:
 
 	bool hasKey(const K& key) const;
 
-	const V& getAssoc(const K& key);
+    const V& getAssoc(const K& key);
+   // void traverse(void (* action)(int));
+/*class Marker
+    {
+    public:
+        bool hasNext() const
+        {
+            return m_marker != nullptr && m_marker->next != nullptr;
+        }
 
-	void traverse(void (* action)(int));
+        void next()
+        {
+            if (m_marker != nullptr)
+                m_marker = m_marker->next;
+        }
 
+        T& getValue()
+        {
+            if (m_marker == nullptr)
+                throw Error();
+
+            return m_marker->data;
+        }
+
+        void remove()
+        {
+            m_marker->previous->next = m_marker->next;
+            m_marker->next->previous = m_marker->previous;
+            valid = false;
+        }
+
+        bool isValid()
+        {
+            return m_marker != nullptr && valid;
+        }
+
+        friend class MMap;
+
+    private:
+        bool valid;
+        MMap<K, V>::Node* m_marker;
+    };
+
+
+    Marker createMarker();*/
+    
 private:
 	struct Node
 	{
