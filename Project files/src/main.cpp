@@ -149,11 +149,11 @@ T func1(T x)
 }
 
 // Функция для вычисления производной в точке
-template<typename F>
-F derivative(F x)
+template <typename Fun, typename Arg>
+Arg derivative(Fun function, Arg x)
 {
-    double dx = 1e-10;
-    return (func1(x + dx) - func1(x)) / dx;
+    double dx = 1e-5;
+    return (function(x + dx) - function(x)) / dx;
 }
 
 std::ostream& operator<<(std::ostream& ost, const Rational& r)
@@ -215,14 +215,8 @@ int main()
         
         std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
         std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
-        std::cout << derivative(6.0) << std::endl;
+        std::cout << derivative(func1<double>, 8.0) << std::endl;
         MMap<int, double> mmap;
-     
-        mmap.add(2, 2.2);
-        mmap.add(3, 2.2);
-        mmap.add(1, 2.2);
-        mmap.add(4, 2.2);
-
 //        mmap.add();
 
 //        Controller controller;
