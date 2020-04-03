@@ -30,7 +30,7 @@ class Controller
 public:
     Controller();
 
-    ID addPrimitive(PrimitiveType, Storage<double>);
+    ID addPrimitive(PrimitiveType, const Storage<double>&);
 
     void removePrimitive(const ID&);
 

@@ -1,6 +1,8 @@
 #pragma once
 
+#include <queue>
 #include "pair.h"
+#include "error.h"
 
 template<typename K, typename V>
 class MMap
@@ -15,7 +17,52 @@ public:
     bool hasKey(const K& key) const;
 
     const V& getAssoc(const K& key);
+	
+    void traverse(void (* action)(int));
 
+/*class Marker
+    {
+    public:
+        bool hasNext() const
+        {
+            return m_marker != nullptr && m_marker->next != nullptr;
+        }
+
+        void next()
+        {
+            if (m_marker != nullptr)
+                m_marker = m_marker->next;
+        }
+
+        T& getValue()
+        {
+            if (m_marker == nullptr)
+                throw Error();
+
+            return m_marker->data;
+        }
+
+        void remove()
+        {
+            m_marker->previous->next = m_marker->next;
+            m_marker->next->previous = m_marker->previous;
+            valid = false;
+        }
+
+        bool isValid()
+        {
+            return m_marker != nullptr && valid;
+        }
+
+        friend class MMap;
+
+    private:
+        bool valid;
+        MMap<K, V>::Node* m_marker;
+    };
+
+    Marker createMarker();*/
+    
 private:
     struct Node
     {
@@ -27,6 +74,8 @@ private:
     Node* m_root; // Указатель на корневой узел
 
     void clear(Node* runner);
+
+    void traversePrivate(Node* runner, void (* action)(int));
 };
 
 template<typename K, typename V>
@@ -39,6 +88,32 @@ MMap<K, V>::~MMap()
 {
     clear(m_root);
 }
+
+template<typename K, typename V>
+void MMap<K, V>::traverse(void (* action)(int)) 
+{
+    traversePrivate(m_root, action);
+}
+
+
+template <typename K, typename V>
+void MMap<K, V>::traversePrivate(Node* runner, void (* action)(int)) 
+{
+    if (runner == nullptr) return;
+    std::queue<Node*> q;
+    q.push(runner);
+
+    while (q.empty() == false) 
+    {
+        Node* node = q.front();
+        // Perform action here
+        q.pop();
+
+        if (node->left != nullptr) q.push(node->left);
+        if (node->right != nullptr) q.push(node->right);
+    }
+}
+
 
 template<typename K, typename V>
 void MMap<K, V>::add(const K& key, const V& value)
@@ -102,7 +177,6 @@ void MMap<K, V>::add(const K& key, const V& value)
 template<typename K, typename V>
 bool MMap<K, V>::hasKey(const K& key) const // Проверка наличия пары с указанным ключом
 {
-
     Node* runner = m_root;
     if (runner == nullptr)
         return false;
@@ -157,7 +231,6 @@ const V& MMap<K, V>::getAssoc(const K& key)
         }
     }
 }
-
 
 template<typename K, typename V>
 void MMap<K, V>::clear(Node* runner)
