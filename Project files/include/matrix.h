@@ -117,7 +117,8 @@ template<size_t N, size_t M>
 Matrix<T>::Matrix(T(&m)[N][M])
 {
 	matrix = new T * [N];
-	for (int i = 0; i < N; i++) {
+	for (int i = 0; i < N; i++) 
+	{
 		matrix[i] = new T[M];
 		for (int j = 0; j < M; j++)
 			matrix[i][j] = m[i][j];
@@ -137,7 +138,8 @@ template<class T>
 Matrix<T>::Matrix(size_t w, size_t h)
 {
 	matrix = new T * [h];
-	for (int i = 0; i < h; i++) {
+	for (int i = 0; i < h; i++) 
+	{
 		matrix[i] = new T[w];
 		for (int j = 0; j < w; j++)
 			matrix[i][j] = 0;
@@ -149,7 +151,8 @@ template<class T>
 Matrix<T>::Matrix(const Matrix& b)
 {
 	matrix = new T * [b.height];
-	for (int i = 0; i < b.height; i++) {
+	for (int i = 0; i < b.height; i++) 
+	{
 		matrix[i] = new T[b.width];
 		for (int j = 0; j < b.width; j++)
 			matrix[i][j] = b.matrix[i][j];
@@ -160,7 +163,8 @@ Matrix<T>::Matrix(const Matrix& b)
 template<class T>
 Matrix<T>& Matrix<T>:: operator= (const Matrix& b)
 {
-	if (this == &b) {
+	if (this == &b) 
+	{
 		return *this;
 	}
 	for (int i = 0; i < height; i++)
@@ -168,7 +172,8 @@ Matrix<T>& Matrix<T>:: operator= (const Matrix& b)
 	delete[]matrix;
 
 	matrix = new T * [b.height];
-	for (int i = 0; i < b.height; i++) {
+	for (int i = 0; i < b.height; i++) 
+	{
 		matrix[i] = new T[b.width];
 		for (int j = 0; j < b.width; j++)
 			matrix[i][j] = b.matrix[i][j];
@@ -247,13 +252,15 @@ Matrix<T> Matrix<T>::algAd(size_t y, size_t x)
 	Matrix r(width - 1, height - 1);
 	bool I = false;
 	bool J = false;
-	for (int i = 0; i < height; i++) {
+	for (int i = 0; i < height; i++) 
+	{
 		J = false;
 		if (i == y) {
 			I = true;
 			continue;
 		}
-		for (int j = 0; j < width; j++) {
+		for (int j = 0; j < width; j++) 
+		{
 			if (j == x) {
 				J = true;
 				continue;
@@ -266,7 +273,8 @@ Matrix<T> Matrix<T>::algAd(size_t y, size_t x)
 template<class T>
 T Matrix<T>:: det()
 {
-	if (width != height) {
+	if (width != height)
+	{
 		throw BadArgument();
 		return NULL;
 	}
@@ -274,7 +282,8 @@ T Matrix<T>:: det()
 		return matrix[0][0];
 	if (width == 2)
 		return matrix[0][0] * matrix[1][1] - matrix[1][0] * matrix[0][1];
-	else {
+	else 
+	{
 		T r = 0;
 		for (size_t i = 0; i < width; i++)
 			r += pow(-1, i) * algAd(0, i).det() * matrix[0][i];
@@ -302,8 +311,10 @@ Matrix<T> Matrix<T>::inverse()
 template<typename T>
 std::ostream& operator<< (std::ostream& out, const Matrix<T>& m)
 {
-    for (size_t i = 0; i < m.height; i++) {
-        for (size_t j = 0; j < m.width; j++) {
+    for (size_t i = 0; i < m.height; i++) 
+    {
+        for (size_t j = 0; j < m.width; j++) 
+	{
             out << m.matrix[i][j] << ' ';
         }
         out << std::endl;
@@ -322,8 +333,10 @@ Matrix<T>::~Matrix()
 template<typename T>
 void show(std::vector<std::vector<T>> a) 
 {
-	for (size_t i = 0; i < a.size(); i++) {
-		for (size_t j = 0; j < a.size(); j++) {
+	for (size_t i = 0; i < a.size(); i++) 
+	{
+		for (size_t j = 0; j < a.size(); j++) 
+		{
 			std::cout << a[i][j] << ' ';
 		}
 		std::cout << std::endl;
@@ -333,7 +346,8 @@ void show(std::vector<std::vector<T>> a)
 template<typename T>
 void show(std::vector<T> a) 
 {
-	for (size_t i = 0; i < a.size(); i++) {
+	for (size_t i = 0; i < a.size(); i++) 
+	{
 		std::cout << a[i] << ' ';
 	}
 	std::cout << std::endl;
