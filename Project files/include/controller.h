@@ -1,4 +1,8 @@
 #pragma once
+class Drawer;
+
+#ifndef __C_H_INCLUDED__
+#define __C_H_INCLUDED__
 
 #include "geometry.h"
 #include "storage.h"
@@ -25,12 +29,13 @@ enum RequirementType
     R_IsOn
 };
 
-class Controller
-{
+class Controller{
 public:
-    Controller();
+	Drawer* drawer;
 
-    ID addPrimitive(PrimitiveType, const Storage<double>&);
+	Controller();
+
+	ID addPrimitive(PrimitiveType, const Storage<double>&);
 
     void removePrimitive(const ID&);
 
@@ -42,7 +47,7 @@ public:
 
     void writePrimitive(const std::string& fileName);
 
-    void updateView();
+    bool updateView();
 
 private:
     struct Requirement
@@ -74,3 +79,4 @@ private:
     List<Pair<ID, Segment>> m_segments;
     List<Pair<ID, Circle>> m_circles;
 };
+#endif
