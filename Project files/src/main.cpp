@@ -203,8 +203,9 @@ int main()
 	c.addPrimitive(P_Circle, s);
 	s.add(60);
 	c.addPrimitive(P_Segment, s);
-
+	
 	while (c.updateView()) {};//!DON NOT REMOVE!
 
 	return 0;
+
 }
