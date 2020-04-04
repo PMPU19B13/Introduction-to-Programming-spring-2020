@@ -47,22 +47,6 @@ private:
     int m_group_number;
 };
 
-class Street : public WithName
-{
-public:
-    Street(char* Sname = "Botanicheskaya") :m_Sname(Sname)
-    {
-    }
-    virtual const char* getName() const
-    {
-        return m_Sname;
-    }
-
-private:
-    char* m_Sname;
-    int m_numHouse;
-};
-
 class Rational
 {
 public:
@@ -202,73 +186,25 @@ void getErr(IRequirement* req)
     std::cout << "Error now " << req->error() << std::endl;
 }
 
+#include <SFML/Graphics.hpp>
+#include "matrix.h"
+#include <string>
+using namespace std;
 int main()
 {
-    try
-    {
-        Person p("Mary", 163);
-        Student s;
-        Street st;
-        sayHello(&p);
-        sayHello(&s);
-        sayHello(&st);
+	setlocale(LC_ALL, "rus");
+	Controller c;
 
-        std::cout << "Student's name is " << s.getName()<< std::endl;
-        std::cout << "Student's height is " << s.getHeight() << std::endl;
+	Storage<double> s;
+	s.add(0);
+	s.add(0);
+	s.add(30);
 
-        Point p1, p2(1,1), p3(1,0), p4(2,1);
-        Segment se(&p3, &p4);
-        HorizontalRequirement hr(&se);
-        PointOnSegmentRequirement pos(&p1, &se);
+	c.addPrimitive(P_Circle, s);
+	s.add(60);
+	c.addPrimitive(P_Segment, s);
 
-        std::cout << hr.error() << std::endl;
-        std::cout << pos.error() << std::endl;
+	while (c.updateView()) {};//!DON NOT REMOVE!
 
-        /*
-        IRequirement* ptrreq = (IRequirement*)&hr;
-        std::cout << ptrreq->error() << std::endl;
-        ptrreq = (IRequirement*)&pos;
-        std::cout << ptrreq->error() << std::endl;
-        */
-
-        getErr((IRequirement*) &hr);
-        getErr((IRequirement*) &pos);
-        
-        std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
-        std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
-        std::cout << derivative(func1<double>, 8.0) << std::endl;
-        std::cout << NewtMeth(func1<double>, 1.5, 2.5, 0.0000001) << std::endl;
-        MMap<int, double> mmap;
-//        mmap.add();
-
-//        Controller controller;
-//
-//        Storage<double> pointParams;
-//        Storage<double> segmentParams;
-//        Storage<double> circleParams;
-//
-//        pointParams.add(1.2);
-//        pointParams.add(14.7);
-//
-//        segmentParams.add(1.6);
-//        segmentParams.add(3.2);
-//        segmentParams.add(6.4);
-//        segmentParams.add(0.8);
-//
-//        circleParams.add(0);
-//        circleParams.add(0);
-//        circleParams.add(5.5);
-//
-//        controller.addPrimitive(P_Point, pointParams);
-//        controller.addPrimitive(P_Segment, segmentParams);
-//        controller.addPrimitive(P_Circle, circleParams);
-//
-//        controller.updateView();
-
-    } catch (...)
-    {
-        std::cout << "Whoops!" << std::endl;
-    }
-
-    return 0;
+	return 0;
 }
