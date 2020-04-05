@@ -25,89 +25,89 @@ private:
 	Node* m_root; // Указатель на корневой узел
 	void clear(Node* runner);
 
-    int height(Node* tree)
-    {
-        if (tree == nullptr)
-            return 0;
-        return tree->height;
-    }
+	int height(Node* tree)
+	{
+		if (tree == nullptr)
+			return 0;
+		return tree->height;
+	}
 
-    int balanceFactor(Node* tree)
-    {
-        return height(tree->right) - height(tree->left);
-    }
+	int balanceFactor(Node* tree)
+	{
+		return height(tree->right) - height(tree->left);
+	}
 
-    Node* rotateLeft(Node* tree)
-    {
-        Node* t = tree->right;
-        t->parent = tree->parent;
-        tree->right = t->left;
-        t->left = tree;
-        tree->parent = t;
-        tree->height = std::max(height(tree->left), height(tree->right)) + 1;
-        t->height = std::max(height(t->left), height(t->right)) + 1;
-        return t;
-    }
+	Node* rotateLeft(Node* tree)
+	{
+		Node* t = tree->right;
+		t->parent = tree->parent;
+		tree->right = t->left;
+		t->left = tree;
+		tree->parent = t;
+		tree->height = std::max(height(tree->left), height(tree->right)) + 1;
+		t->height = std::max(height(t->left), height(t->right)) + 1;
+		return t;
+	}
 
-    Node* rotateRight(Node* tree)
-    {
-        Node* t = tree->left;
-        t->parent = tree->parent;
-        tree->left = t->right;
-        t->right = tree;
-        tree->parent = t;
-        tree->height = std::max(height(tree->left), height(tree->right)) + 1;
-        t->height = std::max(height(t->left), height(t->right)) + 1;
-        return t;
-    }
+	Node* rotateRight(Node* tree)
+	{
+		Node* t = tree->left;
+		t->parent = tree->parent;
+		tree->left = t->right;
+		t->right = tree;
+		tree->parent = t;
+		tree->height = std::max(height(tree->left), height(tree->right)) + 1;
+		t->height = std::max(height(t->left), height(t->right)) + 1;
+		return t;
+	}
 
-    Node* balanceTree(Node* tree)
-    {
-        tree->height = std::max(height(tree->left), height(tree->right)) + 1;
-        if(balanceFactor(tree) == 2)
-        {
-            if(balanceFactor(tree->right) < 0)
-               tree->right = rotateRight(tree->right);
-            return rotateLeft(tree);
-        }
-        if(balanceFactor(tree) == -2)
-        {
-            if(balanceFactor(tree->left) > 0)
-                tree->left = rotateLeft(tree->left);
-            return rotateRight(tree);
-        }
-        return tree;
-    }
+	Node* balanceTree(Node* tree)
+	{
+		tree->height = std::max(height(tree->left), height(tree->right)) + 1;
+		if (balanceFactor(tree) == 2)
+		{
+			if (balanceFactor(tree->right) < 0)
+				tree->right = rotateRight(tree->right);
+			return rotateLeft(tree);
+		}
+		if (balanceFactor(tree) == -2)
+		{
+			if (balanceFactor(tree->left) > 0)
+				tree->left = rotateLeft(tree->left);
+			return rotateRight(tree);
+		}
+		return tree;
+	}
 
-    Node* add(Node* prev, Node* tree, const K& key, const V& value)
-    {
-        if (tree == nullptr)
-        {
-            tree = new Node;
-            tree->data.key = key;
-            tree->data.value = value;
-            tree->left = nullptr;
-            tree->right = nullptr;
-            tree->parent = prev;
-            tree->height = 1;
-            return tree;
-        }
-        if(key < tree->data.key)
-        {
-            tree->left = add(tree, tree->left, key, value);
-        }
-        else
-        {
-            tree->right = add(tree, tree->right, key, value);
-        }
-        return balanceTree(tree);
-    }
+	Node* add(Node* prev, Node* tree, const K& key, const V& value)
+	{
+		if (tree == nullptr)
+		{
+			tree = new Node;
+			tree->data.key = key;
+			tree->data.value = value;
+			tree->left = nullptr;
+			tree->right = nullptr;
+			tree->parent = prev;
+			tree->height = 1;
+			return tree;
+		}
+		if (key < tree->data.key)
+		{
+			tree->left = add(tree, tree->left, key, value);
+		}
+		else
+		{
+			tree->right = add(tree, tree->right, key, value);
+		}
+		return balanceTree(tree);
+	}
 };
 
 template<typename K, typename V>
 void MMapAVL<K, V>::add(const K& key, const V& value)
 {
-    m_root = add(nullptr, m_root, key, value);
+	m_root = add(nullptr, m_root, key, value);
 }
 
 template<typename K, typename V>

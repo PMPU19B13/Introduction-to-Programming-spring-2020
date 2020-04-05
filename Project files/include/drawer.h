@@ -6,28 +6,34 @@
 #include <SFML/Graphics.hpp>
 #include "controller.h"
 
-class Drawer{
+class Drawer
+{
 public:
 	sf::RenderWindow window;
 
-	Drawer() {
-		window.create(sf::VideoMode(800, 600), "GeomStuf");	
+	Drawer()
+	{
+		window.create(sf::VideoMode(800, 600), "GeomStuf");
 		window.clear();
 		window.display();
 	};
-	sf::Vector2f worldToPx(sf::Vector2f w) {
+
+	sf::Vector2f worldToPx(sf::Vector2f w)
+	{
 		w.x += window.getSize().x / 2;
 		w.y += window.getSize().y / 2;
 		return w;
 	}
 
-    void drawPrimitive(PrimitiveType type, const Storage<double>& params);
+	void drawPrimitive(PrimitiveType type, const Storage<double>& params);
 
-	~Drawer() {
+	~Drawer()
+	{
 		std::cout << "Dis" << std::endl;
 	}
 
-	
+
 };
+
 #endif
 

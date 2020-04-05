@@ -1,4 +1,5 @@
 #pragma once
+
 class Drawer;
 
 #ifndef __C_H_INCLUDED__
@@ -12,24 +13,25 @@ class Drawer;
 
 enum PrimitiveType
 {
-    P_Point,
-    P_Segment,
-    P_Circle
+	P_Point,
+	P_Segment,
+	P_Circle
 };
 
 enum RequirementType
 {
-    R_SetConstant,
-    R_Horizontal,
-    R_Vertical,
-    R_Angle,
-    R_Distance,
-    R_Parallel,
-    R_Equal,
-    R_IsOn
+	R_SetConstant,
+	R_Horizontal,
+	R_Vertical,
+	R_Angle,
+	R_Distance,
+	R_Parallel,
+	R_Equal,
+	R_IsOn
 };
 
-class Controller{
+class Controller
+{
 public:
 	Drawer* drawer;
 
@@ -37,46 +39,47 @@ public:
 
 	ID addPrimitive(PrimitiveType, const Storage<double>&);
 
-    void removePrimitive(const ID&);
+	void removePrimitive(const ID&);
 
-    ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
+	ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
 
-    void removeRequirement(const ID&);
+	void removeRequirement(const ID&);
 
-    void readPrimitive(const std::string& fileName);
+	void readPrimitive(const std::string& fileName);
 
-    void writePrimitive(const std::string& fileName);
+	void writePrimitive(const std::string& fileName);
 
-    bool updateView();
+	bool updateView();
 
 private:
-    struct Requirement
-    {
-        Storage<ID> objects;
-        RequirementType type;
-        double* param;
+	struct Requirement
+	{
+		Storage<ID> objects;
+		RequirementType type;
+		double* param;
 
-        double eval(/*...*/)
-        {
-            switch (type)
-            {
-            case R_Vertical:
-                // Взять x1 и x2 для отрезка и вернуть квадрат разницы двух значений
-                break;
-            }
-        }
-    };
+		double eval(/*...*/)
+		{
+			switch (type)
+			{
+			case R_Vertical:
+				// Взять x1 и x2 для отрезка и вернуть квадрат разницы двух значений
+				break;
+			}
+		}
+	};
 
-    bool tryAddRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
+	bool tryAddRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
 
-    void backupState();
+	void backupState();
 
-    void restoreState();
+	void restoreState();
 
-    List<Pair<ID, Requirement>> m_requirements;
+	List<Pair<ID, Requirement>> m_requirements;
 
-    List<Pair<ID, Point>> m_points;
-    List<Pair<ID, Segment>> m_segments;
-    List<Pair<ID, Circle>> m_circles;
+	List<Pair<ID, Point>> m_points;
+	List<Pair<ID, Segment>> m_segments;
+	List<Pair<ID, Circle>> m_circles;
 };
+
 #endif

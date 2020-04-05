@@ -24,7 +24,7 @@ double Point::getX() const
 
 double Point::getY() const
 {
-	return m_y;
+    return m_y;
 }
 
 Storage<double> Point::getParams() const
@@ -98,27 +98,32 @@ Storage<double> Circle::getParams() const
     return params;
 }
 
-Point Circle::getCenter() const{
-	return *m_center;
+Point Circle::getCenter() const
+{
+    return *m_center;
 }
 
-double Circle::getRadius() const {
-	return m_radius;
+double Circle::getRadius() const
+{
+    return m_radius;
 }
 
-std::ostream& operator<<(std::ostream& out, const Point& point) {
-	out << "Point - (" << point.getX() << ", " << point.getY() << ")";
-	return out;
+std::ostream& operator<<(std::ostream& out, const Point& point)
+{
+    out << "Point - (" << point.getX() << ", " << point.getY() << ")";
+    return out;
 }
 
-std::ostream& operator<<(std::ostream& out, const Segment& segment) {
-	out << "Segment - start: (" << segment.getStart().getX() << ", " << segment.getStart().getY() << "), end: ("
-		<< segment.getEnd().getX() << ", " << segment.getEnd().getY() << ")";
-	return out;
+std::ostream& operator<<(std::ostream& out, const Segment& segment)
+{
+    out << "Segment - start: (" << segment.getStart().getX() << ", " << segment.getStart().getY() << "), end: ("
+        << segment.getEnd().getX() << ", " << segment.getEnd().getY() << ")";
+    return out;
 }
 
-std::ostream& operator<<(std::ostream& out, const Circle& circle) {
-	out << "Circle - center: (" << circle.getCenter().getX() << ", " << circle.getCenter().getY()
-		<< "), radius: " << circle.getRadius();
-	return out;
+std::ostream& operator<<(std::ostream& out, const Circle& circle)
+{
+    out << "Circle - center: (" << circle.getCenter().getX() << ", " << circle.getCenter().getY()
+        << "), radius: " << circle.getRadius();
+    return out;
 }

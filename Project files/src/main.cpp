@@ -18,11 +18,13 @@ public:
     Person(const char* name, int height) : m_name(name), m_height(height)
     {
     }
+
     virtual const char* getName() const
     {
         return m_name;
     }
-        int getHeight() const
+
+    int getHeight() const
     {
         return m_height;
     }
@@ -38,6 +40,7 @@ public:
     Student() : Person("John", 160)
     {
     }
+
     int getGroup() const
     {
         return m_group_number;
@@ -133,7 +136,7 @@ T func1(T x)
 }
 
 // Функция для вычисления производной в точке
-template <typename Fun, typename Arg>
+template<typename Fun, typename Arg>
 Arg derivative(Fun function, Arg x)
 {
     double dx = 1e-5;
@@ -157,22 +160,22 @@ void printContents(Storage<double> s)
 
 template<typename Fun, typename Arg>
 Arg NewtMeth(Fun function, Arg low, Arg high, Arg eps)
-{   
-        double x = (low + high) / 2; 
-        double  min = 1000000;
-        for (int i = low; i < high; i++)
-                if (min > derivative(function,i))
-                {
-                      min = derivative(function,i);
-                }
-        double  x0 = -1000, x1;
-	x1 = x - function(x) / derivative(function,x);
-        while (abs(function(x1) / min) > eps)
+{
+    double x = (low + high) / 2;
+    double min = 1000000;
+    for (int i = low; i < high; i++)
+        if (min > derivative(function, i))
         {
-                  x0 = x1;
-                        x1 = x0 - function(x0) / derivative(function,x0);
+            min = derivative(function, i);
         }
-        return(x1);
+    double x0 = -1000, x1;
+    x1 = x - function(x) / derivative(function, x);
+    while (abs(function(x1) / min) > eps)
+    {
+        x0 = x1;
+        x1 = x0 - function(x0) / derivative(function, x0);
+    }
+    return (x1);
 }
 
 
@@ -189,23 +192,26 @@ void getErr(IRequirement* req)
 #include <SFML/Graphics.hpp>
 #include "matrix.h"
 #include <string>
+
 using namespace std;
+
 int main()
 {
-	setlocale(LC_ALL, "rus");
-	Controller c;
+    setlocale(LC_ALL, "rus");
+    Controller c;
 
-	Storage<double> s;
-	s.add(0);
-	s.add(0);
-	s.add(30);
+    Storage<double> s;
+    s.add(0);
+    s.add(0);
+    s.add(30);
 
-	c.addPrimitive(P_Circle, s);
-	s.add(60);
-	c.addPrimitive(P_Segment, s);
-	
-	while (c.updateView()) {};//!DON NOT REMOVE!
-	
-	return 0;
+    c.addPrimitive(P_Circle, s);
+    s.add(60);
+    c.addPrimitive(P_Segment, s);
+
+    while (c.updateView())
+    {};//!DON NOT REMOVE!
+
+    return 0;
 
 }
