@@ -205,7 +205,7 @@ int main()
 	c.addPrimitive(P_Segment, s);
 	
 	while (c.updateView()) {};//!DON NOT REMOVE!
-
+	
 	return 0;
 
 }
