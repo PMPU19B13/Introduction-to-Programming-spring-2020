@@ -113,10 +113,114 @@ void printContents(Storage<double> s)
     }
 }
 
+Segment s;
+
+double vertError(double x){
+     Point p1 = s.getStart();
+     p1.setX(x);
+     Point p2 = s.getEnd();
+
+     //s = Segment(&p1,&p2);
+
+     double err = x - p2.getX();
+     return err;
+}
+
+class vertErrorType{
+public:
+   vertErrorType(Segment *s){
+      m_s = s;
+   }
+   double operator()(double x){
+      Point p2 = m_s->getEnd();
+      return x - p2.getX();
+   }
+
+private:
+   Segment *m_s;
+};
+
+class Totals{
+
+public:
+   Totals(  const Storage<vertErrorType*> & s){
+      m_vertErrs = s;
+   }
+   double operator()(double x){
+      double res = 0;
+      return res;
+   }
+private:
+   Storage<vertErrorType*> m_vertErrs;
+};
+
+
 int main()
 {
     try
     {
+       double x1 = 0, y1 = 0, x2 = 1, y2 =1 ;
+
+       Point a1;
+       a1.setX(x1);
+       a1.setY(y1);
+       Point a2;
+       a2.setX(x2);
+       a2.setY(y2);
+       Point a3;
+       a3.setX(6);
+       a3.setY(6);
+
+
+       s = Segment(&a1,&a2);
+
+
+       Segment s2(&a1,&a2);
+
+       vertErrorType vt(&s2);
+
+       Segment s3(&a2,&a3);
+
+       vertErrorType vt1(&s3);
+
+
+       Storage<vertErrorType*> s;
+       s.add(&vt);
+       s.add(&vt1);
+
+       Totals tot(s);
+       double res = findZero(tot, -2.0, 2.0, 0.00001);
+
+
+
+
+
+
+
+
+
+       //double res = findZero(vertError, -2.0, 2.0, 0.00001);
+       res = findZero(vt, -2.0, 2.0, 0.00001);
+
+       std::cout << "res = " << res << "vt1(res) = " << vt1(res) << std::endl;
+
+       std::cout << res << std::endl;
+
+       a1.setX(res);
+
+       res = findZero(vt1, -2.0, 20.0, 0.00001);
+       a2.setX(res);
+
+       std::cout << vt1(1) << std::endl;
+
+
+
+
+
+
+
+
+
         std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
         std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
         std::cout << derivative(6.0) << std::endl;

@@ -32,3 +32,6 @@
 *.app
 *.depend
 *.layout
+
+# User settings for Qt Creator
+*.user
