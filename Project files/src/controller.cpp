@@ -96,6 +96,12 @@ bool Controller::updateView()
 		// пользователь попытался закрыть окно: мы закрываем окно
 		if (event.type == sf::Event::Closed)
 			drawer->window.close();
+
+		if (event.type == sf::Event::Resized)
+		{
+			sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
+			drawer->window.setView(sf::View(visibleArea));
+		}
 	}
 
 	drawer->window.clear();
