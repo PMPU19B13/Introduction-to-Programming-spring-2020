@@ -35,7 +35,7 @@ public:
 		bool hasNext() const
 		{
 			// Арифметика через указатели
-			return m_marker < m_storage->m_data + m_storage->m_size - 1;
+			return m_marker <= m_storage->m_data + m_storage->m_size - 1;
 		}
 
 		void next()
