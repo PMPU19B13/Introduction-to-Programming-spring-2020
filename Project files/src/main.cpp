@@ -237,8 +237,8 @@ private:
 	Segment* m_segment;
 };
 
-class Totals {
-
+class Totals
+{
 public:
 	Totals(const Storage<verticalErrorType>& s)
 	{
@@ -254,6 +254,7 @@ public:
 		}
 		return res;
 	}
+	
 private:
 	Storage<verticalErrorType> m_vertErrs;
 };
