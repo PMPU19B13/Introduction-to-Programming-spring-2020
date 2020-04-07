@@ -243,6 +243,8 @@ private:
 };
 
 /*
+Работает, но ловится исключение Error
+
 class Totals
 {
 public:
