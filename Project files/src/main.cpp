@@ -240,13 +240,16 @@ private:
 class Totals {
 
 public:
-	Totals(const Storage<verticalErrorType>& s) {
+	Totals(const Storage<verticalErrorType>& s)
+	{
 		m_vertErrs = s;
 	}
-	double operator()(double x) {
+	double operator()(double x)
+	{
 		double res = 0;
 		Storage<verticalErrorType>::Marker marker = m_vertErrs.createMarker();
-		for (; marker.hasNext(); marker.next()) {
+		for (; marker.hasNext(); marker.next())
+		{
 			res += marker.getValue()(x);
 		}
 		return res;
