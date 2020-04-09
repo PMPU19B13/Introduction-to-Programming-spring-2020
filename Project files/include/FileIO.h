@@ -3,7 +3,8 @@
 #include "controller.h"
 #include <fstream>
 
-class FileIO {
+class FileIO
+{
 private:
 
 public:
