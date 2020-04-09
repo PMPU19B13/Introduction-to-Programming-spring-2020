@@ -50,7 +50,8 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params,ID* id)
                 delete end;
                 return *id;
             }
-            else {
+            else
+            {
 
             ID id1;
             // Добавляем точки, определяющие отрезок
