@@ -29,7 +29,7 @@ void FileIO::readPrimitive(const std::string& filename, Controller& controller)
             Storage<double> args;
             args.add(x);
             args.add(y);
-            controller.addPrimitive(P_Point, args,id);
+            controller.addPrimitive(P_Point, args, id);
         }
         else if (typeName == "Segment")
         {
