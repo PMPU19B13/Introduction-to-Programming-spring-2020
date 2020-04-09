@@ -11,8 +11,10 @@ private:
     // Узлы связного списка
     struct Node
     {
-        Node() {};
-        Node(T temp) :data{ temp } {};
+        Node()
+        {
+        };
+        Node(T temp) : data( temp ) {};
         T data;
         Node* next;
         Node* previous;
