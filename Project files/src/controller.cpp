@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
-
+#include"id.h"
 #include "controller.h"
 #include "error.h"
 #include "drawer.h"
@@ -11,7 +11,7 @@ Controller::Controller()
 
 }
 
-ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
+ID Controller::addPrimitive(PrimitiveType type, Storage<double> params,ID* id)
 {
     switch (type)
     {
@@ -20,9 +20,18 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
         if (params.size() == 2)
         {
             // Добавляем точку
-            ID id;
-            m_points.add(Pair<ID, Point>(id, Point(params[0], params[1])));
-            return id;
+            if (id)
+            {
+                m_points.add(Pair<ID, Point>(*id, Point(params[0], params[1])));
+                return *id;
+            return *id;
+            }
+            else
+            {
+                ID n_id;
+                m_points.add(Pair<ID, Point>(n_id, Point(params[0], params[1])));
+                return n_id;
+            }
         }
         else
             throw BadArgument();
@@ -32,6 +41,17 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
         // Проверяем параметры
         if (params.size() == 4)
         {
+            if (id)
+            {
+                Point* start = new Point(params[0], params[1]);
+                Point* end = new Point(params[2], params[3]);
+                m_segments.add(Pair<ID, Segment>(*id, Segment(start, end)));
+                delete start;
+                delete end;
+                return *id;
+            }
+            else {
+
             ID id1;
             // Добавляем точки, определяющие отрезок
             m_points.add(Pair<ID, Point>(id1, Point(params[0], params[1])));
@@ -44,7 +64,8 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
             // И сам отрезок
             ID id3;
             m_segments.add(Pair<ID, Segment>(id3, Segment(start, end)));
-            return ID();
+            return id3;
+            }
         }
         else
             throw BadArgument();
@@ -54,6 +75,14 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
         // Проверяем параметры
         if (params.size() == 3)
         {
+            if (id)
+            {
+                Point* center = new Point(params[0], params[1]);
+                m_circles.add(Pair<ID, Circle>(*id, Circle(center, params[2])));
+                return *id;
+            }
+            else
+            {
             // Добавляем центр окружности
             ID id1;
             m_points.add(Pair<ID, Point>(id1, Point(params[0], params[1])));
@@ -62,7 +91,8 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params)
             // И саму окружность
             ID id2;
             m_circles.add(Pair<ID, Circle>(id2, Circle(center, params[2])));
-            return ID();
+            return id2;
+            }
         }
         else
             throw BadArgument();
