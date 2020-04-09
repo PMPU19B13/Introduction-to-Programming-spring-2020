@@ -30,7 +30,7 @@ class Controller
 public:
     Controller();
 
-    ID addPrimitive(PrimitiveType type, Storage<double> params);
+    ID addPrimitive(PrimitiveType type, Storage<double> params,ID* id=nullptr);
     void removePrimitive(const ID&);
 
     ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
@@ -41,6 +41,8 @@ public:
     friend class FileIO;
 
     List<Pair<ID, Point>> m_points;
+    List<Pair<ID, Segment>> m_segments;
+    List<Pair<ID, Circle>> m_circles;
 private:
     struct Requirement
     {
@@ -65,7 +67,4 @@ private:
     void restoreState();
 
     List<Pair<ID, Requirement>> m_requirements;
-
-    List<Pair<ID, Segment>> m_segments;
-    List<Pair<ID, Circle>> m_circles;
 };
