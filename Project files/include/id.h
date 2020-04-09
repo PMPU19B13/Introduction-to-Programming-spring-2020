@@ -7,7 +7,7 @@ class ID
 {
 public:
 	ID();
-	ID(char* temp);
+  ID(char* temp);
 
 	bool operator==(const ID& id) const;
 	bool operator<(const ID& id) const;
@@ -17,6 +17,7 @@ public:
 	static size_t getLastCount();
 
 	friend std::ostream& operator<<(std::ostream& out, const ID& id);
+
 
 private:
 	Storage<unsigned char> m_array;

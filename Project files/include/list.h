@@ -30,6 +30,7 @@ public:
 	List();
 
 	List(const List& other);
+
 	~List();
 
 	List<T>& operator=(const List<T>& other);
@@ -65,7 +66,7 @@ public:
 
 		bool isValid()
 		{
-			return (m_marker != nullptr) && valid;
+			return m_marker != nullptr && valid;
 		}
 
 		friend class List;
@@ -80,12 +81,15 @@ public:
 	void add(T value);
 
 	T& operator[](size_t index);
+
 	const T& operator[](size_t index) const;
 
 	void insert(size_t index, T value);
+
 	void remove(size_t index);
 
 	T get(size_t index) const;
+
 	void set(size_t index, T value);
 
 	size_t size() const;
@@ -143,6 +147,7 @@ void List<T>::add(T value)
 	if (m_first == nullptr)
 	{
 		m_first = new Node(value);
+
 		m_last = m_first;
 		m_first->data = value;
 		m_first->next = nullptr;

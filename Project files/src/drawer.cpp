@@ -2,7 +2,7 @@
 
 #include "drawer.h"
 
-void Drawer::drawPrimitive(PrimitiveType type, Storage<double> params)
+void Drawer::drawPrimitive(PrimitiveType type, const Storage<double>& params)
 {
 	switch (type)
 	{

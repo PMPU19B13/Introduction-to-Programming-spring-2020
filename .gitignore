@@ -32,3 +32,8 @@
 *.app
 *.depend
 *.layout
+
+
+#VS
+*.user
+*.vs/

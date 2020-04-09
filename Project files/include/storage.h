@@ -9,6 +9,7 @@ class Storage
 {
 public:
 	Storage();
+
 	Storage(const Storage<T>& original);
 
 	~Storage();
@@ -16,11 +17,13 @@ public:
 	Storage& operator=(const Storage<T>& other);
 
 	T& operator[](size_t index);
+
 	const T& operator[](size_t index) const;
 
 	void add(T value);
 
 	void insert(size_t index, T value);
+
 	void remove(size_t index);
 
 	size_t size() const;
@@ -32,7 +35,7 @@ public:
 		bool hasNext() const
 		{
 			// Арифметика через указатели
-			return m_marker < m_storage->m_data + m_storage->m_size - 1;
+			return m_marker <= m_storage->m_data + m_storage->m_size - 1;
 		}
 
 		void next()

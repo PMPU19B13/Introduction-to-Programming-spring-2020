@@ -41,6 +41,11 @@ public:
 
 	friend class FileIO;
 
+	void readPrimitive(const std::string& fileName);
+
+	void writePrimitive(const std::string& fileName);
+
+
 private:
 	struct Requirement
 	{
@@ -62,9 +67,11 @@ private:
 	bool tryAddRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
 
 	void backupState();
+
 	void restoreState();
 
 	List<Pair<ID, Requirement>> m_requirements;
+
 	List<Pair<ID, Point>> m_points;
 	List<Pair<ID, Segment>> m_segments;
 	List<Pair<ID, Circle>> m_circles;
