@@ -1,4 +1,5 @@
 #include "id.h"
+#include <iostream>
 #include <cstdio>
 
 size_t ID::m_count = 0;
