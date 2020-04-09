@@ -5,6 +5,7 @@
 #include "requirement.h"
 #include "controller.h"
 #include "error.h"
+#include "FileIO.h"
 
 class WithName
 {

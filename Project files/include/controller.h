@@ -25,24 +25,26 @@ enum RequirementType
 	R_IsOn
 };
 
+
 class Controller
 {
 public:
 	Controller();
 
-	ID addPrimitive(PrimitiveType, const Storage<double>&);
-
+	ID addPrimitive(PrimitiveType type, Storage<double> params, ID* id = nullptr);
 	void removePrimitive(const ID&);
 
 	ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
-
 	void removeRequirement(const ID&);
+
+	void updateView();
+
+	friend class FileIO;
 
 	void readPrimitive(const std::string& fileName);
 
 	void writePrimitive(const std::string& fileName);
 
-	void updateView();
 
 private:
 	struct Requirement

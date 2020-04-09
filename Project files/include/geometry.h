@@ -11,6 +11,7 @@ public:
 
 	void setX(double x);
 
+
 	void setY(double y);
 
 	double getX() const;
@@ -31,6 +32,7 @@ class Segment
 public:
 	Segment();
 
+
 	Segment(Point* start, Point* end);
 
 	Point getStart() const;
@@ -50,7 +52,7 @@ class Circle
 {
 public:
 	Circle();
-
+  
 	Circle(Point* center, double radius);
 
 	Point getCenter() const;
