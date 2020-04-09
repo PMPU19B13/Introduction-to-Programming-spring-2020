@@ -3,17 +3,17 @@
 class Error
 {
 public:
-    Error()
-    {
+	Error()
+	{
 
-    }
+	}
 };
 
 class BadArgument
 {
 public:
-    BadArgument()
-    {
+	BadArgument()
+	{
 
-    }
+	}
 };

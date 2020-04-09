@@ -33,5 +33,7 @@
 *.depend
 *.layout
 
-# User settings for Qt Creator
+
+#VS
 *.user
+*.vs/
