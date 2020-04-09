@@ -1,6 +1,7 @@
 #pragma once
 
 #include "storage.h"
+#include <iostream>
 
 class ID
 {
