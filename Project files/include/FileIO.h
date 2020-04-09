@@ -9,7 +9,9 @@ class FileIO
 private:
 
 public:
-	FileIO() {};
+	FileIO()
+	{
+	};
 	static void readPrimitive(const std::string& filename, Controller& controller);
 	static void writePrimitive(const std::string& filename, Controller& controller);
 	static void writeRequirement(const std::string& filename, Controller& controller);
