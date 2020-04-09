@@ -48,7 +48,8 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
 				m_segments.add(Pair<ID, Segment>(*id, Segment(start, end)));
 				return *id;
 			}
-			else {
+			else
+			{
 
 				ID id1;
 				// Добавляем точки, определяющие отрезок

@@ -103,7 +103,7 @@ void MMap<K, V>::add(const K& key, const V& value)
 template<typename K, typename V>
 bool MMap<K, V>::hasKey(const K& key) const // Проверка наличия пары с указанным ключом
 {
-	
+
 	Node* runner = m_root;
 	if (runner == nullptr)
 		return false;
