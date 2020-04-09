@@ -41,9 +41,6 @@ public:
 
     friend class FileIO;
 
-    List<Pair<ID, Point>> m_points;
-    List<Pair<ID, Segment>> m_segments;
-    List<Pair<ID, Circle>> m_circles;
 private:
     struct Requirement
     {
@@ -68,4 +65,7 @@ private:
     void restoreState();
 
     List<Pair<ID, Requirement>> m_requirements;
+    List<Pair<ID, Point>> m_points;
+    List<Pair<ID, Segment>> m_segments;
+    List<Pair<ID, Circle>> m_circles;
 };
