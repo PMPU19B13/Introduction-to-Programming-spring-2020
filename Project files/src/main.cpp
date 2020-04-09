@@ -195,7 +195,6 @@ Arg NewtMeth(Fun function, Arg low, Arg high, Arg eps)
 	return x1;
 }
 
-
 void sayHello(WithName* p)
 {
 	std::cout << "Hello " << p->getName() << std::endl;
