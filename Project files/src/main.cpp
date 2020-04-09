@@ -4,6 +4,7 @@
 #include "mmap.h"
 #include "controller.h"
 #include "error.h"
+#include "FileIO.h"
 
 class Rational
 {
