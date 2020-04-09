@@ -46,8 +46,6 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
 				Point* start = new Point(params[0], params[1]);
 				Point* end = new Point(params[2], params[3]);
 				m_segments.add(Pair<ID, Segment>(*id, Segment(start, end)));
-				delete start;
-				delete end;
 				return *id;
 			}
 			else {
