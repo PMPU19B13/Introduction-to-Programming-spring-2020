@@ -31,7 +31,7 @@ class Controller
 public:
     Controller();
 
-    ID addPrimitive(PrimitiveType type, Storage<double> params,ID* id=nullptr);
+    ID addPrimitive(PrimitiveType type, Storage<double> params, ID* id = nullptr);
     void removePrimitive(const ID&);
 
     ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
