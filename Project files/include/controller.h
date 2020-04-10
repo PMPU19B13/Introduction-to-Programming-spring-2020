@@ -76,4 +76,8 @@ private:
 	List<Pair<ID, Point>> m_points;
 	List<Pair<ID, Segment>> m_segments;
 	List<Pair<ID, Circle>> m_circles;
+	
+	/*MMapAVL<ID, Point> m_points;
+	MMapAVL<ID, Point> m_segments;
+	MMapAVL<ID, Point> m_circles;*/
 };
