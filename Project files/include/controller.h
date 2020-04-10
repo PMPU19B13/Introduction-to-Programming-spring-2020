@@ -18,11 +18,12 @@ enum RequirementType
 	R_SetConstant,
 	R_Horizontal,
 	R_Vertical,
+	R_PointOnSegment,
+	R_PointOnCircle,
 	R_Angle,
-	R_Distance,
 	R_Parallel,
-	R_Equal,
-	R_IsOn
+	R_Distance,
+	R_Equal
 };
 
 
