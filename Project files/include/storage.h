@@ -108,7 +108,6 @@ Storage<T>::Storage(size_t t)
 	m_size = t;
 }
 
-
 template<typename T>
 Storage<T>::Storage(const Storage<T>& original)
 {
