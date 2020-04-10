@@ -104,7 +104,7 @@ Storage<T>::Storage()
 template<typename T>
 Storage<T>::Storage(size_t t)
 {
-	m_data = nullptr;
+	m_data = new T[t];
 	m_size = t;
 }
 
