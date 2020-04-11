@@ -42,6 +42,10 @@ public:
 
 	friend class FileIO;
 
+	Pair<PrimitiveType, Storage<double>> getPrimitiveInfo(ID& id);
+
+	Storage<ID> getAllPrimitiveIDs();
+
 	void readPrimitive(const std::string& fileName);
 
 	void writePrimitive(const std::string& fileName);
