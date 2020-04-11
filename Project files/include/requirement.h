@@ -180,7 +180,7 @@ EqualRequirement<T>::EqualRequirement(T* primitive1, T* primitive2) : m_primitiv
 template<>
 double EqualRequirement<Point>::error() const
 {
-	return abs(m_primitive2->getX() - m_primitive1->getX()) + abs(m_primitive2->getY() - m_primitive1->getY());
+	return sqrt(pow(m_primitive2->getX() - m_primitive1->getX(), 2) + pow(m_primitive2->getY() - m_primitive1->getY(), 2));
 }
 
 template<>
