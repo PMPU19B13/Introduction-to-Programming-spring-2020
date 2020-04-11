@@ -192,14 +192,14 @@ Pair<PrimitiveType, Storage<double>> Controller::getPrimitiveInfo(ID& id)
 			return Pair<PrimitiveType, Storage<double>>(P_Point, markerPoint.getValue().value.getParams());
 		markerPoint.next();
 	}
-	List<Pair<ID, Segment>>::Marker markerSegment= m_segments.createMarker();
+	List<Pair<ID, Segment>>::Marker markerSegment = m_segments.createMarker();
 	while (markerSegment.isValid())
 	{
 		if (markerSegment.getValue().key == id)
 			return Pair<PrimitiveType, Storage<double>>(P_Segment, markerSegment.getValue().value.getParams());
 		markerSegment.next();
 	}
-	List<Pair<ID, Circle>>::Marker markerCircle= m_circles.createMarker();
+	List<Pair<ID, Circle>>::Marker markerCircle = m_circles.createMarker();
 	while (markerCircle.isValid())
 	{
 		if (markerCircle.getValue().key == id)
@@ -207,6 +207,32 @@ Pair<PrimitiveType, Storage<double>> Controller::getPrimitiveInfo(ID& id)
 		markerCircle.next();
 	}
 	throw BadArgument();
+}
+
+
+
+Storage<ID> Controller::getAllPrimitiveIDs()
+{
+	Storage<ID> allIDs;
+	List<Pair<ID, Point>>::Marker markerPoint = m_points.createMarker();
+	while (markerPoint.isValid())
+	{
+		allIDs.add(markerPoint.getValue().key);
+		markerPoint.next();
+	}
+	List<Pair<ID, Segment>>::Marker markerSegment = m_segments.createMarker();
+	while (markerSegment.isValid())
+	{
+		allIDs.add(markerSegment.getValue().key);
+		markerSegment.next();
+	}
+	List<Pair<ID, Circle>>::Marker markerCircle = m_circles.createMarker();
+	while (markerCircle.isValid())
+	{
+		allIDs.add(markerCircle.getValue().key);
+		markerCircle.next();
+	}
+	return allIDs;
 }
 
 //ID Controller::addRequirement(RequirementType, const Storage<ID>&, double* param)
