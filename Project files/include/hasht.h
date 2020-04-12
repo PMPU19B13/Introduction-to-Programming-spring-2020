@@ -31,6 +31,7 @@ template<typename K, typename V>
 HashT<K, V>::HashT()
 {
 	m_storage = Storage<List<Pair<K, V>>>(1000);
+	m_size = 0;
 }
 
 template<typename K, typename V>
