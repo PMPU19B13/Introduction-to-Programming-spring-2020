@@ -9,20 +9,29 @@ class MMapAVL
 {
 public:
 	MMapAVL();
+
 	~MMapAVL();
+
 	void add(const K& key, const V& value);
+
 	bool hasKey(const K& key) const;
+
 	const V& getAssoc(const K& key);
+
+	size_t size() const;
 
 private:
 	struct Node
 	{
 		Pair<K, V> data;
 		int height; // Высота поддерева
-		Node* left, * right, * parent = nullptr;
+		Node* left;
+		Node* right;
+		Node* parent = nullptr;
 	};
 
 	Node* m_root; // Указатель на корневой узел
+	size_t m_size;
 	void clear(Node* runner);
 
 	int height(Node* tree)
@@ -108,10 +117,11 @@ template<typename K, typename V>
 void MMapAVL<K, V>::add(const K& key, const V& value)
 {
 	m_root = add(nullptr, m_root, key, value);
+	++m_size;
 }
 
 template<typename K, typename V>
-MMapAVL<K, V>::MMapAVL() : m_root(nullptr)
+MMapAVL<K, V>::MMapAVL() : m_root(nullptr), m_size(0)
 {
 }
 
@@ -190,4 +200,10 @@ void MMapAVL<K, V>::clear(Node* runner)
 		clear(runner->right);
 		delete runner;
 	}
+}
+
+template<typename K, typename V>
+size_t MMapAVL<K, V>::size() const
+{
+	return m_size;
 }
