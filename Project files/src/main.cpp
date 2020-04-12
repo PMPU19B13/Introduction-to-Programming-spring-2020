@@ -251,7 +251,7 @@ public:
 	{
 		double res = 0;
 		Storage<verticalErrorType>::Marker marker = m_vertErrs.createMarker();
-		for (; marker.hasNext(); marker.next())
+		for (; marker.isValid(); marker.next())
 		{
 			res += marker.getValue()(x);
 		}
