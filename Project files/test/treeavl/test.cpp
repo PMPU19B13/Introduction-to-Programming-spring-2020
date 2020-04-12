@@ -43,6 +43,7 @@ bool testTreeAvlMarker() {
 			break;
 	}
 	std::cout << v.value << std::endl;
+	//marker.remove(mmap);
 	if ( count != mmap.size()  ) return false;
 	
 	return true;

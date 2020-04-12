@@ -98,6 +98,8 @@ private:
 		}
 		return balanceTree(tree);
 	}
+
+	void removeMMapPrivate(Node* m_marker, Node* n);
 public:
 	MMapAVL();
 	~MMapAVL();
@@ -105,6 +107,14 @@ public:
 	bool hasKey(const K& key) const;
 	const V& getAssoc(const K& key);
 	int size() { return m_size; }
+
+	Node* getMin(Node* n)
+	{
+		if (!n->left) return n;
+		return getMin(n->left);
+	}
+
+	void removeMMap(Node* m_marker);
 
 	K maxID() const {
 		Node* runner = m_root;
@@ -155,129 +165,10 @@ public:
 			return m_marker->data;
 		}
 
-		void remove()
+		void remove(MMapAVL<K, V>& m)
 		{
-			remove(m_root);
+			m.removeMMap(m_marker);
 			valid = false;
-		}
-
-		Node* getMin(Node* n)
-		{
-			if (!n->left) return n;
-			return getMin(n->left);
-		}
-
-
-		void remove(Node* runner)
-		{
-			if (m_marker == nullptr)
-				throw Error();
-			if (runner->data.key > m_marker->data.key) remove(runner->left);
-			else if (runner->data.key < m_marker->data.key) remove(runner->right);
-			else {
-				if (!(runner->right) && !(runner->left))
-				{
-					Node* n = runner;
-					if (n->parent != nullptr) n->parent->height = --(n->parent->height);
-					while (n != m_root) {
-						n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
-						n = n->parent->height;
-					}
-					if (runner->parent->left->data.key == runner->data.key)
-					{
-						runner->parent->left = nullptr;
-						free(runner);
-						return;
-					}
-					else
-					{
-						runner->parent->right = nullptr;
-						free(runner);
-						return;
-					}
-				}
-				if (!runner->right)
-				{
-					Node* n = runner;
-					if (n->parent != nullptr) n->parent->height = --(n->parent->height);
-					while (n != m_root) {
-						n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
-						n = n->parent->height;
-					}
-					if (runner->parent->left->data.key == runner->data.key)
-					{
-						runner->parent->left = runner->left;
-						runner->left->parent = runner->parent;
-						free(runner);
-						return;
-					}
-					else
-					{
-						runner->parent->right = runner->left;
-						runner->left->parent = runner->parent;
-						free(runner);
-						return;
-					}
-				}
-				if (!runner->left)
-				{
-					Node* n = runner;
-					if (n->parent != nullptr) n->parent->height = --(n->parent->height);
-					while (n != m_root) {
-						n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
-						n = n->parent->height;
-					}
-					if (runner->parent->left->data.key == runner->data.key)
-					{
-						runner->parent->left = runner->right;
-						runner->right->parent = runner->parent;
-						free(runner);
-						return;
-					}
-					else
-					{
-						runner->parent->right = runner->right;
-						runner->right->parent = runner->parent;
-						free(runner);
-						return;
-					}
-				}
-				Node* t = runner;
-				runner = getMin(t->right);
-				Node* n = runner;
-				if (n->parent != nullptr) n->parent->height = --(n->parent->height);
-				while (n != m_root) {
-					n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
-					n = n->parent->height;
-				}
-				if (runner->parent->left->data.key == runner->data.key)
-				{
-					runner->parent->left = runner->right;
-				}
-				else
-				{
-					runner->parent->right = runner->right;
-				}
-				runner->right = t->right;
-				runner->left = t->left;
-				runner->parent = t->parent;
-				if (t->parent->left->data.key == t->data.key)
-				{
-					t->parent->left = runner;
-				}
-				else
-				{
-					t->parent->right = runner;
-				}
-				runner->right->parent = runner;
-				runner->left->parent = runner;
-				runner->parent->height--;
-				free(t);
-				balanceTree(runner);
-				return;
-			}
-
-			balanceTree(runner);
 		}
 			   
 		bool isValid()
@@ -296,6 +187,145 @@ public:
 
 	Marker createMarker();
 };
+
+template<typename K, typename V>
+void MMapAVL<K, V>::removeMMap(Node* n)
+{
+	return removeMMapPrivate(n, m_root);
+}
+
+template<typename K, typename V>
+void MMapAVL<K, V>::removeMMapPrivate(Node* m_marker, Node* runner )
+{
+	if (m_marker == nullptr)
+		throw Error();
+	if (runner->data.key > m_marker->data.key) removeMMapPrivate(m_marker, runner->left);
+	else if (runner->data.key < m_marker->data.key) removeMMapPrivate(m_marker, runner->right);
+	else {
+		if (!(runner->right) && !(runner->left))
+		{
+			Node* n = runner;
+			if (n->parent == nullptr) 
+			{
+				free(runner);
+				m_size--;
+				return;
+			}
+			if (n->parent != nullptr) --(n->parent->height);
+			while (n != m_root) 
+			{
+				n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+				n = n->parent;
+			}
+			if (runner->parent->left->data.key == runner->data.key)
+			{
+				runner->parent->left = nullptr;
+			}
+			else
+			{
+				runner->parent->right = nullptr;
+			}
+			free(runner);
+			m_size--;
+			return;
+		}
+		if (!runner->right)
+		{
+			Node* n = runner;
+			if (n->parent == nullptr) 
+			{
+				n->left->parent = nullptr;
+				m_size--;
+				free(runner);
+				return;
+			}
+			if (n->parent != nullptr) --(n->parent->height);
+			while (n != m_root) {
+				n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+				n = n->parent;
+			}
+			if (runner->parent->left->data.key == runner->data.key)
+			{
+				runner->parent->left = runner->left;
+				runner->left->parent = runner->parent;
+			}
+			else
+			{
+				runner->parent->right = runner->left;
+				runner->left->parent = runner->parent;
+			}
+			free(runner);
+			m_size--;
+			return;
+		}
+		if (!runner->left)
+		{
+			Node* n = runner;
+			if (n->parent == nullptr)
+			{
+				n->right->parent = nullptr;
+				m_size--;
+				free(runner);
+				return;
+			}
+			if (n->parent != nullptr) --(n->parent->height);
+			while (n != m_root) {
+				n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+				n = n->parent;
+			}
+			if (runner->parent->left->data.key == runner->data.key)
+			{
+				runner->parent->left = runner->right;
+				runner->right->parent = runner->parent;
+			}
+			else
+			{
+				runner->parent->right = runner->right;
+				runner->right->parent = runner->parent;
+			}
+			free(runner);
+			m_size--;
+			return;
+		}
+		/////////////////////////////////////////////////////////////////////////////////////
+		//здесь ещё надо рассмотреть случай, когда удаляется корневой элемент
+		Node* t = runner;
+		runner = getMin(t->right);
+		Node* n = runner;
+		--(n->parent->height);
+		while (n != m_root) {
+			n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+			n = n->parent;
+		}
+		if (runner->parent->left->data.key == runner->data.key)
+		{
+			runner->parent->left = runner->right;
+		}
+		else
+		{
+			runner->parent->right = runner->right;
+		}
+		runner->right = t->right;
+		runner->left = t->left;
+		runner->parent = t->parent;
+		if (t->parent->left->data.key == t->data.key)
+		{
+			t->parent->left = runner;
+		}
+		else
+		{
+			t->parent->right = runner;
+		}
+		runner->right->parent = runner;
+		runner->left->parent = runner;
+		runner->parent->height--;
+		free(t);
+		balanceTree(runner);
+		return;
+	}
+
+	balanceTree(runner);
+}
 
 template<typename K, typename V>
 typename MMapAVL<K, V>::Marker MMapAVL<K, V>::createMarker()
