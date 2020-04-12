@@ -105,7 +105,7 @@ public:
 	~MMapAVL();
 	void add(const K& key, const V& value);
 	bool hasKey(const K& key) const;
-	const V& getAssoc(const K& key);
+	V& getAssoc(const K& key);
 	int size() { return m_size; }
 
 	Node* getMin(Node* n)
@@ -387,7 +387,7 @@ bool MMapAVL<K, V>::hasKey(const K& key) const // Проверка наличи�
 }
 
 template<typename K, typename V>
-const V& MMapAVL<K, V>::getAssoc(const K& key)
+V& MMapAVL<K, V>::getAssoc(const K& key)
 {
 	Node* runner = m_root;
 	if (runner == nullptr)
@@ -396,7 +396,7 @@ const V& MMapAVL<K, V>::getAssoc(const K& key)
 	while (true)
 	{
 		if (runner->data.key == key)
-			return runner->data;
+			return runner->data.value;
 
 		if (runner->data.key < key) // Двигаемся по правой ветке
 		{

@@ -5,72 +5,80 @@
 #include "list.h"
 #include "id.h"
 #include "pair.h"
+#include "mmapavl.h"
 
 enum PrimitiveType
 {
-    P_Point,
-    P_Segment,
-    P_Circle
+	P_Point,
+	P_Segment,
+	P_Circle
 };
 
 enum RequirementType
 {
-    R_SetConstant,
-    R_Horizontal,
-    R_Vertical,
-    R_Angle,
-    R_Distance,
-    R_Parallel,
-    R_Equal,
-    R_IsOn
+	R_SetConstant,
+	R_Horizontal,
+	R_Vertical,
+	R_PointOnSegment,
+	R_PointOnCircle,
+	R_Angle,
+	R_Parallel,
+	R_Distance,
+	R_Equal
 };
+
 
 class Controller
 {
 public:
-    Controller();
+	Controller();
 
-    ID addPrimitive(PrimitiveType, Storage<double>);
+	ID addPrimitive(PrimitiveType type, Storage<double> params, ID* id = nullptr);
+	void removePrimitive(const ID&);
 
-    void removePrimitive(const ID&);
+	ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
+	void removeRequirement(const ID&);
 
-    ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
+	void updateView();
 
-    void removeRequirement(const ID&);
+	friend class FileIO;
 
-    void readPrimitive(const std::string& fileName);
+	Pair<PrimitiveType, Storage<double>> getPrimitiveInfo(ID& id);
 
-    void writePrimitive(const std::string& fileName);
+	Storage<ID> getAllPrimitiveIDs();
 
-    void updateView();
+	void readPrimitive(const std::string& fileName);
+
+	void writePrimitive(const std::string& fileName);
+
 
 private:
-    struct Requirement
-    {
-        Storage<ID> objects;
-        RequirementType type;
-        double* param;
+	struct Requirement
+	{
+		Storage<ID> objects;
+		RequirementType type;
+		double* param;
 
-        double eval(/*...*/)
-        {
-            switch (type)
-            {
-            case R_Vertical:
-                // Взять x1 и x2 для отрезка и вернуть квадрат разницы двух значений
-                break;
-            }
-        }
-    };
+		double eval(/*...*/)
+		{
+			switch (type)
+			{
+			case R_Vertical:
+				// Взять x1 и x2 для отрезка и вернуть квадрат разницы двух значений
+				break;
+			}
+		}
+	};
 
-    bool tryAddRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
+	bool tryAddRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
 
-    void backupState();
+	void backupState();
 
-    void restoreState();
+	void restoreState();
 
-    List<Pair<ID, Requirement>> m_requirements;
+	MMapAVL<ID, Requirement> m_requirements;
 
-    List<Pair<ID, Point>> m_points;
-    List<Pair<ID, Segment>> m_segments;
-    List<Pair<ID, Circle>> m_circles;
+	MMapAVL<ID, Point> m_points;
+	MMapAVL<ID, Segment> m_segments;
+	MMapAVL<ID, Circle> m_circles;
 };
