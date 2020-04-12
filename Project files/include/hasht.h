@@ -68,7 +68,7 @@ bool HashT<K, V>::hasKey(const K& key)
 	typename List<Pair<K, V>>::Marker marker;
 	marker = m_storage[hash_function_value].createMarker();
 
-	while (marker.hasNext())
+	while (marker.isValid())
 	{
 		if (marker.getValue().key == key)
 			return true;
