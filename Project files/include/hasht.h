@@ -43,11 +43,10 @@ size_t HashT<K, V>::size() const
 template<typename K, typename V>
 size_t HashT<K, V>::hashfun(const K& key)
 {
-	size_t hash = 0;
-	unsigned char* pc = (unsigned char*) &key;
-	for (size_t k = 0; k < sizeof(key); ++k)
-		hash += pc[k];
-	return hash;
+	size_t hash_function_value = hashfun(key);
+	hash_function_value %= m_storage.size();
+	m_storage[hash_function_value].add(Pair<K, V>(key, value));
+	++m_size;
 }
 
 template<typename K, typename V>
