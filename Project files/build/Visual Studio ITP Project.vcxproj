@@ -36,6 +36,7 @@
     <ClCompile Include="..\src\geometry.cpp" />
     <ClCompile Include="..\src\id.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\test\treeavl\test.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -113,44 +113,6 @@ void printContents(Storage<double> s)
     }
 }
 
-int main()
-{
-    try
-    {
-        std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
-        std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
-        std::cout << derivative(func1<double>, 8.0) << std::endl;
-        MMap<int, double> mmap;
-//        mmap.add();
-
-//        Controller controller;
-//
-//        Storage<double> pointParams;
-//        Storage<double> segmentParams;
-//        Storage<double> circleParams;
-//
-//        pointParams.add(1.2);
-//        pointParams.add(14.7);
-//
-//        segmentParams.add(1.6);
-//        segmentParams.add(3.2);
-//        segmentParams.add(6.4);
-//        segmentParams.add(0.8);
-//
-//        circleParams.add(0);
-//        circleParams.add(0);
-//        circleParams.add(5.5);
-//
-//        controller.addPrimitive(P_Point, pointParams);
-//        controller.addPrimitive(P_Segment, segmentParams);
-//        controller.addPrimitive(P_Circle, circleParams);
-//
-//        controller.updateView();
-
-    } catch (...)
-    {
-        std::cout << "Whoops!" << std::endl;
-    }
-
-    return 0;
-}
+/*int main() {
+	return 0;
+}*/

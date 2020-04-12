@@ -12,6 +12,16 @@ public:
     {
     }
 
+	bool operator<(const Pair& pair) {
+		if (value < pair.value) return true;
+		return false;
+	}
+
+	bool operator>(const Pair& pair) {
+		if (value > pair.value) return true;
+		return false;
+	}
+
     K key;
     V value;
 };
