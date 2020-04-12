@@ -48,6 +48,12 @@ size_t HashT<K, V>::hashfun(const K& key)
 	int* p = (int*) &key;
 	int hash = N * (*p * A - int(*p * A));
 	return hash;
+	
+	//size_t hash = 0;
+	//unsigned char* pc = (unsigned char*) &key;
+	//for (size_t k = 0; k < sizeof(key); ++k)
+	//	hash += pc[k];
+	//return hash;
 }
 
 template<typename K, typename V>
