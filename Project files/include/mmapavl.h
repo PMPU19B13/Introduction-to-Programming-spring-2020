@@ -15,16 +15,7 @@ private:
 		int height; // Высота поддерева
 		Node* left, * right, * parent = nullptr;
 	};
-
-	/*K maxID(Node* n)
-	{
-		if (n == nullptr)
-			throw Error();
-		while (n->right != nullptr) n = n->right;
-		return n->data.key;
-	}*/
-
-	K maxid;
+	
 	int m_size = 0;
 	Node* m_root; // Указатель на корневой узел
 	void clear(Node* runner);
@@ -87,8 +78,6 @@ private:
 	{
 		if (tree == nullptr)
 		{
-			if (prev == nullptr) maxid = key;
-			else if (key > maxid) maxid = key;
 			tree = new Node;
 			tree->data.key = key;
 			tree->data.value = value;
@@ -116,18 +105,27 @@ public:
 	bool hasKey(const K& key) const;
 	const V& getAssoc(const K& key);
 	int size() { return m_size; }
-	K maxID()
-	{return maxid;}
+
+	K maxID() const {
+		Node* runner = m_root;
+		while (runner->right != nullptr) runner = runner->right;
+		return runner->data.key;
+	}
+
+	bool hasNextMMap(Node* n) const
+	{
+		return n->data.key < maxID();
+	}
 
 	class Marker
 	{
 	public:
-		bool hasNext(MMapAVL<K,V> &m) const
+		bool hasNext(MMapAVL<K, V>& m) const
 		{
 			if (m_marker == nullptr)
 				throw Error();
 
-			return m_marker->data.key < m.maxID();
+			return m.hasNextMMap(m_marker);
 		}
 
 		void next(MMapAVL<K, V>& m) 
@@ -291,6 +289,7 @@ public:
 
 	private:
 		bool valid;
+		MMapAVL<K, V>* p_m;
 		MMapAVL<K, V>::Node* m_marker;
 	
 	};
@@ -302,7 +301,6 @@ template<typename K, typename V>
 typename MMapAVL<K, V>::Marker MMapAVL<K, V>::createMarker()
 {
 	MMapAVL<K, V>::Marker m;
-
 	m.m_marker = m_root;
 	if (m.m_marker->left == nullptr) m.m_marker = m_root;
 	else while (m.m_marker->left != nullptr) m.m_marker = m.m_marker->left;

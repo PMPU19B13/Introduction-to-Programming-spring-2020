@@ -31,6 +31,7 @@ bool testTreeAvlMarker() {
 	Pair<double, int> v = marker.getValue();
 	while (true) {
 		if (marker.hasNext(mmap)) {
+			std::cout << v.value << ' ';
 			marker.next(mmap);
 			++count;
 
@@ -41,6 +42,7 @@ bool testTreeAvlMarker() {
 		else
 			break;
 	}
+	std::cout << v.value << std::endl;
 	if ( count != mmap.size()  ) return false;
 	
 	return true;
