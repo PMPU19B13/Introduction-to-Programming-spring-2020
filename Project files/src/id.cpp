@@ -17,7 +17,8 @@ ID::ID()
 			m_array.add(buf[i]);
 		else
 			break;
-  
+}
+
 ID::ID(char* temp)
 {
 	++m_count;

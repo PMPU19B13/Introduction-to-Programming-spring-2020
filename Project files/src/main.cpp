@@ -12,117 +12,117 @@
 #include <string>
 #include "id.h"
 #include "hasht.h"
-
-class WithName
-{
-public:
-	virtual const char* getName() const = 0;
-};
-
-class Person : public WithName
-{
-public:
-	Person(const char* name, int height) : m_name(name), m_height(height)
-	{
-	}
-
-	virtual const char* getName() const
-	{
-		return m_name;
-	}
-
-	int getHeight() const
-	{
-		return m_height;
-	}
-
-private:
-	const char* m_name;
-	int m_height;
-};
-
-class Student : public Person
-{
-public:
-	Student() : Person("John", 160)
-	{
-	}
-
-	int getGroup() const
-	{
-		return m_group_number;
-	}
-
-private:
-	int m_group_number;
-};
-
-class Student : public Person
-{
-public:
-	Street(const char* Sname = "Botanicheskaya") : m_Sname(Sname)
-	{
-	}
-
-	virtual const char* getName() const
-	{
-		return m_Sname;
-	}
-
-private:
-	const char* m_Sname;
-	int m_numHouse;
-};
-
-class Rational
-{
-public:
-	Rational(int n = 0, unsigned d = 1) : num(n), den(d)
-	{}
-
-	void setNum(int n)
-	{
-		num = n;
-	}
-
-	void setDen(int d)
-	{
-		if (d == 0)
-			throw BadArgument();
-		den = d;
-	}
-
-	int getNum() const
-	{
-		return num;
-	}
-
-	unsigned getDen() const
-	{
-		return den;
-	}
-
-	Rational sum(const Rational& r)
-	{
-		Rational res;
-		res.num = num * r.den + r.num * den;
-		res.den = den * r.den;
-		return res;
-	}
-
-
-	Rational operator+(const Rational& r)
-	{
-		Rational res;
-		res.num = num * r.den + r.num * den;
-		res.den = den * r.den;
-		return res;
-	}
-
-private:
-	int num;
-	unsigned den;
-};
+//
+//class WithName
+//{
+//public:
+//	virtual const char* getName() const = 0;
+//};
+//
+//class Person : public WithName
+//{
+//public:
+//	Person(const char* name, int height) : m_name(name), m_height(height)
+//	{
+//	}
+//
+//	virtual const char* getName() const
+//	{
+//		return m_name;
+//	}
+//
+//	int getHeight() const
+//	{
+//		return m_height;
+//	}
+//
+//private:
+//	const char* m_name;
+//	int m_height;
+//};
+//
+//class Student : public Person
+//{
+//public:
+//	Student() : Person("John", 160)
+//	{
+//	}
+//
+//	int getGroup() const
+//	{
+//		return m_group_number;
+//	}
+//
+//private:
+//	int m_group_number;
+//};
+//
+//class Student : public Person
+//{
+//public:
+//	Street(const char* Sname = "Botanicheskaya") : m_Sname(Sname)
+//	{
+//	}
+//
+//	virtual const char* getName() const
+//	{
+//		return m_Sname;
+//	}
+//
+//private:
+//	const char* m_Sname;
+//	int m_numHouse;
+//};
+//
+//class Rational
+//{
+//public:
+//	Rational(int n = 0, unsigned d = 1) : num(n), den(d)
+//	{}
+//
+//	void setNum(int n)
+//	{
+//		num = n;
+//	}
+//
+//	void setDen(int d)
+//	{
+//		if (d == 0)
+//			throw BadArgument();
+//		den = d;
+//	}
+//
+//	int getNum() const
+//	{
+//		return num;
+//	}
+//
+//	unsigned getDen() const
+//	{
+//		return den;
+//	}
+//
+//	Rational sum(const Rational& r)
+//	{
+//		Rational res;
+//		res.num = num * r.den + r.num * den;
+//		res.den = den * r.den;
+//		return res;
+//	}
+//
+//
+//	Rational operator+(const Rational& r)
+//	{
+//		Rational res;
+//		res.num = num * r.den + r.num * den;
+//		res.den = den * r.den;
+//		return res;
+//	}
+//
+//private:
+//	int num;
+//	unsigned den;
+//};
 
 template<typename Fun, typename Arg>
 Arg findZero(Fun function, Arg low, Arg high, Arg eps)
@@ -167,11 +167,11 @@ Arg derivative(Fun function, Arg x)
 	return (function(x + dx) - function(x)) / dx;
 }
 
-std::ostream& operator<<(std::ostream& ost, const Rational& r)
-{
-	ost << r.getNum() << "/" << r.getDen();
-	return ost;
-}
+//std::ostream& operator<<(std::ostream& ost, const Rational& r)
+//{
+//	ost << r.getNum() << "/" << r.getDen();
+//	return ost;
+//}
 
 void printContents(Storage<double> s)
 {
@@ -202,10 +202,10 @@ Arg NewtMeth(Fun function, Arg low, Arg high, Arg eps)
 	return x1;
 }
 
-void sayHello(WithName* p)
-{
-	std::cout << "Hello " << p->getName() << std::endl;
-}
+//void sayHello(WithName* p)
+//{
+//	std::cout << "Hello " << p->getName() << std::endl;
+//}
 
 void getErr(IRequirement* req)
 {
@@ -304,15 +304,15 @@ int main()
 		std::cout << "res = " << res << std::endl;
 
 
-		Person p("Mary", 163);
-		Student stu;
-		Street st;
-		sayHello(&p);
-		sayHello(&stu);
-		sayHello(&st);
-
-		std::cout << "Student's name is " << stu.getName() << std::endl;
-		std::cout << "Student's height is " << stu.getHeight() << std::endl;
+//		Person p("Mary", 163);
+//		Student stu;
+//		Street st;
+//		sayHello(&p);
+//		sayHello(&stu);
+//		sayHello(&st);
+//
+//		std::cout << "Student's name is " << stu.getName() << std::endl;
+//		std::cout << "Student's height is " << stu.getHeight() << std::endl;
 
 		Point p1, p2(1, 1), p3(1, 0), p4(2, 1);
 		Segment se(&p3, &p4);
