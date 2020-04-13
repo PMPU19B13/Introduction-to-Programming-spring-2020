@@ -32,7 +32,6 @@ public:
 		std::cout << "Dis" << std::endl;
 	}
 
-
 };
 
 #endif

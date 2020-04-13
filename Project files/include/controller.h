@@ -23,12 +23,14 @@ enum RequirementType
 	R_SetConstant,
 	R_Horizontal,
 	R_Vertical,
+	R_PointOnSegment,
+	R_PointOnCircle,
 	R_Angle,
-	R_Distance,
 	R_Parallel,
-	R_Equal,
-	R_IsOn
+	R_Distance,
+	R_Equal
 };
+
 
 class Controller
 {
@@ -37,17 +39,21 @@ public:
 
 	Controller();
 
-	ID addPrimitive(PrimitiveType, const Storage<double>&);
-
+	ID addPrimitive(PrimitiveType type, Storage<double> params, ID* id = nullptr);
 	void removePrimitive(const ID&);
 
 	ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
-
 	void removeRequirement(const ID&);
 
 	void readPrimitive(const std::string& fileName);
 
 	void writePrimitive(const std::string& fileName);
+  
+	Pair<PrimitiveType, Storage<double>> getPrimitiveInfo(ID& id);
+  
+	friend class FileIO;
+
+	Storage<ID> getAllPrimitiveIDs();
 
 	bool updateView();
 

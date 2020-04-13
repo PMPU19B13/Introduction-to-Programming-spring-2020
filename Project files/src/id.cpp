@@ -17,6 +17,15 @@ ID::ID()
 			m_array.add(buf[i]);
 		else
 			break;
+  
+ID::ID(char* temp)
+{
+	++m_count;
+	for (size_t i = 0; i < 1024; ++i)
+		if (temp[i] != 0)
+			m_array.add(temp[i]);
+		else
+			break;
 }
 
 bool ID::operator==(const ID& id) const
@@ -45,6 +54,13 @@ bool ID::operator<(const ID& id) const
 			else if (m_array[k] > id.m_array[k]) return false;
 	}
 	return false;
+}
+
+std::ostream& operator<<(std::ostream& out, const ID& id)
+{
+	for (size_t i = 0; i < id.m_array.size(); ++i)
+		out << id.m_array[i];
+	return out;
 }
 
 void ID::initCount(size_t newCount)

@@ -7,7 +7,7 @@ void Drawer::drawPrimitive(PrimitiveType type, const Storage<double>& params)
 	switch (type)
 	{
 	case P_Point:
-	{
+{
 		if (params.size() != 2)
 			throw BadArgument();
 
@@ -56,5 +56,4 @@ void Drawer::drawPrimitive(PrimitiveType type, const Storage<double>& params)
 		std::cerr << "No implementation found!" << std::endl;
 		throw BadArgument();
 	}
-
 }
