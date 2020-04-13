@@ -88,24 +88,17 @@ private:
 	Point* m_point2;
 };
 
+template<typename T>
 class EqualRequirement : public IRequirement
 {
 public:
-	EqualRequirement(Segment* segment1, Segment* segment2);
-
-	EqualRequirement(Circle* circle1, Circle* circle2);
-
-	EqualRequirement(Point* point1, Point* point2);
+	EqualRequirement(T* primitive1, T* primitive2);
 
 	virtual double error() const;
 
 private:
-	Segment* m_segment1;
-	Segment* m_segment2;
-	Circle* m_circle1;
-	Circle* m_circle2;
-	Point* m_point1;
-	Point* m_point2;
+	T* m_primitive1;
+	T* m_primitive2;
 };
 
 
@@ -179,42 +172,29 @@ double DistanceRequirement::error() const
 	return sqrt(pow(m_point2->getX() - m_point1->getX(), 2) + pow(m_point2->getY() - m_point1->getY(), 2));
 }
 
-EqualRequirement::EqualRequirement(Segment* segment1, Segment* segment2) : m_segment1(segment1), m_segment2(segment2),
-                                                                           m_circle1(nullptr), m_circle2(nullptr),
-                                                                           m_point1(nullptr), m_point2(nullptr)
+template<typename T>
+EqualRequirement<T>::EqualRequirement(T* primitive1, T* primitive2) : m_primitive1(primitive1), m_primitive2(primitive2)
 {
 }
 
-EqualRequirement::EqualRequirement(Circle* circle1, Circle* circle2) : m_segment1(nullptr), m_segment2(nullptr),
-                                                                       m_circle1(circle1), m_circle2(circle2),
-                                                                       m_point1(nullptr), m_point2(nullptr)
+template<>
+double EqualRequirement<Point>::error() const
 {
+	return sqrt(pow(m_primitive2->getX() - m_primitive1->getX(), 2) + pow(m_primitive2->getY() - m_primitive1->getY(), 2));
 }
 
-EqualRequirement::EqualRequirement(Point* point1, Point* point2) : m_segment1(nullptr), m_segment2(nullptr),
-                                                                   m_circle1(nullptr), m_circle2(nullptr),
-                                                                   m_point1(point1), m_point2(point2)
+template<>
+double EqualRequirement<Segment>::error() const
 {
+	double length1 = sqrt(pow(m_primitive1->getEnd().getX() - m_primitive1->getStart().getX(), 2) +
+	                      pow(m_primitive1->getEnd().getY() - m_primitive1->getStart().getY(), 2));
+	double length2 = sqrt(pow(m_primitive2->getEnd().getX() - m_primitive2->getStart().getX(), 2) +
+	                      pow(m_primitive2->getEnd().getY() - m_primitive2->getStart().getY(), 2));
+	return abs(length1 - length2);
 }
 
-double EqualRequirement::error() const
+template<>
+double EqualRequirement<Circle>::error() const
 {
-	if (m_segment1 != nullptr && m_segment2 != nullptr)
-	{
-		double length1 = sqrt(pow(m_segment1->getEnd().getX() - m_segment1->getStart().getX(), 2) +
-		                      pow(m_segment1->getEnd().getY() - m_segment1->getStart().getY(), 2));
-		double length2 = sqrt(pow(m_segment2->getEnd().getX() - m_segment2->getStart().getX(), 2) +
-		                      pow(m_segment2->getEnd().getY() - m_segment2->getStart().getY(), 2));
-		return abs(length1 - length2);
-	}
-
-	if (m_circle1 != nullptr && m_circle2 != nullptr)
-	{
-		return abs(m_circle1->getRadius() - m_circle2->getRadius());
-	}
-
-	if (m_point1 != nullptr && m_point2 != nullptr)
-	{
-		return abs(m_point2->getX() - m_point1->getX()) + abs(m_point2->getY() - m_point1->getY());
-	}
+	return abs(m_primitive2->getRadius() - m_primitive1->getRadius());
 }
