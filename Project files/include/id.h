@@ -7,6 +7,7 @@ class ID
 {
 public:
 	ID();
+    
   ID(char* temp);
 
 	bool operator==(const ID& id) const;

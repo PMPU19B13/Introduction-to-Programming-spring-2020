@@ -7,6 +7,9 @@
 #include "controller.h"
 #include "error.h"
 #include "FileIO.h"
+#include <SFML/Graphics.hpp>
+#include "matrix.h"
+#include <string>
 #include "id.h"
 #include "hasht.h"
 
@@ -54,7 +57,7 @@ private:
 	int m_group_number;
 };
 
-class Street : public WithName
+class Student : public Person
 {
 public:
 	Street(const char* Sname = "Botanicheskaya") : m_Sname(Sname)

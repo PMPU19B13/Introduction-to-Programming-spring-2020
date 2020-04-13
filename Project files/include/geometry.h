@@ -11,13 +11,12 @@ public:
 
 	void setX(double x);
 
-
 	void setY(double y);
 
 	double getX() const;
 
 	double getY() const;
-
+  
 	Storage<double> getParams() const;
 
 private:
@@ -31,7 +30,6 @@ class Segment
 {
 public:
 	Segment();
-
 
 	Segment(Point* start, Point* end);
 
@@ -52,7 +50,6 @@ class Circle
 {
 public:
 	Circle();
-  
 	Circle(Point* center, double radius);
 
 	Point getCenter() const;

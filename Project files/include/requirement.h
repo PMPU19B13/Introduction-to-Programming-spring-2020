@@ -134,7 +134,7 @@ PointOnSegmentRequirement::PointOnSegmentRequirement(Point* point, Segment* segm
 
 double PointOnSegmentRequirement::error() const
 {
-	double segment_length = sqrt(pow(m_segment->getEnd().getX() - m_segment->getStart().getX(), 2) +
+  double segment_length = sqrt(pow(m_segment->getEnd().getX() - m_segment->getStart().getX(), 2) +
 	                             pow(m_segment->getEnd().getY() - m_segment->getStart().getY(), 2));
 	double distance_start = sqrt(pow(m_point->getX() - m_segment->getStart().getX(), 2) +
 	                             pow(m_point->getY() - m_segment->getStart().getY(), 2));

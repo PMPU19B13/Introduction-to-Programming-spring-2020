@@ -8,7 +8,21 @@
 
 Controller::Controller()
 {
-}
+	drawer = new Drawer();
+	Storage<double> args;
+	args.add(1);
+	args.add(-(int) drawer->window.getSize().y / 2);
+	args.add(1);
+	args.add((int) drawer->window.getSize().y / 2);
+	addPrimitive(P_Segment, args);
+
+	Storage<double> args2;
+	args2.add(-(int) drawer->window.getSize().x / 2);
+	args2.add(1);
+	args2.add((int) drawer->window.getSize().x / 2);
+	args2.add(1);
+	addPrimitive(P_Segment, args2);
+};
 
 ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
 {
@@ -104,32 +118,46 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
 
 }
 
-void Controller::updateView()
+bool Controller::updateView()
 {
-	// Создаем объект, отвечающий за рисование
-	Drawer drawer;
+	sf::Event event;
+	while (drawer->window.pollEvent(event))
+	{
+		// пользователь попытался закрыть окно: мы закрываем окно
+		if (event.type == sf::Event::Closed)
+			drawer->window.close();
 
+		if (event.type == sf::Event::Resized)
+		{
+			sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
+			drawer->window.setView(sf::View(visibleArea));
+		}
+	}
+
+	drawer->window.clear();
 	// Проходим по всем типам примитивов и рисуем их
 	List<Pair<ID, Point>>::Marker markerPoint = m_points.createMarker();
 	while (markerPoint.isValid())
 	{
-		drawer.drawPrimitive(P_Point, markerPoint.getValue().value.getParams());
+		drawer->drawPrimitive(P_Point, markerPoint.getValue().value.getParams());
 		markerPoint.next();
 	}
 
 	List<Pair<ID, Segment>>::Marker markerSegment = m_segments.createMarker();
 	while (markerSegment.isValid())
 	{
-		drawer.drawPrimitive(P_Segment, markerSegment.getValue().value.getParams());
+		drawer->drawPrimitive(P_Segment, markerSegment.getValue().value.getParams());
 		markerSegment.next();
 	}
 
 	List<Pair<ID, Circle>>::Marker markerCircle = m_circles.createMarker();
 	while (markerCircle.isValid())
 	{
-		drawer.drawPrimitive(P_Circle, markerCircle.getValue().value.getParams());
+		drawer->drawPrimitive(P_Circle, markerCircle.getValue().value.getParams());
 		markerCircle.next();
 	}
+	drawer->window.display();
+	return drawer->window.isOpen();
 }
 
 void Controller::removePrimitive(const ID& id)
@@ -170,7 +198,7 @@ void Controller::removePrimitive(const ID& id)
 
 void Controller::removeRequirement(const ID& id)
 {
-	List<Pair<ID, Requirement>>::Marker requirementMarker = m_requirements.createMarker();
+  List<Pair<ID, Requirement>>::Marker requirementMarker = m_requirements.createMarker();
 	while (requirementMarker.isValid())
 	{
 		if (requirementMarker.getValue().key == id)
@@ -184,7 +212,7 @@ void Controller::removeRequirement(const ID& id)
 
 Pair<PrimitiveType, Storage<double>> Controller::getPrimitiveInfo(ID& id)
 {
-	List<Pair<ID, Point>>::Marker markerPoint = m_points.createMarker();
+  List<Pair<ID, Point>>::Marker markerPoint = m_points.createMarker();
 	while (markerPoint.isValid())
 	{
 		if (markerPoint.getValue().key == id)

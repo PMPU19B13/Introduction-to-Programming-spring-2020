@@ -1,5 +1,10 @@
 #pragma once
 
+class Drawer;
+
+#ifndef __C_H_INCLUDED__
+#define __C_H_INCLUDED__
+
 #include "geometry.h"
 #include "storage.h"
 #include "list.h"
@@ -30,6 +35,8 @@ enum RequirementType
 class Controller
 {
 public:
+	Drawer* drawer;
+
 	Controller();
 
 	ID addPrimitive(PrimitiveType type, Storage<double> params, ID* id = nullptr);
@@ -38,18 +45,17 @@ public:
 	ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
 	void removeRequirement(const ID&);
 
-	void updateView();
-
-	friend class FileIO;
-
-	Pair<PrimitiveType, Storage<double>> getPrimitiveInfo(ID& id);
-
-	Storage<ID> getAllPrimitiveIDs();
-
 	void readPrimitive(const std::string& fileName);
 
 	void writePrimitive(const std::string& fileName);
+  
+	Pair<PrimitiveType, Storage<double>> getPrimitiveInfo(ID& id);
+  
+	friend class FileIO;
 
+	Storage<ID> getAllPrimitiveIDs();
+
+	bool updateView();
 
 private:
 	struct Requirement
@@ -85,3 +91,5 @@ private:
 	MMapAVL<ID, Point> m_segments;
 	MMapAVL<ID, Point> m_circles;*/
 };
+
+#endif

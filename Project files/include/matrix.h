@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cmath>
+
 #include "error.h"
 
 //методы преобразования массив <-> вектор
@@ -42,6 +44,7 @@ private:
 	T** matrix;
 	size_t width, height;//размеры матрицы
 public:
+
 	template<size_t N, size_t M>
 	Matrix(T(& m)[N][M]);// инициализация массивом
 
