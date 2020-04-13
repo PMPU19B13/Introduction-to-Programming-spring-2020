@@ -9,6 +9,7 @@ class Storage
 {
 public:
 	Storage();
+	Storage(size_t); //создаёт массив с указанным количеством элементов 
 
 	Storage(const Storage<T>& original);
 
@@ -98,6 +99,13 @@ Storage<T>::Storage()
 {
 	m_data = nullptr;
 	m_size = 0;
+}
+
+template<typename T>
+Storage<T>::Storage(size_t t)
+{
+	m_data = new T[t];
+	m_size = t;
 }
 
 template<typename T>

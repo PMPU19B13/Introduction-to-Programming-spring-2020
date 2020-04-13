@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 
 #include "storage.h"
 #include "mmap.h"
@@ -9,6 +10,8 @@
 #include <SFML/Graphics.hpp>
 #include "matrix.h"
 #include <string>
+#include "id.h"
+#include "hasht.h"
 
 class WithName
 {
@@ -251,7 +254,7 @@ public:
 	{
 		double res = 0;
 		Storage<verticalErrorType>::Marker marker = m_vertErrs.createMarker();
-		for (; marker.hasNext(); marker.next())
+		for (; marker.isValid(); marker.next())
 		{
 			res += marker.getValue()(x);
 		}
@@ -261,6 +264,7 @@ public:
 private:
 	Storage<verticalErrorType> m_vertErrs;
 };
+
 
 int main()
 {
@@ -335,30 +339,56 @@ int main()
 		MMap<int, double> mmap;
 		//	mmap.add();
 
-		//	Controller controller;
-		//
-		//	Storage<double> pointParams;
-		//	Storage<double> segmentParams;
-		//	Storage<double> circleParams;
-		//
-		//	pointParams.add(1.2);
-		//	pointParams.add(14.7);
-		//
-		//	segmentParams.add(1.6);
-		//	segmentParams.add(3.2);
-		//	segmentParams.add(6.4);
-		//	segmentParams.add(0.8);
-		//
-		//	circleParams.add(0);
-		//	circleParams.add(0);
-		//	circleParams.add(5.5);
-		//
-		//	controller.addPrimitive(P_Point, pointParams);
-		//	controller.addPrimitive(P_Segment, segmentParams);
-		//	controller.addPrimitive(P_Circle, circleParams);
-		//
-		//	controller.updateView();
+		Storage<unsigned char> storage;
+		std::cout << "Sizeof(storage) " << sizeof(storage);
+		storage.add('w');
+		storage.add('r');
+		storage.add('u');
+		std::cout << "Sizeof(storage) " << sizeof(storage);
+		
+		ID id;
+		std::stringstream ss;
+		ss << id;
+		std::string s = ss.str();
+		
+		HashT<ID, double> hasht;
+		ID id1 = ID();
+		hasht.add(id1, 1.3);
+		hasht.add(ID(), 1.223);
 
+		std::cout << hasht.hasKey(id1) << std::endl;
+
+		{
+			Controller controller;
+
+			Storage<double> pointParams;
+			Storage<double> segmentParams;
+			Storage<double> circleParams;
+
+			pointParams.add(1.2);
+			pointParams.add(14.7);
+
+			segmentParams.add(1.6);
+			segmentParams.add(3.2);
+			segmentParams.add(6.4);
+			segmentParams.add(0.8);
+
+			circleParams.add(0);
+			circleParams.add(0);
+			circleParams.add(5.5);
+
+			controller.addPrimitive(P_Point, pointParams);
+			controller.addPrimitive(P_Segment, segmentParams);
+			controller.addPrimitive(P_Circle, circleParams);
+
+			controller.updateView();
+			FileIO::writePrimitive("document.itp", controller);
+		}
+		{
+			Controller c1;
+			FileIO::writePrimitive("document.itp", c1);
+			c1.updateView();
+		}
 	}
 	catch (...)
 	{
