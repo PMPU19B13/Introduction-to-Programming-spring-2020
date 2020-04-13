@@ -8,7 +8,6 @@
 
 Controller::Controller()
 {
-
 }
 
 ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)

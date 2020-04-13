@@ -20,6 +20,8 @@ public:
 
 	void traverse(void (* action)(int));
 
+	size_t size() const;
+
 /*class Marker
     {
     public:
@@ -72,6 +74,7 @@ private:
 	};
 
 	Node* m_root; // Указатель на корневой узел
+	size_t m_size;
 
 	void clear(Node* runner);
 
@@ -79,7 +82,7 @@ private:
 };
 
 template<typename K, typename V>
-MMap<K, V>::MMap() : m_root(nullptr)
+MMap<K, V>::MMap() : m_root(nullptr), m_size(0)
 {
 }
 
@@ -118,6 +121,8 @@ void MMap<K, V>::traversePrivate(Node* runner, void (* action)(int))
 template<typename K, typename V>
 void MMap<K, V>::add(const K& key, const V& value)
 {
+	++m_size;
+
 	if (m_root == nullptr)
 	{
 		m_root = new Node;
@@ -241,4 +246,10 @@ void MMap<K, V>::clear(Node* runner)
 		clear(runner->right);
 		delete runner;
 	}
+}
+
+template<typename K, typename V>
+size_t MMap<K, V>::size() const
+{
+	return m_size;
 }
