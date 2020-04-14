@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
+//#include <SFML/Graphics.hpp>
+
 #include"id.h"
 #include "controller.h"
 #include "error.h"
@@ -8,8 +10,8 @@
 
 Controller::Controller()
 {
-	drawer = new Drawer();
-	Storage<double> args;
+	drawer = nullptr;
+	/*Storage<double> args;
 	args.add(1);
 	args.add(-(int) drawer->window.getSize().y / 2);
 	args.add(1);
@@ -21,7 +23,7 @@ Controller::Controller()
 	args2.add(1);
 	args2.add((int) drawer->window.getSize().x / 2);
 	args2.add(1);
-	addPrimitive(P_Segment, args2);
+	addPrimitive(P_Segment, args2);*/
 };
 
 ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
@@ -118,23 +120,8 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
 
 }
 
-bool Controller::updateView()
+void Controller::updateView()
 {
-	sf::Event event;
-	while (drawer->window.pollEvent(event))
-	{
-		// пользователь попытался закрыть окно: мы закрываем окно
-		if (event.type == sf::Event::Closed)
-			drawer->window.close();
-
-		if (event.type == sf::Event::Resized)
-		{
-			sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
-			drawer->window.setView(sf::View(visibleArea));
-		}
-	}
-
-	drawer->window.clear();
 	// Проходим по всем типам примитивов и рисуем их
 	List<Pair<ID, Point>>::Marker markerPoint = m_points.createMarker();
 	while (markerPoint.isValid())
@@ -156,8 +143,6 @@ bool Controller::updateView()
 		drawer->drawPrimitive(P_Circle, markerCircle.getValue().value.getParams());
 		markerCircle.next();
 	}
-	drawer->window.display();
-	return drawer->window.isOpen();
 }
 
 void Controller::removePrimitive(const ID& id)
@@ -261,6 +246,25 @@ Storage<ID> Controller::getAllPrimitiveIDs()
 	}
 	return allIDs;
 }
+/*
+bool Controller::tryAddRequirement(RequirementType req, const Storage<ID>& ids, double* param = nullptr) 
+{
+	switch (req) 
+	{
+	case R_PointOnSegment: {
+		ID id;
+		Requirement R;
+		R.type = req;
+		R.param = param;
+		R.objects = ids;
+
+		m_requirements.add(Pair<ID,Requirement>(id,R));
+
+		class TotalErrCalc
+	}
+	}
+}*/
+
 
 //ID Controller::addRequirement(RequirementType, const Storage<ID>&, double* param)
 //{

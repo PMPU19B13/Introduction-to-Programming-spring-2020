@@ -7,6 +7,7 @@
 #include "controller.h"
 #include "error.h"
 #include "FileIO.h"
+#include "drawer.h"
 #include <SFML/Graphics.hpp>
 #include "matrix.h"
 #include <string>
@@ -358,37 +359,17 @@ int main()
 
 		std::cout << hasht.hasKey(id1) << std::endl;
 
-		{
-			Controller controller;
+		
+		Controller controller;
 
-			Storage<double> pointParams;
-			Storage<double> segmentParams;
-			Storage<double> circleParams;
+			
+		Drawer dr;
+		controller.setDrawer(&dr);
+		dr.setController(&controller);
+		dr.run();
+		//FileIO::writePrimitive("document.itp", controller);
+		
 
-			pointParams.add(1.2);
-			pointParams.add(14.7);
-
-			segmentParams.add(1.6);
-			segmentParams.add(3.2);
-			segmentParams.add(6.4);
-			segmentParams.add(0.8);
-
-			circleParams.add(0);
-			circleParams.add(0);
-			circleParams.add(5.5);
-
-			controller.addPrimitive(P_Point, pointParams);
-			controller.addPrimitive(P_Segment, segmentParams);
-			controller.addPrimitive(P_Circle, circleParams);
-
-			controller.updateView();
-			FileIO::writePrimitive("document.itp", controller);
-		}
-		{
-			Controller c1;
-			FileIO::writePrimitive("document.itp", c1);
-			c1.updateView();
-		}
 	}
 	catch (...)
 	{
