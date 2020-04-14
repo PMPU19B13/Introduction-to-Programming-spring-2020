@@ -43,13 +43,35 @@ bool testTreeAvlMarker() {
 			break;
 	}
 	std::cout << v.value << std::endl;
-	//marker.remove(mmap);
 	if ( count != mmap.size()  ) return false;
+
+	marker.remove(mmap);
+	std::cout << mmap.size() << std::endl;
+
+	marker = mmap.createMarker();
+	if (!marker.isValid()) return false;
+	count = 1;
+	v = marker.getValue();
+	while (true) {
+		if (marker.hasNext(mmap)) {
+			std::cout << v.value << ' ';
+			marker.next(mmap);
+			++count;
+
+			Pair<double, int> vnext = marker.getValue();
+			if (vnext < v) return false;
+			v = vnext;
+		}
+		else
+			break;
+	}
+	std::cout << v.value << std::endl;
+	if (count != mmap.size()) return false;
 	
 	return true;
 }
 
-
+ 
 int main() {
 	std::cout << "testTreeAvlAdd() " << (testTreeAvlAdd() ? "PASSED" : "FAILED") << std::endl;
 	std::cout << "testTreeAvlMarker() " << (testTreeAvlMarker() ? "PASSED" : "FAILED") << std::endl;

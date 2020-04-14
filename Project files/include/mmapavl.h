@@ -169,6 +169,7 @@ public:
 		{
 			m.removeMMap(m_marker);
 			valid = false;
+			//next(m);
 		}
 			   
 		bool isValid()
@@ -214,10 +215,17 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* m_marker, Node* runner )
 			if (n->parent != nullptr) --(n->parent->height);
 			while (n != m_root) 
 			{
-				n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+				if (n->parent->left != nullptr && n->parent->right != nullptr) 
+					n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+				if (n->parent->left != nullptr && n->parent->right == nullptr)
+					n->parent->height = n->parent->left->height;
+				if (n->parent->left == nullptr && n->parent->right != nullptr)
+					n->parent->height = n->parent->right->height;
+				if (n->parent->left == nullptr && n->parent->right == nullptr)
+					n->parent->height = 0;
 				n = n->parent;
 			}
-			if (runner->parent->left->data.key == runner->data.key)
+			if (runner->parent->left != nullptr && runner->parent->left->data.key == runner->data.key)
 			{
 				runner->parent->left = nullptr;
 			}
@@ -225,6 +233,7 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* m_marker, Node* runner )
 			{
 				runner->parent->right = nullptr;
 			}
+			balanceTree(runner->parent);
 			free(runner);
 			m_size--;
 			return;
@@ -240,11 +249,19 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* m_marker, Node* runner )
 				return;
 			}
 			if (n->parent != nullptr) --(n->parent->height);
+			if (n->parent != nullptr) n = n->parent;
 			while (n != m_root) {
-				n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+				if (n->parent->left != nullptr && n->parent->right != nullptr)
+					n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+				if (n->parent->left != nullptr && n->parent->right == nullptr)
+					n->parent->height = n->parent->left->height;
+				if (n->parent->left == nullptr && n->parent->right != nullptr)
+					n->parent->height = n->parent->right->height;
+				if (n->parent->left == nullptr && n->parent->right == nullptr)
+					n->parent->height = 0;
 				n = n->parent;
 			}
-			if (runner->parent->left->data.key == runner->data.key)
+			if (runner->parent->left != nullptr && runner->parent->left->data.key == runner->data.key)
 			{
 				runner->parent->left = runner->left;
 				runner->left->parent = runner->parent;
@@ -254,6 +271,7 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* m_marker, Node* runner )
 				runner->parent->right = runner->left;
 				runner->left->parent = runner->parent;
 			}
+			balanceTree(runner->parent);
 			free(runner);
 			m_size--;
 			return;
@@ -265,15 +283,24 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* m_marker, Node* runner )
 			{
 				n->right->parent = nullptr;
 				m_size--;
+				balanceTree(runner);
 				free(runner);
 				return;
 			}
 			if (n->parent != nullptr) --(n->parent->height);
+			if (n->parent != nullptr) n = n->parent;
 			while (n != m_root) {
-				n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+				if (n->parent->left != nullptr && n->parent->right != nullptr)
+					n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+				if (n->parent->left != nullptr && n->parent->right == nullptr)
+					n->parent->height = n->parent->left->height;
+				if (n->parent->left == nullptr && n->parent->right != nullptr)
+					n->parent->height = n->parent->right->height;
+				if (n->parent->left == nullptr && n->parent->right == nullptr)
+					n->parent->height = 0;
 				n = n->parent;
 			}
-			if (runner->parent->left->data.key == runner->data.key)
+			if (runner->parent->left != nullptr && runner->parent->left->data.key == runner->data.key)
 			{
 				runner->parent->left = runner->right;
 				runner->right->parent = runner->parent;
@@ -283,47 +310,61 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* m_marker, Node* runner )
 				runner->parent->right = runner->right;
 				runner->right->parent = runner->parent;
 			}
+			balanceTree(runner->parent);
 			free(runner);
 			m_size--;
 			return;
 		}
-		/////////////////////////////////////////////////////////////////////////////////////
-		//здесь ещё надо рассмотреть случай, когда удаляется корневой элемент
-		Node* t = runner;
-		runner = getMin(t->right);
-		Node* n = runner;
-		--(n->parent->height);
-		while (n != m_root) {
-			n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
-			n = n->parent;
-		}
-		if (runner->parent->left->data.key == runner->data.key)
+		
+		Node* t = runner; //указатель на узел, на который указывает маркер
+		Node* n = getMin(t->right);//минимаоьный правый элемент
+		if (runner->parent->left != nullptr && n->parent->left->data.key == n->data.key)
 		{
-			runner->parent->left = runner->right;
+			if (n->right != nullptr) 
+			{
+				n->parent->left = n->right;
+				n->parent->height = std::max(n->parent->right->height, n->right->height);
+			}
+			else 
+			{
+				n->parent->height = n->parent->right->height;
+			}
 		}
 		else
 		{
-			runner->parent->right = runner->right;
+			if (n->right != nullptr)
+			{
+				n->parent->right = n->right;
+				n->parent->height = std::max(n->parent->left->height, n->right->height);
+			}
+			else
+			{
+				n->parent->height = n->parent->left->height;
+			}
 		}
-		runner->right = t->right;
-		runner->left = t->left;
-		runner->parent = t->parent;
-		if (t->parent->left->data.key == t->data.key)
+		Node* temp = n->parent;
+		while (temp != m_root) {
+			temp->parent->height = std::max(temp->parent->left->height, temp->parent->right->height);
+			temp = temp->parent;
+		}
+		if (t->parent->left != nullptr && t->parent->left->data.key == t->data.key)
 		{
-			t->parent->left = runner;
+			t->parent->left = n;
 		}
 		else
 		{
-			t->parent->right = runner;
+			t->parent->right = n;
 		}
-		runner->right->parent = runner;
-		runner->left->parent = runner;
-		runner->parent->height--;
-		free(t);
-		balanceTree(runner);
+		n->height = t->height;
+		n->left = t->left;
+		n->right = t->right;
+		t->right->parent = n;
+		t->left->parent = n;
+		balanceTree(n);
+		free(runner);
+		m_size--;
 		return;
 	}
-
 	balanceTree(runner);
 }
 
