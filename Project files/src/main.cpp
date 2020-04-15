@@ -4,6 +4,7 @@
 #include "mmap.h"
 #include "requirement.h"
 #include "controller.h"
+#include "drawer.h"
 #include "error.h"
 
 class WithName
@@ -209,8 +210,11 @@ int main()
 	s.add(60);
 	c.addPrimitive(P_Segment, s);
 
-	while (c.updateView())
-	{};//!DON NOT REMOVE!
+	Drawer dr;
+	dr.setController(&c);
+	c.setDrawer(&dr);
+
+	dr.run();
 
 	return 0;
 
