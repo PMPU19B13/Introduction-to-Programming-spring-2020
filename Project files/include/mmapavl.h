@@ -169,7 +169,6 @@ public:
 		{
 			m.removeMMap(m_marker, m);
 			valid = false;
-			//next(m);
 		}
 			   
 		bool isValid()
@@ -190,7 +189,7 @@ public:
 };
 
 template<typename K, typename V>
-void MMapAVL<K, V>::removeMMap(Node* n, MMapAVL<K, V>& m)
+void MMapAVL<K, V>::removeMMap(Node* n, MMapAVL<K, V>& m)//n-маркер
 {
 	return removeMMapPrivate(n, m_root, m);
 }
@@ -200,7 +199,7 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>& m
 {
 	if (mark == nullptr)
 		throw Error();
-	if (runner->data.key > mark->data.key) removeMMapPrivate(mark, runner->left, m);
+	if (runner->data.key > mark->data.key) removeMMapPrivate(mark, runner->left, m); //mark - то, на что указывает маркер, runner - изначально m_root
 	else if (runner->data.key < mark->data.key) removeMMapPrivate(mark, runner->right, m);
 	else {
 		if (!(runner->right) && !(runner->left))
@@ -249,7 +248,7 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>& m
 				return;
 			}
 			if (n->parent != nullptr) --(n->parent->height);
-			if (n->parent != nullptr) n = n->parent;
+			//if (n->parent != nullptr) n = n->parent;
 			while (n != m_root) {
 				if (n->parent->left != nullptr && n->parent->right != nullptr)
 					n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
