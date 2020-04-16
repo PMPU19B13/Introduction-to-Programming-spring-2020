@@ -318,8 +318,15 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>& m
 		
 		Node* t = runner; //указатель на узел, на который указывает маркер
 		Node* n = getMin(t->right); //минимальный правый элемент
-		Node* minright = nullptr;
-		if (n->right != nullptr) { minright = n->right; n->height = 0; n->right->parent = nullptr; n->right = nullptr; } //надо запомнить его и добавить в дерево заново
+		bool minright = false;
+		K minrightK;
+		V minrightV;
+		if (n->right != nullptr) {
+			if (n->right != nullptr) { minrightK = n->right->data.key; minrightV = n->right->data.value; n->height = 0; n->right->parent = nullptr; n->right = nullptr; } //надо запомнить его и добавить в дерево заново
+			free(n->right);
+			m_size--;
+			minright = true;
+		}
 		if (n->parent != nullptr)
 		if (n->parent->left != nullptr && n->parent->left->data.key == n->data.key)
 		{
@@ -351,10 +358,9 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>& m
 		if (t->right != nullptr) t->right->parent = n;
 		if (t->left != nullptr) t->left->parent = n;
 		free(t);
+		m_size--;
 		balanceTree(n);
-		if (minright != nullptr) m.add(minright->data.key, minright->data.value);
-		free(minright);
-		//m_size--;
+		if (minright == true) this->add(minrightK, minrightV);
 		return;
 	}
 	balanceTree(runner);
