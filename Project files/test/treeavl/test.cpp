@@ -15,7 +15,8 @@ bool testTreeAvlAdd() {
 	return true;
 }
 
-bool testTreeAvlMarker() {
+bool testTreeAvlMarker() 
+{
 	MMapAVL<double, int> mmap;
 	mmap.add(1.2, 20);
 	mmap.add(1.35, 35);
@@ -29,8 +30,10 @@ bool testTreeAvlMarker() {
 	if (!marker.isValid()) return false;
 	size_t count = 1;
 	Pair<double, int> v = marker.getValue();
-	while (true) {
-		if (marker.hasNext(mmap)) {
+	while (true) 
+	{
+		if (marker.hasNext(mmap)) 
+		{
 			std::cout << v.value << ' ';
 			marker.next(mmap);
 			++count;
@@ -46,13 +49,15 @@ bool testTreeAvlMarker() {
 	if ( count != mmap.size()  ) return false;
 
 	//удаление узла без потомков
+	std::cout << "удаление узла без потомков: " << std::endl;
 	marker.remove(mmap);
 
 	marker = mmap.createMarker();
 	count = 1;
 	v = marker.getValue();
-	/*while (true) {
-		if (marker.hasNext(mmap)) {
+	while (true) {
+		if (marker.hasNext(mmap)) 
+		{
 			std::cout << v.value << ' ';
 			marker.next(mmap);
 			++count;
@@ -69,6 +74,7 @@ bool testTreeAvlMarker() {
 	mmap.add(1.43, 43);
 
 	//удаление промежуточного узла
+	std::cout << "удаление промежуточного узла: " << std::endl;
 	marker = mmap.createMarker();
 	//marker.next(mmap);
 	marker.next(mmap);
@@ -76,8 +82,10 @@ bool testTreeAvlMarker() {
 	marker = mmap.createMarker();
 	count = 1;
 	v = marker.getValue();
-	while (true) {
-		if (marker.hasNext(mmap)) {
+	while (true) 
+	{
+		if (marker.hasNext(mmap)) 
+		{
 			std::cout << v.value << ' ';
 			marker.next(mmap);
 			++count;
@@ -94,6 +102,7 @@ bool testTreeAvlMarker() {
 	mmap.add(1.15, 15);
 
 	//удаление промежуточного узла
+	std::cout << "удаление промежуточного узла: " << std::endl;
 	marker = mmap.createMarker();
 	marker.next(mmap);
 	marker.next(mmap);
@@ -118,8 +127,9 @@ bool testTreeAvlMarker() {
 	std::cout << v.value << std::endl;
 	if (count != mmap.size()) return false;
 	mmap.add(1.35, 35);
-	*/
+	
 	//удаление корневого узла
+	std::cout << "удаление корневого узла: " << std::endl;
 	marker = mmap.createMarker();
 	marker.next(mmap);
 	marker.next(mmap);
@@ -142,34 +152,14 @@ bool testTreeAvlMarker() {
 	}
 	std::cout << v.value << std::endl;
 	if (count != mmap.size()) return false;
-	mmap.add(1.2, 20);
 
-
-	marker = mmap.createMarker();
-	count = 1;
-	v = marker.getValue();
-	while (true) {
-		if (marker.hasNext(mmap)) {
-			std::cout << v.value << ' ';
-			marker.next(mmap);
-			++count;
-
-			Pair<double, int> vnext = marker.getValue();
-			if (vnext < v) return false;
-			v = vnext;
-		}
-		else
-			break;
-	}
-	std::cout << v.value << std::endl;
-	if (count != mmap.size()) return false;
 	return true;
 }
 
  
 int main() {
+	setlocale(LC_ALL, "ru");
 	std::cout << "testTreeAvlAdd() " << (testTreeAvlAdd() ? "PASSED" : "FAILED") << std::endl;
 	std::cout << "testTreeAvlMarker() " << (testTreeAvlMarker() ? "PASSED" : "FAILED") << std::endl;
-
 	return 0;
 }
