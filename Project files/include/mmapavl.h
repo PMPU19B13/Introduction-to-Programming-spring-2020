@@ -209,19 +209,20 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>& m
 			{
 				free(runner);
 				m_size--;
+				m_root = nullptr;
 				return;
 			}
 			if (n->parent != nullptr) --(n->parent->height);
 			while (n != m_root) 
 			{
 				if (n->parent->left != nullptr && n->parent->right != nullptr) 
-					n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+					n->parent->height = std::max(n->parent->left->height, n->parent->right->height) + 1;
 				if (n->parent->left != nullptr && n->parent->right == nullptr)
-					n->parent->height = n->parent->left->height;
+					n->parent->height = n->parent->left->height + 1;
 				if (n->parent->left == nullptr && n->parent->right != nullptr)
-					n->parent->height = n->parent->right->height;
+					n->parent->height = n->parent->right->height + 1;
 				if (n->parent->left == nullptr && n->parent->right == nullptr)
-					n->parent->height = 0;
+					n->parent->height = 1;
 				n = n->parent;
 			}
 			if (runner->parent->left != nullptr && runner->parent->left->data.key == runner->data.key)
@@ -245,19 +246,19 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>& m
 				n->left->parent = nullptr;
 				m_size--;
 				free(runner);
+				m_root = n->left;
 				return;
 			}
 			if (n->parent != nullptr) --(n->parent->height);
-			//if (n->parent != nullptr) n = n->parent;
 			while (n != m_root) {
 				if (n->parent->left != nullptr && n->parent->right != nullptr)
-					n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+					n->parent->height = std::max(n->parent->left->height, n->parent->right->height) + 1;
 				if (n->parent->left != nullptr && n->parent->right == nullptr)
-					n->parent->height = n->parent->left->height;
+					n->parent->height = n->parent->left->height + 1;
 				if (n->parent->left == nullptr && n->parent->right != nullptr)
-					n->parent->height = n->parent->right->height;
+					n->parent->height = n->parent->right->height + 1;
 				if (n->parent->left == nullptr && n->parent->right == nullptr)
-					n->parent->height = 0;
+					n->parent->height = 1;
 				n = n->parent;
 			}
 			if (runner->parent->left != nullptr && runner->parent->left->data.key == runner->data.key)
@@ -278,25 +279,25 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>& m
 		if (!runner->left)
 		{
 			Node* n = runner;
-			if (n->parent == nullptr)
+ 			if (n->parent == nullptr)
 			{
 				n->right->parent = nullptr;
 				m_size--;
 				balanceTree(runner);
 				free(runner);
+				m_root = n->right;
 				return;
 			}
 			if (n->parent != nullptr) --(n->parent->height);
-			if (n->parent != nullptr) n = n->parent;
 			while (n != m_root) {
 				if (n->parent->left != nullptr && n->parent->right != nullptr)
-					n->parent->height = std::max(n->parent->left->height, n->parent->right->height);
+					n->parent->height = std::max(n->parent->left->height, n->parent->right->height) + 1;
 				if (n->parent->left != nullptr && n->parent->right == nullptr)
-					n->parent->height = n->parent->left->height;
+					n->parent->height = n->parent->left->height + 1;
 				if (n->parent->left == nullptr && n->parent->right != nullptr)
-					n->parent->height = n->parent->right->height;
+					n->parent->height = n->parent->right->height + 1;
 				if (n->parent->left == nullptr && n->parent->right == nullptr)
-					n->parent->height = 0;
+					n->parent->height = 1;
 				n = n->parent;
 			}
 			if (runner->parent->left != nullptr && runner->parent->left->data.key == runner->data.key)
@@ -321,25 +322,39 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>& m
 		K minrightK;
 		V minrightV;
 		if (n->right != nullptr) {
-			if (n->right != nullptr) { minrightK = n->right->data.key; minrightV = n->right->data.value; n->height = 0; n->right->parent = nullptr; n->right = nullptr; } //надо запомнить его и добавить в дерево заново
+			minrightK = n->right->data.key; 
+			minrightV = n->right->data.value; 
+			n->height = 0; 
+			n->right->parent = nullptr; 
 			free(n->right);
+			n->right = nullptr;
 			m_size--;
 			minright = true;
 		}
 		if (n->parent != nullptr)
 		if (n->parent->left != nullptr && n->parent->left->data.key == n->data.key)
 		{
-			n->parent->height = n->parent->right->height;
+			if (n->parent->right != nullptr) n->parent->height = n->parent->right->height;
+			else n->parent->height = 1;
 			n->parent->left = nullptr;
 		}
 		else
 		{
-			n->parent->height = n->parent->left->height;
-			n->parent->right = nullptr;
+			//if (n->parent->left != nullptr) n->parent->height = n->parent->left->height;
+			//else n->parent->height = 0;
+			//n->parent->right = nullptr;
+			n->parent->height = 1;
 		}
-		Node* temp = n->parent;
+		Node* temp = n;
 		while (temp != m_root) {
-			temp->parent->height = std::max(temp->parent->left->height, temp->parent->right->height);
+			if (temp->parent->left != nullptr && temp->parent->right != nullptr)
+				temp->parent->height = std::max(temp->parent->left->height, temp->parent->right->height) + 1;
+			if (temp->parent->left != nullptr && temp->parent->right == nullptr)
+				temp->parent->height = temp->parent->left->height + 1;
+			if (temp->parent->left == nullptr && temp->parent->right != nullptr)
+				temp->parent->height = temp->parent->right->height + 1;
+			if (temp->parent->left == nullptr && temp->parent->right == nullptr)
+				temp->parent->height = 1;
 			temp = temp->parent;
 		}
 		if (t->parent != nullptr)
@@ -356,10 +371,11 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>& m
 		n->right = t->right;
 		if (t->right != nullptr) t->right->parent = n;
 		if (t->left != nullptr) t->left->parent = n;
+		if (t->parent == nullptr) m_root = n;
 		free(t);
 		m_size--;
-		balanceTree(n);
 		if (minright == true) this->add(minrightK, minrightV);
+		balanceTree(n);
 		return;
 	}
 	balanceTree(runner);
