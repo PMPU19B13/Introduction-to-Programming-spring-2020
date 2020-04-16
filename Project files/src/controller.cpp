@@ -25,7 +25,6 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
 			{
 				m_points.add(*id, Point(params[0], params[1]));
 				return *id;
-				return *id;
 			}
 			else
 			{
@@ -141,7 +140,7 @@ void Controller::removePrimitive(const ID& id)
 	{
 		if (pointMarker.getValue().key == id)
 		{
-			//pointMarker.remove();
+			pointMarker.remove(m_points);
 			return;
 		}
 		pointMarker.next(m_points);
@@ -152,7 +151,7 @@ void Controller::removePrimitive(const ID& id)
 	{
 		if (segmentMarker.getValue().key == id)
 		{
-			//segmentMarker.remove();
+			segmentMarker.remove(m_segments);
 			return;
 		}
 		segmentMarker.next(m_segments);
@@ -163,7 +162,7 @@ void Controller::removePrimitive(const ID& id)
 	{
 		if (circleMarker.getValue().key == id)
 		{
-			//circleMarker.remove();
+			circleMarker.remove(m_circles);
 			return;
 		}
 		circleMarker.next(m_circles);
@@ -177,7 +176,7 @@ void Controller::removeRequirement(const ID& id)
 	{
 		if (requirementMarker.getValue().key == id)
 		{
-			//requirementMarker.remove(m_requirements);
+			requirementMarker.remove(m_requirements);
 			return;
 		}
 		requirementMarker.next(m_requirements);
