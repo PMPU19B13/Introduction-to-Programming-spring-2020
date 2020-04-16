@@ -7,6 +7,7 @@
 #include "controller.h"
 #include "error.h"
 #include "drawer.h"
+#include "matrix.h"
 
 Controller::Controller()
 {
@@ -245,8 +246,8 @@ Storage<ID> Controller::getAllPrimitiveIDs()
 	}
 	return allIDs;
 }
-/*
-bool Controller::tryAddRequirement(RequirementType req, const Storage<ID>& ids, double* param = nullptr) 
+
+/*bool Controller::tryAddRequirement(RequirementType req, const Storage<ID>& ids, double* param = nullptr) 
 {
 	switch (req) 
 	{
@@ -259,7 +260,12 @@ bool Controller::tryAddRequirement(RequirementType req, const Storage<ID>& ids, 
 
 		m_requirements.add(Pair<ID,Requirement>(id,R));
 
-		class TotalErrCalc
+		class TotalErrCalc {
+			Storage<IRequirement*>
+		public:
+			Storage<double> operator()(const Storage<double> &x);
+			Matrix<double> derivative(const Storage<double> &x);
+		};
 	}
 	}
 }*/

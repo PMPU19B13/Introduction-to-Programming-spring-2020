@@ -3,8 +3,10 @@
 
 #include "drawer.h"
 
-void Drawer::run() {
-	while (window.isOpen()) {
+void Drawer::run() 
+{
+	while (window.isOpen()) 
+	{
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
