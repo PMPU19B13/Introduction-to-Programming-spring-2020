@@ -1,173 +1,89 @@
-﻿  controller.cpp
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\list.h(176,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\list.h(171): message : во время компиляции функции-члена класс шаблон "T &List<T>::operator [](size_t)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\list.h(171): message :         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\list.h(171): message :         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\list.h(171): message :             T=Pair<ID,Point>
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\list.h(171): message :         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\controller.cpp(72): message : выполняется компиляция ссылки на экземпляр шаблон функции "T &List<T>::operator [](size_t)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\controller.cpp(72): message :         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\controller.cpp(72): message :         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\controller.cpp(72): message :             T=Pair<ID,Point>
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\controller.cpp(72): message :         ]
-  drawer.cpp
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\controller.h(90): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "List<Pair<ID,Point>>"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:             T=double
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:         and
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:             T=double
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:         and
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:             T=double
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:         and
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:             T=double
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:         and
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:             T=double
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:         and
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:             T=double
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:         and
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:             T=double
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:         and
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:             T=double
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:         and
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:         ]
-  main.cpp
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(48,27): warning C4244: аргумент: преобразование "const T" в "float", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(48,27): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(48,27): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(48,27): warning C4244:             T=double
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(48,27): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,66): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244:             T=float
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(56,48): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(191,13): warning C4244: инициализация: преобразование "Arg" в "int", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(191,13): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(191,13): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(191,13): warning C4244:             Arg=double
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(191,13): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message : выполняется компиляция ссылки на экземпляр шаблон функции "Arg NewtMeth<T(__cdecl *)(T),double>(Fun,Arg,Arg,Arg)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message :         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message :         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message :             Arg=double,
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message :             T=double,
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message :             Fun=double (__cdecl *)(double)
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message :         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(49,11): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(45): message : во время компиляции функции-члена класс шаблон "size_t HashT<ID,double>::hashfun(const K &)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(45): message :         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(45): message :         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(45): message :             K=ID
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(45): message :         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(62): message : выполняется компиляция ссылки на экземпляр шаблон функции "size_t HashT<ID,double>::hashfun(const K &)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(62): message :         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(62): message :         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(62): message :             K=ID
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(62): message :         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(32): message : во время компиляции функции-члена класс шаблон "HashT<ID,double>::HashT(void)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(355): message : выполняется компиляция ссылки на экземпляр шаблон функции "HashT<ID,double>::HashT(void)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(355): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "HashT<ID,double>"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(168,42): warning C4244: return: преобразование "T" в "Arg", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(168,42): warning C4244:         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(168,42): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(168,42): warning C4244:             T=double
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(168,42): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(168,42): warning C4244:         and
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(168,42): warning C4244:         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(168,42): warning C4244:             Arg=int
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(168,42): warning C4244:         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(192): message : выполняется компиляция ссылки на экземпляр шаблон функции "Arg derivative<T(__cdecl *)(T),int>(Fun,Arg)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(192): message :         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(192): message :         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(192): message :             Arg=int,
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(192): message :             T=double,
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(192): message :             Fun=double (__cdecl *)(double)
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(192): message :         ]
-  Создание кода...
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message : выполняется компиляция ссылки на экземпляр шаблон функции "Arg NewtMeth<T(__cdecl *)(T),double>(Fun,Arg,Arg,Arg)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message :         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message :         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message :             Arg=double,
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message :             T=double,
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message :             Fun=double (__cdecl *)(double)
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(339): message :         ]
+﻿  drawer.cpp
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(21,65): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(21,65): warning C4244:         with
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(21,65): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(21,65): warning C4244:             T=float
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(21,65): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(21,47): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(21,47): warning C4244:         with
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(21,47): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(21,47): warning C4244:             T=float
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(21,47): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,63): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,63): warning C4244:         with
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,63): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,63): warning C4244:             T=double
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,63): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,63): warning C4244:         and
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,63): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,63): warning C4244:             T=float
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,63): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,52): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,52): warning C4244:         with
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,52): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,52): warning C4244:             T=double
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,52): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,52): warning C4244:         and
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,52): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,52): warning C4244:             T=float
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(70,52): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,65): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,65): warning C4244:         with
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,65): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,65): warning C4244:             T=double
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,65): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,65): warning C4244:         and
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,65): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,65): warning C4244:             T=float
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,65): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,54): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,54): warning C4244:         with
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,54): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,54): warning C4244:             T=double
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,54): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,54): warning C4244:         and
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,54): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,54): warning C4244:             T=float
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(86,54): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,65): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,65): warning C4244:         with
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,65): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,65): warning C4244:             T=double
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,65): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,65): warning C4244:         and
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,65): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,65): warning C4244:             T=float
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,65): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,54): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,54): warning C4244:         with
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,54): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,54): warning C4244:             T=double
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,54): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,54): warning C4244:         and
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,54): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,54): warning C4244:             T=float
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(87,54): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,63): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,63): warning C4244:         with
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,63): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,63): warning C4244:             T=double
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,63): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,63): warning C4244:         and
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,63): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,63): warning C4244:             T=float
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,63): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,52): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,52): warning C4244:         with
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,52): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,52): warning C4244:             T=double
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,52): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,52): warning C4244:         and
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,52): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,52): warning C4244:             T=float
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,52): warning C4244:         ]
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(102,27): warning C4244: аргумент: преобразование "const T" в "float", возможна потеря данных
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(102,27): warning C4244:         with
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(102,27): warning C4244:         [
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(102,27): warning C4244:             T=double
+C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(102,27): warning C4244:         ]
   Visual Studio ITP Project.vcxproj -> C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\build\Debug\Visual Studio ITP Project.exe

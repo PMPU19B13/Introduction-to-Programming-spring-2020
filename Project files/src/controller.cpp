@@ -10,7 +10,7 @@
 
 Controller::Controller()
 {
-	drawer = nullptr;
+	//drawer = nullptr;
 	/*Storage<double> args;
 	args.add(1);
 	args.add(-(int) drawer->window.getSize().y / 2);
@@ -38,7 +38,6 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
 			if (id)
 			{
 				m_points.add(Pair<ID, Point>(*id, Point(params[0], params[1])));
-				return *id;
 				return *id;
 			}
 			else
