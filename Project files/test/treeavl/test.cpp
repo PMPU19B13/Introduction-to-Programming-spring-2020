@@ -45,11 +45,10 @@ bool testTreeAvlMarker() {
 	std::cout << v.value << std::endl;
 	if ( count != mmap.size()  ) return false;
 
+	//удаление узла без потомков
 	marker.remove(mmap);
-	std::cout << mmap.size() << std::endl;
 
 	marker = mmap.createMarker();
-	if (!marker.isValid()) return false;
 	count = 1;
 	v = marker.getValue();
 	while (true) {
@@ -67,6 +66,11 @@ bool testTreeAvlMarker() {
 	}
 	std::cout << v.value << std::endl;
 	if (count != mmap.size()) return false;
+
+	//удаление корневого узла
+	//marker.next(mmap);
+	//marker.next(mmap);
+	//marker.remove(mmap);
 	
 	return true;
 }

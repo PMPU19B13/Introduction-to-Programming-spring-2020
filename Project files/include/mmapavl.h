@@ -99,7 +99,7 @@ private:
 		return balanceTree(tree);
 	}
 
-	void removeMMapPrivate(Node* m_marker, Node* n);
+	void removeMMapPrivate(Node* m_marker, Node* n, MMapAVL<K, V>& m);
 public:
 	MMapAVL();
 	~MMapAVL();
@@ -114,7 +114,7 @@ public:
 		return getMin(n->left);
 	}
 
-	void removeMMap(Node* m_marker);
+	void removeMMap(Node* m_marker, MMapAVL<K, V>& m);
 
 	K maxID() const {
 		Node* runner = m_root;
@@ -167,7 +167,7 @@ public:
 
 		void remove(MMapAVL<K, V>& m)
 		{
-			m.removeMMap(m_marker);
+			m.removeMMap(m_marker, m);
 			valid = false;
 			//next(m);
 		}
@@ -190,18 +190,18 @@ public:
 };
 
 template<typename K, typename V>
-void MMapAVL<K, V>::removeMMap(Node* n)
+void MMapAVL<K, V>::removeMMap(Node* n, MMapAVL<K, V>& m)
 {
-	return removeMMapPrivate(n, m_root);
+	return removeMMapPrivate(n, m_root, m);
 }
 
 template<typename K, typename V>
-void MMapAVL<K, V>::removeMMapPrivate(Node* m_marker, Node* runner )
+void MMapAVL<K, V>::removeMMapPrivate(Node* m_marker, Node* runner, MMapAVL<K, V>& m)
 {
 	if (m_marker == nullptr)
 		throw Error();
-	if (runner->data.key > m_marker->data.key) removeMMapPrivate(m_marker, runner->left);
-	else if (runner->data.key < m_marker->data.key) removeMMapPrivate(m_marker, runner->right);
+	if (runner->data.key > m_marker->data.key) removeMMapPrivate(m_marker, runner->left, m);
+	else if (runner->data.key < m_marker->data.key) removeMMapPrivate(m_marker, runner->right, m);
 	else {
 		if (!(runner->right) && !(runner->left))
 		{
@@ -317,52 +317,44 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* m_marker, Node* runner )
 		}
 		
 		Node* t = runner; //указатель на узел, на который указывает маркер
-		Node* n = getMin(t->right);//минимаоьный правый элемент
-		if (runner->parent->left != nullptr && n->parent->left->data.key == n->data.key)
+		Node* n = getMin(t->right); //минимальный правый элемент
+		Node* minright = nullptr;
+		if (n->right != nullptr) { minright = n->right; n->height = 0; n->right->parent = nullptr; n->right = nullptr; } //надо запомнить его и добавить в дерево заново
+		if (n->parent != nullptr)
+		if (n->parent->left != nullptr && n->parent->left->data.key == n->data.key)
 		{
-			if (n->right != nullptr) 
-			{
-				n->parent->left = n->right;
-				n->parent->height = std::max(n->parent->right->height, n->right->height);
-			}
-			else 
-			{
-				n->parent->height = n->parent->right->height;
-			}
+			n->parent->height = n->parent->right->height;
+			n->parent->left = nullptr;
 		}
 		else
 		{
-			if (n->right != nullptr)
-			{
-				n->parent->right = n->right;
-				n->parent->height = std::max(n->parent->left->height, n->right->height);
-			}
-			else
-			{
-				n->parent->height = n->parent->left->height;
-			}
+			n->parent->height = n->parent->left->height;
+			n->parent->right = nullptr;
 		}
 		Node* temp = n->parent;
 		while (temp != m_root) {
 			temp->parent->height = std::max(temp->parent->left->height, temp->parent->right->height);
 			temp = temp->parent;
 		}
+		if (t->parent != nullptr)
 		if (t->parent->left != nullptr && t->parent->left->data.key == t->data.key)
 		{
 			t->parent->left = n;
 		}
 		else
 		{
-			t->parent->right = n;
+			if (t->parent != nullptr) t->parent->right = n;
 		}
 		n->height = t->height;
 		n->left = t->left;
 		n->right = t->right;
-		t->right->parent = n;
-		t->left->parent = n;
+		if (t->right != nullptr) t->right->parent = n;
+		if (t->left != nullptr) t->left->parent = n;
+		free(t);
 		balanceTree(n);
-		free(runner);
-		m_size--;
+		if (minright != nullptr) m.add(minright->data.key, minright->data.value);
+		free(minright);
+		//m_size--;
 		return;
 	}
 	balanceTree(runner);
