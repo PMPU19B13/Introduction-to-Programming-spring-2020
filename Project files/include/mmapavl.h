@@ -99,7 +99,7 @@ private:
 		return balanceTree(tree);
 	}
 
-	void removeMMapPrivate(Node* m_marker, Node* n, MMapAVL<K, V>& m);
+	void removeMMapPrivate(Node* , Node* , MMapAVL<K, V>& );
 public:
 	MMapAVL();
 	~MMapAVL();
@@ -114,7 +114,7 @@ public:
 		return getMin(n->left);
 	}
 
-	void removeMMap(Node* m_marker, MMapAVL<K, V>& m);
+	void removeMMap(Node*, MMapAVL<K, V>& );
 
 	K maxID() const {
 		Node* runner = m_root;
@@ -196,12 +196,12 @@ void MMapAVL<K, V>::removeMMap(Node* n, MMapAVL<K, V>& m)
 }
 
 template<typename K, typename V>
-void MMapAVL<K, V>::removeMMapPrivate(Node* m_marker, Node* runner, MMapAVL<K, V>& m)
+void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>& m)
 {
-	if (m_marker == nullptr)
+	if (mark == nullptr)
 		throw Error();
-	if (runner->data.key > m_marker->data.key) removeMMapPrivate(m_marker, runner->left, m);
-	else if (runner->data.key < m_marker->data.key) removeMMapPrivate(m_marker, runner->right, m);
+	if (runner->data.key > mark->data.key) removeMMapPrivate(mark, runner->left, m);
+	else if (runner->data.key < mark->data.key) removeMMapPrivate(mark, runner->right, m);
 	else {
 		if (!(runner->right) && !(runner->left))
 		{
