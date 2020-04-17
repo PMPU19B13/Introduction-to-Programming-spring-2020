@@ -11,20 +11,6 @@
 
 Controller::Controller()
 {
-	//drawer = nullptr;
-	/*Storage<double> args;
-	args.add(1);
-	args.add(-(int) drawer->window.getSize().y / 2);
-	args.add(1);
-	args.add((int) drawer->window.getSize().y / 2);
-	addPrimitive(P_Segment, args);
-
-	Storage<double> args2;
-	args2.add(-(int) drawer->window.getSize().x / 2);
-	args2.add(1);
-	args2.add((int) drawer->window.getSize().x / 2);
-	args2.add(1);
-	addPrimitive(P_Segment, args2);*/
 };
 
 ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
@@ -143,6 +129,10 @@ void Controller::updateView()
 		drawer->drawPrimitive(P_Circle, markerCircle.getValue().value.getParams());
 		markerCircle.next(m_circles);
 	}
+}
+
+void Controller::setDrawer(Drawer *dr) {
+	drawer = dr;
 }
 
 void Controller::removePrimitive(const ID& id)

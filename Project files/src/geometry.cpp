@@ -63,6 +63,13 @@ Point Segment::getEnd() const
 	return *m_end;
 }
 
+void Segment::move(double dx, double dy) {
+	m_start->setX(m_start->getX() + dx);
+	m_start->setY(m_start->getY() + dy);
+	m_end->setX(m_end->getX() + dx);
+	m_end->setY(m_end->getY() + dy);
+}
+
 Storage<double> Segment::getParams() const
 {
 	Storage<double> params;
@@ -106,6 +113,11 @@ Point Circle::getCenter() const
 double Circle::getRadius() const
 {
 	return m_radius;
+}
+
+void Circle::setRadius(double r)
+{
+	m_radius = abs(r);
 }
 
 std::ostream& operator<<(std::ostream& out, const Point& point)

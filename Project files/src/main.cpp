@@ -5,6 +5,7 @@
 #include "mmap.h"
 #include "requirement.h"
 #include "controller.h"
+#include "drawer.h"
 #include "error.h"
 #include "FileIO.h"
 #include "drawer.h"
@@ -366,8 +367,6 @@ int main()
 		dr.run();
 		//FileIO::writePrimitive("document.itp", controller);
 		
-
-	}
 	catch (...)
 	{
 		std::cout << "Whoops!" << std::endl;

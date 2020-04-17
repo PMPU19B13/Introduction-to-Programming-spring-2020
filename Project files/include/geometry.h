@@ -37,6 +37,8 @@ public:
 
 	Point getEnd() const;
 
+	void move(double dx, double dy);
+
 	Storage<double> getParams() const;
 
 private:
@@ -55,6 +57,8 @@ public:
 	Point getCenter() const;
 
 	double getRadius() const;
+
+	void setRadius(double r);
 
 	Storage<double> getParams() const;
 
