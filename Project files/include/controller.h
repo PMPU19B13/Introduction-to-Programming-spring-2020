@@ -11,6 +11,7 @@ class Drawer;
 #include "storage.h"
 #include "list.h"
 #include "id.h"
+#include "mmapavl.h"
 #include "pair.h"
 
 enum PrimitiveType
@@ -25,12 +26,14 @@ enum RequirementType
 	R_SetConstant,
 	R_Horizontal,
 	R_Vertical,
+	R_PointOnSegment,
+	R_PointOnCircle,
 	R_Angle,
-	R_Distance,
 	R_Parallel,
-	R_Equal,
-	R_IsOn
+	R_Distance,
+	R_Equal
 };
+
 
 class Controller
 {
@@ -39,21 +42,28 @@ public:
 
 	Controller();
 
-	ID addPrimitive(PrimitiveType, const Storage<double>&);
-
+	ID addPrimitive(PrimitiveType type, Storage<double> params, ID* id = nullptr);
 	void removePrimitive(const ID&);
 
 	ID addRequirement(RequirementType, const Storage<ID>&, double* param = nullptr);
-
 	void removeRequirement(const ID&);
 
 	void readPrimitive(const std::string& fileName);
 
 	void writePrimitive(const std::string& fileName);
+  
+	Pair<PrimitiveType, Storage<double>> getPrimitiveInfo(ID& id);
+  
+	friend class FileIO;
+  
+	void setDrawer(Drawer* dr)
+	{
+		drawer = dr;
+	}
+
+	Storage<ID> getAllPrimitiveIDs();
 
 	void updateView();
-
-	void setDrawer(Drawer *dr);
 
 	Point* checkNearPoint(float x, float y) {
 		float minDis = -1;
@@ -150,11 +160,10 @@ private:
 
 	void restoreState();
 
-	List<Pair<ID, Requirement>> m_requirements;
-
-	List<Pair<ID, Point>> m_points;
-	List<Pair<ID, Segment>> m_segments;
-	List<Pair<ID, Circle>> m_circles;
+	MMapAVL<ID, Requirement> m_requirements;
+	MMapAVL<ID, Point> m_points;
+	MMapAVL<ID, Segment> m_segments;
+	MMapAVL<ID, Circle> m_circles;
 };
 
 #endif

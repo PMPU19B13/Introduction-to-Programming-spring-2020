@@ -12,6 +12,10 @@ public:
 	sf::RenderWindow window;
 	Controller *controller;
 
+	void setController(Controller* co) 
+	{
+		controller = co;
+	}
 	Point* pointMove;
 	Pair<Point*,Segment*> segmentMove;
 	Circle* circleChange;
@@ -20,6 +24,7 @@ public:
 
 	Drawer()
 	{
+		//sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
 		window.create(sf::VideoMode(800, 600), "GeomStuf");
 		window.setFramerateLimit(60);
 		//text.setFont(font);
@@ -54,6 +59,7 @@ public:
 		std::cout << "Dis drawer!" << std::endl;
 	}
 
+	void run();
 
 };
 

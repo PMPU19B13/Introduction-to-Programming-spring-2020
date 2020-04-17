@@ -13,6 +13,6 @@ include_directories(../include)
 
 find_package(SFML 2.5.1 COMPONENTS system window graphics network audio)
 
-add_executable(itp_project ../src/main.cpp ../src/geometry.cpp ../src/id.cpp ../src/controller.cpp ../src/drawer.cpp)
+add_executable(itp_project ../src/main.cpp ../src/geometry.cpp ../src/id.cpp ../src/controller.cpp ../src/drawer.cpp ../src/FileIO.cpp)
 
 target_link_libraries(itp_project sfml-graphics sfml-window sfml-system)

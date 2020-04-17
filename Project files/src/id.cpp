@@ -19,6 +19,16 @@ ID::ID()
 			break;
 }
 
+ID::ID(char* temp)
+{
+	++m_count;
+	for (size_t i = 0; i < 1024; ++i)
+		if (temp[i] != 0)
+			m_array.add(temp[i]);
+		else
+			break;
+}
+
 bool ID::operator==(const ID& id) const
 {
 	if (m_array.size() != id.m_array.size())
@@ -45,6 +55,28 @@ bool ID::operator<(const ID& id) const
 			else if (m_array[k] > id.m_array[k]) return false;
 	}
 	return false;
+}
+
+bool ID::operator>(const ID& id) const
+{
+
+	if (m_array.size() < id.m_array.size())
+		return false;
+	if (m_array.size() > id.m_array.size())
+		return true;
+	if (m_array.size() == id.m_array.size()) {
+		for (size_t k = 0; k < m_array.size(); ++k)
+			if (m_array[k] > id.m_array[k]) return true;
+			else if (m_array[k] < id.m_array[k]) return false;
+	}
+	return false;
+}
+
+std::ostream& operator<<(std::ostream& out, const ID& id)
+{
+	for (size_t i = 0; i < id.m_array.size(); ++i)
+		out << id.m_array[i];
+	return out;
 }
 
 void ID::initCount(size_t newCount)

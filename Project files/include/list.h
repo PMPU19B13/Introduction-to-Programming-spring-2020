@@ -11,6 +11,12 @@ private:
 	// Узлы связного списка
 	struct Node
 	{
+		Node()
+		{
+		};
+
+		Node(T temp) : data(temp)
+		{};
 		T data;
 		Node* next;
 		Node* previous;
@@ -140,7 +146,8 @@ void List<T>::add(T value)
 	// Ещё нет элементов
 	if (m_first == nullptr)
 	{
-		m_first = new Node;
+		m_first = new Node(value);
+
 		m_last = m_first;
 		m_first->data = value;
 		m_first->next = nullptr;
@@ -149,7 +156,7 @@ void List<T>::add(T value)
 	}
 	else
 	{
-		Node* newNode = new Node;
+		Node* newNode = new Node(value);
 		newNode->data = value;
 		newNode->next = nullptr;
 		m_last->next = newNode;

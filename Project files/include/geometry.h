@@ -16,7 +16,7 @@ public:
 	double getX() const;
 
 	double getY() const;
-
+  
 	Storage<double> getParams() const;
 
 private:
@@ -52,7 +52,6 @@ class Circle
 {
 public:
 	Circle();
-
 	Circle(Point* center, double radius);
 
 	Point getCenter() const;
