@@ -77,9 +77,9 @@ void Drawer:: run() {
 				case(sf::Event::MouseButtonPressed): {
 					sf::Vector2f xy = pxToWorld(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
 					if (event.mouseButton.button == sf::Mouse::Left) {
-						pointMove = controller->checkNearPoint(xy.x, xy.y);
-						circleChange = controller->checkNearCircle(xy.x, xy.y);
-						segmentMove = controller->checkNearSegment(xy.x, xy.y);
+						controller->pointMove = controller->checkNearPoint(xy.x, xy.y);
+						controller->circleChange = controller->checkNearCircle(xy.x, xy.y);
+						controller->segmentMove = controller->checkNearSegment(xy.x, xy.y);
 					}
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
 						Storage<double> xy_;
@@ -99,27 +99,27 @@ void Drawer:: run() {
 					break;
 				case(sf::Event::MouseMoved): {
 					sf::Vector2f xy = pxToWorld(sf::Vector2f(event.mouseMove.x, event.mouseMove.y));
-					if (pointMove != nullptr) {
-						pointMove->setX(xy.x);
-						pointMove->setY(xy.y);
+					if (controller->pointMove != nullptr) {
+						controller->pointMove->setX(xy.x);
+						controller->pointMove->setY(xy.y);
 					}
-					if (circleChange != nullptr) {
-						circleChange->setRadius(
-							pow(pow(circleChange->getCenter().getX() - xy.x, 2) + pow(circleChange->getCenter().getY() - xy.y, 2), 0.5));
+					if (controller->circleChange != nullptr) {
+						controller->circleChange->setRadius(
+							pow(pow(controller->circleChange->getCenter().getX() - xy.x, 2) + pow(controller->circleChange->getCenter().getY() - xy.y, 2), 0.5));
 					}
-					if (segmentMove.key != nullptr && segmentMove.value != nullptr) {
-						segmentMove.value->move(xy.x - segmentMove.key->getX(), xy.y - segmentMove.key->getY());
-						segmentMove.key->setX(xy.x);
-						segmentMove.key->setY(xy.y);
+					if (controller->segmentMove.key != nullptr && controller->segmentMove.value != nullptr) {
+						controller->segmentMove.value->move(xy.x - controller->segmentMove.key->getX(), xy.y - controller->segmentMove.key->getY());
+						controller->segmentMove.key->setX(xy.x);
+						controller->segmentMove.key->setY(xy.y);
 					}
 					break;
 				}
 				case(sf::Event::MouseButtonReleased):
-					pointMove = nullptr;
-					circleChange = nullptr;
-					delete segmentMove.key;
-					segmentMove.key = nullptr;
-					segmentMove.value = nullptr;
+					controller->pointMove = nullptr;
+					controller->circleChange = nullptr;
+					delete controller->segmentMove.key;
+					controller->segmentMove.key = nullptr;
+					controller->segmentMove.value = nullptr;
 					break;
 				default:
 					break;

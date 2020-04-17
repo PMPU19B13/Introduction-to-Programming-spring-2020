@@ -39,6 +39,9 @@ class Controller
 {
 public:
 	Drawer* drawer;
+	Point* pointMove;
+	Pair<Point*, Segment*> segmentMove;
+	Circle* circleChange;
 
 	Controller();
 
