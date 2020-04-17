@@ -9,6 +9,7 @@ class Drawer;
 #include "storage.h"
 #include "list.h"
 #include "id.h"
+#include "mmapavl.h"
 #include "pair.h"
 
 enum PrimitiveType
@@ -81,15 +82,11 @@ private:
 
 	void restoreState();
 
-	List<Pair<ID, Requirement>> m_requirements;
+	MMapAVL<ID, Requirement> m_requirements;
 
-	List<Pair<ID, Point>> m_points;
-	List<Pair<ID, Segment>> m_segments;
-	List<Pair<ID, Circle>> m_circles;
-	
-	/*MMapAVL<ID, Point> m_points;
-	MMapAVL<ID, Point> m_segments;
-	MMapAVL<ID, Point> m_circles;*/
+	MMapAVL<ID, Point> m_points;
+	MMapAVL<ID, Segment> m_segments;
+	MMapAVL<ID, Circle> m_circles;
 };
 
 #endif

@@ -35,14 +35,13 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
 			// Добавляем точку
 			if (id)
 			{
-				m_points.add(Pair<ID, Point>(*id, Point(params[0], params[1])));
-				return *id;
+				m_points.add(*id, Point(params[0], params[1]));
 				return *id;
 			}
 			else
 			{
 				ID n_id;
-				m_points.add(Pair<ID, Point>(n_id, Point(params[0], params[1])));
+				m_points.add(n_id, Point(params[0], params[1]));
 				return n_id;
 			}
 		}
@@ -58,7 +57,7 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
 			{
 				Point* start = new Point(params[0], params[1]);
 				Point* end = new Point(params[2], params[3]);
-				m_segments.add(Pair<ID, Segment>(*id, Segment(start, end)));
+				m_segments.add(*id, Segment(start, end));
 				return *id;
 			}
 			else
@@ -66,16 +65,16 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
 
 				ID id1;
 				// Добавляем точки, определяющие отрезок
-				m_points.add(Pair<ID, Point>(id1, Point(params[0], params[1])));
-				Point* start = &(m_points[m_points.size() - 1].value);
+				m_points.add(id1, Point(params[0], params[1]));
+				Point* start = &m_points.getAssoc(id1);
 
 				ID id2;
-				m_points.add(Pair<ID, Point>(id2, Point(params[2], params[3])));
-				Point* end = &(m_points[m_points.size() - 1].value);
+				m_points.add(id2, Point(params[2], params[3]));
+				Point* end = &m_points.getAssoc(id2);
 
 				// И сам отрезок
 				ID id3;
-				m_segments.add(Pair<ID, Segment>(id3, Segment(start, end)));
+				m_segments.add(id3, Segment(start, end));
 				return id3;
 			}
 		}
@@ -90,19 +89,19 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
 			if (id)
 			{
 				Point* center = new Point(params[0], params[1]);
-				m_circles.add(Pair<ID, Circle>(*id, Circle(center, params[2])));
+				m_circles.add(*id, Circle(center, params[2]));
 				return *id;
 			}
 			else
 			{
 				// Добавляем центр окружности
 				ID id1;
-				m_points.add(Pair<ID, Point>(id1, Point(params[0], params[1])));
-				Point* center = &(m_points[m_points.size() - 1].value);
+				m_points.add(id1, Point(params[0], params[1]));
+				Point* center = &m_points.getAssoc(id1);
 
 				// И саму окружность
 				ID id2;
-				m_circles.add(Pair<ID, Circle>(id2, Circle(center, params[2])));
+				m_circles.add(id2, Circle(center, params[2]));
 				return id2;
 			}
 		}
@@ -117,6 +116,7 @@ ID Controller::addPrimitive(PrimitiveType type, Storage<double> params, ID* id)
 	}
 
 }
+
 
 bool Controller::updateView()
 {
@@ -136,25 +136,25 @@ bool Controller::updateView()
 
 	drawer->window.clear();
 	// Проходим по всем типам примитивов и рисуем их
-	List<Pair<ID, Point>>::Marker markerPoint = m_points.createMarker();
+	MMapAVL<ID, Point>::Marker markerPoint = m_points.createMarker();
 	while (markerPoint.isValid())
 	{
 		drawer->drawPrimitive(P_Point, markerPoint.getValue().value.getParams());
-		markerPoint.next();
+		markerPoint.next(m_points);
 	}
 
-	List<Pair<ID, Segment>>::Marker markerSegment = m_segments.createMarker();
+	MMapAVL<ID, Segment>::Marker markerSegment = m_segments.createMarker();
 	while (markerSegment.isValid())
 	{
 		drawer->drawPrimitive(P_Segment, markerSegment.getValue().value.getParams());
-		markerSegment.next();
+		markerSegment.next(m_segments);
 	}
 
-	List<Pair<ID, Circle>>::Marker markerCircle = m_circles.createMarker();
+	MMapAVL<ID, Circle>::Marker markerCircle = m_circles.createMarker();
 	while (markerCircle.isValid())
 	{
 		drawer->drawPrimitive(P_Circle, markerCircle.getValue().value.getParams());
-		markerCircle.next();
+		markerCircle.next(m_circles);
 	}
 	drawer->window.display();
 	return drawer->window.isOpen();
@@ -162,76 +162,76 @@ bool Controller::updateView()
 
 void Controller::removePrimitive(const ID& id)
 {
-	List<Pair<ID, Point>>::Marker pointMarker = m_points.createMarker();
+	MMapAVL<ID, Point>::Marker pointMarker = m_points.createMarker();
 	while (pointMarker.isValid())
 	{
 		if (pointMarker.getValue().key == id)
 		{
-			pointMarker.remove();
+			pointMarker.remove(m_points);
 			return;
 		}
-		pointMarker.next();
+		pointMarker.next(m_points);
 	}
 
-	List<Pair<ID, Segment>>::Marker segmentMarker = m_segments.createMarker();
+	MMapAVL<ID, Segment>::Marker segmentMarker = m_segments.createMarker();
 	while (segmentMarker.isValid())
 	{
 		if (segmentMarker.getValue().key == id)
 		{
-			segmentMarker.remove();
+			segmentMarker.remove(m_segments);
 			return;
 		}
-		segmentMarker.next();
+		segmentMarker.next(m_segments);
 	}
 
-	List<Pair<ID, Circle>>::Marker circleMarker = m_circles.createMarker();
+	MMapAVL<ID, Circle>::Marker circleMarker = m_circles.createMarker();
 	while (circleMarker.isValid())
 	{
 		if (circleMarker.getValue().key == id)
 		{
-			circleMarker.remove();
+			circleMarker.remove(m_circles);
 			return;
 		}
-		circleMarker.next();
+		circleMarker.next(m_circles);
 	}
 }
 
 void Controller::removeRequirement(const ID& id)
 {
-  List<Pair<ID, Requirement>>::Marker requirementMarker = m_requirements.createMarker();
+	MMapAVL<ID, Requirement>::Marker requirementMarker = m_requirements.createMarker();
 	while (requirementMarker.isValid())
 	{
 		if (requirementMarker.getValue().key == id)
 		{
-			requirementMarker.remove();
+			requirementMarker.remove(m_requirements);
 			return;
 		}
-		requirementMarker.next();
+		requirementMarker.next(m_requirements);
 	}
 }
 
 Pair<PrimitiveType, Storage<double>> Controller::getPrimitiveInfo(ID& id)
 {
-  List<Pair<ID, Point>>::Marker markerPoint = m_points.createMarker();
+	MMapAVL<ID, Point>::Marker markerPoint = m_points.createMarker();
 	while (markerPoint.isValid())
 	{
 		if (markerPoint.getValue().key == id)
 			return Pair<PrimitiveType, Storage<double>>(P_Point, markerPoint.getValue().value.getParams());
-		markerPoint.next();
+		markerPoint.next(m_points);
 	}
-	List<Pair<ID, Segment>>::Marker markerSegment = m_segments.createMarker();
+	MMapAVL<ID, Segment>::Marker markerSegment = m_segments.createMarker();
 	while (markerSegment.isValid())
 	{
 		if (markerSegment.getValue().key == id)
 			return Pair<PrimitiveType, Storage<double>>(P_Segment, markerSegment.getValue().value.getParams());
-		markerSegment.next();
+		markerSegment.next(m_segments);
 	}
-	List<Pair<ID, Circle>>::Marker markerCircle = m_circles.createMarker();
+	MMapAVL<ID, Circle>::Marker markerCircle = m_circles.createMarker();
 	while (markerCircle.isValid())
 	{
 		if (markerCircle.getValue().key == id)
 			return Pair<PrimitiveType, Storage<double>>(P_Circle, markerCircle.getValue().value.getParams());
-		markerCircle.next();
+		markerCircle.next(m_circles);
 	}
 	throw BadArgument();
 }
@@ -241,23 +241,23 @@ Pair<PrimitiveType, Storage<double>> Controller::getPrimitiveInfo(ID& id)
 Storage<ID> Controller::getAllPrimitiveIDs()
 {
 	Storage<ID> allIDs;
-	List<Pair<ID, Point>>::Marker markerPoint = m_points.createMarker();
+	MMapAVL<ID, Point>::Marker markerPoint = m_points.createMarker();
 	while (markerPoint.isValid())
 	{
 		allIDs.add(markerPoint.getValue().key);
-		markerPoint.next();
+		markerPoint.next(m_points);
 	}
-	List<Pair<ID, Segment>>::Marker markerSegment = m_segments.createMarker();
+	MMapAVL<ID, Segment>::Marker markerSegment = m_segments.createMarker();
 	while (markerSegment.isValid())
 	{
 		allIDs.add(markerSegment.getValue().key);
-		markerSegment.next();
+		markerSegment.next(m_segments);
 	}
-	List<Pair<ID, Circle>>::Marker markerCircle = m_circles.createMarker();
+	MMapAVL<ID, Circle>::Marker markerCircle = m_circles.createMarker();
 	while (markerCircle.isValid())
 	{
 		allIDs.add(markerCircle.getValue().key);
-		markerCircle.next();
+		markerCircle.next(m_circles);
 	}
 	return allIDs;
 }
