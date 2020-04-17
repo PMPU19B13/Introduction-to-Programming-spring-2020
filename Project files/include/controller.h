@@ -53,7 +53,8 @@ public:
   
 	friend class FileIO;
 
-	void setDrawer(Drawer* dr) {
+	void setDrawer(Drawer* dr)
+	{
 		drawer = dr;
 	}
 
