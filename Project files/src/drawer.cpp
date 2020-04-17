@@ -59,7 +59,6 @@ void Drawer::drawPrimitive(PrimitiveType type, const Storage<double>& params)
 
 }
 
-//Жизнь программы.
 void Drawer:: run() {
 	while (window.isOpen()) {
 		sf::Event event;
@@ -67,7 +66,7 @@ void Drawer:: run() {
 			switch (event.type) 
 			{
 				case(sf::Event::Closed):
-					window.close();// пользователь попытался закрыть окно: мы закрываем окно
+					window.close();
 					break;
 				case(sf::Event::Resized):
 				{

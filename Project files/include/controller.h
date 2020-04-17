@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 class Drawer;
 
 #ifndef __C_H_INCLUDED__

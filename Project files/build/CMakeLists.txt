@@ -3,9 +3,9 @@ project(itp_project)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(SFML_INCLUDE_DIR ../sfml_linux/include)
-set(SFML_LIBRARY_DIR ../sfml_linux/lib)
-set(SFML_DIR ../sfml_linux/lib/cmake/SFML)
+set(SFML_INCLUDE_DIR /lib64/sfml2.5.1/include)
+set(SFML_LIBRARY_DIR /lib64/sfml2.5.1/lib)
+set(SFML_DIR /lib64/sfml2.5.1/lib/cmake/SFML)
 
 link_directories(SFML_LIBRARY_DIR)
 include_directories(SFML_INCLUDE_DIR)
