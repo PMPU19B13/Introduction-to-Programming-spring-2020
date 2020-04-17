@@ -7,6 +7,7 @@
 #include "controller.h"
 #include "error.h"
 #include "FileIO.h"
+#include "drawer.h"
 #include <SFML/Graphics.hpp>
 #include "matrix.h"
 #include <string>
@@ -270,7 +271,7 @@ int main()
 {
 	try
 	{
-		double x1 = 0, y1 = 0, x2 = 1, y2 = 1, x3 = 6, y3 = 6;
+		/*double x1 = 0, y1 = 0, x2 = 1, y2 = 1, x3 = 6, y3 = 6;
 		Point a1;
 		a1.setX(x1);
 		a1.setY(y1);
@@ -321,7 +322,7 @@ int main()
 
 		std::cout << hr.error() << std::endl;
 		std::cout << pos.error() << std::endl;
-
+		*/
 		/*
 		IRequirement* ptrreq = (IRequirement*)&hr;
 		std::cout << ptrreq->error() << std::endl;
@@ -329,14 +330,14 @@ int main()
 		std::cout << ptrreq->error() << std::endl;
 		*/
 
-		getErr((IRequirement*)&hr);
-		getErr((IRequirement*)&pos);
+		//getErr((IRequirement*)&hr);
+		//getErr((IRequirement*)&pos);
 
-		std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
+		/*std::cout << findZero(func1<double>, -1.0, 1.0, 0.00001) << std::endl;
 		std::cout << findZero(func1<double>, 1.0, 2.5, 0.0000001) << std::endl;
 		std::cout << derivative(func1<double>, 8.0) << std::endl;
-		std::cout << NewtMeth(func1<double>, 1.5, 2.5, 0.0000001) << std::endl;
-		MMap<int, double> mmap;
+		std::cout << NewtMeth(func1<double>, 1.5, 2.5, 0.0000001) << std::endl;*/
+		/*MMap<int, double> mmap;
 		//	mmap.add();
 
 		Storage<unsigned char> storage;
@@ -357,38 +358,15 @@ int main()
 		hasht.add(ID(), 1.223);
 
 		std::cout << hasht.hasKey(id1) << std::endl;
+		*/
+		Controller controller;
+		Drawer dr;
+		dr.setController(&controller);
+		controller.setDrawer(&dr);
+		dr.run();
+		//FileIO::writePrimitive("document.itp", controller);
+		
 
-		{
-			Controller controller;
-
-			Storage<double> pointParams;
-			Storage<double> segmentParams;
-			Storage<double> circleParams;
-
-			pointParams.add(1.2);
-			pointParams.add(14.7);
-
-			segmentParams.add(1.6);
-			segmentParams.add(3.2);
-			segmentParams.add(6.4);
-			segmentParams.add(0.8);
-
-			circleParams.add(0);
-			circleParams.add(0);
-			circleParams.add(5.5);
-
-			controller.addPrimitive(P_Point, pointParams);
-			controller.addPrimitive(P_Segment, segmentParams);
-			controller.addPrimitive(P_Circle, circleParams);
-
-			controller.updateView();
-			FileIO::writePrimitive("document.itp", controller);
-		}
-		{
-			Controller c1;
-			FileIO::writePrimitive("document.itp", c1);
-			c1.updateView();
-		}
 	}
 	catch (...)
 	{

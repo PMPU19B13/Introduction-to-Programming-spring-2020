@@ -1,13 +1,70 @@
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
 #include "drawer.h"
+
+void Drawer::run() 
+{
+	while (window.isOpen()) 
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			switch (event.type)
+			{
+			case sf::Event::Closed:
+			{
+				window.close();
+				break;
+			}
+
+			case sf::Event::Resized:
+			{
+				sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
+				window.setView(sf::View(visibleArea));
+				break;
+			}
+			case sf::Event::KeyPressed:
+			{
+				Storage<double> pointParams;
+				Storage<double> segmentParams;
+				Storage<double> circleParams;
+
+				pointParams.add(1.2);
+				pointParams.add(14.7);
+
+				segmentParams.add(0.0);
+				segmentParams.add(0.0);
+				segmentParams.add(100.0);
+				segmentParams.add(100.0);
+
+				circleParams.add(0.0);
+				circleParams.add(0.0);
+				circleParams.add(200.0);
+
+				controller->addPrimitive(P_Point, pointParams);
+				controller->addPrimitive(P_Segment, segmentParams);
+				controller->addPrimitive(P_Circle, circleParams);
+			}
+			default:
+				break;
+			}
+
+			window.clear();
+			//Îáíîâèòü ñîäåðæèìîå îêíà
+			controller->updateView();
+			window.display();
+		}
+	}
+
+}
 
 void Drawer::drawPrimitive(PrimitiveType type, const Storage<double>& params)
 {
 	switch (type)
 	{
 	case P_Point:
-{
+	{
 		if (params.size() != 2)
 			throw BadArgument();
 
