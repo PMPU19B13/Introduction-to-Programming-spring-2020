@@ -383,7 +383,8 @@ typename MMapAVL<K, V>::Marker MMapAVL<K, V>::createMarker()
 {
 	MMapAVL<K, V>::Marker m;
 	m.m_marker = m_root;
-	if (m.m_marker->left == nullptr) m.m_marker = m_root;
+	if (m_root == nullptr || m.m_marker->left == nullptr)
+		m.m_marker = m_root;
 	else while (m.m_marker->left != nullptr) m.m_marker = m.m_marker->left;
 	m.valid = true;
 	return m;
