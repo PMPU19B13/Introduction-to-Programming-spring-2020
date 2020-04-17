@@ -251,7 +251,8 @@ Storage<ID> Controller::getAllPrimitiveIDs()
 {
 	switch (req) 
 	{
-	case R_PointOnSegment: {
+	case R_PointOnSegment:
+	{
 		ID id;
 		Requirement R;
 		R.type = req;
@@ -260,7 +261,9 @@ Storage<ID> Controller::getAllPrimitiveIDs()
 
 		m_requirements.add(Pair<ID,Requirement>(id,R));
 
-		class TotalErrCalc {
+		class TotalErrCalc
+		{
+		private:
 			Storage<IRequirement*>
 		public:
 			Storage<double> operator()(const Storage<double> &x);
