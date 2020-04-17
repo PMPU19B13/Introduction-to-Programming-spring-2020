@@ -51,7 +51,7 @@ void Drawer::run()
 			}
 
 			window.clear();
-			//Îáíîâèòü ñîäåðæèìîå îêíà
+			//ÃŽÃ¡Ã­Ã®Ã¢Ã¨Ã²Ã¼ Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã¬Ã®Ã¥ Ã®ÃªÃ­Ã 
 			controller->updateView();
 			window.display();
 		}
@@ -64,7 +64,7 @@ void Drawer::drawPrimitive(PrimitiveType type, const Storage<double>& params)
 	switch (type)
 	{
 	case P_Point:
-{
+	{
 		if (params.size() != 2)
 			throw BadArgument();
 
