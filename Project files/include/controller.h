@@ -53,9 +53,14 @@ public:
   
 	friend class FileIO;
 
+	void setDrawer(Drawer* dr)
+	{
+		drawer = dr;
+	}
+
 	Storage<ID> getAllPrimitiveIDs();
 
-	bool updateView();
+	void updateView();
 
 private:
 	struct Requirement
@@ -88,8 +93,8 @@ private:
 	List<Pair<ID, Circle>> m_circles;
 	
 	/*MMapAVL<ID, Point> m_points;
-	MMapAVL<ID, Point> m_segments;
-	MMapAVL<ID, Point> m_circles;*/
+	MMapAVL<ID, Segment> m_segments;
+	MMapAVL<ID, Circle> m_circles;*/
 };
 
 #endif

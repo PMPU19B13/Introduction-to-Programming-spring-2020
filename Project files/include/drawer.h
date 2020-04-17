@@ -10,12 +10,17 @@ class Drawer
 {
 public:
 	sf::RenderWindow window;
+	Controller* controller;
+
+	void setController(Controller* co) 
+	{
+		controller = co;
+	}
 
 	Drawer()
 	{
+		//sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
 		window.create(sf::VideoMode(800, 600), "GeomStuf");
-		window.clear();
-		window.display();
 	};
 
 	sf::Vector2f worldToPx(sf::Vector2f w)
@@ -31,6 +36,8 @@ public:
 	{
 		std::cout << "Dis" << std::endl;
 	}
+
+	void run();
 
 };
 
