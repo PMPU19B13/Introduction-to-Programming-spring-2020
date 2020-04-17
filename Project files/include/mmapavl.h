@@ -340,9 +340,6 @@ void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>& m
 			}
 			else
 			{
-				//if (n->parent->left != nullptr) n->parent->height = n->parent->left->height;
-				//else n->parent->height = 0;
-				//n->parent->right = nullptr;
 				n->parent->height = 1;
 			}
 		Node* temp = n;
