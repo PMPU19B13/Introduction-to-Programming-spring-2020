@@ -347,12 +347,12 @@ int main()
 		storage.add('r');
 		storage.add('u');
 		std::cout << "Sizeof(storage) " << sizeof(storage);
-		
+
 		ID id;
 		std::stringstream ss;
 		ss << id;
 		std::string s = ss.str();
-		
+
 		HashT<ID, double> hasht;
 		ID id1 = ID();
 		hasht.add(id1, 1.3);
@@ -366,7 +366,7 @@ int main()
 		controller.setDrawer(&dr);
 		dr.run();
 		//FileIO::writePrimitive("document.itp", controller);
-		
+	}
 	catch (...)
 	{
 		std::cout << "Whoops!" << std::endl;

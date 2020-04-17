@@ -1,0 +1,243 @@
+﻿  controller.cpp
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(73,14): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(99,14): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838: преобразование из "T" в "int" требует сужающего преобразования
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838: преобразование из "T" в "int" требует сужающего преобразования
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(128,19): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244: -=: преобразование "double" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244:         ]
+  drawer.cpp
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244: -=: преобразование "double" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(73,14): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(99,14): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838: преобразование из "T" в "int" требует сужающего преобразования
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838: преобразование из "T" в "int" требует сужающего преобразования
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(128,19): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244: -=: преобразование "double" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244: -=: преобразование "double" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:         and
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,63): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:         and
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(16,52): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:         and
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,65): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:         and
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(32,54): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:         and
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,65): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:         and
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(33,54): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:         and
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,63): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244: аргумент: преобразование "const T" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:         and
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(47,52): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(48,27): warning C4244: аргумент: преобразование "const T" в "float", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(48,27): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(48,27): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(48,27): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(48,27): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(73,66): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(73,66): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(73,66): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(73,66): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(73,66): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(73,48): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(73,48): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(73,48): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(73,48): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(73,48): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(78,85): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(78,85): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(78,85): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(78,85): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(78,85): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(78,64): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(78,64): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(78,64): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(78,64): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(78,64): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,81): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,81): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,81): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,81): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,81): warning C4244:         ]
+  geometry.cpp
+  id.cpp
+  main.cpp
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,62): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,62): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,62): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,62): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\drawer.cpp(101,62): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(73,14): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(99,14): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838: преобразование из "T" в "int" требует сужающего преобразования
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4838:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,16): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838: преобразование из "T" в "int" требует сужающего преобразования
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4838:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244:             T=double
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(125,45): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\controller.h(128,19): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(36,1): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(37,1): warning C4244:         ]
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244: -=: преобразование "double" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(42,1): warning C4244:         ]
+  Создание кода...
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244: -=: преобразование "double" в "T", возможна потеря данных
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244:         with
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244:         [
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244:             T=float
+C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(43,1): warning C4244:         ]
+  Visual Studio ITP Project.vcxproj -> C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\build\Debug\Visual Studio ITP Project.exe

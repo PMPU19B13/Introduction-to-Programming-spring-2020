@@ -56,10 +56,7 @@ public:
   
 	friend class FileIO;
   
-	void setDrawer(Drawer* dr)
-	{
-		drawer = dr;
-	}
+	void setDrawer(Drawer* dr);
 
 	Storage<ID> getAllPrimitiveIDs();
 
@@ -68,7 +65,8 @@ public:
 	Point* checkNearPoint(float x, float y) {
 		float minDis = -1;
 		Point* p = nullptr;
-		List<Pair<ID, Point>>::Marker markerPoint = m_points.createMarker();
+		
+		MMapAVL<ID, Point>::Marker markerPoint = m_points.createMarker();
 		while (markerPoint.isValid())
 		{
 			Storage<double> xy = markerPoint.getValue().value.getParams();
@@ -77,7 +75,7 @@ public:
 				minDis = dis;
 				p = &(markerPoint.getValue().value);
 			}
-			markerPoint.next();
+			markerPoint.next(m_points);
 		}
 		return p;
 	}
@@ -94,7 +92,7 @@ public:
 	Circle* checkNearCircle(float x, float y) {
 		float minDelta = -1;
 		Circle* p = nullptr;
-		List<Pair<ID, Circle>>::Marker markerCircle = m_circles.createMarker();
+		MMapAVL<ID, Circle>::Marker markerCircle = m_circles.createMarker();
 		while (markerCircle.isValid())
 		{
 			Storage<double> xyr = markerCircle.getValue().value.getParams();
@@ -103,7 +101,7 @@ public:
 				minDelta = dis;
 				p = &(markerCircle.getValue().value);
 			}
-			markerCircle.next();
+			markerCircle.next(m_circles);
 		}
 		return p;
 	}
@@ -112,7 +110,7 @@ public:
 		float minDelta = -1;
 		Point* p = new Point(x, y);
 		Segment* s = nullptr;
-		List<Pair<ID, Segment>>::Marker markerSegment = m_segments.createMarker();
+		MMapAVL<ID, Segment>::Marker markerSegment = m_segments.createMarker();
 		while (markerSegment.isValid())
 		{
 			Storage<double> xyXY = markerSegment.getValue().value.getParams();
@@ -121,7 +119,7 @@ public:
 				|| 
 				((y<min(xyXY[1],xyXY[3]) || y>max(xyXY[1],xyXY[3])) && abs(xyXY[1]-xyXY[3])>5)
 				) {
-				markerSegment.next();
+				markerSegment.next(m_segments);
 				continue;
 			}
 			int n[] = { -(xyXY[3] - xyXY[1]),xyXY[2] - xyXY[0] };
@@ -130,7 +128,7 @@ public:
 				minDelta = abs(dis);
 				s = &(markerSegment.getValue().value);
 			}
-			markerSegment.next();
+			markerSegment.next(m_segments);
 		}
 		Pair<Point*, Segment*> pair(p,s);
 		return pair;
