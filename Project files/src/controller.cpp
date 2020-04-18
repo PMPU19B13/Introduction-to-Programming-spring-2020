@@ -131,9 +131,6 @@ void Controller::updateView()
 	}
 }
 
-void Controller::setDrawer(Drawer *dr) {
-	drawer = dr;
-}
 
 void Controller::removePrimitive(const ID& id)
 {
