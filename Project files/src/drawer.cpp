@@ -60,7 +60,7 @@ void Drawer::drawPrimitive(PrimitiveType type, const Storage<double>& params)
     }
 }
 
-void Drawer::run()
+/*void Drawer::run()
 {
     while (window.isOpen())
     {
@@ -143,10 +143,10 @@ void Drawer::run()
         window.draw(text);
         window.display();
     }
-}
+}*/
 
 
-/*void Drawer::run() //old version of run (from the lecture)
+void Drawer::run() //old version of run (from the lecture)
 {
 	while (window.isOpen()) 
 	{
@@ -200,4 +200,4 @@ void Drawer::run()
 	}
 
 }
-*/
+

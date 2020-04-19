@@ -52,11 +52,11 @@ public:
 	void readPrimitive(const std::string& fileName);
 
 	void writePrimitive(const std::string& fileName);
-  
+
 	Pair<PrimitiveType, Storage<double>> getPrimitiveInfo(ID& id);
-  
+
 	friend class FileIO;
-  
+
 	void setDrawer(Drawer* dr)
 	{
 		drawer = dr;
@@ -73,12 +73,12 @@ public:
 		while (markerPoint.isValid())
 		{
 			Storage<double> xy = markerPoint.getValue().value.getParams();
-			float dis = pow(pow(xy[0] - x, 2) + pow(xy[1]-y, 2), 0.5);
+			float dis = pow(pow(xy[0] - x, 2) + pow(xy[1] - y, 2), 0.5);
 			if (dis < 10 && (minDis = -1 || dis < minDis)) {
 				minDis = dis;
 				p = &(markerPoint.getValue().value);
 			}
-			markerPoint.next(m_points);
+			markerPoint.next();
 		}
 		return p;
 	}
@@ -100,16 +100,16 @@ public:
 		{
 			Storage<double> xyr = markerCircle.getValue().value.getParams();
 			float dis = pow(pow(xyr[0] - x, 2) + pow(xyr[1] - y, 2), 0.5);
-			if (abs(dis - xyr[2]) < 5 && ((abs(dis - xyr[2])<minDelta)||minDelta==-1)) {
+			if (abs(dis - xyr[2]) < 5 && ((abs(dis - xyr[2]) < minDelta) || minDelta == -1)) {
 				minDelta = dis;
 				p = &(markerCircle.getValue().value);
 			}
-			markerCircle.next(m_circles);
+			markerCircle.next();
 		}
 		return p;
 	}
 
-	Pair<Point*,Segment*> checkNearSegment(float x, float y) {
+	Pair<Point*, Segment*> checkNearSegment(float x, float y) {
 		float minDelta = -1;
 		Point* p = new Point(x, y);
 		Segment* s = nullptr;
@@ -117,12 +117,12 @@ public:
 		while (markerSegment.isValid())
 		{
 			Storage<double> xyXY = markerSegment.getValue().value.getParams();
-			if(//если точка вне отрезка, но дельта вершин более пяти
-				((x<min(xyXY[0],xyXY[2]) || x>max(xyXY[0],xyXY[2])) && abs(xyXY[0]-xyXY[2])>5) 
-				|| 
-				((y<min(xyXY[1],xyXY[3]) || y>max(xyXY[1],xyXY[3])) && abs(xyXY[1]-xyXY[3])>5)
+			if (//если точка вне отрезка, но дельта вершин более пяти
+				((x<min(xyXY[0], xyXY[2]) || x>max(xyXY[0], xyXY[2])) && abs(xyXY[0] - xyXY[2]) > 5)
+				||
+				((y<min(xyXY[1], xyXY[3]) || y>max(xyXY[1], xyXY[3])) && abs(xyXY[1] - xyXY[3]) > 5)
 				) {
-				markerSegment.next(m_segments);
+				markerSegment.next();
 				continue;
 			}
 			int n[] = { -(xyXY[3] - xyXY[1]),xyXY[2] - xyXY[0] };
@@ -131,9 +131,9 @@ public:
 				minDelta = abs(dis);
 				s = &(markerSegment.getValue().value);
 			}
-			markerSegment.next(m_segments);
+			markerSegment.next();
 		}
-		Pair<Point*, Segment*> pair(p,s);
+		Pair<Point*, Segment*> pair(p, s);
 		return pair;
 	}
 
