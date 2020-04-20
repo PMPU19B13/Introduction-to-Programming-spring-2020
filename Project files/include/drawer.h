@@ -12,10 +12,6 @@ public:
 	sf::RenderWindow window;
 	Controller *controller;
 
-	void setController(Controller* co) 
-	{
-		controller = co;
-	}
 	Point* pointMove;
 	Pair<Point*,Segment*> segmentMove;
 	Circle* circleChange;
@@ -58,8 +54,6 @@ public:
 	{
 		std::cout << "Dis drawer!" << std::endl;
 	}
-
-	void run();
 
 };
 

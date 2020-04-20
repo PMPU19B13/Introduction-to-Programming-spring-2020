@@ -32,14 +32,14 @@ bool testTreeAvlMarker()
 	Pair<double, int> v = marker.getValue();
 	while (true)
 	{
-		if (marker.hasNext(mmap))
+		if (marker.hasNext())
 		{
 			std::cout << v.value << ' ';
-			marker.next(mmap);
+			marker.next();
 			++count;
 
 			Pair<double, int> vnext = marker.getValue();
-			if (vnext < v) return false;
+			if (vnext.key < v.key) return false;
 			v = vnext;
 		}
 		else
@@ -49,20 +49,20 @@ bool testTreeAvlMarker()
 	if (count != mmap.size()) return false;
 
 	std::cout << "remove a child with no left and right: " << std::endl;
-	marker.remove(mmap);
+	marker.remove();
 
 	marker = mmap.createMarker();
 	count = 1;
 	v = marker.getValue();
 	while (true) {
-		if (marker.hasNext(mmap))
+		if (marker.hasNext())
 		{
 			std::cout << v.value << ' ';
-			marker.next(mmap);
+			marker.next();
 			++count;
 
 			Pair<double, int> vnext = marker.getValue();
-			if (vnext < v) return false;
+			if (vnext.key < v.key) return false;
 			v = vnext;
 		}
 		else
@@ -73,23 +73,23 @@ bool testTreeAvlMarker()
 	mmap.add(1.43, 43);
 
 
-	std::cout << "remove intermediary: " << std::endl;
+	std::cout << "remove intermediary element: " << std::endl;
 	marker = mmap.createMarker();
-	marker.next(mmap);
-	marker.remove(mmap);
+	marker.next();
+	marker.remove();
 	marker = mmap.createMarker();
 	count = 1;
 	v = marker.getValue();
 	while (true)
 	{
-		if (marker.hasNext(mmap))
+		if (marker.hasNext())
 		{
 			std::cout << v.value << ' ';
-			marker.next(mmap);
+			marker.next();
 			++count;
 
 			Pair<double, int> vnext = marker.getValue();
-			if (vnext < v) return false;
+			if (vnext.key < v.key) return false;
 			v = vnext;
 		}
 		else
@@ -100,23 +100,23 @@ bool testTreeAvlMarker()
 	mmap.add(1.15, 15);
 
 
-	std::cout << "remove intermediary element : " << std::endl;
+	std::cout << "remove intermediary element: " << std::endl;
 	marker = mmap.createMarker();
-	marker.next(mmap);
-	marker.next(mmap);
-	marker.next(mmap);
-	marker.remove(mmap);
+	marker.next();
+	marker.next();
+	marker.next();
+	marker.remove();
 	marker = mmap.createMarker();
 	count = 1;
 	v = marker.getValue();
 	while (true) {
-		if (marker.hasNext(mmap)) {
+		if (marker.hasNext()) {
 			std::cout << v.value << ' ';
-			marker.next(mmap);
+			marker.next();
 			++count;
 
 			Pair<double, int> vnext = marker.getValue();
-			if (vnext < v) return false;
+			if (vnext.key < v.key) return false;
 			v = vnext;
 		}
 		else
@@ -129,20 +129,20 @@ bool testTreeAvlMarker()
 
 	std::cout << "remove root: " << std::endl;
 	marker = mmap.createMarker();
-	marker.next(mmap);
-	marker.next(mmap);
-	marker.remove(mmap);
+	marker.next();
+	marker.next();
+	marker.remove();
 	marker = mmap.createMarker();
 	count = 1;
 	v = marker.getValue();
 	while (true) {
-		if (marker.hasNext(mmap)) {
+		if (marker.hasNext()) {
 			std::cout << v.value << ' ';
-			marker.next(mmap);
+			marker.next();
 			++count;
 
 			Pair<double, int> vnext = marker.getValue();
-			if (vnext < v) return false;
+			if (vnext.key < v.key) return false;
 			v = vnext;
 		}
 		else

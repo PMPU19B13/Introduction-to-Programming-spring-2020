@@ -99,7 +99,7 @@ private:
 		return balanceTree(tree);
 	}
 
-	void removeMMapPrivate(Node*, Node*, MMapAVL<K, V>&);
+	void removeMMapPrivate(Node*, Node*, MMapAVL<K, V>*);
 public:
 	MMapAVL();
 	~MMapAVL();
@@ -114,7 +114,7 @@ public:
 		return getMin(n->left);
 	}
 
-	void removeMMap(Node*, MMapAVL<K, V>&);
+	void removeMMap(Node*, MMapAVL<K, V>*);
 
 	K maxID() const {
 		Node* runner = m_root;
@@ -130,17 +130,17 @@ public:
 	class Marker
 	{
 	public:
-		bool hasNext(MMapAVL<K, V>& m) const
+		bool hasNext() const
 		{
 			if (m_marker == nullptr)
 				throw Error();
 
-			return m.hasNextMMap(m_marker);
+			return map->hasNextMMap(m_marker);
 		}
 
-		void next(MMapAVL<K, V>& m)
+		void next()
 		{
-			if (m_marker == nullptr || !hasNext(m))
+			if (m_marker == nullptr || !hasNext())
 			{
 				m_marker = nullptr;
 				return;
@@ -165,9 +165,9 @@ public:
 			return m_marker->data;
 		}
 
-		void remove(MMapAVL<K, V>& m)
+		void remove()
 		{
-			m.removeMMap(m_marker, m);
+			map->removeMMap(m_marker, map);
 			valid = false;
 		}
 
@@ -182,6 +182,11 @@ public:
 		bool valid;
 		MMapAVL<K, V>* p_m;
 		MMapAVL<K, V>::Node* m_marker;
+		MMapAVL<K, V>* map;
+
+	};
+
+	class RevMarker {
 
 	};
 
@@ -189,13 +194,13 @@ public:
 };
 
 template<typename K, typename V>
-void MMapAVL<K, V>::removeMMap(Node* n, MMapAVL<K, V>& m)//n-маркер
+void MMapAVL<K, V>::removeMMap(Node* n, MMapAVL<K, V>* m)//n-маркер
 {
 	return removeMMapPrivate(n, m_root, m);
 }
 
 template<typename K, typename V>
-void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>& m)
+void MMapAVL<K, V>::removeMMapPrivate(Node* mark, Node* runner, MMapAVL<K, V>* m)
 {
 	if (mark == nullptr)
 		throw Error();
@@ -383,8 +388,11 @@ typename MMapAVL<K, V>::Marker MMapAVL<K, V>::createMarker()
 {
 	MMapAVL<K, V>::Marker m;
 	m.m_marker = m_root;
-	if (m.m_marker->left == nullptr) m.m_marker = m_root;
-	else while (m.m_marker->left != nullptr) m.m_marker = m.m_marker->left;
+	m.map = this;
+	if (m.m_marker != nullptr) {
+		if (m.m_marker->left == nullptr) m.m_marker = m_root;
+		else while (m.m_marker->left != nullptr) m.m_marker = m.m_marker->left;
+	}
 	m.valid = true;
 	return m;
 }
