@@ -29,7 +29,9 @@ bool testMarker() {
 	ht.add(id2, 2);
 	ht.add(id3, 3);
 	HashT<ID, int>::Marker m = ht.createMarker();
-	//std::cout << m.getValue().get(0).value << std::endl;
+	std::cout << m.getValue().get(0).value << std::endl;
+	m.next();
+	std::cout << m.getValue().get(0).value << std::endl;
 	return m.isValid();
 }
 

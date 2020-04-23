@@ -23,6 +23,10 @@ public:
 
 	void add(T value);
 
+	T& data() {
+		return m_data;
+	}
+	
 	void insert(size_t index, T value);
 
 	void remove(size_t index);

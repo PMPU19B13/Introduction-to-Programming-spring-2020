@@ -18,6 +18,14 @@ public:
 
 	const V& getAssoc(const K& key);
 
+	List<Pair<K, V>>& operator[](size_t index)
+	{
+		if (index < 0 || index >= m_size)
+			throw BadArgument();
+
+		return m_data[index];
+	}
+
 	size_t size() const;
 
 	class Marker
@@ -64,21 +72,21 @@ public:
 		List<Pair<K, V>>* m_marker;
 		HashT<K, V>* m_storage_mark;
 	};
-	 
+
 	Marker createMarker();
 
 private:
 	size_t m_size;
 	Storage<List<Pair<K, V>>> m_storage;
-	//List<Pair<K, V>>* m_data;
+	List<Pair<K, V>>* m_data;
 	static size_t hashfun(const K& key);
 };
 
 template<typename K, typename V>
-typename HashT<K,V>::Marker HashT<K, V>::createMarker()
+typename HashT<K, V>::Marker HashT<K, V>::createMarker()
 {
 	HashT<K, V>::Marker m;
-	m.m_marker = &m_storage[0];
+	m.m_marker = &(this->operator[](0));
 	m.m_storage_mark = this;
 	m.valid = true;
 	return m;
@@ -90,6 +98,7 @@ HashT<K, V>::HashT()
 {
 	m_storage = Storage<List<Pair<K, V>>>(1000);
 	m_size = 0;
+	m_data = nullptr;
 }
 
 template<typename K, typename V>
@@ -121,6 +130,13 @@ void HashT<K, V>::add(const K& key, const V& value)
 	size_t hash_function_value = hashfun(key);
 	hash_function_value %= m_storage.size();
 	m_storage[hash_function_value].add(Pair<K, V>(key, value));
+	//m_data = &m_storage[hash_function_value];
+	List<Pair<K, V>>* buffer = new List<Pair<K, V>>[m_size + 1];
+	for (size_t i = 0; i < m_size; i++)
+		buffer[i] = m_data[i];
+	buffer[m_size] = m_storage[hash_function_value];
+	delete[] m_data;
+	m_data = buffer;
 	++m_size;
 }
 
