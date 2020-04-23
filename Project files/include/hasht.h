@@ -44,16 +44,16 @@ template<typename K, typename V>
 size_t HashT<K, V>::hashfun(const K& key)
 {
 	double A = 0.6180339887;
-	int N = 1024;
-	int* p = (int*) &key;
+	//int N = 1024;
+	/*int* p = (int*) &key;
 	int hash = N * (*p * A - int(*p * A));
+	return hash;*/
+
+	size_t hash = 0;
+	unsigned char* pc = (unsigned char*)&key;
+	for (size_t k = 0; k < sizeof(key); ++k)
+		hash += pc[k] * pow(A, k);
 	return hash;
-	
-	//size_t hash = 0;
-	//unsigned char* pc = (unsigned char*) &key;
-	//for (size_t k = 0; k < sizeof(key); ++k)
-	//	hash += pc[k];
-	//return hash;
 }
 
 template<typename K, typename V>
@@ -81,4 +81,21 @@ bool HashT<K, V>::hasKey(const K& key)
 		marker.next();
 	}
 	return false;
+}
+
+template <typename K, typename V>
+const V& HashT<K, V>::getAssoc(const K& key)
+{
+	size_t hash_function_value = hashfun(key);
+	hash_function_value %= m_storage.size();
+
+	typename List<Pair<K, V>>::Marker marker;
+	marker = m_storage[hash_function_value].createMarker();
+
+	while (marker.isValid())
+	{
+		if (marker.getValue().key == key)
+			return marker.getValue().value;
+		marker.next();
+	}
 }

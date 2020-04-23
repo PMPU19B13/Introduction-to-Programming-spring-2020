@@ -268,10 +268,10 @@ private:
 };
 
 
-int main()
+/*int main()
 {
 	try
-	{
+	{*/
 		/*double x1 = 0, y1 = 0, x2 = 1, y2 = 1, x3 = 6, y3 = 6;
 		Point a1;
 		a1.setX(x1);
@@ -359,7 +359,7 @@ int main()
 		hasht.add(ID(), 1.223);
 
 		std::cout << hasht.hasKey(id1) << std::endl;
-		*/
+		*//*
 		Controller controller;
 		Drawer dr;
 		dr.setController(&controller);
@@ -374,3 +374,4 @@ int main()
 
 	return 0;
 }
+*/

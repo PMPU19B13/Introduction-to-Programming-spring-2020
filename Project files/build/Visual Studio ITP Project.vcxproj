@@ -37,6 +37,7 @@
     <ClCompile Include="..\src\geometry.cpp" />
     <ClCompile Include="..\src\id.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\test\hasht\hashtest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\res\arial.ttf" />
