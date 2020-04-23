@@ -1,17 +1,1 @@
-﻿  hashtest.cpp
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(55,1): warning C4244: +=: преобразование "double" в "size_t", возможна потеря данных
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(45): message : во время компиляции функции-члена класс шаблон "size_t HashT<ID,int>::hashfun(const K &)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(45): message :         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(45): message :         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(45): message :             K=ID
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(45): message :         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(62): message : выполняется компиляция ссылки на экземпляр шаблон функции "size_t HashT<ID,int>::hashfun(const K &)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(62): message :         with
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(62): message :         [
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(62): message :             K=ID
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(62): message :         ]
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(32): message : во время компиляции функции-члена класс шаблон "HashT<ID,int>::HashT(void)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\test\hasht\hashtest.cpp(7): message : выполняется компиляция ссылки на экземпляр шаблон функции "HashT<ID,int>::HashT(void)"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\test\hasht\hashtest.cpp(7): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "HashT<ID,int>"
-C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\include\hasht.h(101): warning C4715: HashT<ID,int>::getAssoc: значение возвращается не при всех путях выполнения
-  Visual Studio ITP Project.vcxproj -> C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\build\Debug\Visual Studio ITP Project.exe
+﻿  Visual Studio ITP Project.vcxproj -> C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\Project files\build\Debug\Visual Studio ITP Project.exe

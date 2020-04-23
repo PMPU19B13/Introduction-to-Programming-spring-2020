@@ -20,11 +20,69 @@ public:
 
 	size_t size() const;
 
+	class Marker
+	{
+	public:
+
+		bool hasNext() const
+		{
+			// Арифметика через указатели
+			return m_marker < m_storage_mark->m_data + m_storage_mark->m_size - 1;
+		}
+
+		void next()
+		{
+			if (hasNext())
+				++m_marker;
+		}
+
+		List<Pair<K, V>>& getValue()
+		{
+			// Арифметика через указатели
+			if (m_marker >= m_storage_mark->m_data + m_storage_mark->m_size)
+				throw Error();
+
+			return *m_marker;
+		}
+
+		void remove()
+		{
+			// Арифметика через указатели
+			m_storage_mark->remove(m_marker - m_storage_mark->m_data);
+			valid = false;
+		}
+
+		bool isValid()
+		{
+			return valid;
+		}
+
+		friend class HashT;
+
+	private:
+		bool valid;
+		List<Pair<K, V>>* m_marker;
+		HashT<K, V>* m_storage_mark;
+	};
+	 
+	Marker createMarker();
+
 private:
 	size_t m_size;
 	Storage<List<Pair<K, V>>> m_storage;
+	//List<Pair<K, V>>* m_data;
 	static size_t hashfun(const K& key);
 };
+
+template<typename K, typename V>
+typename HashT<K,V>::Marker HashT<K, V>::createMarker()
+{
+	HashT<K, V>::Marker m;
+	m.m_marker = &m_storage[0];
+	m.m_storage_mark = this;
+	m.valid = true;
+	return m;
+}
 
 
 template<typename K, typename V>
@@ -55,6 +113,7 @@ size_t HashT<K, V>::hashfun(const K& key)
 		hash += pc[k] * pow(A, k);
 	return hash;
 }
+
 
 template<typename K, typename V>
 void HashT<K, V>::add(const K& key, const V& value)

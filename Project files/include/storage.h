@@ -42,7 +42,7 @@ public:
 		void next()
 		{
 			if (hasNext())
-				m_marker++;
+				++m_marker;
 		}
 
 		T& getValue()

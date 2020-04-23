@@ -109,6 +109,8 @@ List<T>::List(const List& other)
 {
 	// Обновляем размер
 	m_size = other.size();
+	m_first = nullptr;
+	m_last = nullptr;
 
 	// Добавляем элементы из другого списка
 	Node* runner = other.m_first;
