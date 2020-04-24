@@ -1,6 +1,7 @@
 #include "FileIO.h"
 
-void FileIO::readPrimitive(const std::string& filename, Controller& controller)
+
+void FileIO::read(const std::string& filename, Controller& controller)
 {
 	std::ifstream file;
 
@@ -40,7 +41,7 @@ void FileIO::readPrimitive(const std::string& filename, Controller& controller)
 			char buf[1024];
 			// Segment { start { x 15 y 10 } end { x 16 y 17 } }
 			file >> temp >> temp >> temp >> temp >> x1 >> temp >> y1
-			     >> temp >> temp >> temp >> temp >> x2 >> temp >> y2 >> temp >> temp >> temp >> buf >> temp;
+				>> temp >> temp >> temp >> temp >> x2 >> temp >> y2 >> temp >> temp >> temp >> buf >> temp;
 			ID* id = new ID(buf);
 			Storage<double> args;
 			args.add(x1);
@@ -59,7 +60,7 @@ void FileIO::readPrimitive(const std::string& filename, Controller& controller)
 			char buf[1024];
 			// Circle { center { x 16 y 17 } radius 4 }
 			file >> temp >> temp >> temp >> temp >> xCenter >> temp >> yCenter
-			     >> temp >> temp >> radius >> temp >> temp >> buf >> temp;
+				>> temp >> temp >> radius >> temp >> temp >> buf >> temp;
 			ID* id = new ID(buf);
 			Storage<double> args;
 			args.add(xCenter);
@@ -80,43 +81,37 @@ void FileIO::readPrimitive(const std::string& filename, Controller& controller)
 	file.close();
 }
 
-void FileIO::writePrimitive(const std::string& filename, Controller& controller)
+void FileIO::write(const std::string& filename, PrimitiveType type, const Pair<ID, Storage<double>>& params)
 {
-	std::ofstream file;
+	std::ofstream file(filename, std::ios_base::app);
 
-	file.open(filename);
 
 	if (!file.is_open())
 	{
 		return;
 	}
-
-	MMapAVL<ID, Point>::Marker pointMarker = controller.m_points.createMarker();
-	while (pointMarker.isValid())
+	switch (type)
 	{
-		Storage<double> args = pointMarker.getValue().value.getParams();
-
-		file << "Point { x " << args[0] << " y " << args[1] << " } [ " << pointMarker.getValue().key << " ]"
-		     << std::endl;
-		pointMarker.next();
-	}
-
-	MMapAVL<ID, Segment>::Marker segmentMarker = controller.m_segments.createMarker();
-	while (segmentMarker.isValid())
-	{
-		Storage<double> args = segmentMarker.getValue().value.getParams();
-		file << "Segment { start { x " << args[0] << " y " << args[1] << " } end { x "
-		     << args[2] << " y " << args[3] << " } } [ " << segmentMarker.getValue().key << " ]" << std::endl;
-		segmentMarker.next();
-	}
-
-	MMapAVL<ID, Circle>::Marker circleMarker = controller.m_circles.createMarker();
-	while (circleMarker.isValid())
-	{
-		Storage<double> args = circleMarker.getValue().value.getParams();
-		file << "Circle { center { x " << args[0] << " y " << args[1] << " } radius "
-		     << args[2] << " } [ " << circleMarker.getValue().key << " ]" << std::endl;
-		circleMarker.next();
+	case P_Point:
+		if (params.value.size() == 2)
+			file << "Point { x " << params.value[0] << " y " << params.value[1] << " } [ " << params.key << " ]"
+			<< std::endl;
+		else throw BadArgument();
+		break;
+	case P_Segment:
+		if (params.value.size() == 4)
+			file << "Segment { start { x " << params.value[0] << " y " << params.value[1] << " } end { x "
+			<< params.value[2] << " y " << params.value[3] << " } } [ " << params.key << " ]" << std::endl;
+		else throw BadArgument();
+		break;
+	case P_Circle:
+		if (params.value.size() == 3)
+			file << "Circle { center { x " << params.value[0] << " y " << params.value[1] << " } radius "
+			<< params.value[2] << " } [ " << params.key << " ]" << std::endl;
+		else throw BadArgument();
+		break;
+	default:
+		break;
 	}
 
 	file.close();
@@ -128,3 +123,4 @@ void FileIO::writePrimitive(const std::string& filename, Controller& controller)
 //void FileIO::writeRequirement(const std::string& filename, Controller& controller);
 
 //void FileIO::readRequirement(const std::string& filename, Controller& controller);
+
