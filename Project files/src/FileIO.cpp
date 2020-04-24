@@ -91,7 +91,7 @@ void FileIO::writePrimitive(const std::string& filename, Controller& controller)
 		return;
 	}
 
-	List<Pair<ID, Point>>::Marker pointMarker = controller.m_points.createMarker();
+	MMapAVL<ID, Point>::Marker pointMarker = controller.m_points.createMarker();
 	while (pointMarker.isValid())
 	{
 		Storage<double> args = pointMarker.getValue().value.getParams();
@@ -101,7 +101,7 @@ void FileIO::writePrimitive(const std::string& filename, Controller& controller)
 		pointMarker.next();
 	}
 
-	List<Pair<ID, Segment>>::Marker segmentMarker = controller.m_segments.createMarker();
+	MMapAVL<ID, Segment>::Marker segmentMarker = controller.m_segments.createMarker();
 	while (segmentMarker.isValid())
 	{
 		Storage<double> args = segmentMarker.getValue().value.getParams();
@@ -110,7 +110,7 @@ void FileIO::writePrimitive(const std::string& filename, Controller& controller)
 		segmentMarker.next();
 	}
 
-	List<Pair<ID, Circle>>::Marker circleMarker = controller.m_circles.createMarker();
+	MMapAVL<ID, Circle>::Marker circleMarker = controller.m_circles.createMarker();
 	while (circleMarker.isValid())
 	{
 		Storage<double> args = circleMarker.getValue().value.getParams();

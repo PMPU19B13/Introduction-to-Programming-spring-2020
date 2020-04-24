@@ -7,6 +7,7 @@ class IRequirement
 {
 public:
 	virtual double error() const = 0;
+	virtual double diff() const = 0;
 };
 
 class HorizontalRequirement : public IRequirement
