@@ -12,10 +12,6 @@ public:
 	sf::RenderWindow window;
 	Controller *controller;
 
-	Point* pointMove;
-	Pair<Point*,Segment*> segmentMove;
-	Circle* circleChange;
-	
 	sf::Text text;
 
 	Drawer()

@@ -114,6 +114,7 @@
       <PreprocessorDefinitions>SFML_DYNAMIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>Project files\externals\sfml\include;C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\\Project files\include;C:\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+
       <AdditionalOptions>/D "DEBUG" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>

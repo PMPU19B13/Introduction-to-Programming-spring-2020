@@ -40,6 +40,9 @@ class Controller
 {
 public:
 	Drawer* drawer;
+	Point* pointMove;
+	Pair<Point*, Segment*> segmentMove;
+	Circle* circleChange;
 
 	Controller();
 
@@ -56,11 +59,8 @@ public:
 	Pair<PrimitiveType, Storage<double>> getPrimitiveInfo(ID& id);
 
 	friend class FileIO;
-
-	void setDrawer(Drawer* dr)
-	{
-		drawer = dr;
-	}
+  
+	void setDrawer(Drawer* dr);
 
 	Storage<ID> getAllPrimitiveIDs();
 
@@ -78,7 +78,7 @@ public:
 				minDis = dis;
 				p = &(markerPoint.getValue().value);
 			}
-			markerPoint.next();
+			markerPoint.next(m_points);
 		}
 		return p;
 	}
@@ -104,7 +104,7 @@ public:
 				minDelta = dis;
 				p = &(markerCircle.getValue().value);
 			}
-			markerCircle.next();
+			markerCircle.next(m_circles);
 		}
 		return p;
 	}
@@ -122,7 +122,7 @@ public:
 				||
 				((y<min(xyXY[1], xyXY[3]) || y>max(xyXY[1], xyXY[3])) && abs(xyXY[1] - xyXY[3]) > 5)
 				) {
-				markerSegment.next();
+				markerSegment.next(m_segments);
 				continue;
 			}
 			int n[] = { -(xyXY[3] - xyXY[1]),xyXY[2] - xyXY[0] };
@@ -131,7 +131,7 @@ public:
 				minDelta = abs(dis);
 				s = &(markerSegment.getValue().value);
 			}
-			markerSegment.next();
+			markerSegment.next(m_segments);
 		}
 		Pair<Point*, Segment*> pair(p, s);
 		return pair;
