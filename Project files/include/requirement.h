@@ -7,7 +7,7 @@ class IRequirement
 {
 public:
 	virtual double error() const = 0;
-	virtual double diff() const = 0;
+	//virtual double diff() const = 0;
 };
 
 class HorizontalRequirement : public IRequirement
@@ -59,13 +59,14 @@ private:
 class AngleRequirement : public IRequirement
 {
 public:
-	AngleRequirement(Segment* segment1, Segment* segment2);
+	AngleRequirement(Segment* segment1, Segment* segment2, double required_angle);
 
 	virtual double error() const;
 
 private:
 	Segment* m_segment1;
 	Segment* m_segment2;
+	double m_required_angle;
 };
 
 class ParallelRequirement : public AngleRequirement
@@ -100,7 +101,7 @@ public:
 private:
 	T* m_primitive1;
 	T* m_primitive2;
-};
+};	
 
 
 HorizontalRequirement::HorizontalRequirement(Segment* segment) : m_segment(segment)
@@ -118,7 +119,7 @@ VerticalRequirement::VerticalRequirement(Segment* segment) : m_segment(segment)
 
 double VerticalRequirement::error() const
 {
-	return abs(m_segment->getEnd().getX() - m_segment->getStart().getX());
+		return abs(m_segment->getEnd().getX() - m_segment->getStart().getX());
 }
 
 PointOnSegmentRequirement::PointOnSegmentRequirement(Point* point, Segment* segment) : m_point(point),
@@ -128,7 +129,7 @@ PointOnSegmentRequirement::PointOnSegmentRequirement(Point* point, Segment* segm
 
 double PointOnSegmentRequirement::error() const
 {
-  double segment_length = sqrt(pow(m_segment->getEnd().getX() - m_segment->getStart().getX(), 2) +
+	double segment_length = sqrt(pow(m_segment->getEnd().getX() - m_segment->getStart().getX(), 2) +
 	                             pow(m_segment->getEnd().getY() - m_segment->getStart().getY(), 2));
 	double distance_start = sqrt(pow(m_point->getX() - m_segment->getStart().getX(), 2) +
 	                             pow(m_point->getY() - m_segment->getStart().getY(), 2));
@@ -147,7 +148,10 @@ double PointOnCircleRequirement::error() const
 	       pow(m_point->getY() - m_circle->getCenter().getY(), 2) - pow(m_circle->getRadius(), 2);
 }
 
-AngleRequirement::AngleRequirement(Segment* segment1, Segment* segment2) : m_segment1(segment1), m_segment2(segment2)
+AngleRequirement::AngleRequirement(Segment* segment1, Segment* segment2, double required_angle) : m_segment1(segment1),
+                                                                                                  m_segment2(segment2),
+                                                                                                  m_required_angle(
+                                                                                                          required_angle)
 {
 }
 
@@ -157,10 +161,11 @@ double AngleRequirement::error() const
 	double y1 = m_segment1->getEnd().getY() - m_segment1->getStart().getY();
 	double x2 = m_segment2->getEnd().getX() - m_segment2->getStart().getX();
 	double y2 = m_segment2->getEnd().getY() - m_segment2->getStart().getY();
-	return acos(abs(x1 * x2 + y1 * y2) / sqrt((x1 * x1 + y1 * y1) * (x2 * x2 + y2 * y2)));
+	return abs(acos(abs(x1 * x2 + y1 * y2) / sqrt((x1 * x1 + y1 * y1) * (x2 * x2 + y2 * y2))) * (180 / M_PI) -
+	           m_required_angle);
 }
 
-ParallelRequirement::ParallelRequirement(Segment* segment1, Segment* segment2) : AngleRequirement(segment1, segment2)
+ParallelRequirement::ParallelRequirement(Segment* segment1, Segment* segment2) : AngleRequirement(segment1, segment2, 0)
 {
 }
 
@@ -181,7 +186,8 @@ EqualRequirement<T>::EqualRequirement(T* primitive1, T* primitive2) : m_primitiv
 template<>
 double EqualRequirement<Point>::error() const
 {
-	return sqrt(pow(m_primitive2->getX() - m_primitive1->getX(), 2) + pow(m_primitive2->getY() - m_primitive1->getY(), 2));
+	return sqrt(
+	        pow(m_primitive2->getX() - m_primitive1->getX(), 2) + pow(m_primitive2->getY() - m_primitive1->getY(), 2));
 }
 
 template<>
