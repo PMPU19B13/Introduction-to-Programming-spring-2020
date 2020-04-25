@@ -144,8 +144,8 @@ PointOnCircleRequirement::PointOnCircleRequirement(Point* point, Circle* circle)
 
 double PointOnCircleRequirement::error() const
 {
-	return pow(m_point->getX() - m_circle->getCenter().getX(), 2) +
-	       pow(m_point->getY() - m_circle->getCenter().getY(), 2) - pow(m_circle->getRadius(), 2);
+	return abs(pow(m_point->getX() - m_circle->getCenter().getX(), 2) +
+	           pow(m_point->getY() - m_circle->getCenter().getY(), 2) - pow(m_circle->getRadius(), 2));
 }
 
 AngleRequirement::AngleRequirement(Segment* segment1, Segment* segment2, double required_angle) : m_segment1(segment1),
