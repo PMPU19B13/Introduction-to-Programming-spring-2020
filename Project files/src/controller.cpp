@@ -209,6 +209,9 @@ Pair<PrimitiveType, Storage<double>> Controller::getPrimitiveInfo(ID& id)
 }
 
 
+void Controller::setDrawer(Drawer* dr) {
+	drawer = dr;
+}
 
 Storage<ID> Controller::getAllPrimitiveIDs()
 {
