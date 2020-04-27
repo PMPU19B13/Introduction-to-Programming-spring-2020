@@ -48,6 +48,9 @@
     <ClInclude Include="..\include\drawer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\controller.cpp">

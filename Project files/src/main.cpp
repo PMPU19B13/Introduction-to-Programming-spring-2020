@@ -14,6 +14,7 @@
 #include <string>
 #include "id.h"
 #include "hasht.h"
+#include "stack.h"
 //
 //class WithName
 //{
@@ -360,11 +361,13 @@ int main()
 
 		std::cout << hasht.hasKey(id1) << std::endl;
 		*/
-		Controller controller;
-		Drawer dr;
-		dr.setController(&controller);
-		controller.setDrawer(&dr);
-		dr.run();
+		Stack<int>s;
+		std::cout<<s.empty()<<std::endl;
+		s.add(3);
+		s.add(4);
+		std::cout << s.empty() << std::endl;
+		std::cout << s.pop() << std::endl;
+		std::cout << s.peek() << std::endl;
 		//FileIO::writePrimitive("document.itp", controller);
 	}
 	catch (...)

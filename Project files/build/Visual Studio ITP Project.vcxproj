@@ -28,6 +28,7 @@
     <ClInclude Include="..\include\matrix.h" />
     <ClInclude Include="..\include\mmap.h" />
     <ClInclude Include="..\include\mmapavl.h" />
+    <ClInclude Include="..\include\stack.h" />
     <ClInclude Include="..\include\storage.h" />
     <ClInclude Include="..\include\pair.h" />
   </ItemGroup>
