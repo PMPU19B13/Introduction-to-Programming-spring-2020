@@ -302,7 +302,6 @@ void Controller::writePrimitive(const std::string& filename)
 	{
 		FileIO::write(filename, P_Circle, Pair<ID, Storage<double>>(circleMarker.getValue().key, circleMarker.getValue().value.getParams()));
 		circleMarker.next();
-		circleMarker.next();
 	}
 };
 
