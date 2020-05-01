@@ -42,27 +42,4 @@ C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project 
 C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(39,1): warning C4244:         [
 C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(39,1): warning C4244:             T=float
 C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\drawer.h(39,1): warning C4244:         ]
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\stack.h(24,2): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\stack.h(21): message : во время компиляции функции-члена класс шаблон "T Stack<T>::pop(void)"
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\stack.h(21): message :         with
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\stack.h(21): message :         [
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\stack.h(21): message :             T=int
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\stack.h(21): message :         ]
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(369): message : выполняется компиляция ссылки на экземпляр шаблон функции "T Stack<T>::pop(void)"
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(369): message :         with
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(369): message :         [
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(369): message :             T=int
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(369): message :         ]
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(364): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "Stack<int>"
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\stack.h(11,2): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\stack.h(9): message : во время компиляции функции-члена класс шаблон "void Stack<int>::add(T)"
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\stack.h(9): message :         with
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\stack.h(9): message :         [
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\stack.h(9): message :             T=int
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\include\stack.h(9): message :         ]
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(366): message : выполняется компиляция ссылки на экземпляр шаблон функции "void Stack<int>::add(T)"
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(366): message :         with
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(366): message :         [
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(366): message :             T=int
-C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\src\main.cpp(366): message :         ]
   Visual Studio ITP Project.vcxproj -> C:\Users\ilnic\Documents\GitHub\Introduction-to-Programming-spring-2020\Project files\build\Debug\Visual Studio ITP Project.exe

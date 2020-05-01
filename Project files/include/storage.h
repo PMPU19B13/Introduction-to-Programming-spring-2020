@@ -1,7 +1,6 @@
 #pragma once
 
 #include <cstddef>
-
 #include "error.h"
 
 template<typename T>
@@ -12,6 +11,14 @@ public:
 	Storage(size_t); //создаёт массив с указанным количеством элементов 
 
 	Storage(const Storage<T>& original);
+
+	Storage( Storage<T>&& original) {
+		m_size = original.size();
+		m_data = original.m_data;
+		original.m_size = 0;
+		original.m_data = nullptr;
+	}
+
 
 	~Storage();
 
@@ -29,70 +36,44 @@ public:
 
 	size_t size() const;
 
-	class Marker
-	{
+	T front() {
+		return *m_data;
+	}
+
+	T back() {
+		return m_data[m_size-1];
+	}
+
+	T* begin() {
+		return m_data;
+	}
+
+	T* end() {
+		return (m_data+m_size);
+	}
+
+	class iterator {
+		T* op;
 	public:
 
-		bool hasNext() const
-		{
-			// Арифметика через указатели
-			return m_marker < m_storage->m_data + m_storage->m_size - 1;
-		}
+		iterator(T* i) { op = i; }
 
-		void next()
-		{
-			if (hasNext())
-				m_marker++;
-		}
+		T operator*() { return *op; }
 
-		T& getValue()
-		{
-			// Арифметика через указатели
-			if (m_marker >= m_storage->m_data + m_storage->m_size)
-				throw Error();
+		T* operator ++(int) { return ++op; }
 
-			return *m_marker;
-		}
+		T* operator --() { return --op; }
 
-		void remove()
-		{
-			// Арифметика через указатели
-			m_storage->remove(m_marker - m_storage->m_data);
-			valid = false;
-		}
+		bool operator ==(T* i) { return op == i; }
 
-		bool isValid()
-		{
-			return valid;
-		}
-
-		friend class Storage;
-
-	private:
-		bool valid;
-		T* m_marker;
-		Storage<T>* m_storage;
+		bool operator !=(T* i) { return op != i; }
 	};
-
-
-	Marker createMarker();
-
 
 private:
 	T* m_data;
 	size_t m_size;
-
 };
 
-
-template<typename T>
-typename Storage<T>::Marker Storage<T>::createMarker()
-{
-	Storage<T>::Marker m;
-	m.m_marker = m_data;
-	m.m_storage = this;
-	return m;
-}
 
 template<typename T>
 Storage<T>::Storage()
