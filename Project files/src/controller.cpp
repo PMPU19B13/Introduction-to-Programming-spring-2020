@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
-//#include <SFML/Graphics.hpp>
-
+#include <SFML/Graphics.hpp>
+//#include "FileIO.h"
 #include"id.h"
 #include "controller.h"
 #include "error.h"
@@ -273,3 +273,42 @@ Storage<ID> Controller::getAllPrimitiveIDs()
 //        restoreState();
 //    }
 //}
+
+void Controller::readPrimitive(const std::string& filename)
+{
+	FileIO::read(filename, *this);
+}
+
+
+void Controller::writePrimitive(const std::string& filename)
+{
+
+	MMapAVL<ID, Point>::Marker pointMarker = m_points.createMarker();
+	while (pointMarker.isValid())
+	{
+		FileIO::write(filename, P_Point, Pair<ID, Storage <double>>(pointMarker.getValue().key, pointMarker.getValue().value.getParams()));
+		pointMarker.next();
+	}
+
+	MMapAVL<ID, Segment>::Marker segmentMarker = m_segments.createMarker();
+	while (segmentMarker.isValid())
+	{
+		FileIO::write(filename, P_Segment, Pair<ID, Storage<double>>(segmentMarker.getValue().key, segmentMarker.getValue().value.getParams()));
+		segmentMarker.next();
+	}
+
+	MMapAVL<ID, Circle>::Marker circleMarker = m_circles.createMarker();
+	while (circleMarker.isValid())
+	{
+		FileIO::write(filename, P_Circle, Pair<ID, Storage<double>>(circleMarker.getValue().key, circleMarker.getValue().value.getParams()));
+		circleMarker.next();
+	}
+};
+
+
+void Controller::writeRequirement(const std::string& filename)
+{
+};
+void Controller::readRequirement(const std::string& filename)
+{
+};

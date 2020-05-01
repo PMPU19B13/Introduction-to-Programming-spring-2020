@@ -14,6 +14,8 @@ class Drawer;
 #include "mmapavl.h"
 #include "pair.h"
 #include "hasht.h"
+#include "FileIO.h"
+
 
 enum PrimitiveType
 {
@@ -40,9 +42,6 @@ class Controller
 {
 public:
 	Drawer* drawer;
-	Point* pointMove;
-	Pair<Point*, Segment*> segmentMove;
-	Circle* circleChange;
 
 	Controller();
 
@@ -56,11 +55,16 @@ public:
 
 	void writePrimitive(const std::string& fileName);
 
+	void writeRequirement(const std::string& filename);
+
+	void readRequirement(const std::string& filename);
+
 	Pair<PrimitiveType, Storage<double>> getPrimitiveInfo(ID& id);
 
-	friend class FileIO;
-  
-	void setDrawer(Drawer* dr);
+	void setDrawer(Drawer* dr)
+	{
+		drawer = dr;
+	}
 
 	Storage<ID> getAllPrimitiveIDs();
 
@@ -78,7 +82,7 @@ public:
 				minDis = dis;
 				p = &(markerPoint.getValue().value);
 			}
-			markerPoint.next(m_points);
+			markerPoint.next();
 		}
 		return p;
 	}
@@ -104,7 +108,7 @@ public:
 				minDelta = dis;
 				p = &(markerCircle.getValue().value);
 			}
-			markerCircle.next(m_circles);
+			markerCircle.next();
 		}
 		return p;
 	}
@@ -122,7 +126,7 @@ public:
 				||
 				((y<min(xyXY[1], xyXY[3]) || y>max(xyXY[1], xyXY[3])) && abs(xyXY[1] - xyXY[3]) > 5)
 				) {
-				markerSegment.next(m_segments);
+				markerSegment.next();
 				continue;
 			}
 			int n[] = { -(xyXY[3] - xyXY[1]),xyXY[2] - xyXY[0] };
@@ -131,7 +135,7 @@ public:
 				minDelta = abs(dis);
 				s = &(markerSegment.getValue().value);
 			}
-			markerSegment.next(m_segments);
+			markerSegment.next();
 		}
 		Pair<Point*, Segment*> pair(p, s);
 		return pair;
