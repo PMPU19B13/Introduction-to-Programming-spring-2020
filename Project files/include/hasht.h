@@ -32,20 +32,31 @@ public:
 		void next()
 		{
 			if (m_lmarker.hasNext())
-				++m_lmarker;
-			else if (m_storage.hasNext()) { ++m_smarker; m_lmarker = &m_smarker.getValue().get(0); }
+				m_lmarker.next();
+			else if (m_smarker.hasNext()) { m_smarker.next(); m_lmarker = m_smarker.getValue().createMarker(); }
 			else return;
 		}
 
 		Pair<K, V>& getValue()
 		{
-			return *m_lmarker;
+			if (!m_lmarker.isValid())
+				throw Error();
+
+			return m_lmarker.getValue();
 		}
 
+		void remove()
+		{
+			if (!m_lmarker.isValid())
+				throw Error();
+			m_lmarker.remove();
+			if (m_lmarker.sizel() == 0) m_smarker.remove();
+			valid = false;
+		}
 
 		bool isValid()
 		{
-			return valid;
+			return valid && m_smarker.isValid() && m_lmarker.isValid();
 		}
 
 		friend class HashT;
@@ -55,7 +66,7 @@ public:
 		typename Storage<List<Pair<K, V>>>::Marker m_smarker;
 		typename List<Pair<K, V>>::Marker m_lmarker;
 	};
-
+	
 	Marker createMarker();
 private:
 	size_t m_size;
