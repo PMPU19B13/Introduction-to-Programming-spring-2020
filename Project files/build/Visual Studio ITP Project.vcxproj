@@ -34,6 +34,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\controller.cpp" />
     <ClCompile Include="..\src\drawer.cpp" />
+    <ClCompile Include="..\src\FileIO.cpp" />
     <ClCompile Include="..\src\geometry.cpp" />
     <ClCompile Include="..\src\id.cpp" />
     <ClCompile Include="..\src\main.cpp" />
@@ -114,7 +115,6 @@
       <PreprocessorDefinitions>SFML_DYNAMIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>Project files\externals\sfml\include;C:\Users\Olya\Desktop\cpp2\Introduction-to-Programming-spring-2020\\Project files\include;C:\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-
       <AdditionalOptions>/D "DEBUG" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
