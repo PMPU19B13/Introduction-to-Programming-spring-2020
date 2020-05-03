@@ -1,14 +1,15 @@
 #include <iostream>
 #include <vector>
 #include <list>
-#include <map>//обычно на красно-чёрных деревьях
+#include <map>//Г®ГЎГ»Г·Г­Г® Г­Г  ГЄГ°Г Г±Г­Г®-Г·ВёГ°Г­Г»Гµ Г¤ГҐГ°ГҐГўГјГїГµ
 #include <unordered_map>
-#include <set>//множество
+#include <set>//Г¬Г­Г®Г¦ГҐГ±ГІГўГ®
 #include <unordered_set>
 
 
-bool testMMap() {
-	std::multimap<double, int> assoc;//multimap - разрешено повторение ключей
+bool testMMap()
+{
+	std::multimap<double, int> assoc;//multimap - Г°Г Г§Г°ГҐГёГҐГ­Г® ГЇГ®ГўГІГ®Г°ГҐГ­ГЁГҐ ГЄГ«ГѕГ·ГҐГ©
 	assoc.insert(std::make_pair(1.2, 3));
 	assoc.insert(std::make_pair(1.2, 4));
 	assoc.insert(std::make_pair(1.2, 5));
@@ -20,13 +21,15 @@ bool testMMap() {
 	std::multimap<double, int>::iterator ite = assoc.upper_bound(1.2);
 	std::pair<std::multimap<double, int>::iterator, std::multimap<double, int>::iterator> range = assoc.equal_range(1.2);
 
-	for (; it != ite; ++it) {
+	for (; it != ite; ++it)
+	{
 		std::cout << (*it).first << ' ' << (*it).second << std::endl;
 	}
 	return true;
 }
 
-bool testStdMap() {
+bool testStdMap()
+{
 	std::map <double, int> assoc;
 	assoc[1.2] = 2;
 	assoc[3.5] = 4;
@@ -35,7 +38,8 @@ bool testStdMap() {
 	std::cout << v << std::endl;
 	std::cout << assoc[1.3] << std::endl;
 
-	for (std::map<double, int>::iterator it = assoc.begin(); it != assoc.end(); ++it) {
+	for (std::map<double, int>::iterator it = assoc.begin(); it != assoc.end(); ++it)
+	{
 		std::cout << (*it).first << (*it).second << std::endl;
 	}
 
@@ -46,7 +50,8 @@ bool testStdMap() {
 	return true;
 }
 
-bool testStd() {
+bool testStd()
+{
 	std::vector<double> vd;
 	std::list<double> lt;
 
@@ -72,7 +77,8 @@ bool testStd() {
 		std::cout << *it << std::endl;
 	}
 
-	for (auto a : vd) {
+	for (auto a : vd)
+	{
 		std::cout << a << std::endl;
 	}
 
@@ -81,23 +87,27 @@ bool testStd() {
 		std::cout << *it << std::endl;
 	}
 
-	for (auto a : lt) {
+	for (auto a : lt)
+	{
 		std::cout << a << std::endl;
 	}
 
-	//в обратном порядке
-	for (std::vector<double>::reverse_iterator rit = vd.rbegin(); rit != vd.rend(); ++rit) {
+	//Гў Г®ГЎГ°Г ГІГ­Г®Г¬ ГЇГ®Г°ГїГ¤ГЄГҐ
+	for (std::vector<double>::reverse_iterator rit = vd.rbegin(); rit != vd.rend(); ++rit)
+	{
 		std::cout << *rit << std::endl;
 	}
 
-	for (std::list<double>::reverse_iterator rit = lt.rbegin(); rit != lt.rend(); ++rit) {
+	for (std::list<double>::reverse_iterator rit = lt.rbegin(); rit != lt.rend(); ++rit)
+	{
 		std::cout << *rit << std::endl;
 	}
 
 	if (vd.size() == 3 && lt.size() == 3) return true;
 }
 
-int main() {
+int main()
+{
 	std::cout << (testStd() ? "passed" : "failed") << std::endl;
 	std::cout << (testStdMap() ? "passed" : "failed") << std::endl;
 	std::cout << (testMMap() ? "passed" : "failed") << std::endl;
