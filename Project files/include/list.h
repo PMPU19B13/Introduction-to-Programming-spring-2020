@@ -59,8 +59,7 @@ public:
 
 		void remove()
 		{
-			m_marker->previous->next = m_marker->next;
-			m_marker->next->previous = m_marker->previous;
+			list->remove(m_marker);
 			valid = false;
 		}
 
@@ -73,6 +72,7 @@ public:
 
 	private:
 		bool valid;
+		List<T>* list;
 		List<T>::Node* m_marker;
 	};
 
@@ -91,6 +91,8 @@ public:
 	T get(size_t index) const;
 
 	void set(size_t index, T value);
+	
+	void remove(Node*);
 
 	size_t size() const;
 
@@ -266,6 +268,33 @@ void List<T>::remove(size_t index)
 	runner->next->previous = runner;
 
 	// Обновляем размер
+	--m_size;
+}
+
+template<typename T>
+void List<T>::remove(Node* p_t)
+{
+	Node* runner = m_first;
+	while (runner != p_t)
+		runner = runner->next;
+	if (runner->previous != nullptr) { 
+		runner = runner->previous; 
+		Node* tmp = runner->next->next;
+		delete runner->next;
+		runner->next = tmp;
+		if (runner->next != nullptr) runner->next->previous = runner;
+	}
+	else {
+		if (runner->next != nullptr) {
+			Node* tmp = runner->next;
+			delete runner;
+			tmp->previous = nullptr;
+		}
+		else {
+			delete runner;  
+		}
+	}
+
 	--m_size;
 }
 
