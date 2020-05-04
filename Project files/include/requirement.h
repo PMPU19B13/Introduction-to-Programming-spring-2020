@@ -1,6 +1,6 @@
 #pragma once
 
-#include <math.h>
+#include <cmath>
 #include "geometry.h"
 
 class IRequirement
@@ -161,7 +161,7 @@ double AngleRequirement::error() const
 	double y1 = m_segment1->getEnd().getY() - m_segment1->getStart().getY();
 	double x2 = m_segment2->getEnd().getX() - m_segment2->getStart().getX();
 	double y2 = m_segment2->getEnd().getY() - m_segment2->getStart().getY();
-	return abs(acos(abs(x1 * x2 + y1 * y2) / sqrt((x1 * x1 + y1 * y1) * (x2 * x2 + y2 * y2))) * (180 / M_PI) -
+	return abs(acos(abs(x1 * x2 + y1 * y2) / sqrt((x1 * x1 + y1 * y1) * (x2 * x2 + y2 * y2))) * (180  /acos(-1.0)) -
 	           m_required_angle);
 }
 

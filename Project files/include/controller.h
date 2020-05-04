@@ -16,7 +16,6 @@ class Drawer;
 #include "hasht.h"
 #include "FileIO.h"
 
-
 enum PrimitiveType
 {
 	P_Point,
@@ -60,6 +59,12 @@ public:
 	void readRequirement(const std::string& filename);
 
 	Pair<PrimitiveType, Storage<double>> getPrimitiveInfo(ID& id);
+
+	Circle* circleChange;
+
+	Point* pointMove;
+
+	Pair <Point*, Segment*> segmentMove;
 
 	void setDrawer(Drawer* dr)
 	{
